@@ -8,9 +8,11 @@ import { PortalTransition } from '@/core/components/PortalTransition'
 import { useHubStore } from '@/core/store/hubStore'
 import { useGameStore } from '@/core/store/gameStore'
 import { ChamberOfSecrets } from '@/games/01-chamber-of-secrets/components/ChamberOfSecrets'
+import { EscapeTheDen } from '@/games/02-escape-the-den/components/EscapeTheDen'
 
 const GAME_COMPONENTS: Record<string, ComponentType<{ onExit: () => void }>> = {
   '01-chamber-of-secrets': ChamberOfSecrets,
+  '02-escape-the-den': EscapeTheDen,
 }
 
 function App() {
@@ -25,6 +27,13 @@ function App() {
       gameId: '01-chamber-of-secrets',
       title: '密室：记忆碎片',
       subtitle: '一场关于记忆与欺骗的博弈',
+      unlocked: true,
+      completed: false,
+    })
+    registerFireplace({
+      gameId: '02-escape-the-den',
+      title: '逃出魔窟',
+      subtitle: '七次抉择，一线生天',
       unlocked: true,
       completed: false,
     })

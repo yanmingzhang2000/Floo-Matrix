@@ -6,6 +6,9 @@
 /** 剧本节点类型 */
 export type StoryNodeType = 'dialogue' | 'choice' | 'puzzle' | 'cutscene' | 'ending'
 
+/** 场景标识，驱动背景光影与环境音切换 */
+export type SceneId = 'basement' | 'forest' | 'cabin' | 'station' | 'reveal'
+
 /** 条件判断类型（用于分支剧情、道具检查） */
 export interface Condition {
   /** 条件类型：拥有道具 / 剧情标记 / 变量比较 */
@@ -48,6 +51,16 @@ export interface StoryNode {
   nextNode?: string
   /** 解谜节点专属：解谜组件标识，由具体游戏组件渲染 */
   puzzleId?: string
+  /** ending 节点专属：区分死亡结局与通关结局，驱动差异化渲染 */
+  endingVariant?: 'bad' | 'good'
+  /** 场景标识，驱动背景光影/暗角与环境音切换 */
+  scene?: SceneId
+  /** 该节点对应的环境音 key（对应 audioManager 注册的音效） */
+  ambientSound?: string
+  /** 紧张程度 0-3，驱动暗角强度/心跳感等氛围效果（不驱动限时逻辑） */
+  tensionLevel?: number
+  /** bad ending 专属：对应的选择点节点 ID，用于"重新抉择"跳转与未来复活机制预留 */
+  checkpointNodeId?: string
 }
 
 /** 完整剧本数据 */

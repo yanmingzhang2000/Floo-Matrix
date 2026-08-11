@@ -4,8 +4,8 @@
  */
 import { motion } from 'framer-motion'
 import storyData from '../story.json'
-import { DialogueBox } from './DialogueBox'
-import { ChoicePanel } from './ChoicePanel'
+import { DialogueBox } from '@/core/components/DialogueBox'
+import { ChoicePanel } from '@/core/components/ChoicePanel'
 import { useStoryEngine } from '@/core/hooks/useStoryEngine'
 import type { StoryData } from '@/core/types/story'
 

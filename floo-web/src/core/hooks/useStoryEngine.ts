@@ -44,6 +44,11 @@ export function useStoryEngine(story: StoryData) {
     }
   }
 
+  /** 直接跳转到指定节点（用于死亡结局的"重新抉择"，回到对应的选择点而非从头开始） */
+  const jumpToNode = (nodeId: string) => {
+    advanceTo(engine.getNode(nodeId))
+  }
+
   const availableChoices = currentNode ? engine.getAvailableChoices(currentNode) : []
   const canAdvance = Boolean(currentNode?.nextNode) && availableChoices.length === 0
 
@@ -52,6 +57,7 @@ export function useStoryEngine(story: StoryData) {
     availableChoices,
     selectChoice,
     advanceNode,
+    jumpToNode,
     canAdvance,
     isEnding: currentNode?.type === 'ending',
   }
