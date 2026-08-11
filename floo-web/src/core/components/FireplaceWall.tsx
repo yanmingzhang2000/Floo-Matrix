@@ -21,12 +21,12 @@ export function FireplaceWall({ fireplaces, onEnterGame }: FireplaceWallProps) {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-6 py-12">
       <motion.h1
-        className="font-heading text-4xl md:text-5xl text-floo-text-primary mb-2"
+        className="font-heading text-5xl md:text-6xl text-floo-text-primary mb-2"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
-        Floo Network
+        Floo
       </motion.h1>
       <motion.p
         className="font-body text-floo-text-muted mb-2 italic"
