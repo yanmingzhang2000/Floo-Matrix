@@ -1,8 +1,7 @@
 /**
  * 对话框组件
- * 展示当前剧本节点的文本内容，支持打字机效果
+ * 展示当前剧本节点的文本内容
  */
-import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 
 interface DialogueBoxProps {
@@ -11,22 +10,6 @@ interface DialogueBoxProps {
 }
 
 export function DialogueBox({ content, speaker }: DialogueBoxProps) {
-  const [displayedText, setDisplayedText] = useState('')
-
-  useEffect(() => {
-    setDisplayedText('')
-    let index = 0
-    const timer = setInterval(() => {
-      index += 1
-      setDisplayedText(content.slice(0, index))
-      if (index >= content.length) {
-        clearInterval(timer)
-      }
-    }, 25)
-
-    return () => clearInterval(timer)
-  }, [content])
-
   return (
     <motion.div
       className="bg-floo-bg-secondary border border-floo-accent-green/20 rounded-xl p-6 max-w-2xl"
@@ -38,7 +21,7 @@ export function DialogueBox({ content, speaker }: DialogueBoxProps) {
         <p className="font-heading text-floo-accent-gold text-sm mb-2">{speaker}</p>
       )}
       <p className="font-body text-floo-text-primary leading-relaxed whitespace-pre-wrap">
-        {displayedText}
+        {content}
       </p>
     </motion.div>
   )
