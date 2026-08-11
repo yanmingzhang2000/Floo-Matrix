@@ -5,7 +5,7 @@
  */
 import { useEffect, useRef, useState, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import storyData from '../story.json'
+import storyDataJson from '../story.json'
 import { BadEndingOverlay } from './BadEndingOverlay'
 import { RevealCutscene } from './RevealCutscene'
 import { DialogueBox } from '@/core/components/DialogueBox'
@@ -17,6 +17,8 @@ import { ReasoningBoard } from '@/core/components/ReasoningBoard'
 import { useStoryEngine } from '@/core/hooks/useStoryEngine'
 import { audioManager } from '@/core/engine/audioManager'
 import type { StoryData } from '@/core/types/story'
+
+const storyData = storyDataJson as unknown as StoryData
 
 interface EscapeTheDenProps {
   onExit: () => void
