@@ -18,16 +18,19 @@ interface EscapeTheDenProps {
   onExit: () => void
 }
 
+// 使用 BASE_URL 拼接资源路径，兼容子路径部署（如 GitHub Pages 的 /Floo-Matrix/）
+const base = import.meta.env.BASE_URL
+
 const AMBIENT_SOUNDS: Record<string, string> = {
-  basement: '/audio/ambient/basement.wav',
-  forest: '/audio/ambient/forest.wav',
-  cabin: '/audio/ambient/cabin.wav',
+  basement: `${base}audio/ambient/basement.wav`,
+  forest: `${base}audio/ambient/forest.wav`,
+  cabin: `${base}audio/ambient/cabin.wav`,
 }
 
 const SFX_SOUNDS: Record<string, string> = {
-  heartbeat: '/audio/sfx/heartbeat.wav',
-  'bad-ending-impact': '/audio/sfx/bad-ending-impact.wav',
-  'good-ending-chime': '/audio/sfx/good-ending-chime.wav',
+  heartbeat: `${base}audio/sfx/heartbeat.wav`,
+  'bad-ending-impact': `${base}audio/sfx/bad-ending-impact.wav`,
+  'good-ending-chime': `${base}audio/sfx/good-ending-chime.wav`,
 }
 
 export function EscapeTheDen({ onExit }: EscapeTheDenProps) {
