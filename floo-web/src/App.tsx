@@ -21,6 +21,12 @@ function App() {
   const [activeGameId, setActiveGameId] = useState<string | null>(null)
   const [transitioning, setTransitioning] = useState(false)
   const [pendingGameId, setPendingGameId] = useState<string | null>(null)
+  const [transitionCoords, setTransitionCoords] = useState({
+    clickX: 0,
+    clickY: 0,
+    fireplaceX: 0,
+    fireplaceY: 0,
+  })
 
   useEffect(() => {
     registerFireplace({
@@ -39,8 +45,15 @@ function App() {
     })
   }, [registerFireplace])
 
-  const handleEnterGame = (gameId: string) => {
+  const handleEnterGame = (
+    gameId: string,
+    clickX: number,
+    clickY: number,
+    fireplaceX: number,
+    fireplaceY: number
+  ) => {
     setPendingGameId(gameId)
+    setTransitionCoords({ clickX, clickY, fireplaceX, fireplaceY })
     setTransitioning(true)
   }
 
@@ -65,7 +78,14 @@ function App() {
   return (
     <>
       <FireplaceWall fireplaces={fireplaces} onEnterGame={handleEnterGame} />
-      <PortalTransition active={transitioning} onComplete={handleTransitionComplete} />
+      <PortalTransition
+        active={transitioning}
+        clickX={transitionCoords.clickX}
+        clickY={transitionCoords.clickY}
+        fireplaceX={transitionCoords.fireplaceX}
+        fireplaceY={transitionCoords.fireplaceY}
+        onComplete={handleTransitionComplete}
+      />
     </>
   )
 }

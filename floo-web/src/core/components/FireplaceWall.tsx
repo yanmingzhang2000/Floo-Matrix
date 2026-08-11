@@ -8,7 +8,13 @@ import type { FireplaceConfig } from '@/core/types/story'
 
 interface FireplaceWallProps {
   fireplaces: FireplaceConfig[]
-  onEnterGame: (gameId: string) => void
+  onEnterGame: (
+    gameId: string,
+    clickX: number,
+    clickY: number,
+    fireplaceX: number,
+    fireplaceY: number
+  ) => void
 }
 
 export function FireplaceWall({ fireplaces, onEnterGame }: FireplaceWallProps) {
@@ -23,12 +29,20 @@ export function FireplaceWall({ fireplaces, onEnterGame }: FireplaceWallProps) {
         Floo Network
       </motion.h1>
       <motion.p
-        className="font-body text-floo-text-muted mb-12 italic"
+        className="font-body text-floo-text-muted mb-2 italic"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.3 }}
       >
-        选择一座壁炉，踏入未知的时空
+        点击壁炉，撒下Floo powder，穿越时空
+      </motion.p>
+      <motion.p
+        className="font-ui text-xs text-floo-text-muted/60 mb-12"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, delay: 0.5 }}
+      >
+        绿色火焰将带你进入未知的叙事迷宫
       </motion.p>
 
       <motion.div
