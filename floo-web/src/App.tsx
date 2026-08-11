@@ -13,9 +13,11 @@ import { useGameStore } from '@/core/store/gameStore'
 import { useUserStore } from '@/core/store/userStore'
 import { downloadProgress, uploadProgress } from '@/core/services/syncService'
 import { EscapeTheDen } from '@/games/02-escape-the-den/components/EscapeTheDen'
+import { KaiDuan } from '@/games/03-kai-duan/components/KaiDuan'
 
 const GAME_COMPONENTS: Record<string, ComponentType<{ onExit: () => void }>> = {
   '02-escape-the-den': EscapeTheDen,
+  '03-kai-duan': KaiDuan,
 }
 
 function App() {
@@ -50,6 +52,13 @@ function App() {
       gameId: '02-escape-the-den',
       title: '逃出魔窟',
       subtitle: '七次抉择，一线生天',
+      unlocked: true,
+      completed: false,
+    })
+    registerFireplace({
+      gameId: '03-kai-duan',
+      title: '开端',
+      subtitle: '时间循环，寻找真相',
       unlocked: true,
       completed: false,
     })

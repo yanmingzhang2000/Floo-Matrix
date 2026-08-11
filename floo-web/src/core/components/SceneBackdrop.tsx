@@ -32,6 +32,26 @@ const SCENE_STYLES: Record<SceneId, { gradient: string; vignette: string }> = {
     gradient: 'radial-gradient(circle at 50% 30%, #1a0f0f 0%, #050505 70%)',
     vignette: 'rgba(0, 0, 0, 0.8)',
   },
+  bus: {
+    gradient: 'radial-gradient(circle at 50% 40%, #1a1a2e 0%, #0a0e14 75%)',
+    vignette: 'rgba(0, 0, 0, 0.65)',
+  },
+  convention: {
+    gradient: 'radial-gradient(circle at 50% 30%, #2d1a3e 0%, #0a0e14 70%)',
+    vignette: 'rgba(0, 0, 0, 0.5)',
+  },
+  police_station: {
+    gradient: 'radial-gradient(circle at 50% 25%, #1e2a3a 0%, #0a0e14 80%)',
+    vignette: 'rgba(0, 0, 0, 0.6)',
+  },
+  factory: {
+    gradient: 'radial-gradient(circle at 50% 35%, #2a1f1a 0%, #0a0e14 75%)',
+    vignette: 'rgba(0, 0, 0, 0.7)',
+  },
+  bridge: {
+    gradient: 'radial-gradient(circle at 50% 20%, #1a2535 0%, #050810 80%)',
+    vignette: 'rgba(0, 0, 0, 0.55)',
+  },
 }
 
 export function SceneBackdrop({ scene, tensionLevel = 0 }: SceneBackdropProps) {

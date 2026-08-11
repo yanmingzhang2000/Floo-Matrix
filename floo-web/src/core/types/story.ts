@@ -7,7 +7,7 @@
 export type StoryNodeType = 'dialogue' | 'choice' | 'puzzle' | 'cutscene' | 'ending'
 
 /** 场景标识，驱动背景光影与环境音切换 */
-export type SceneId = 'basement' | 'forest' | 'cabin' | 'station' | 'reveal'
+export type SceneId = 'basement' | 'forest' | 'cabin' | 'station' | 'reveal' | 'bus' | 'convention' | 'police_station' | 'factory' | 'bridge'
 
 /** 线索类型：事实 / 证词 / 异常 */
 export type ClueType = 'fact' | 'testimony' | 'anomaly'

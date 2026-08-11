@@ -1,0 +1,947 @@
+{
+  "gameId": "03-kai-duan",
+  "title": "开端",
+  "description": "在时间循环中寻找真相，阻止一场注定发生的爆炸。",
+  "startNode": "loop1_awaken",
+  "characters": [
+    { "id": "protagonist", "name": "你", "description": "在45路公交车上遭遇爆炸的普通人，进入时间循环" },
+    { "id": "li_shiqing", "name": "李诗情", "description": "大学生，善良勇敢，第一个进入循环的人" },
+    { "id": "xiao_heyun", "name": "肖鹤云", "description": "游戏架构师，理性冷静，被李诗情拉入循环" },
+    { "id": "driver_wang", "name": "王兴德", "description": "45路公交车司机，沉默寡言，曾是好人模范" },
+    { "id": "tao_yinghong", "name": "陶映红", "description": "司机前妻，炸弹制造者，精神状态不稳定" },
+    { "id": "wang_mengmeng", "name": "王萌萌", "description": "司机女儿，五年前在公交车上被骚扰后跳车自杀" },
+    { "id": "lu_di", "name": "卢迪", "description": "二次元少年，患有哮喘，热爱ACG文化" },
+    { "id": "lao_zhang", "name": "老张", "description": "退休工人，热心但孤独的老年乘客" },
+    { "id": "yao_po", "name": "药婆", "description": "老太太，吴语口音，带着装满药物的包" },
+    { "id": "ma_guoqiang", "name": "马国强", "description": "中年农民，出狱后重新开始生活" },
+    { "id": "lao_jiao", "name": "老焦", "description": "农民工，生活窘迫，行李箱装满全部家当" },
+    { "id": "liu_yao", "name": "刘瑶", "description": "五年前目击王萌萌被骚扰但没有发声的女学生" },
+    { "id": "zhang_dui", "name": "张队", "description": "刑警队长，经验丰富，睿智亲切" },
+    { "id": "xiao_jiang", "name": "小江", "description": "年轻警官，刚从警校毕业" }
+  ],
+  "clues": [
+    {
+      "id": "clue_explosion_time",
+      "title": "爆炸时间点",
+      "type": "fact",
+      "content": "公交车在下午1点45分准时爆炸，无论做什么都无法改变这个时间。",
+      "location": "公交车内"
+    },
+    {
+      "id": "clue_bomb_location",
+      "title": "炸弹位置",
+      "type": "anomaly",
+      "content": "炸弹藏在一个红色的压力锅里，由陶映红带上车。",
+      "location": "公交车内"
+    },
+    {
+      "id": "clue_wang_mengmeng",
+      "title": "王萌萌的故事",
+      "type": "testimony",
+      "content": "司机的女儿王萌萌五年前在公交车上被骚扰，被迫跳车后被卡车撞死。",
+      "location": "调查所得"
+    },
+    {
+      "id": "clue_bomb_source",
+      "title": "炸弹的来源",
+      "type": "anomaly",
+      "content": "炸弹是司机前妻陶映红制造的，她是一名化工厂工人。",
+      "location": "调查所得"
+    },
+    {
+      "id": "clue_lu_di_cat",
+      "title": "卢迪的猫",
+      "type": "testimony",
+      "content": "卢迪在秘密基地收养了三只流浪猫，他把它们当作自己的家人。",
+      "location": "漫展秘密基地"
+    },
+    {
+      "id": "clue_lu_di_cosplay",
+      "title": "卢迪的cosplay",
+      "type": "fact",
+      "content": "卢迪的背包里装着一套精美的cosplay服装，他要去参加春日动漫节。",
+      "location": "公交车内"
+    },
+    {
+      "id": "clue_wang_mengmeng_photo",
+      "title": "王萌萌的照片",
+      "type": "fact",
+      "content": "在漫展摊位发现一张泛黄的照片，背面写着"王萌萌 2017"。",
+      "location": "漫展摊位"
+    },
+    {
+      "id": "clue_lu_di_father",
+      "title": "卢迪的父亲",
+      "type": "testimony",
+      "content": "卢迪的父亲反对他的爱好，但最后送给他一套新的cosplay服装。",
+      "location": "漫展现场"
+    },
+    {
+      "id": "clue_liu_yao_witness",
+      "title": "刘瑶的证词",
+      "type": "testimony",
+      "content": "刘瑶五年前目击王萌萌被骚扰，但因害怕报复没有发声。",
+      "location": "刘瑶住所"
+    },
+    {
+      "id": "clue_network_violence",
+      "title": "网络暴力",
+      "type": "fact",
+      "content": "王萌萌死后，网上出现了大量恶意评论，指责她"不检点"。",
+      "location": "网络记录"
+    },
+    {
+      "id": "clue_wang_mengmeng_truth",
+      "title": "王萌萌的真相",
+      "type": "testimony",
+      "content": "五年前的完整事件经过：王萌萌在公交车上被骚扰，无人帮助，被迫跳车。",
+      "location": "调查所得"
+    },
+    {
+      "id": "clue_tao_factory",
+      "title": "陶映红的工厂",
+      "type": "fact",
+      "content": "陶映红曾是化工厂工人，有制造炸弹的知识。",
+      "location": "化工厂"
+    },
+    {
+      "id": "clue_bomb_recipe",
+      "title": "炸弹配方",
+      "type": "fact",
+      "content": "陶映红花了三年时间研究炸弹制作，精心策划了这场爆炸。",
+      "location": "陶映红住所"
+    },
+    {
+      "id": "clue_couple_history",
+      "title": "夫妻历史",
+      "type": "testimony",
+      "content": "王兴德和陶映红因女儿的死婚姻破裂，最终离婚。",
+      "location": "调查所得"
+    },
+    {
+      "id": "clue_cycle_cost",
+      "title": "循环的代价",
+      "type": "anomaly",
+      "content": "每次循环都会对身体造成轻微影响，肖鹤云的身体逐渐变差。",
+      "location": "观察所得"
+    },
+    {
+      "id": "clue_xiao_health",
+      "title": "肖鹤云的健康",
+      "type": "fact",
+      "content": "肖鹤云的脸色越来越苍白，每次循环醒来咳嗽得更厉害。",
+      "location": "观察所得"
+    },
+    {
+      "id": "clue_cycle_source",
+      "title": "循环的来源",
+      "type": "anomaly",
+      "content": "循环可能是王萌萌灵魂的求救，她希望有人能阻止她的父母。",
+      "location": "王萌萌的幻影"
+    },
+    {
+      "id": "clue_cycle_purpose",
+      "title": "循环的目的",
+      "type": "testimony",
+      "content": "循环的目的是阻止父母伤害无辜的人，让王萌萌的灵魂得到安息。",
+      "location": "推理所得"
+    },
+    {
+      "id": "clue_final_plan",
+      "title": "最终计划",
+      "type": "fact",
+      "content": "所有线索汇聚后的最终行动计划：在爆炸前说服王兴德，同时让乘客配合。",
+      "location": "推理所得"
+    },
+    {
+      "id": "clue_lao_zhang",
+      "title": "老张的故事",
+      "type": "testimony",
+      "content": "退休工人，儿女在外地工作，每天坐公交车是为了找人说话。",
+      "location": "公交车内"
+    },
+    {
+      "id": "clue_ma_guoqiang",
+      "title": "马国强的故事",
+      "type": "testimony",
+      "content": "出狱后重新开始生活，带着西瓜去看望妻女，社会偏见让他难以融入。",
+      "location": "公交车内"
+    },
+    {
+      "id": "clue_lao_jiao",
+      "title": "老焦的故事",
+      "type": "testimony",
+      "content": "农民工，生活窘迫，行李箱里装着全部家当，来城里给女儿攒学费。",
+      "location": "公交车内"
+    },
+    {
+      "id": "clue_zhang_dui_suspicion",
+      "title": "张队的怀疑",
+      "type": "anomaly",
+      "content": "张队察觉到你们对公交车上乘客的了解程度超出了常理。",
+      "location": "警局审讯室"
+    },
+    {
+      "id": "clue_police_investigation",
+      "title": "警方调查",
+      "type": "fact",
+      "content": "警方也在调查爆炸案，张队逐渐开始关注你们。",
+      "location": "警局"
+    }
+  ],
+  "nodes": {
+    "loop1_awaken": {
+      "id": "loop1_awaken",
+      "type": "dialogue",
+      "scene": "bus",
+      "ambientSound": "bus",
+      "tensionLevel": 2,
+      "content": "你在45路公交车上醒来，头隐隐作痛。\n\n窗外是熟悉又陌生的城市街景，阳光透过车窗洒在你的脸上。你低头看了看手机——下午1点40分。\n\n你旁边坐着一个陌生的男人，正低头看手机。车内乘客稀稀落落，一切看起来如此平常。\n\n但你的心脏猛烈跳动着，一种强烈的不安感涌上心头——你记得，这辆公交车会爆炸。",
+      "clues": ["clue_explosion_time"],
+      "investigations": [
+        {
+          "id": "inv_look_around",
+          "label": "观察车内环境",
+          "content": "45路公交车，车内大约十来位乘客。窗外的风景显示车辆正在驶向跨江大桥方向。你的手机显示时间是1点40分。",
+          "clueId": "clue_explosion_time"
+        },
+        {
+          "id": "inv_check_self",
+          "label": "检查自己的状态",
+          "content": "你感觉头脑异常清醒，却又有一种恍如隔世的感觉。你清晰地记得——爆炸。火焰。然后是现在。这不是梦。",
+          "clueId": "clue_explosion_time"
+        }
+      ],
+      "nextNode": "loop1_choice"
+    },
+    "loop1_choice": {
+      "id": "loop1_choice",
+      "type": "choice",
+      "scene": "bus",
+      "tensionLevel": 3,
+      "content": "公交车即将驶上跨江大桥。你记得，爆炸会在1点45分准时发生。\n\n你必须现在做出决定——是尝试提前下车逃生，还是留在车上想办法？",
+      "choices": [
+        {
+          "id": "c1_a",
+          "text": "尝试提前下车",
+          "nextNode": "bad_ending_1"
+        },
+        {
+          "id": "c1_b",
+          "text": "保持原状，观察情况",
+          "nextNode": "loop2_start",
+          "effects": [{ "type": "setVariable", "key": "currentLoop", "value": 2 }]
+        }
+      ]
+    },
+    "bad_ending_1": {
+      "id": "bad_ending_1",
+      "type": "ending",
+      "endingVariant": "bad",
+      "scene": "bus",
+      "checkpointNodeId": "loop1_awaken",
+      "content": "你猛地站起来，冲向车门，疯狂地拍打着车门要求下车。\n\n司机回头看了你一眼，没有理会。车门紧锁，公交车依然向前行驶。\n\n下一秒——轰。\n\n爆炸的火光吞噬了一切。你再次醒来，发现自己又回到了公交车上，时间回到了1点40分。\n\n你没能逃出循环。"
+    },
+    "loop2_start": {
+      "id": "loop2_start",
+      "type": "dialogue",
+      "scene": "bus",
+      "ambientSound": "bus",
+      "tensionLevel": 2,
+      "content": "你再次在公交车上醒来。这一次你更加清醒——刚才的爆炸不是梦。\n\n你尝试提前下车，但公交车门紧锁，司机拒绝停车。\n\n你注意到坐在你旁边的年轻男人（肖鹤云）似乎也经历了什么——他的表情同样惊恐，额头上布满冷汗。",
+      "clues": ["clue_explosion_time"],
+      "investigations": [
+        {
+          "id": "inv_xiao_heyun",
+          "label": "观察肖鹤云",
+          "content": "这个年轻男人面色苍白，额头冒汗，双手紧握着手机。他的眼神和你一样——充满了恐惧和困惑。他似乎也记得刚才的爆炸。",
+          "clueId": "clue_explosion_time"
+        },
+        {
+          "id": "inv_passengers",
+          "label": "观察车上乘客",
+          "content": "车上有十几位乘客：一个戴黑色帽子口罩的年轻人在后排（卢迪），一个热心的老大爷（老张），一个带西瓜的中年男人（马国强），一个提着旧行李箱的农民工（老焦），还有一个带着药包的老太太（药婆）。"
+        }
+      ],
+      "nextNode": "loop2_choice"
+    },
+    "loop2_choice": {
+      "id": "loop2_choice",
+      "type": "choice",
+      "scene": "bus",
+      "tensionLevel": 2,
+      "content": "你和肖鹤云对视了一眼，彼此都读出了对方眼中的恐惧。\n\n是否要主动与他交流，告诉他你所知道的一切？",
+      "choices": [
+        {
+          "id": "c2_a",
+          "text": "主动与肖鹤云交流，告知循环事实",
+          "nextNode": "loop3_start",
+          "effects": [
+            { "type": "setVariable", "key": "currentLoop", "value": 3 },
+            { "type": "setFlag", "key": "trust_xiao_high", "value": true }
+          ]
+        },
+        {
+          "id": "c2_b",
+          "text": "独自行动，尝试其他方法",
+          "nextNode": "loop3_start",
+          "effects": [
+            { "type": "setVariable", "key": "currentLoop", "value": 3 },
+            { "type": "setFlag", "key": "trust_xiao_low", "value": true }
+          ]
+        }
+      ]
+    },
+    "loop3_start": {
+      "id": "loop3_start",
+      "type": "dialogue",
+      "scene": "bus",
+      "ambientSound": "bus",
+      "tensionLevel": 1,
+      "content": "第三次循环。时间回到了1点35分。\n\n这一次，你注意到坐在后排的一个戴着黑色帽子、口罩的年轻人（卢迪）。他的背包里似乎装着什么奇怪的东西——你瞥见了一角彩色的布料和一些道具。\n\n当公交车经过一个站点时，卢迪匆匆下车，背包里的东西散落了一地——那是一套精美的cosplay服装。",
+      "clues": ["clue_lu_di_cosplay"],
+      "investigations": [
+        {
+          "id": "inv_lu_di_backpack",
+          "label": "观察卢迪的背包",
+          "content": "散落出来的是一套精美的cosplay服装，还有一些道具。这个年轻人看起来是去参加漫展的。",
+          "clueId": "clue_lu_di_cosplay"
+        }
+      ],
+      "nextNode": "loop3_choice"
+    },
+    "loop3_choice": {
+      "id": "loop3_choice",
+      "type": "choice",
+      "scene": "bus",
+      "tensionLevel": 2,
+      "content": "卢迪的东西散落一地，他手忙脚乱地收拾着，看起来非常窘迫。\n\n你是否要帮他？",
+      "choices": [
+        {
+          "id": "c3_a",
+          "text": "帮助卢迪捡起物品，开启对话",
+          "nextNode": "subline1_lu_di",
+          "effects": [
+            { "type": "setFlag", "key": "subline1_unlocked", "value": true },
+            { "type": "setVariable", "key": "currentLoop", "value": 3 }
+          ]
+        },
+        {
+          "id": "c3_b",
+          "text": "无视卢迪，继续调查主线",
+          "nextNode": "loop4_start",
+          "effects": [{ "type": "setVariable", "key": "currentLoop", "value": 4 }]
+        }
+      ]
+    },
+    "subline1_lu_di": {
+      "id": "subline1_lu_di",
+      "type": "dialogue",
+      "scene": "bus",
+      "content": "你帮卢迪捡起了散落的物品。他抬起头，口罩上方露出一双惊讶的眼睛。\n\n"谢谢……"他的声音很轻，带着一丝警惕。\n\n你注意到他的背包里除了cosplay服装，还有猫粮和一些药品——似乎是哮喘药。\n\n"你也去漫展吗？"你随口问道。\n\n他的眼睛亮了一下："嗯，春日动漫节。我有一套特别的cosplay要展示……"他突然顿住，似乎意识到自己说太多了。",
+      "clues": ["clue_lu_di_cosplay"],
+      "investigations": [
+        {
+          "id": "inv_lu_di_items",
+          "label": "观察卢迪的物品",
+          "content": "cosplay服装、猫粮、哮喘药。这个少年的秘密比你想的要多。他偷偷养了猫，而且有哮喘。",
+          "clueId": "clue_lu_di_cat"
+        }
+      ],
+      "nextNode": "loop4_start",
+      "effects": [{ "type": "setVariable", "key": "currentLoop", "value": 4 }]
+    },
+    "loop4_start": {
+      "id": "loop4_start",
+      "type": "dialogue",
+      "scene": "bus",
+      "ambientSound": "bus",
+      "tensionLevel": 1,
+      "content": "第四次循环。时间回到了1点33分。\n\n你决定仔细观察车上的每一位乘客。\n\n那个热心的老大爷（老张）正在和旁边的人聊天，看起来很孤独；那个中年男人（马国强）带着一箱西瓜，时不时看向窗外；那个农民工（老焦）的行李箱破旧不堪，却擦得干干净净。每个人背后似乎都有故事。",
+      "clues": ["clue_lao_zhang", "clue_ma_guoqiang", "clue_lao_jiao"],
+      "investigations": [
+        {
+          "id": "inv_lao_zhang",
+          "label": "与老张交谈",
+          "content": "老张是个退休工人，儿女在外地工作，很少回来看他。他每天坐公交车是为了找人说话。"人老了，就是怕孤独。"他笑着说，但眼里有一丝落寞。",
+          "clueId": "clue_lao_zhang"
+        },
+        {
+          "id": "inv_ma_guoqiang",
+          "label": "与马国强交谈",
+          "content": "马国强出狱后重新开始生活，带着西瓜去看望妻女。"社会上的人总是用异样的眼光看我，"他说，"但我已经改了。"",
+          "clueId": "clue_ma_guoqiang"
+        },
+        {
+          "id": "inv_lao_jiao",
+          "label": "与老焦交谈",
+          "content": "老焦是农民工，来城里给女儿攒学费。他的行李箱里装着全部家当——几件换洗衣服，一个旧水壶，和女儿的照片。"再苦也不能苦孩子。"他憨厚地笑着。",
+          "clueId": "clue_lao_jiao"
+        }
+      ],
+      "nextNode": "loop4_choice"
+    },
+    "loop4_choice": {
+      "id": "loop4_choice",
+      "type": "choice",
+      "scene": "bus",
+      "tensionLevel": 2,
+      "content": "每个乘客背后都有自己的故事。你决定深入调查哪一位？",
+      "choices": [
+        {
+          "id": "c4_a",
+          "text": "重点调查老张",
+          "nextNode": "loop4_lao_zhang",
+          "effects": [{ "type": "setFlag", "key": "investigated_lao_zhang", "value": true }]
+        },
+        {
+          "id": "c4_b",
+          "text": "重点调查马国强",
+          "nextNode": "loop4_ma_guoqiang",
+          "effects": [{ "type": "setFlag", "key": "investigated_ma_guoqiang", "value": true }]
+        },
+        {
+          "id": "c4_c",
+          "text": "重点调查老焦",
+          "nextNode": "loop4_lao_jiao",
+          "effects": [{ "type": "setFlag", "key": "investigated_lao_jiao", "value": true }]
+        },
+        {
+          "id": "c4_d",
+          "text": "回到主线调查",
+          "nextNode": "loop5_start",
+          "effects": [{ "type": "setVariable", "key": "currentLoop", "value": 5 }]
+        }
+      ]
+    },
+    "loop4_lao_zhang": {
+      "id": "loop4_lao_zhang",
+      "type": "dialogue",
+      "scene": "bus",
+      "content": "老张絮絮叨叨地讲着自己的故事。他的儿子在外地工作，女儿嫁到了另一个城市。老伴去年走了，家里就剩他一个人。\n\n"你知道吗，我每天坐这趟公交车，就是想跟人说说话。"他苦笑着，"公交车上的人虽然不认识，但至少是活生生的人。"\n\n你看着他浑浊却温暖的眼睛，心里一阵酸楚。这个老人，也是爆炸的受害者之一。",
+      "nextNode": "loop5_start",
+      "effects": [{ "type": "setVariable", "key": "currentLoop", "value": 5 }]
+    },
+    "loop4_ma_guoqiang": {
+      "id": "loop4_ma_guoqiang",
+      "type": "dialogue",
+      "scene": "bus",
+      "content": "马国强小心翼翼地抱着那箱西瓜，生怕碰坏了一个。\n\n"我刚出来，"他低声说，"三年了。我老婆带着孩子等我，我答应过要给她带西瓜，她最爱吃西瓜。"\n\n他停顿了一下，眼眶微微泛红："我知道别人怎么看我。但我想重新开始，真的想。"\n\n你看着他粗糙的双手和真挚的眼神，想起了什么——这个男人，也是无辜的。",
+      "nextNode": "loop5_start",
+      "effects": [{ "type": "setVariable", "key": "currentLoop", "value": 5 }]
+    },
+    "loop4_lao_jiao": {
+      "id": "loop4_lao_jiao",
+      "type": "dialogue",
+      "scene": "bus",
+      "content": "老焦的行李箱擦得干干净净，虽然已经很旧了。\n\n"我闺女在城里上大学，"他自豪地说，"我是来给她送生活费的。"\n\n他从口袋里掏出一张照片——一个扎着马尾辫的女孩，笑得灿烂。\n\n"她不知道我干的是什么活，我告诉她我在工地当管理员。"他挠了挠头，"其实我就是搬砖的。但只要她能念书，我搬多少砖都行。"\n\n你看着他满是老茧的双手，心里涌上一阵感动。",
+      "nextNode": "loop5_start",
+      "effects": [{ "type": "setVariable", "key": "currentLoop", "value": 5 }]
+    },
+    "loop5_start": {
+      "id": "loop5_start",
+      "type": "dialogue",
+      "scene": "bus",
+      "ambientSound": "bus",
+      "tensionLevel": 1,
+      "content": "第五次循环。时间回到了1点30分。\n\n你决定跟随卢迪去参加"春日动漫节"。漫展现场热闹非凡，各种cosplay表演让人目不暇接。\n\n卢迪向你展示了他的秘密基地——一个藏在漫展角落的小仓库，里面收养了三只流浪猫。在整理物品时，你发现了一张泛黄的照片——照片上是一个穿着校服的女孩，背面写着"王萌萌 2017"。",
+      "clues": ["clue_lu_di_cat", "clue_wang_mengmeng_photo"],
+      "scene": "convention",
+      "investigations": [
+        {
+          "id": "inv_secret_base",
+          "label": "参观卢迪的秘密基地",
+          "content": "小仓库里整齐地摆放着猫粮、猫砂和三只可爱的小猫。卢迪在这里找到了属于自己的一片天地。",
+          "clueId": "clue_lu_di_cat"
+        },
+        {
+          "id": "inv_mengmeng_photo",
+          "label": "检查王萌萌的照片",
+          "content": "照片上是一个穿着校服的女孩，笑容清纯。背面写着"王萌萌 2017"。这张照片为什么会出现在这里？",
+          "clueId": "clue_wang_mengmeng_photo"
+        }
+      ],
+      "nextNode": "loop5_choice"
+    },
+    "loop5_choice": {
+      "id": "loop5_choice",
+      "type": "choice",
+      "scene": "convention",
+      "tensionLevel": 2,
+      "content": "你手里拿着王萌萌的照片，心中充满疑问。\n\n这张照片为什么会出现在卢迪的秘密基地？王萌萌是谁？",
+      "choices": [
+        {
+          "id": "c5_a",
+          "text": "询问卢迪关于照片的来历",
+          "nextNode": "loop6_start",
+          "effects": [
+            { "type": "setFlag", "key": "subline2_unlocked", "value": true },
+            { "type": "setVariable", "key": "currentLoop", "value": 6 }
+          ]
+        },
+        {
+          "id": "c5_b",
+          "text": "暂时搁置，回到公交车调查",
+          "nextNode": "loop6_start",
+          "effects": [{ "type": "setVariable", "key": "currentLoop", "value": 6 }]
+        }
+      ]
+    },
+    "loop6_start": {
+      "id": "loop6_start",
+      "type": "dialogue",
+      "scene": "bus",
+      "ambientSound": "bus",
+      "tensionLevel": 2,
+      "content": "第六次循环。时间回到了1点25分。\n\n你和肖鹤云因为可疑行为被警方带走。在审讯室里，经验丰富的张队仔细观察着你们。\n\n"你们是怎么知道这些的？"张队问道，眼神犀利，"你们对公交车上每一个乘客的了解程度，超出了常理。"",
+      "clues": ["clue_zhang_dui_suspicion", "clue_police_investigation"],
+      "investigations": [
+        {
+          "id": "inv_zhang_dui",
+          "label": "观察张队",
+          "content": "张队五十多岁，眼神锐利，但并不咄咄逼人。他似乎在给你们机会，看你们是否值得信任。",
+          "clueId": "clue_zhang_dui_suspicion"
+        },
+        {
+          "id": "inv_xiao_jiang",
+          "label": "观察小江",
+          "content": "小江是个年轻的警官，刚从警校毕业。他看起来有些紧张，但对你们充满好奇。",
+          "clueId": "clue_police_investigation"
+        }
+      ],
+      "nextNode": "loop6_choice"
+    },
+    "loop6_choice": {
+      "id": "loop6_choice",
+      "type": "choice",
+      "scene": "police_station",
+      "tensionLevel": 3,
+      "content": "张队盯着你们，等待回答。\n\n你该如何解释你们对乘客的了解？",
+      "choices": [
+        {
+          "id": "c6_a",
+          "text": "坦白告知循环事实",
+          "nextNode": "loop6_confess",
+          "effects": [
+            { "type": "setFlag", "key": "police_suspicion_high", "value": true },
+            { "type": "setFlag", "key": "police_cooperation_possible", "value": true },
+            { "type": "setVariable", "key": "currentLoop", "value": 6 }
+          ]
+        },
+        {
+          "id": "c6_b",
+          "text": "编造理由搪塞",
+          "nextNode": "loop6_lie",
+          "effects": [
+            { "type": "setFlag", "key": "police_suspicion_low", "value": true },
+            { "type": "setFlag", "key": "police_cooperation_lost", "value": true },
+            { "type": "setVariable", "key": "currentLoop", "value": 6 }
+          ]
+        },
+        {
+          "id": "c6_c",
+          "text": "保持沉默",
+          "nextNode": "bad_ending_2"
+        }
+      ]
+    },
+    "loop6_confess": {
+      "id": "loop6_confess",
+      "type": "dialogue",
+      "scene": "police_station",
+      "content": "你深吸一口气，决定说出真相。\n\n"张队，我知道这听起来很荒谬，但我们经历的时间循环。这辆公交车会爆炸，我们已经经历了很多次……"\n\n张队沉默了很久，然后慢慢开口："你说的这些，我没办法相信。但你们提供的信息确实很详细，这让我不得不重视。"\n\n他站起身："我会安排人去调查你们说的那些事。如果你们说的是真的，我会帮你们。"\n\n你看到了一丝希望。",
+      "nextNode": "loop7_start",
+      "effects": [{ "type": "setVariable", "key": "currentLoop", "value": 7 }]
+    },
+    "loop6_lie": {
+      "id": "loop6_lie",
+      "type": "dialogue",
+      "scene": "police_station",
+      "content": "你编造了一个理由——说你们是记者，在做社会调查。\n\n张队看了你们很久，眼神里有一丝失望："好吧，既然你们不愿意说，我也不勉强。"\n\n他挥了挥手，让小江把你们送出去。你注意到他转身时，轻轻叹了口气。\n\n你知道，你失去了获得警方帮助的机会。",
+      "nextNode": "loop7_start",
+      "effects": [{ "type": "setVariable", "key": "currentLoop", "value": 7 }]
+    },
+    "bad_ending_2": {
+      "id": "bad_ending_2",
+      "type": "ending",
+      "endingVariant": "bad",
+      "scene": "police_station",
+      "checkpointNodeId": "loop6_start",
+      "content": "你选择了沉默。\n\n张队等了很久，最终摇了摇头："既然你们不愿意配合，那就先拘留吧。"\n\n你被关进了拘留室。时间一分一秒过去，你无法阻止爆炸，也无法离开这里。\n\n1点45分，远处传来一声闷响。爆炸还是发生了。\n\n你被困在循环中，无法逃脱。"
+    },
+    "loop7_start": {
+      "id": "loop7_start",
+      "type": "dialogue",
+      "scene": "bus",
+      "ambientSound": "bus",
+      "tensionLevel": 2,
+      "content": "第七次循环。时间回到了1点20分。\n\n你决定调查王萌萌五年前的真相。你找到了当年目击王萌萌被骚扰的女学生——刘瑶。\n\n她看起来很憔悴，眼神中充满恐惧和愧疚。\n\n"那天在公交车上，我看到一个男人在骚扰那个女孩，"刘瑶说，声音颤抖，"但我不敢出声。后来她跳车了……都是我的错。"",
+      "clues": ["clue_liu_yao_witness", "clue_network_violence", "clue_wang_mengmeng_truth"],
+      "investigations": [
+        {
+          "id": "inv_liu_yao",
+          "label": "与刘瑶深入交谈",
+          "content": "刘瑶说她五年前还是个学生，在公交车上亲眼看到一个男人骚扰王萌萌。她因为害怕报复没有发声。事后她承受着巨大的心理压力，一直活在愧疚中。",
+          "clueId": "clue_liu_yao_witness"
+        },
+        {
+          "id": "inv_network",
+          "label": "搜索网络记录",
+          "content": "你打开手机搜索，发现网上充斥着对王萌萌的恶意评论："不检点"、"活该"、"这种女孩死了活该"。这些网络暴力加剧了王兴德夫妇的痛苦。",
+          "clueId": "clue_network_violence"
+        }
+      ],
+      "nextNode": "loop7_choice"
+    },
+    "loop7_choice": {
+      "id": "loop7_choice",
+      "type": "choice",
+      "scene": "bus",
+      "tensionLevel": 2,
+      "content": "刘瑶的眼泪止不住地流。她一直活在当年的阴影中。\n\n你该如何面对她？",
+      "choices": [
+        {
+          "id": "c7_a",
+          "text": "安慰刘瑶，鼓励她出面作证",
+          "nextNode": "loop8_start",
+          "effects": [
+            { "type": "setFlag", "key": "liu_yao_trust_high", "value": true },
+            { "type": "setFlag", "key": "liu_yao_will_testify", "value": true },
+            { "type": "setVariable", "key": "currentLoop", "value": 8 }
+          ]
+        },
+        {
+          "id": "c7_b",
+          "text": "记录证据，暂时离开",
+          "nextNode": "loop8_start",
+          "effects": [{ "type": "setVariable", "key": "currentLoop", "value": 8 }]
+        },
+        {
+          "id": "c7_c",
+          "text": "直接质问刘瑶为什么当时不发声",
+          "nextNode": "loop7_confront",
+          "effects": [
+            { "type": "setFlag", "key": "liu_yao_trust_low", "value": true },
+            { "type": "setVariable", "key": "currentLoop", "value": 8 }
+          ]
+        }
+      ]
+    },
+    "loop7_confront": {
+      "id": "loop7_confront",
+      "type": "dialogue",
+      "scene": "bus",
+      "content": "你忍不住质问刘瑶："你当时为什么不发声？如果你说了什么，也许她就不会死！"\n\n刘瑶的脸色瞬间变得惨白。她张了张嘴，最终什么也没说出来，转身跑开了。\n\n你看着她离去的背影，心中有些后悔。但你也知道，愤怒并不能解决问题。",
+      "nextNode": "loop8_start",
+      "effects": [{ "type": "setVariable", "key": "currentLoop", "value": 8 }]
+    },
+    "loop8_start": {
+      "id": "loop8_start",
+      "type": "dialogue",
+      "scene": "factory",
+      "ambientSound": "factory",
+      "tensionLevel": 2,
+      "content": "第八次循环。时间回到了1点15分。\n\n你来到陶映红曾经工作的化工厂。工友们说她以前是个温和的人，但自从女儿去世后就变了。\n\n你发现她曾多次向警方请求重新调查女儿的案件，但都被拒绝。在她的住所里，你发现了炸弹的配方和制作记录——这个女人用了整整三年时间，策划了这场爆炸。",
+      "clues": ["clue_tao_factory", "clue_bomb_recipe", "clue_couple_history"],
+      "investigations": [
+        {
+          "id": "inv_factory",
+          "label": "调查化工厂记录",
+          "content": "陶映红曾是一名优秀的化工厂工人，多次获得表彰。女儿去世后，她开始频繁请假，最终离职。",
+          "clueId": "clue_tao_factory"
+        },
+        {
+          "id": "inv_bomb_recipe",
+          "label": "检查炸弹配方",
+          "content": "你发现了一本详细的笔记本，记录了炸弹的制作方法。每一页都写满了公式和注释，看得出她花了大量时间研究。",
+          "clueId": "clue_bomb_recipe"
+        },
+        {
+          "id": "inv_couple",
+          "label": "了解夫妻关系",
+          "content": "王兴德和陶映红曾经是一对恩爱夫妻。女儿的死让他们的婚姻走向破裂。离婚后，两人都无法走出丧女之痛。",
+          "clueId": "clue_couple_history"
+        }
+      ],
+      "nextNode": "loop8_choice"
+    },
+    "loop8_choice": {
+      "id": "loop8_choice",
+      "type": "choice",
+      "scene": "factory",
+      "tensionLevel": 3,
+      "content": "你手里拿着陶映红的证据，心中五味杂陈。\n\n这个母亲的绝望，你能够理解。但她的行为，你无法认同。\n\n你该怎么办？",
+      "choices": [
+        {
+          "id": "c8_a",
+          "text": "直接与陶映红对峙",
+          "nextNode": "loop9_start",
+          "effects": [{ "type": "setVariable", "key": "currentLoop", "value": 9 }]
+        },
+        {
+          "id": "c8_b",
+          "text": "将证据交给警方",
+          "nextNode": "loop9_start",
+          "effects": [
+            { "type": "setFlag", "key": "evidence_handed_over", "value": true },
+            { "type": "setVariable", "key": "currentLoop", "value": 9 }
+          ]
+        },
+        {
+          "id": "c8_c",
+          "text": "尝试劝说陶映红放弃",
+          "nextNode": "bad_ending_3"
+        }
+      ]
+    },
+    "bad_ending_3": {
+      "id": "bad_ending_3",
+      "type": "ending",
+      "endingVariant": "bad",
+      "scene": "factory",
+      "checkpointNodeId": "loop8_start",
+      "content": "你找到了陶映红，试图劝说她放弃。\n\n"你知道一个母亲失去孩子的痛苦吗？"她冷笑着说，"你什么都不知道。"\n\n她按下了引爆器。爆炸的火光吞噬了一切。\n\n你再次醒来，又回到了公交车上。劝说失败了——她的绝望已经超越了理智。"
+    },
+    "loop9_start": {
+      "id": "loop9_start",
+      "type": "dialogue",
+      "scene": "bus",
+      "ambientSound": "bus",
+      "tensionLevel": 3,
+      "content": "第九次循环。时间回到了1点10分。\n\n肖鹤云的脸色越来越苍白。每次循环醒来，他都会咳嗽得更厉害。\n\n"我没事，"他说，但你注意到他捂住胸口的手在颤抖。\n\n你开始意识到，循环是有代价的——它正在消耗肖鹤云的生命。\n\n"如果打破循环的代价是牺牲一个人，"肖鹤云说，"那我愿意。"",
+      "clues": ["clue_cycle_cost", "clue_xiao_health"],
+      "investigations": [
+        {
+          "id": "inv_xiao_health",
+          "label": "检查肖鹤云的状态",
+          "content": "肖鹤云的脸色苍白得几乎透明，嘴唇失去了血色。每次循环都在消耗他的生命力。",
+          "clueId": "clue_xiao_health"
+        }
+      ],
+      "nextNode": "loop9_choice"
+    },
+    "loop9_choice": {
+      "id": "loop9_choice",
+      "type": "choice",
+      "scene": "bus",
+      "tensionLevel": 3,
+      "content": "肖鹤云看着你，眼神坚定。\n\n"让我来结束这一切。只要我牺牲了，循环就会停止。"\n\n你该如何回应？",
+      "choices": [
+        {
+          "id": "c9_a",
+          "text": "拒绝肖鹤云的牺牲，寻找其他方法",
+          "nextNode": "loop10_start",
+          "effects": [
+            { "type": "setFlag", "key": "trust_xiao_very_high", "value": true },
+            { "type": "setVariable", "key": "currentLoop", "value": 10 }
+          ]
+        },
+        {
+          "id": "c9_b",
+          "text": "接受肖鹤云的提议",
+          "nextNode": "bad_ending_4"
+        },
+        {
+          "id": "c9_c",
+          "text": "决定自己牺牲",
+          "nextNode": "good_ending_2"
+        }
+      ]
+    },
+    "bad_ending_4": {
+      "id": "bad_ending_4",
+      "type": "ending",
+      "endingVariant": "bad",
+      "scene": "bus",
+      "checkpointNodeId": "loop9_start",
+      "content": "你沉默了。肖鹤云苦笑了一下，转身走向炸弹。\n\n他用尽最后的力气拆除了引信。但爆炸还是在他身边发生了。\n\n他没能阻止爆炸，只是让自己白白牺牲。\n\n你抱着他渐渐冰冷的身体，泪水夺眶而出。循环重置，你再次回到了公交车上。\n\n牺牲失败了。"
+    },
+    "good_ending_2": {
+      "id": "good_ending_2",
+      "type": "ending",
+      "endingVariant": "good",
+      "scene": "bus",
+      "effects": [{ "type": "addItem", "key": "sacrifice_crystal", "value": "牺牲记忆水晶" }],
+      "content": "你做出了决定。\n\n"让我来。"你说，"这是我的选择。"\n\n你冲向炸弹，用尽最后的力气拆除了引信。爆炸在你身边发生，但你成功阻止了更大的灾难。\n\n肖鹤云抱着受伤的你，泪水夺眶而出。\n\n"你为什么要这样做？"他问。\n\n"因为你教会了我，"你说，"有些事情值得用生命去守护。"\n\n循环结束了。你活了下来，但永远改变了。\n\n—— 牺牲与救赎 ——"
+    },
+    "loop10_start": {
+      "id": "loop10_start",
+      "type": "dialogue",
+      "scene": "bus",
+      "ambientSound": "bus",
+      "tensionLevel": 3,
+      "content": "第十次循环。时间回到了1点05分。\n\n在一次循环中，你意外地看到了王萌萌的幻影——她站在跨江大桥上，回头看了你一眼，眼中满是悲伤。\n\n你突然明白了：这个循环不是惩罚，而是求救。王萌萌的灵魂被困在了这个时间点，她希望有人能阻止她的父母伤害无辜的人。",
+      "clues": ["clue_cycle_source", "clue_cycle_purpose"],
+      "investigations": [
+        {
+          "id": "inv_ghost",
+          "label": "观察王萌萌的幻影",
+          "content": "她穿着五年前的校服，面容清秀，眼中满是悲伤。她回头看了你一眼，嘴唇微微动了动，似乎在说什么。",
+          "clueId": "clue_cycle_source"
+        }
+      ],
+      "nextNode": "loop10_choice"
+    },
+    "loop10_choice": {
+      "id": "loop10_choice",
+      "type": "choice",
+      "scene": "bus",
+      "tensionLevel": 3,
+      "content": "王萌萌的幻影渐渐消散，留下一串模糊的低语。\n\n你是否要尝试与她的灵魂对话？",
+      "choices": [
+        {
+          "id": "c10_a",
+          "text": "尝试与王萌萌的幻影对话",
+          "nextNode": "loop10_ghost",
+          "effects": [
+            { "type": "setFlag", "key": "ghost_contact", "value": true },
+            { "type": "setVariable", "key": "currentLoop", "value": 10 }
+          ]
+        },
+        {
+          "id": "c10_b",
+          "text": "专注于阻止爆炸",
+          "nextNode": "loop11_start",
+          "effects": [{ "type": "setVariable", "key": "currentLoop", "value": 11 }]
+        }
+      ]
+    },
+    "loop10_ghost": {
+      "id": "loop10_ghost",
+      "type": "cutscene",
+      "scene": "bridge",
+      "tensionLevel": 3,
+      "content": "你闭上眼睛，集中精神，试图与王萌萌的灵魂建立联系。\n\n"王萌萌，"你轻声说，"我能听到你。"\n\n空气中传来一个微弱的声音——像是风，又像是低语：\n\n"阻止他们……不要让更多的无辜的人受伤……我爸爸妈妈……他们只是太痛了……"\n\n声音渐渐消散，但你已经明白了——循环的真正目的是让王萌萌的灵魂得到安息，让她的父母得到救赎。",
+      "clues": ["clue_cycle_purpose"],
+      "nextNode": "loop11_start",
+      "effects": [{ "type": "setVariable", "key": "currentLoop", "value": 11 }]
+    },
+    "loop11_start": {
+      "id": "loop11_start",
+      "type": "dialogue",
+      "scene": "bus",
+      "ambientSound": "bus",
+      "tensionLevel": 4,
+      "content": "第十一次循环。时间回到了1点整。\n\n所有线索汇聚在一起：王萌萌五年前被骚扰、刘瑶的沉默、网络暴力、陶映红的绝望、王兴德的配合。\n\n你和肖鹤云制定了一个计划——在爆炸发生前说服王兴德，同时让乘客们配合行动。",
+      "clues": ["clue_final_plan"],
+      "investigations": [
+        {
+          "id": "inv_plan",
+          "label": "整合所有线索",
+          "content": "真相已经清晰：王萌萌五年前被骚扰后跳车死亡，她的父母因绝望和愤怒策划了爆炸。循环的目的是让王萌萌的灵魂得到安息。",
+          "clueId": "clue_final_plan"
+        }
+      ],
+      "nextNode": "loop11_choice"
+    },
+    "loop11_choice": {
+      "id": "loop11_choice",
+      "type": "choice",
+      "scene": "bus",
+      "tensionLevel": 4,
+      "content": "计划已经制定完毕。但执行计划需要勇气——你可能要面对王兴德的怒火，甚至陶映红的引爆器。\n\n你准备好了吗？",
+      "choices": [
+        {
+          "id": "c11_a",
+          "text": "执行计划",
+          "nextNode": "loop12_start",
+          "effects": [{ "type": "setVariable", "key": "currentLoop", "value": 12 }]
+        },
+        {
+          "id": "c11_b",
+          "text": "放弃计划",
+          "nextNode": "bad_ending_5"
+        }
+      ]
+    },
+    "bad_ending_5": {
+      "id": "bad_ending_5",
+      "type": "ending",
+      "endingVariant": "bad",
+      "scene": "bus",
+      "checkpointNodeId": "loop11_start",
+      "content": "你放弃了。\n\n恐惧战胜了勇气。你坐在座位上，看着窗外的风景，等待着不可避免的爆炸。\n\n1点45分，爆炸如期而至。你再次醒来，又回到了公交车上。\n\n你永远无法打破循环——因为你自己选择了放弃。"
+    },
+    "loop12_start": {
+      "id": "loop12_start",
+      "type": "dialogue",
+      "scene": "bus",
+      "ambientSound": "bus",
+      "tensionLevel": 5,
+      "content": "第十二次循环。最后的机会。时间回到了1点整。\n\n你站在王兴德面前，告诉他你知道一切——关于王萌萌，关于五年前的真相，关于他的痛苦。\n\n"我知道你很痛，"你说，"但爆炸不能解决问题。王萌萌不会希望你这样做。"\n\n王兴德的眼中闪过一丝动摇。但陶映红已经拿出了引爆器……",
+      "nextNode": "loop12_final_choice"
+    },
+    "loop12_final_choice": {
+      "id": "loop12_final_choice",
+      "type": "choice",
+      "scene": "bridge",
+      "tensionLevel": 5,
+      "content": "陶映红的手指按在引爆器上，王兴德站在你面前，眼中满是痛苦和挣扎。\n\n公交车即将驶上跨江大桥。你必须现在做出最终决定。",
+      "choices": [
+        {
+          "id": "c12_a",
+          "text": "说服王兴德阻止陶映红",
+          "nextNode": "good_ending_1",
+          "conditions": [
+            { "type": "variable", "key": "trust_xiao_high", "operator": "eq", "value": true }
+          ]
+        },
+        {
+          "id": "c12_b",
+          "text": "牺牲自己拆弹",
+          "nextNode": "good_ending_2_alt"
+        },
+        {
+          "id": "c12_c",
+          "text": "与王萌萌的灵魂对话",
+          "nextNode": "hidden_ending_1",
+          "conditions": [
+            { "type": "flag", "key": "ghost_contact" }
+          ]
+        },
+        {
+          "id": "c12_d",
+          "text": "让所有乘客配合行动",
+          "nextNode": "hidden_ending_2",
+          "conditions": [
+            { "type": "flag", "key": "investigated_lao_zhang" },
+            { "type": "flag", "key": "investigated_ma_guoqiang" },
+            { "type": "flag", "key": "investigated_lao_jiao" }
+          ]
+        }
+      ]
+    },
+    "good_ending_1": {
+      "id": "good_ending_1",
+      "type": "ending",
+      "endingVariant": "good",
+      "scene": "bridge",
+      "effects": [{ "type": "addItem", "key": "beginning_crystal", "value": "开端记忆水晶" }],
+      "content": "你看着王兴德的眼睛，一字一句地说：\n\n"王萌萌不会希望你这样做。她希望你们好好活下去。"\n\n王兴德的眼中闪过一丝动摇。他转身走向陶映红，一把夺过引爆器。\n\n"够了，"他说，声音沙哑，"够了。"\n\n公交车在跨江大桥上停了下来。警方及时赶到。爆炸被成功阻止，所有人安全。\n\n王兴德和陶映红被逮捕。刘瑶出面作证。卢迪继续他的ACG梦想。\n\n循环结束了，一切回归正常。\n\n你和肖鹤云成为了朋友，一起走出了这段经历。\n\n—— 完整拯救 ——"
+    },
+    "good_ending_2_alt": {
+      "id": "good_ending_2_alt",
+      "type": "ending",
+      "endingVariant": "good",
+      "scene": "bridge",
+      "effects": [{ "type": "addItem", "key": "sacrifice_crystal", "value": "牺牲记忆水晶" }],
+      "content": "你没有犹豫，冲向陶映红，用尽全力夺下引爆器。\n\n爆炸在你身边发生，但你成功保护了所有人。\n\n肖鹤云抱着受伤的你，泪水夺眶而出。\n\n"你为什么要这样做？"他问。\n\n"因为这就是开端，"你说，"新的开始。"\n\n循环结束了。你活了下来，但永远改变了。\n\n—— 牺牲与救赎 ——"
+    },
+    "hidden_ending_1": {
+      "id": "hidden_ending_1",
+      "type": "ending",
+      "endingVariant": "good",
+      "scene": "bridge",
+      "effects": [{ "type": "addItem", "key": "redemption_crystal", "value": "救赎记忆水晶" }],
+      "content": "你闭上眼睛，呼唤王萌萌的灵魂。\n\n"萌萌，"你轻声说，"你听到了吗？你的父母很爱你。"\n\n空气中传来一个微弱的声音："谢谢你……我终于可以离开了。"\n\n你看到王萌萌的灵魂化作光芒，消散在空中。同时，王兴德和陶映红也看到了女儿的身影，他们跪倒在地，痛哭失声。\n\n"萌萌……对不起……"陶映红跪在地上，泪流满面。\n\n循环结束了，不是因为爆炸被阻止，而是因为王萌萌的灵魂得到了安息。\n\n所有人都得到了救赎。\n\n—— 循环的意义 ——"
+    },
+    "hidden_ending_2": {
+      "id": "hidden_ending_2",
+      "type": "ending",
+      "endingVariant": "good",
+      "scene": "bridge",
+      "effects": [{ "type": "addItem", "key": "unity_crystal", "value": "团结记忆水晶" }],
+      "content": "在你的努力下，公交车上的所有乘客都站了起来。\n\n老张第一个开口："小姑娘，你说的我们都听到了。我们不会让这种事发生的。"\n\n马国强放下西瓜，挡在陶映红面前。老焦举起行李箱，卢迪摘下口罩露出坚定的眼神。\n\n"我们都是普通人，"老张说，"但我们都有想要保护的人。"\n\n所有人一起面对陶映红，一起阻止爆炸。\n\n王兴德看着这些陌生人，眼中闪过一丝动摇。他最终放下了手中的引爆器。\n\n爆炸被成功阻止，所有人都安全。\n\n循环结束了，世界变得更美好。\n\n—— 新的开始 ——"
+    }
+  }
+}
