@@ -160,6 +160,14 @@ class AudioManager {
   setMuted(muted: boolean) {
     this.sounds.forEach((sound) => sound.mute(muted))
   }
+
+  setVolume(volume: number) {
+    // 音量范围 0-1，应用到所有已注册的音效
+    const clampedVolume = Math.max(0, Math.min(1, volume))
+    this.sounds.forEach((sound) => {
+      sound.volume(clampedVolume)
+    })
+  }
 }
 
 export const audioManager = new AudioManager()

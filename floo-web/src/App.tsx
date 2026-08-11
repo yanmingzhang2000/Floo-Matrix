@@ -5,6 +5,7 @@
 import { useEffect, useState, type ComponentType } from 'react'
 import { FireplaceWall } from '@/core/components/FireplaceWall'
 import { PortalTransition } from '@/core/components/PortalTransition'
+import { AudioControl } from '@/core/components/AudioControl'
 import { useHubStore } from '@/core/store/hubStore'
 import { useGameStore } from '@/core/store/gameStore'
 import { ChamberOfSecrets } from '@/games/01-chamber-of-secrets/components/ChamberOfSecrets'
@@ -70,22 +71,26 @@ function App() {
     setActiveGameId(null)
   }
 
-  if (activeGameId) {
-    const GameComponent = GAME_COMPONENTS[activeGameId]
-    return GameComponent ? <GameComponent onExit={handleExitGame} /> : null
-  }
+  const GameComponent = activeGameId ? GAME_COMPONENTS[activeGameId] : null
 
   return (
     <>
-      <FireplaceWall fireplaces={fireplaces} onEnterGame={handleEnterGame} />
-      <PortalTransition
-        active={transitioning}
-        clickX={transitionCoords.clickX}
-        clickY={transitionCoords.clickY}
-        fireplaceX={transitionCoords.fireplaceX}
-        fireplaceY={transitionCoords.fireplaceY}
-        onComplete={handleTransitionComplete}
-      />
+      <AudioControl />
+      {GameComponent ? (
+        <GameComponent onExit={handleExitGame} />
+      ) : (
+        <>
+          <FireplaceWall fireplaces={fireplaces} onEnterGame={handleEnterGame} />
+          <PortalTransition
+            active={transitioning}
+            clickX={transitionCoords.clickX}
+            clickY={transitionCoords.clickY}
+            fireplaceX={transitionCoords.fireplaceX}
+            fireplaceY={transitionCoords.fireplaceY}
+            onComplete={handleTransitionComplete}
+          />
+        </>
+      )}
     </>
   )
 }
