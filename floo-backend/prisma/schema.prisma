@@ -1,0 +1,40 @@
+// This is your Prisma schema file
+// Learn more: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String    @id @default(cuid())
+  email        String    @unique
+  passwordHash String
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  progress     Progress?
+}
+
+/// 对应前端 hubStore + inventoryStore 的云端存储
+model Progress {
+  id        String   @id @default(cuid())
+  userId    String   @unique
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  /// hubStore.fireplaces - 壁炉解锁/通关状态
+  fireplaces Json @default("[]")
+  /// inventoryStore.items - 道具背包
+  inventory  Json @default("[]")
+  /// hubStore.flags - 剧情标记
+  flags      Json @default("{}")
+  /// hubStore.variables - 全局变量
+  variables  Json @default("{}")
+  /// gameStore 当前进度（gameId/nodeId/history）
+  gameState  Json @default("{}")
+
+  updatedAt DateTime @updatedAt
+}
