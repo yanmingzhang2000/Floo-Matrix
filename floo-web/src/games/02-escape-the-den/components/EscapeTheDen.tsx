@@ -1,8 +1,9 @@
 /**
  * 逃出魔窟 - 游戏主视图
  * 负责渲染当前剧本节点（对话/选择/过场/结局），驱动场景光影与环境音切换
+ * 集成调查系统、线索系统
  */
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import storyData from '../story.json'
 import { BadEndingOverlay } from './BadEndingOverlay'
@@ -10,6 +11,9 @@ import { RevealCutscene } from './RevealCutscene'
 import { DialogueBox } from '@/core/components/DialogueBox'
 import { ChoicePanel } from '@/core/components/ChoicePanel'
 import { SceneBackdrop } from '@/core/components/SceneBackdrop'
+import { InvestigationPanel } from '@/core/components/InvestigationPanel'
+import { ClueDrawer } from '@/core/components/ClueDrawer'
+import { ReasoningBoard } from '@/core/components/ReasoningBoard'
 import { useStoryEngine } from '@/core/hooks/useStoryEngine'
 import { audioManager } from '@/core/engine/audioManager'
 import type { StoryData } from '@/core/types/story'
@@ -31,12 +35,28 @@ const SFX_SOUNDS: Record<string, string> = {
   heartbeat: `${base}audio/sfx/heartbeat.wav`,
   'bad-ending-impact': `${base}audio/sfx/bad-ending-impact.wav`,
   'good-ending-chime': `${base}audio/sfx/good-ending-chime.wav`,
+  clue: `${base}audio/sfx/clue.wav`,
 }
 
 export function EscapeTheDen({ onExit }: EscapeTheDenProps) {
   const { currentNode, availableChoices, selectChoice, advanceNode, jumpToNode, canAdvance, isEnding } =
     useStoryEngine(storyData as StoryData)
   const registeredRef = useRef(false)
+
+  // 线索收集状态
+  const [discoveredClues, setDiscoveredClues] = useState<Set<string>>(new Set())
+  const [hasReasoned, setHasReasoned] = useState(false)
+
+  const handleClueFound = useCallback((clueId: string) => {
+    setDiscoveredClues((prev) => {
+      if (prev.has(clueId)) return prev
+      const next = new Set(prev)
+      next.add(clueId)
+      // 播放线索发现音效
+      audioManager.play('clue')
+      return next
+    })
+  }, [])
 
   useEffect(() => {
     if (registeredRef.current) return
@@ -79,9 +99,18 @@ export function EscapeTheDen({ onExit }: EscapeTheDenProps) {
   const isBadEnding = isEnding && currentNode.endingVariant === 'bad'
   const isGoodEnding = isEnding && currentNode.endingVariant === 'good'
 
+  // 获取当前场景的调查点
+  const investigations = currentNode.investigations || []
+
   return (
     <div className="min-h-screen relative flex flex-col items-center justify-center px-6 py-12 overflow-hidden">
       <SceneBackdrop scene={currentNode.scene} tensionLevel={currentNode.tensionLevel} />
+
+      {/* 线索抽屉 */}
+      <ClueDrawer
+        allClues={storyData.clues || []}
+        discoveredIds={discoveredClues}
+      />
 
       <AnimatePresence mode="wait">
         {isBadEnding ? (
@@ -103,9 +132,28 @@ export function EscapeTheDen({ onExit }: EscapeTheDenProps) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
-            className="flex flex-col items-center relative z-10"
+            className="flex flex-col items-center relative z-10 max-w-4xl"
           >
             <DialogueBox content={currentNode.content} speaker={currentNode.speaker} />
+
+            {/* 调查面板 */}
+            {investigations.length > 0 && (
+              <InvestigationPanel
+                points={investigations}
+                onClueFound={handleClueFound}
+                discoveredClues={discoveredClues}
+              />
+            )}
+
+            {/* 最后选择前的推理板 */}
+            {currentNode.id === 'choice_7' && !hasReasoned && (
+              <ReasoningBoard
+                characters={storyData.characters || []}
+                clues={storyData.clues || []}
+                discoveredClueIds={discoveredClues}
+                onConfirm={() => setHasReasoned(true)}
+              />
+            )}
 
             {!isEnding && availableChoices.length > 0 && (
               <ChoicePanel choices={availableChoices} onSelect={selectChoice} />
