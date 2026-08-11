@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+@theme {
+  /* Floo Platform - 哈利波特暗黑魔法风配色 */
+  --color-floo-bg-primary: #0a0e14;
+  --color-floo-bg-secondary: #1a1f29;
+  --color-floo-accent-green: #2ecc71;
+  --color-floo-accent-green-dark: #27ae60;
+  --color-floo-accent-gold: #f39c12;
+  --color-floo-text-primary: #ecf0f1;
+  --color-floo-text-muted: #7f8c8d;
+
+  --font-heading: 'Cinzel', system-ui, serif;
+  --font-body: 'Lora', 'Merriweather', system-ui, serif;
+  --font-ui: 'Inter', system-ui, sans-serif;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  background: var(--color-floo-bg-primary);
+  color: var(--color-floo-text-primary);
+  font-family: var(--font-ui);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100svh;
+}
