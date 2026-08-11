@@ -139,7 +139,7 @@ export function EscapeTheDen({ onExit }: EscapeTheDenProps) {
                   onClick={onExit}
                   className="px-6 py-3 rounded-lg bg-floo-accent-gold/20 border border-floo-accent-gold text-floo-text-primary font-ui hover:bg-floo-accent-gold/30 transition-colors"
                 >
-                  返回壁炉墙
+                  返回
                 </motion.button>
               </motion.div>
             )}

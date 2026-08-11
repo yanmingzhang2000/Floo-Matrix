@@ -56,7 +56,7 @@ export function ChamberOfSecrets({ onExit }: ChamberOfSecretsProps) {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
           >
-            返回壁炉墙
+            返回
           </motion.button>
         )}
       </motion.div>
