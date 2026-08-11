@@ -109,16 +109,13 @@ class AudioManager {
 
   /** 
    * 注册传送门音效（如文件不存在会回退到合成音效）
-   * 需要在 public/audio/sfx/ 下放置真实素材：
-   * - powder-toss.wav
-   * - fire-ignite.wav  
-   * - portal-whoosh.wav
+   * 音效文件位于 public/audio/sfx/
    */
   registerPortalSounds() {
     const base = import.meta.env.BASE_URL
-    this.register('powder-toss', `${base}audio/sfx/powder-toss.wav`, { volume: 0.4 })
-    this.register('fire-ignite', `${base}audio/sfx/fire-ignite.wav`, { volume: 0.6 })
-    this.register('portal-whoosh', `${base}audio/sfx/portal-whoosh.wav`, { volume: 0.5 })
+    this.register('powder-toss', `${base}audio/sfx/powder-toss.mp3`, { volume: 0.4 })
+    this.register('fire-ignite', `${base}audio/sfx/fire-ignite.mp3`, { volume: 0.6 })
+    this.register('portal-whoosh', `${base}audio/sfx/portal-whoosh.mp3`, { volume: 0.5 })
 
     // 预生成合成音效作为降级备选
     this.synthBuffers.set('powder-toss', this.synthGenerator.generatePowderToss())
