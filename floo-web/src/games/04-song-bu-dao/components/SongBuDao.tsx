@@ -8,9 +8,6 @@ import { motion, AnimatePresence } from 'framer-motion'
 import storyDataJson from '../story.json'
 import { LoopResetOverlay } from '@/games/03-kai-duan/components/LoopResetOverlay'
 import { FlashbackOverlay } from '@/games/03-kai-duan/components/FlashbackOverlay'
-import { CycleCounter } from '@/games/03-kai-duan/components/CycleCounter'
-import { TimelineBar } from '@/games/03-kai-duan/components/TimelineBar'
-import { TrustMeter } from '@/games/03-kai-duan/components/TrustMeter'
 import { DialogueBox } from '@/core/components/DialogueBox'
 import { ChoicePanel } from '@/core/components/ChoicePanel'
 import { SceneBackdrop } from '@/core/components/SceneBackdrop'
@@ -49,18 +46,17 @@ const SFX_SOUNDS: Record<string, string> = {
   explosion: `${base}audio/sfx/bad-ending-impact.wav`,
 }
 
-// 循环对应的爆炸前时间
-const LOOP_TIMES: Record<number, string> = {
-  1: '1:40',
-  2: '1:38',
-  3: '1:35',
-  4: '1:33',
-  5: '1:30',
-  6: '1:25',
-  7: '1:20',
-  8: '1:15',
-  9: '1:10',
-  10: '1:00',
+// 副线标签
+const SUBLINE_LABELS: Record<string, string> = {
+  saved_elderly_man: '老人',
+  saved_falling_child: '小孩',
+  saved_qin_rourou: '秦柔柔',
+  qin_rourou_trust: '信任',
+  met_dr_jiang: '姜医生',
+  career_dream: '梦想',
+  subline1_unlocked: '老人',
+  subline2_unlocked: '小孩',
+  subline4_unlocked: '秦柔柔',
 }
 
 const TUTORIAL_KEY = 'floo-tutorial-song-bu-dao'
@@ -73,7 +69,7 @@ const TUTORIAL_STEPS = [
   {
     icon: '🔄',
     title: '时间循环',
-    content: '你陷入了时间循环，每次爆炸后都会回到早上。但你保留了所有记忆。',
+    content: '你陷入了时间循环，每天早上都会回到快递站。但你保留了所有记忆。',
   },
   {
     icon: '🔍',
@@ -86,6 +82,16 @@ const TUTORIAL_STEPS = [
     content: '第10次循环是最后机会。你的结局取决于之前积累的标记——可能是多种不同结局之一。',
   },
 ]
+
+// 信任度变化映射
+const TRUST_CHANGES: Record<string, number> = {
+  saved_elderly_man: 10,
+  saved_falling_child: 10,
+  saved_qin_rourou: 10,
+  qin_rourou_trust: 10,
+  police_support: 5,
+  investigated_alone: -10,
+}
 
 export function SongBuDao({ onExit }: SongBuDaoProps) {
   const { currentNode, availableChoices, selectChoice, advanceNode, jumpToNode, canAdvance, isEnding } =
@@ -105,6 +111,9 @@ export function SongBuDao({ onExit }: SongBuDaoProps) {
   const [showLoopReset, setShowLoopReset] = useState(false)
   const [prevLoop, setPrevLoop] = useState(1)
   const [unlockedSublines, setUnlockedSublines] = useState<Set<string>>(new Set())
+
+  // 信任度状态
+  const [trustLevel, setTrustLevel] = useState(50)
 
   const handleClueFound = useCallback((clueId: string) => {
     setDiscoveredClues((prev) => {
@@ -155,7 +164,7 @@ export function SongBuDao({ onExit }: SongBuDaoProps) {
       setCurrentLoop(newLoop)
     }
 
-    // 检测副线解锁
+    // 检测副线解锁和信任度变化
     if (currentNode.effects) {
       currentNode.effects.forEach((effect) => {
         if (effect.type === 'setFlag' && effect.key.startsWith('subline')) {
@@ -163,6 +172,10 @@ export function SongBuDao({ onExit }: SongBuDaoProps) {
         }
         if (effect.type === 'setFlag' && effect.key.startsWith('saved_')) {
           setUnlockedSublines((prev) => new Set(prev).add(effect.key))
+        }
+        // 信任度变化
+        if (effect.type === 'setFlag' && TRUST_CHANGES[effect.key]) {
+          setTrustLevel((prev) => Math.max(0, Math.min(100, prev + TRUST_CHANGES[effect.key])))
         }
       })
     }
@@ -177,12 +190,10 @@ export function SongBuDao({ onExit }: SongBuDaoProps) {
     }
   }, [currentNode, currentLoop])
 
-  // 计算时间线进度
-  const timeProgress = useMemo(() => {
+  // 计算循环进度
+  const loopProgress = useMemo(() => {
     return Math.min(100, ((currentLoop - 1) / 9) * 100)
   }, [currentLoop])
-
-  const currentTimeStr = LOOP_TIMES[currentLoop] || '1:40'
 
   if (!currentNode) return null
 
@@ -197,6 +208,11 @@ export function SongBuDao({ onExit }: SongBuDaoProps) {
   const isBadEnding = isEnding && currentNode.endingVariant === 'bad'
   const isGoodEnding = isEnding && currentNode.endingVariant === 'good'
   const investigations = currentNode.investigations || []
+
+  // 计算已解锁副线的显示标签
+  const sublineDisplayLabels = useMemo(() => {
+    return Array.from(unlockedSublines).map((key) => SUBLINE_LABELS[key] || key)
+  }, [unlockedSublines])
 
   return (
     <div className="min-h-screen relative flex flex-col items-center justify-center px-6 py-12 overflow-hidden">
@@ -213,22 +229,106 @@ export function SongBuDao({ onExit }: SongBuDaoProps) {
         )}
       </AnimatePresence>
 
-      {/* UI 覆盖层 */}
-      <CycleCounter
-        currentLoop={currentLoop}
-        maxLoop={10}
-        discoveredClues={discoveredClues.size}
-        totalClues={storyData.clues?.length || 0}
-        unlockedSublines={Array.from(unlockedSublines)}
-      />
+      {/* UI 覆盖层 - 循环计数器 */}
+      <motion.div
+        className="fixed top-4 left-4 z-30 flex flex-col gap-2"
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6, delay: 0.3 }}
+      >
+        {/* 循环次数 */}
+        <div className="flex items-center gap-2 bg-floo-bg-secondary/80 backdrop-blur-sm border border-floo-text-muted/20 rounded-lg px-4 py-2">
+          <span className="text-floo-text-muted text-xs font-ui">循环</span>
+          <span className="font-heading text-floo-accent-gold text-lg">
+            {currentLoop}
+          </span>
+          <span className="text-floo-text-muted text-xs font-ui">/ 10</span>
+        </div>
 
-      <TimelineBar
-        currentTime={currentTimeStr}
-        explosionTime="1:45"
-        progress={timeProgress}
-      />
+        {/* 线索数量 */}
+        <div className="flex items-center gap-2 bg-floo-bg-secondary/80 backdrop-blur-sm border border-floo-text-muted/20 rounded-lg px-4 py-2">
+          <span className="text-floo-text-muted text-xs font-ui">线索</span>
+          <span className="font-heading text-floo-accent-green text-lg">
+            {discoveredClues.size}
+          </span>
+          <span className="text-floo-text-muted text-xs font-ui">/ {storyData.clues?.length || 0}</span>
+        </div>
 
-      <TrustMeter trustLevel={85} />
+        {/* 已解锁副线 */}
+        {sublineDisplayLabels.length > 0 && (
+          <div className="flex flex-wrap gap-1 bg-floo-bg-secondary/80 backdrop-blur-sm border border-floo-text-muted/20 rounded-lg px-3 py-2">
+            {sublineDisplayLabels.map((label) => (
+              <span
+                key={label}
+                className="text-xs font-ui px-2 py-0.5 rounded bg-floo-accent-green/10 text-floo-accent-green border border-floo-accent-green/30"
+              >
+                {label}
+              </span>
+            ))}
+          </div>
+        )}
+      </motion.div>
+
+      {/* 循环进度条（替代爆炸倒计时） */}
+      <motion.div
+        className="fixed top-4 left-1/2 -translate-x-1/2 z-30 w-[280px] sm:w-[360px]"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+      >
+        <div className="bg-floo-bg-secondary/80 backdrop-blur-sm border border-floo-text-muted/20 rounded-lg px-4 py-3">
+          <div className="flex justify-between items-center mb-2">
+            <span className="font-heading text-floo-accent-gold text-sm">第{currentLoop}天</span>
+            <span className="text-floo-text-muted text-xs font-ui">循环进度</span>
+          </div>
+          <div className="relative h-2 bg-floo-bg-primary rounded-full overflow-hidden">
+            <motion.div
+              className="absolute inset-y-0 left-0 rounded-full"
+              style={{
+                background: `linear-gradient(90deg, #2ecc71 0%, #f39c12 70%, #e74c3c 100%)`,
+              }}
+              initial={{ width: 0 }}
+              animate={{ width: `${loopProgress}%` }}
+              transition={{ duration: 0.8, ease: 'easeOut' }}
+            />
+            <motion.div
+              className="absolute top-0 bottom-0 w-1 bg-white/60 rounded-full"
+              style={{ left: `${loopProgress}%` }}
+              animate={{ opacity: [0.6, 1, 0.6] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+            />
+          </div>
+          <div className="flex gap-1 mt-2 justify-center">
+            {Array.from({ length: 10 }, (_, i) => (
+              <div
+                key={i}
+                className={`w-2 h-2 rounded-full transition-colors ${
+                  i < currentLoop
+                    ? 'bg-floo-accent-green'
+                    : 'bg-floo-text-muted/30'
+                }`}
+              />
+            ))}
+          </div>
+        </div>
+      </motion.div>
+
+      {/* 信任度指示器 */}
+      <motion.div
+        className="fixed top-4 right-4 z-30 flex items-center gap-2 bg-floo-bg-secondary/80 backdrop-blur-sm border border-floo-text-muted/20 rounded-lg px-4 py-2"
+        initial={{ opacity: 0, x: 20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6, delay: 0.4 }}
+      >
+        <span className="text-floo-text-muted text-xs font-ui">信任度</span>
+        <span className={`font-heading text-lg ${
+          trustLevel >= 80 ? 'text-floo-accent-green' :
+          trustLevel >= 50 ? 'text-floo-accent-gold' :
+          'text-red-400'
+        }`}>
+          {trustLevel}%
+        </span>
+      </motion.div>
 
       {/* 线索抽屉 */}
       <ClueDrawer
