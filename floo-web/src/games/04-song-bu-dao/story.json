@@ -1,19 +1,19 @@
 {
   "gameId": "04-song-bu-dao",
   "title": "开端番外·送不到",
-  "description": "快递员宋卜道因一份永远送不到的快递陷入时间循环。在一次次循环中，他送快递、救人、寻找真相，最终阻止一场注定发生的爆炸。",
+  "description": "快递员宋卜道因一份永远送不到的快递陷入时间循环。在一次次循环中，他送快递、救人、寻找真相，最终解开一份快递背后的秘密。",
   "startNode": "loop1_start",
   "characters": [
     { "id": "protagonist", "name": "宋卜道", "description": "刚上岗的快递员，因无法送达肖鹤云的快递而陷入时间循环" },
     { "id": "qin_rourou", "name": "秦柔柔", "description": "编剧/作家，被空调工骚扰，唯一相信宋卜道的人" },
-    { "id": "xiao_heyun", "name": "肖鹤云", "description": "游戏架构师，快递收件人，45路公交车乘客" },
-    { "id": "li_shiqing", "name": "李诗情", "description": "大学生，与肖鹤云一起经历时间循环" },
-    { "id": "dr_jiang", "name": "姜医生", "description": "寄件人，医生，涉及医疗纠纷" },
+    { "id": "xiao_heyun", "name": "肖鹤云", "description": "游戏架构师，45路公交车爆炸案的英雄，快递收件人" },
+    { "id": "dr_jiang", "name": "姜医生", "description": "寄件人，外科医生，涉及医疗纠纷" },
     { "id": "ac_worker", "name": "空调工", "description": "骚扰秦柔柔的空调安装工" },
     { "id": "elderly_man", "name": "流浪老人", "description": "想求死的孤独流浪老人" },
     { "id": "falling_child", "name": "坠楼小孩", "description": "意外坠楼的儿童" },
     { "id": "old_zhang", "name": "张队", "description": "刑警队长，经验丰富" },
-    { "id": "master", "name": "师傅", "description": "快递站老师傅，宋卜道的师父" }
+    { "id": "master", "name": "师傅", "description": "快递站老师傅，宋卜道的师父" },
+    { "id": "father", "name": "患者父亲", "description": "因女儿去世误解姜医生的父亲" }
   ],
   "clues": [
     {
@@ -24,38 +24,38 @@
       "location": "快递站"
     },
     {
-      "id": "clue_explosion_news",
-      "title": "爆炸新闻",
+      "id": "clue_xiao_heyun_hero",
+      "title": "肖鹤云是英雄",
       "type": "fact",
-      "content": "45路公交车在跨江大桥附近发生爆炸，多人伤亡。",
-      "location": "商场大屏幕"
+      "content": "肖鹤云是45路公交车爆炸案的英雄，他和一位女大学生阻止了爆炸，拯救了全车人。",
+      "location": "新闻报道"
     },
     {
-      "id": "clue_xiao_heyun",
-      "title": "肖鹤云的身份",
+      "id": "clue_xiao_heyun_missing",
+      "title": "肖鹤云失踪",
       "type": "fact",
-      "content": "收件人肖鹤云是游戏架构师，当天乘坐45路公交车。",
+      "content": "爆炸案后，肖鹤云似乎受到了创伤，最近请假了，联系不上。",
       "location": "游戏公司"
     },
     {
       "id": "clue_sender_doctor",
       "title": "寄件人是姜医生",
       "type": "fact",
-      "content": "快递寄件人是姜医生，一位医生。",
+      "content": "快递寄件人是姜医生，一位外科医生。",
       "location": "快递系统"
     },
     {
       "id": "clue_usb_contents",
       "title": "U盘内容",
       "type": "fact",
-      "content": "快递里是一个U盘，记录着医疗纠纷的真相。",
+      "content": "快递里是一个U盘，记录着医疗纠纷的完整证据。",
       "location": "快递包裹"
     },
     {
       "id": "clue_medical_dispute",
       "title": "医患纠纷真相",
       "type": "testimony",
-      "content": "患者父亲因女儿离世误解姜医生，真相是女儿的病无法治愈。",
+      "content": "患者父亲因女儿离世误解姜医生，真相是女儿的病无法治愈，姜医生没有过错。",
       "location": "调查所得"
     },
     {
@@ -66,24 +66,10 @@
       "location": "桥边"
     },
     {
-      "id": "clue_elderly_hope",
-      "title": "老人的希望",
-      "type": "testimony",
-      "content": "老人决定去福利院，重新开始生活。",
-      "location": "福利院"
-    },
-    {
       "id": "clue_child_story",
       "title": "孩子的家庭",
       "type": "testimony",
       "content": "父母工作太忙，忽视了孩子，孩子想引起注意。",
-      "location": "居民区"
-    },
-    {
-      "id": "clue_child_drawing",
-      "title": "孩子的画",
-      "type": "fact",
-      "content": "孩子画了一幅画送给宋卜道，画上是快递员接住小孩。",
       "location": "居民区"
     },
     {
@@ -99,13 +85,6 @@
       "type": "testimony",
       "content": "秦柔柔感谢宋卜道的帮助，愿意相信他。",
       "location": "秦柔柔家"
-    },
-    {
-      "id": "clue_romance_moment",
-      "title": "心动时刻",
-      "type": "testimony",
-      "content": "秦柔柔说：'如果真的有循环，我希望每天都能遇见你。'",
-      "location": "天台"
     },
     {
       "id": "clue_career_dream",
@@ -169,24 +148,26 @@
       "type": "dialogue",
       "scene": "city_street",
       "tensionLevel": 1,
-      "content": "你来到肖鹤云的地址——一个普通的居民小区。\n\n你按了门铃，没有人。你又敲了敲门，还是没有回应。\n\n邻居告诉你：'肖先生？他好像出差了，好几天没见他了。'\n\n你叹了口气，这份快递今天是送不到了。\n\n你骑着电动车回快递站，路过商场时，大屏幕上正在播放一则新闻——",
-      "nextNode": "loop1_news"
+      "content": "你来到肖鹤云的地址——一个普通的居民小区。\n\n你按了门铃，没有人。你又敲了敲门，还是没有回应。\n\n邻居告诉你：'肖先生？他好像出差了，好几天没见他了。'\n\n你叹了口气，这份快递今天是送不到了。\n\n你骑着电动车回快递站，路过商场时，大屏幕上正在播放一则新闻——\n\n'近日，45路公交车爆炸案的英雄肖鹤云和李诗情受到表彰，他们成功阻止了爆炸，拯救了全车人的生命……'",
+      "clues": ["clue_xiao_heyun_hero"],
+      "nextNode": "loop1_end"
     },
     "loop1_other": {
       "id": "loop1_other",
       "type": "dialogue",
       "scene": "city_street",
       "tensionLevel": 1,
-      "content": "你决定等肖鹤云回电话，先完成其他快递。\n\n但直到你送完所有快递，他也没有回电话。\n\n你骑着电动车回快递站，路过商场时，大屏幕上正在播放一则新闻——",
-      "nextNode": "loop1_news"
+      "content": "你决定等肖鹤云回电话，先完成其他快递。\n\n但直到你送完所有快递，他也没有回电话。\n\n你骑着电动车回快递站，路过商场时，大屏幕上正在播放一则新闻——\n\n'近日，45路公交车爆炸案的英雄肖鹤云和李诗情受到表彰，他们成功阻止了爆炸，拯救了全车人的生命……'",
+      "clues": ["clue_xiao_heyun_hero"],
+      "nextNode": "loop1_end"
     },
-    "loop1_news": {
-      "id": "loop1_news",
+    "loop1_end": {
+      "id": "loop1_end",
       "type": "dialogue",
-      "scene": "city_street",
-      "tensionLevel": 2,
-      "content": "'今日下午1点45分，一辆45路公交车在跨江大桥附近发生爆炸，造成多人伤亡……'\n\n你停下电动车，呆呆地看着屏幕。\n\n45路公交车……爆炸……\n\n你突然感到一阵眩晕，眼前的画面开始模糊。当你再次睁开眼睛时——\n\n你发现自己又回到了快递站，师傅正站在你面前：'小宋，今天你独立跑，记住，快递就是使命，每一件都要送到。'",
-      "clues": ["clue_explosion_news"],
+      "scene": "courier_station",
+      "ambientSound": "courier_station",
+      "tensionLevel": 1,
+      "content": "你回到快递站，把今天的情况告诉了师傅。\n\n师傅皱了皱眉：'小宋，这份快递很重要，你明天再试试。'\n\n你点点头，拖着疲惫的身体回家了。\n\n躺在床上，你想着那份送不到的快递——肖鹤云，就是那个爆炸案的英雄。他为什么不接电话？\n\n渐渐地，你睡着了……\n\n第二天早上，你被闹钟吵醒。你看了看手机——日期显示的是昨天。\n\n你又来到了快递站，师傅正站在你面前：'小宋，今天你独立跑，记住，快递就是使命，每一件都要送到。'",
       "nextNode": "loop2_start"
     },
     "loop2_start": {
@@ -232,7 +213,7 @@
       "type": "dialogue",
       "scene": "city_street",
       "tensionLevel": 1,
-      "content": "你敲了敲门，依然没有人回应。\n\n你叹了口气，正准备离开——\n\n突然，你听到楼下传来一阵骚动。你往下看，看到一群人围在那里。\n\n你走过去，发现商场的大屏幕上正在播放那则新闻——\n\n'今日下午1点45分，一辆45路公交车在跨江大桥附近发生爆炸……'\n\n你又看到了那则新闻。然后，你又回到了快递站。",
+      "content": "你敲了敲门，依然没有人回应。\n\n你叹了口气，正准备离开——\n\n突然，你感到一阵眩晕。当你再次睁开眼睛时，你又回到了快递站。\n\n师傅正站在你面前：'小宋，今天你独立跑，记住，快递就是使命，每一件都要送到。'",
       "nextNode": "loop3_start"
     },
     "loop2_investigate": {
@@ -240,8 +221,8 @@
       "type": "dialogue",
       "scene": "city_street",
       "tensionLevel": 2,
-      "content": "你决定调查肖鹤云为什么不在家。\n\n你来到他工作的游戏公司。前台告诉你：'肖鹤云？他今天请假了。'\n\n'为什么请假？'\n\n'不知道，他最近好像遇到了什么麻烦，情绪不太好。'\n\n你离开公司，路过商场时，大屏幕上正在播放那则新闻——\n\n然后，你又回到了快递站。",
-      "clues": ["clue_xiao_heyun"],
+      "content": "你决定调查肖鹤云为什么不在家。\n\n你来到他工作的游戏公司。前台告诉你：'肖鹤云？他今天请假了。'\n\n'为什么请假？'\n\n'不知道，他最近好像遇到了什么麻烦，情绪不太好。'\n\n你离开公司，感到一阵眩晕。当你再次睁开眼睛时，你又回到了快递站。",
+      "clues": ["clue_xiao_heyun_missing"],
       "nextNode": "loop3_start"
     },
     "loop3_start": {
@@ -250,7 +231,7 @@
       "scene": "courier_station",
       "ambientSound": "courier_station",
       "tensionLevel": 2,
-      "content": "第三天。\n\n你已经确定自己陷入了时间循环。每天早上六点，你都会在快递站醒来，师傅会说同样的话，配送清单上的内容一模一样。\n\n但你记得所有事情——每一次循环，每一次配送，每一次失败。\n\n你决定调查这件事。为什么你会陷入循环？为什么肖鹤云的快递送不到？为什么45路公交车会爆炸？\n\n这一切之间，一定有什么联系。",
+      "content": "第三天。\n\n你已经确定自己陷入了时间循环。每天早上六点，你都会在快递站醒来，师傅会说同样的话，配送清单上的内容一模一样。\n\n但你记得所有事情——每一次循环，每一次配送，每一次失败。\n\n你决定调查这件事。为什么你会陷入循环？为什么肖鹤云的快递送不到？肖鹤云是爆炸案的英雄，为什么现在联系不上？\n\n这一切之间，一定有什么联系。",
       "nextNode": "loop3_choice"
     },
     "loop3_choice": {
@@ -258,7 +239,7 @@
       "type": "choice",
       "scene": "city_street",
       "tensionLevel": 2,
-      "content": "你站在快递站门口，思考着下一步。\n\n你有三个选择：\n\n1. 去肖鹤云的公司，继续调查他\n2. 去45路公交车的路线，调查爆炸案\n3. 去找张队，告诉他你知道的一切",
+      "content": "你站在快递站门口，思考着下一步。\n\n你有两个选择：\n\n1. 去肖鹤云的公司，继续调查他\n2. 去找张队，告诉他你知道的一切",
       "choices": [
         {
           "id": "c3_a",
@@ -268,12 +249,6 @@
         },
         {
           "id": "c3_b",
-          "text": "去45路公交车路线调查爆炸案",
-          "nextNode": "loop3_bus_route",
-          "effects": [{ "type": "setFlag", "key": "investigated_bus_explosion", "value": true }]
-        },
-        {
-          "id": "c3_c",
           "text": "去找张队，告诉他你知道的一切",
           "nextNode": "loop3_zhang_dui",
           "effects": [{ "type": "setFlag", "key": "told_zhang_dui", "value": true }]
@@ -288,22 +263,13 @@
       "content": "你来到肖鹤云工作的游戏公司。\n\n这一次，你没有直接问前台，而是悄悄溜进了肖鹤云的工位。\n\n他的桌上散落着一些文件。你翻了翻，发现了一张快递单——寄件人：姜医生。收件人：肖鹤云。物品：U盘（贵重）。\n\n你正想继续查看，突然听到身后传来声音：'你在干什么？'\n\n你转身，看到一个保安正盯着你。",
       "nextNode": "loop3_end"
     },
-    "loop3_bus_route": {
-      "id": "loop3_bus_route",
-      "type": "dialogue",
-      "scene": "city_street",
-      "tensionLevel": 2,
-      "content": "你来到45路公交车的路线。\n\n你沿着公交车的行驶路线走了一遍，发现了几个关键地点：\n\n1. 起点站——大学城站\n2. 中间站——高新园区站\n3. 终点站——跨江大桥\n\n你注意到，公交车在经过跨江大桥时，会有一个弯道。也许，爆炸就发生在那里。\n\n你正想着，突然看到一辆45路公交车驶过。你下意识地想追上去——\n\n但公交车已经开远了。",
-      "nextNode": "loop3_end"
-    },
     "loop3_zhang_dui": {
       "id": "loop3_zhang_dui",
       "type": "dialogue",
       "scene": "police_station",
       "ambientSound": "police_station",
       "tensionLevel": 2,
-      "content": "你来到警局，找到了张队。\n\n'张队，我知道这听起来很荒谬，但我陷入了时间循环。45路公交车会爆炸，我知道是谁干的……'\n\n张队看着你，眼神复杂：'你说的这些，我没办法相信。但你提供的信息很详细，这让我不得不重视。'\n\n他站起身：'我会安排人去调查。如果你们说的是真的，我会帮你们。'\n\n你看到了一丝希望。",
-      "clues": ["clue_xiao_heyun"],
+      "content": "你来到警局，找到了张队。\n\n'张队，我知道这听起来很荒谬，但我陷入了时间循环。有一份快递送不到给肖鹤云——就是那个爆炸案的英雄。我觉得这和循环有关……'\n\n张队看着你，眼神复杂：'你说的这些，我没办法相信。但你提供的信息很详细，这让我不得不重视。'\n\n他站起身：'我会安排人去调查。如果你们说的是真的，我会帮你们。'\n\n你看到了一丝希望。",
       "nextNode": "loop3_end"
     },
     "loop3_end": {
@@ -311,7 +277,7 @@
       "type": "dialogue",
       "scene": "city_street",
       "tensionLevel": 2,
-      "content": "你离开那个地方，继续你的调查。\n\n你知道，你必须找到更多线索。肖鹤云、姜医生、U盘、45路公交车……这一切之间，一定有什么联系。\n\n但时间不等人——下午1点45分，公交车会爆炸。\n\n你必须在那之前找到答案。",
+      "content": "你离开那个地方，继续你的调查。\n\n你知道，你必须找到更多线索。肖鹤云、姜医生、U盘……这一切之间，一定有什么联系。\n\n但时间不等人——你必须在循环结束前找到答案。",
       "nextNode": "loop4_start"
     },
     "loop4_start": {
@@ -484,7 +450,7 @@
       "type": "dialogue",
       "scene": "city_street",
       "tensionLevel": 1,
-      "content": "你继续你的配送工作。\n\n今天发生的事情，让你更加坚定了一个想法：在这个循环里，你有机会改变一些事情，帮助一些人。\n\n但你也知道，时间不等人——下午1点45分，公交车会爆炸。\n\n你必须找到真相。",
+      "content": "你继续你的配送工作。\n\n今天发生的事情，让你更加坚定了一个想法：在这个循环里，你有机会改变一些事情，帮助一些人。\n\n但你也知道，时间不等人——你必须找到打破循环的方法。",
       "nextNode": "loop7_start"
     },
     "loop7_start": {
@@ -540,7 +506,7 @@
       "type": "dialogue",
       "scene": "city_street",
       "tensionLevel": 2,
-      "content": "你离开医院，思考着这一切。\n\n姜医生、肖鹤云、U盘、医疗纠纷……这一切之间，一定有什么联系。\n\n但你还没有找到答案。你必须继续调查。\n\n下午1点45分，公交车会爆炸。你还有时间。",
+      "content": "你离开医院，思考着这一切。\n\n姜医生、肖鹤云、U盘、医疗纠纷……这一切之间，一定有什么联系。\n\n但你还没有找到答案。你必须继续调查。",
       "nextNode": "loop8_start"
     },
     "loop8_start": {
@@ -549,7 +515,7 @@
       "scene": "courier_station",
       "ambientSound": "courier_station",
       "tensionLevel": 3,
-      "content": "第八天。\n\n所有线索开始串联起来。\n\n你发现：肖鹤云是45路公交车的乘客，姜医生寄给他的U盘里存着医疗纠纷的证据，而寄送这份快递的人……正是公交车司机王兴德。\n\n你终于明白：王兴德在绝望中寄出了这份快递，而肖鹤云是唯一能帮助他的人。\n\n但为什么是肖鹤云？他和这件事有什么关系？",
+      "content": "第八天。\n\n所有线索开始串联起来。\n\n你发现：肖鹤云是姜医生的患者，姜医生寄给他的U盘里存着医疗纠纷的证据。而寄件人正是姜医生本人。\n\n你终于明白：姜医生在绝望中寄出了这份快递，希望肖鹤云——那个爆炸案的英雄——能帮他澄清真相。\n\n但为什么是肖鹤云？他和这件事有什么关系？",
       "clues": ["clue_medical_dispute"],
       "nextNode": "loop8_choice"
     },
@@ -558,7 +524,7 @@
       "type": "choice",
       "scene": "city_street",
       "tensionLevel": 3,
-      "content": "你站在快递站门口，思考着下一步。\n\n你有两个选择：\n\n1. 去找张队，告诉他你知道的一切\n2. 自己去阻止爆炸",
+      "content": "你站在快递站门口，思考着下一步。\n\n你有两个选择：\n\n1. 去找张队，告诉他你知道的一切\n2. 自己去调查真相",
       "choices": [
         {
           "id": "c8_a",
@@ -568,7 +534,7 @@
         },
         {
           "id": "c8_b",
-          "text": "自己去阻止爆炸",
+          "text": "自己去调查真相",
           "nextNode": "loop8_alone"
         }
       ]
@@ -579,7 +545,7 @@
       "scene": "police_station",
       "ambientSound": "police_station",
       "tensionLevel": 3,
-      "content": "你来到警局，找到了张队。\n\n'张队，我知道45路公交车会爆炸。炸弹是司机王兴德的前妻陶映红制造的，王兴德也在配合。'\n\n张队看着你，眼神复杂：'你说的这些……你是怎么知道的？'\n\n'我陷入了时间循环。我看过很多次爆炸，我调查了很多次。'\n\n张队沉默了很久，然后说：'好，我相信你。我们会安排人去调查。'\n\n你看到了一丝希望。",
+      "content": "你来到警局，找到了张队。\n\n'张队，我知道姜医生寄给肖鹤云的U盘里有医疗纠纷的证据。那个患者的父亲误解了姜医生，想要报复他。'\n\n张队看着你，眼神复杂：'你说的这些……你是怎么知道的？'\n\n'我陷入了时间循环。我调查了很多次。'\n\n张队沉默了很久，然后说：'好，我相信你。我们会安排人去调查。'\n\n你看到了一丝希望。",
       "nextNode": "loop9_start"
     },
     "loop8_alone": {
@@ -587,7 +553,7 @@
       "type": "dialogue",
       "scene": "city_street",
       "tensionLevel": 3,
-      "content": "你决定自己去阻止爆炸。\n\n你骑着电动车，向45路公交车的方向赶去。但你知道，你一个人的力量是有限的。\n\n你必须找到帮手。",
+      "content": "你决定自己去调查真相。\n\n你骑着电动车，开始追踪患者的父亲。但你知道，你一个人的力量是有限的。\n\n你必须找到帮手。",
       "nextNode": "loop9_start"
     },
     "loop9_start": {
@@ -605,7 +571,7 @@
       "scene": "apartment",
       "ambientSound": "apartment",
       "tensionLevel": 3,
-      "content": "秦柔柔看着你，眼中满是信任。\n\n'我帮你。我们一起阻止爆炸。'\n\n你该怎么办？",
+      "content": "秦柔柔看着你，眼中满是信任。\n\n'我帮你。我们一起调查真相。'\n\n你该怎么办？",
       "choices": [
         {
           "id": "c9_a",
@@ -625,7 +591,7 @@
       "type": "dialogue",
       "scene": "apartment",
       "tensionLevel": 3,
-      "content": "你和秦柔柔制定了计划。\n\n她负责联系张队，你负责去公交车上阻止王兴德。\n\n'小心，'她说，'我不希望你出事。'\n\n'我会的。'\n\n你转身离开，心里充满了力量。你不再是一个人在战斗。",
+      "content": "你和秦柔柔制定了计划。\n\n她负责联系张队，你负责去找患者的父亲。\n\n'小心，'她说，'我不希望你出事。'\n\n'我会的。'\n\n你转身离开，心里充满了力量。你不再是一个人在战斗。",
       "nextNode": "loop10_start"
     },
     "loop9_alone": {
@@ -633,7 +599,7 @@
       "type": "dialogue",
       "scene": "city_street",
       "tensionLevel": 3,
-      "content": "你决定独自行动。\n\n你骑着电动车，向45路公交车的方向赶去。但你知道，你一个人的力量是有限的。\n\n你必须找到其他方法。",
+      "content": "你决定独自行动。\n\n你骑着电动车，开始追踪患者的父亲。但你知道，你一个人的力量是有限的。\n\n你必须找到其他方法。",
       "nextNode": "loop10_start"
     },
     "loop10_start": {
@@ -642,7 +608,7 @@
       "scene": "city_street",
       "ambientSound": "city_street",
       "tensionLevel": 4,
-      "content": "第十天。最后的机会。\n\n你知道，今天下午1点45分，45路公交车会爆炸。你必须在那之前阻止它。\n\n你看着手中的快递——肖鹤云的那份。你决定先完成你的使命，再去阻止爆炸。",
+      "content": "第十天。最后的机会。\n\n你知道，你必须在今天解开这一切的谜团。\n\n你看着手中的快递——肖鹤云的那份。你决定先完成你的使命，再去找患者的父亲。",
       "nextNode": "loop10_choice"
     },
     "loop10_choice": {
@@ -650,17 +616,17 @@
       "type": "choice",
       "scene": "city_street",
       "tensionLevel": 4,
-      "content": "你站在十字路口，一边是肖鹤云的地址，一边是45路公交车的路线。\n\n你只有一个小时。\n\n你该怎么办？",
+      "content": "你站在十字路口，一边是肖鹤云的地址，一边是患者的父亲的住处。\n\n你该怎么办？",
       "choices": [
         {
           "id": "c10_a",
-          "text": "先送快递，再去阻止爆炸",
+          "text": "先送快递，再去调查真相",
           "nextNode": "loop10_package_first"
         },
         {
           "id": "c10_b",
-          "text": "直接去阻止爆炸，放弃快递",
-          "nextNode": "loop10_explosion_first"
+          "text": "直接去找患者的父亲",
+          "nextNode": "loop10_father_first"
         },
         {
           "id": "c10_c",
@@ -677,16 +643,15 @@
       "type": "dialogue",
       "scene": "city_street",
       "tensionLevel": 5,
-      "content": "你决定先送快递。\n\n你骑着电动车，飞快地赶往肖鹤云的地址。但当你到达时，肖鹤云已经出门了——他正要去坐45路公交车。\n\n你追上去，把快递塞到他手里：'肖先生，这是您的快递！'\n\n肖鹤云愣了一下，接过快递。你趁机说：'那辆公交车有炸弹，不要上去！'\n\n他看着你，眼中满是困惑。但公交车已经来了。\n\n你看到肖鹤云犹豫了一下，最终没有上车。\n\n公交车驶向跨江大桥——\n\n轰。\n\n爆炸发生了。但肖鹤云活了下来。",
+      "content": "你决定先送快递。\n\n你骑着电动车，飞快地赶往肖鹤云的地址。当你到达时，肖鹤云正好在家。\n\n你把快递递给他：'肖先生，这是您的快递。'\n\n肖鹤云愣了一下，接过快递。你趁机说：'这个U盘里有姜医生的证据，请你帮帮他。'\n\n肖鹤云看着你，眼中满是困惑。但他还是打开了快递。\n\n后来，肖鹤云帮助姜医生澄清了医疗纠纷。患者的父亲也终于明白了真相。\n\n循环结束了。",
       "nextNode": "good_ending_3"
     },
-    "loop10_explosion_first": {
-      "id": "loop10_explosion_first",
+    "loop10_father_first": {
+      "id": "loop10_father_first",
       "type": "dialogue",
-      "scene": "bus",
-      "ambientSound": "bus",
+      "scene": "city_street",
       "tensionLevel": 5,
-      "content": "你直接冲向45路公交车。\n\n你拦住王兴德，告诉他你知道一切。\n\n'王师傅，我知道你很痛。但爆炸不能解决问题。'\n\n王兴德看着你，眼中闪过一丝动摇。但陶映红已经按下了引爆器……\n\n你冲向炸弹，用尽最后的力气拆除引信。\n\n爆炸在你身边发生，但你成功保护了所有人。\n\n你活了下来，但你失去了意识。\n\n当你再次醒来时，你发现自己在医院里。秦柔柔坐在你床边，眼中满是泪水。\n\n'你回来了……'她说。\n\n'快递……送到了吗？'\n\n她点点头：'送到了。肖鹤云收到了。'\n\n你笑了。循环结束了。",
+      "content": "你直接去找患者的父亲。\n\n你找到了他，告诉他你知道一切。\n\n'我知道你很痛。但姜医生没有错，你女儿的病是无法治愈的。'\n\n患者的父亲看着你，眼中闪过一丝动摇。\n\n你把U盘里的证据给他看。他看完后，跪在地上痛哭。\n\n后来，他向姜医生道歉，医疗纠纷终于解决了。\n\n你回到快递站，把肖鹤云的快递送到了他手里。\n\n循环结束了。",
       "nextNode": "good_ending_1"
     },
     "loop10_cooperate": {
@@ -694,16 +659,16 @@
       "type": "dialogue",
       "scene": "city_street",
       "tensionLevel": 4,
-      "content": "你联系秦柔柔，请她帮忙送快递。\n\n'没问题，'她说，'你去阻止爆炸，我来送快递。'\n\n你们分头行动。\n\n你骑着电动车，飞快地赶往45路公交车。秦柔柔则赶往肖鹤云的地址。\n\n你在公交车上拦住了王兴德，告诉他你知道一切。\n\n'王师傅，我知道你很痛。但爆炸不能解决问题。'\n\n王兴德看着你，眼中闪过一丝动摇。陶映红想按引爆器，但被赶来的警察制服了。\n\n爆炸被阻止了。\n\n与此同时，秦柔柔把快递送到了肖鹤云手里。\n\n循环结束了。你和秦柔柔站在桥上，看着夕阳。\n\n'我们做到了。'她说。\n\n'是的，我们做到了。'\n\n你握住她的手。新的开始了。",
+      "content": "你联系秦柔柔，请她帮忙送快递。\n\n'没问题，'她说，'你去调查真相，我来送快递。'\n\n你们分头行动。\n\n你骑着电动车，飞快地赶往患者的父亲的住处。秦柔柔则赶往肖鹤云的地址。\n\n你找到了患者的父亲，告诉他真相。他终于明白了。\n\n与此同时，秦柔柔把快递送到了肖鹤云手里。\n\n循环结束了。你和秦柔柔站在桥上，看着夕阳。\n\n'我们做到了。'她说。\n\n'是的，我们做到了。'\n\n你握住她的手。新的开始了。",
       "nextNode": "good_ending_2"
     },
     "good_ending_1": {
       "id": "good_ending_1",
       "type": "ending",
       "endingVariant": "good",
-      "scene": "hospital",
-      "effects": [{ "type": "addItem", "key": "sacrifice_crystal", "value": "牺牲记忆水晶" }],
-      "content": "你活了下来。\n\n在医院里，你看到了新闻：45路公交车爆炸案成功告破，凶手被抓获，所有乘客安全。\n\n你躺在病床上，看着窗外的阳光。循环结束了。\n\n秦柔柔来看你，她带来了你最喜欢的吃的。\n\n'你知道吗，'她说，'肖鹤云收到了快递。他说，谢谢你。'\n\n你笑了。这就够了。\n\n—— 牺牲与救赎 ——"
+      "scene": "city_street",
+      "effects": [{ "type": "addItem", "key": "truth_crystal", "value": "真相记忆水晶" }],
+      "content": "你解开了真相。\n\n患者的父亲终于明白了真相，他向姜医生道歉，医疗纠纷终于解决了。\n\n你回到快递站，把肖鹤云的快递送到了他手里。\n\n肖鹤云看着你，眼中满是感激：'谢谢你。'\n\n你笑了。循环结束了。\n\n—— 真相大白 ——"
     },
     "good_ending_2": {
       "id": "good_ending_2",
@@ -719,7 +684,7 @@
       "endingVariant": "good",
       "scene": "city_street",
       "effects": [{ "type": "addItem", "key": "delivery_crystal", "value": "送达记忆水晶" }],
-      "content": "肖鹤云活了下来。\n\n他站在你面前，看着手中的快递，眼中满是困惑：'你是怎么知道公交车有炸弹的？'\n\n你笑了笑：'这是一个很长的故事。'\n\n你告诉他关于循环的一切，关于姜医生的U盘，关于医疗纠纷的真相。\n\n肖鹤云听完，沉默了很久：'谢谢你。'\n\n后来，肖鹤云帮助姜医生澄清了医疗纠纷。王兴德被逮捕，陶映红也被抓获。\n\n你继续做你的快递员。每一天都是普通的一天，但你知道，你曾经改变过一些事情。\n\n—— 完美送达 ——"
+      "content": "肖鹤云收到了快递。\n\n他打开U盘，看到了姜医生的证据。后来，他帮助姜医生澄清了医疗纠纷。\n\n患者的父亲也终于明白了真相，他向姜医生道歉。\n\n你继续做你的快递员。每一天都是普通的一天，但你知道，你曾经改变过一些事情。\n\n—— 完美送达 ——"
     },
     "bad_ending_1": {
       "id": "bad_ending_1",
@@ -727,7 +692,7 @@
       "endingVariant": "bad",
       "scene": "city_street",
       "checkpointNodeId": "loop10_start",
-      "content": "你错过了阻止爆炸的机会。\n\n当你赶到时，爆炸已经发生了。你看着远处的火光，心中充满了悔恨。\n\n你又回到了快递站。一切又重来了。\n\n你永远无法打破循环——因为你自己选择了错误的道路。"
+      "content": "你错过了调查真相的机会。\n\n当你赶到时，患者的父亲已经离开了。\n\n你又回到了快递站。一切又重来了。\n\n你永远无法打破循环——因为你自己选择了错误的道路。"
     },
     "bad_ending_2": {
       "id": "bad_ending_2",
@@ -735,7 +700,7 @@
       "endingVariant": "bad",
       "scene": "city_street",
       "checkpointNodeId": "loop9_start",
-      "content": "你独自行动，无法阻止爆炸。\n\n你被陶映红制服，眼睁睁看着爆炸发生。\n\n你又回到了快递站。一切又重来了。\n\n你永远无法打破循环——因为你选择了独自面对。"
+      "content": "你独自行动，无法找到患者的父亲。\n\n你被他的家人赶了出来，什么也没查到。\n\n你又回到了快递站。一切又重来了。\n\n你永远无法打破循环——因为你选择了独自面对。"
     },
     "bad_ending_3": {
       "id": "bad_ending_3",
@@ -743,7 +708,7 @@
       "endingVariant": "bad",
       "scene": "courier_station",
       "checkpointNodeId": "loop3_start",
-      "content": "你放弃了调查。\n\n你继续每天送快递，看着45路公交车一次又一次爆炸。你什么都做不了。\n\n你永远无法打破循环——因为你自己选择了放弃。"
+      "content": "你放弃了调查。\n\n你继续每天送快递，看着那份送不到的快递。你什么都做不了。\n\n你永远无法打破循环——因为你自己选择了放弃。"
     }
   }
 }
