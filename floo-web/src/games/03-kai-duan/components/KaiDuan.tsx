@@ -146,6 +146,13 @@ export function KaiDuan({ onExit }: KaiDuanProps) {
     }
   }, [currentNode, currentLoop])
 
+  // 计算时间线进度
+  const timeProgress = useMemo(() => {
+    return Math.min(100, ((currentLoop - 1) / 11) * 100)
+  }, [currentLoop])
+
+  const currentTimeStr = LOOP_TIMES[currentLoop] || '1:40'
+
   if (!currentNode) return null
 
   const handleRetry = () => {
@@ -159,13 +166,6 @@ export function KaiDuan({ onExit }: KaiDuanProps) {
   const isBadEnding = isEnding && currentNode.endingVariant === 'bad'
   const isGoodEnding = isEnding && currentNode.endingVariant === 'good'
   const investigations = currentNode.investigations || []
-
-  // 计算时间线进度
-  const timeProgress = useMemo(() => {
-    return Math.min(100, ((currentLoop - 1) / 11) * 100)
-  }, [currentLoop])
-
-  const currentTimeStr = LOOP_TIMES[currentLoop] || '1:40'
 
   return (
     <div className="min-h-screen relative flex flex-col items-center justify-center px-6 py-12 overflow-hidden">
