@@ -46,7 +46,7 @@ export function FireplaceWall({ fireplaces, onEnterGame }: FireplaceWallProps) {
       </motion.p>
 
       <motion.div
-        className="flex flex-wrap gap-8 justify-center"
+        className="flex flex-wrap gap-12 justify-center"
         initial="hidden"
         animate="visible"
         variants={{
