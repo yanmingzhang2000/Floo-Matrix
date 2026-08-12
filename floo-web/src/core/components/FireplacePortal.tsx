@@ -3,7 +3,7 @@
  * 石砌拱形壁炉 + 分层火焰 + 余烬粒子
  */
 import { motion } from 'framer-motion'
-import { useState, useRef } from 'react'
+import { useState, useRef, useMemo } from 'react'
 import { EmberParticles } from './EmberParticles'
 import type { FireplaceConfig } from '@/core/types/story'
 
@@ -18,10 +18,34 @@ interface FireplacePortalProps {
   ) => void
 }
 
+/** 将 hex 转为 rgb 分量 */
+function hexToRgb(hex: string) {
+  const h = hex.replace('#', '')
+  return {
+    r: parseInt(h.substring(0, 2), 16),
+    g: parseInt(h.substring(2, 4), 16),
+    b: parseInt(h.substring(4, 6), 16),
+  }
+}
+
+/** 生成火焰各层颜色 */
+function flameColors(hex: string) {
+  const { r, g, b } = hexToRgb(hex)
+  const rgb = `${r}, ${g}, ${b}`
+  return {
+    glow: `radial-gradient(ellipse 100% 80% at 50% 100%, ${hex} 0%, transparent 60%)`,
+    body: `linear-gradient(to top, rgba(${rgb}, 0.6) 0%, ${hex} 50%, rgba(${rgb}, 0.3) 100%)`,
+    tip: `radial-gradient(ellipse at 50% 80%, ${hex}, rgba(${rgb}, 0.6), transparent)`,
+    hoverGlow: `0 0 32px rgba(${rgb}, 0.4), inset 0 0 24px rgba(${rgb}, 0.1)`,
+    textGlow: `0 0 12px rgba(${rgb}, 0.6)`,
+  }
+}
+
 export function FireplacePortal({ config, onEnter }: FireplacePortalProps) {
-  const { gameId, title, subtitle, unlocked, completed } = config
+  const { gameId, title, subtitle, flameColor = '#c8934a', unlocked, completed } = config
   const [isHovered, setIsHovered] = useState(false)
   const buttonRef = useRef<HTMLButtonElement>(null)
+  const colors = useMemo(() => flameColors(flameColor), [flameColor])
 
   const handleClick = (e: React.MouseEvent) => {
     if (!unlocked) return
@@ -72,7 +96,7 @@ export function FireplacePortal({ config, onEnter }: FireplacePortalProps) {
         <div
           className="flex-1 border-x-2 border-floo-text-muted/30 relative overflow-hidden"
           style={{
-            background: 'linear-gradient(to bottom, #0a0e14 0%, #050810 100%)',
+            background: 'linear-gradient(to bottom, #0e0c09 0%, #080605 100%)',
             boxShadow: 'inset 0 8px 16px rgba(0,0,0,0.9), inset 0 -4px 8px rgba(0,0,0,0.6)',
           }}
         >
@@ -82,9 +106,7 @@ export function FireplacePortal({ config, onEnter }: FireplacePortalProps) {
               {/* 底层：大范围模糊光晕（地基） */}
               <motion.div
                 className="absolute bottom-0 left-1/2 -translate-x-1/2 w-32 h-40 rounded-full blur-2xl"
-                style={{
-                  background: 'radial-gradient(ellipse 100% 80% at 50% 100%, #2ecc71 0%, transparent 60%)',
-                }}
+                style={{ background: colors.glow }}
                 animate={{
                   scale: isHovered ? [1, 1.2, 1] : [1, 1.1, 1],
                   opacity: isHovered ? [0.7, 0.9, 0.7] : [0.5, 0.7, 0.5],
@@ -96,11 +118,11 @@ export function FireplacePortal({ config, onEnter }: FireplacePortalProps) {
                 }}
               />
 
-              {/* 中层：火焰形状（用clip-path做不规则边缘） */}
+              {/* 中层：火焰形状 */}
               <motion.div
                 className="absolute bottom-0 left-1/2 -translate-x-1/2 w-20 h-32"
                 style={{
-                  background: 'linear-gradient(to top, #27ae60 0%, #2ecc71 50%, rgba(46, 204, 113, 0.3) 100%)',
+                  background: colors.body,
                   clipPath: 'polygon(50% 0%, 30% 20%, 20% 50%, 35% 80%, 50% 100%, 65% 80%, 80% 50%, 70% 20%)',
                   filter: 'blur(8px)',
                 }}
@@ -119,7 +141,7 @@ export function FireplacePortal({ config, onEnter }: FireplacePortalProps) {
               <motion.div
                 className="absolute bottom-16 left-1/2 -translate-x-1/2 w-12 h-20 rounded-t-full"
                 style={{
-                  background: 'radial-gradient(ellipse at 50% 80%, #2ecc71, #27ae60, transparent)',
+                  background: colors.tip,
                   filter: 'blur(4px)',
                 }}
                 animate={{
@@ -136,7 +158,7 @@ export function FireplacePortal({ config, onEnter }: FireplacePortalProps) {
               />
 
               {/* 余烬粒子系统 */}
-              <EmberParticles count={25} intensity={isHovered ? 1.5 : 1} />
+              <EmberParticles count={25} intensity={isHovered ? 1.5 : 1} color={flameColor} />
             </>
           )}
         </div>
@@ -145,7 +167,7 @@ export function FireplacePortal({ config, onEnter }: FireplacePortalProps) {
         <div
           className="h-8 border-2 border-t-0 border-floo-text-muted/30 rounded-b"
           style={{
-            background: 'linear-gradient(to bottom, #1a1f29 0%, #0f1419 100%)',
+            background: 'linear-gradient(to bottom, #1a1610 0%, #0e0c09 100%)',
             boxShadow: '0 4px 8px rgba(0,0,0,0.6)',
           }}
         />
@@ -165,9 +187,7 @@ export function FireplacePortal({ config, onEnter }: FireplacePortalProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          style={{
-            boxShadow: '0 0 32px rgba(46, 204, 113, 0.4), inset 0 0 24px rgba(46, 204, 113, 0.1)',
-          }}
+          style={{ boxShadow: colors.hoverGlow }}
         />
       )}
 
@@ -175,7 +195,7 @@ export function FireplacePortal({ config, onEnter }: FireplacePortalProps) {
       <div className="absolute bottom-12 left-0 right-0 px-4 text-center z-10">
         <motion.h3
           className="font-heading text-lg text-floo-text-primary mb-1 drop-shadow-lg"
-          animate={{ textShadow: isHovered && unlocked ? '0 0 12px rgba(46, 204, 113, 0.6)' : '0 0 0px transparent' }}
+          animate={{ textShadow: isHovered && unlocked ? colors.textGlow : '0 0 0px transparent' }}
         >
           {title}
         </motion.h3>
@@ -187,4 +207,3 @@ export function FireplacePortal({ config, onEnter }: FireplacePortalProps) {
     </motion.button>
   )
 }
-

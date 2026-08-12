@@ -139,6 +139,8 @@ export interface FireplaceConfig {
   title: string
   subtitle: string
   thumbnail?: string
+  /** 火焰/宝石颜色（hex） */
+  flameColor?: string
   /** 是否已解锁 */
   unlocked: boolean
   /** 是否已通关 */

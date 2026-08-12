@@ -42,7 +42,7 @@ export function FireplaceWall({ fireplaces, onEnterGame }: FireplaceWallProps) {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.5 }}
       >
-        绿色火焰将带你进入未知的叙事迷宫
+        燃烧的火焰将带你进入未知的叙事迷宫
       </motion.p>
 
       <motion.div

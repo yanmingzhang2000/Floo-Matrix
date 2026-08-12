@@ -19,9 +19,10 @@ interface EmberParticle {
 interface EmberParticlesProps {
   count?: number // 粒子数量（默认25）
   intensity?: number // 强度倍数（悬停时可加到1.5）
+  color?: string // 粒子颜色（hex，默认使用 accent-green）
 }
 
-export function EmberParticles({ count = 25, intensity = 1 }: EmberParticlesProps) {
+export function EmberParticles({ count = 25, intensity = 1, color }: EmberParticlesProps) {
   const particles = useMemo<EmberParticle[]>(() => {
     return Array.from({ length: Math.floor(count * intensity) }, (_, i) => ({
       id: i,
@@ -46,7 +47,9 @@ export function EmberParticles({ count = 25, intensity = 1 }: EmberParticlesProp
             bottom: `${p.y}px`,
             width: p.size,
             height: p.size,
-            background: 'radial-gradient(circle, var(--color-floo-accent-green), transparent)',
+            background: color
+              ? `radial-gradient(circle, ${color}, transparent)`
+              : 'radial-gradient(circle, var(--color-floo-accent-green), transparent)',
             filter: 'blur(2px)',
           }}
           animate={{
