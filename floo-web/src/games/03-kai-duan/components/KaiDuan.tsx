@@ -75,20 +75,6 @@ export function KaiDuan({ onExit }: KaiDuanProps) {
   const [prevLoop, setPrevLoop] = useState(1)
   const [unlockedSublines, setUnlockedSublines] = useState<Set<string>>(new Set())
 
-  // 根据节点ID推断当前循环
-  const inferredLoop = useMemo(() => {
-    if (!currentNode) return currentLoop
-    const id = currentNode.id
-    // 从节点ID中提取循环编号
-    const match = id.match(/^loop(\d+)_/)
-    if (match) return parseInt(match[1])
-    // 结局节点保持当前循环
-    if (id.startsWith('bad_ending') || id.startsWith('good_ending') || id.startsWith('hidden_ending')) {
-      return currentLoop
-    }
-    return currentLoop
-  }, [currentNode, currentLoop])
-
   const handleClueFound = useCallback((clueId: string) => {
     setDiscoveredClues((prev) => {
       if (prev.has(clueId)) return prev
