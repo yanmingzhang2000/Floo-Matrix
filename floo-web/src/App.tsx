@@ -65,7 +65,7 @@ function App() {
       gameId: '02-escape-the-den',
       title: '逃出魔窟',
       subtitle: '七次抉择，一线生天',
-      flameColor: '#c47a3a',
+      flameColor: '#c45a3a',
       unlocked: true,
       completed: false,
     })
@@ -73,7 +73,7 @@ function App() {
       gameId: '03-kai-duan',
       title: '开端',
       subtitle: '时间循环，寻找真相',
-      flameColor: '#c8934a',
+      flameColor: '#c8a84a',
       unlocked: true,
       completed: false,
     })
