@@ -25,6 +25,17 @@ function App() {
   const resetGame = useGameStore((state) => state.resetGame)
   const { user, logout, restoreSession } = useUserStore()
 
+  // 清理已废弃的壁炉（从 localStorage 中移除不再注册的游戏）
+  useEffect(() => {
+    const validIds = Object.keys(GAME_COMPONENTS)
+    const stale = fireplaces.filter((f) => !validIds.includes(f.gameId))
+    if (stale.length > 0) {
+      useHubStore.setState((state) => ({
+        fireplaces: state.fireplaces.filter((f) => validIds.includes(f.gameId)),
+      }))
+    }
+  }, [])
+
   const [activeGameId, setActiveGameId] = useState<string | null>(null)
   const [transitioning, setTransitioning] = useState(false)
   const [pendingGameId, setPendingGameId] = useState<string | null>(null)
