@@ -16,6 +16,7 @@ import { ChoicePanel } from '@/core/components/ChoicePanel'
 import { SceneBackdrop } from '@/core/components/SceneBackdrop'
 import { InvestigationPanel } from '@/core/components/InvestigationPanel'
 import { ClueDrawer } from '@/core/components/ClueDrawer'
+import { GameTutorial } from '@/core/components/GameTutorial'
 import { useStoryEngine } from '@/core/hooks/useStoryEngine'
 import { audioManager } from '@/core/engine/audioManager'
 import type { StoryData } from '@/core/types/story'
@@ -61,10 +62,39 @@ const LOOP_TIMES: Record<number, string> = {
   12: '1:00',
 }
 
+const TUTORIAL_KEY = 'floo-tutorial-kai-duan'
+const TUTORIAL_STEPS = [
+  {
+    icon: '🔄',
+    title: '时间循环',
+    content: '你在45路公交车上，爆炸将在1:45发生。每次死亡或失败，时间会倒流——但你会回到更早的时间点。',
+  },
+  {
+    icon: '🔍',
+    title: '探索与线索',
+    content: '每次循环可以调查不同的乘客和场景。点击调查按钮收集线索，解锁副线故事。线索会收入左上角的线索抽屉。',
+  },
+  {
+    icon: '🔗',
+    title: '积累与解锁',
+    content: '你的选择会设置隐藏标记，影响后续循环中可用的对话选项。尽量在早期循环中探索更多内容，为最终循环做准备。',
+  },
+  {
+    icon: '⚡',
+    title: '最终循环',
+    content: '第12次循环是最后机会。你的结局取决于之前积累的标记——可能是4种不同结局之一。尽量解锁所有副线！',
+  },
+]
+
 export function KaiDuan({ onExit }: KaiDuanProps) {
   const { currentNode, availableChoices, selectChoice, advanceNode, jumpToNode, canAdvance, isEnding } =
     useStoryEngine(storyData as StoryData)
   const registeredRef = useRef(false)
+
+  // 引导状态
+  const [showTutorial, setShowTutorial] = useState(() => {
+    return !localStorage.getItem(TUTORIAL_KEY)
+  })
 
   // 线索收集状态
   const [discoveredClues, setDiscoveredClues] = useState<Set<string>>(new Set())
@@ -170,6 +200,17 @@ export function KaiDuan({ onExit }: KaiDuanProps) {
   return (
     <div className="min-h-screen relative flex flex-col items-center justify-center px-6 py-12 overflow-hidden">
       <SceneBackdrop scene={currentNode.scene} tensionLevel={currentNode.tensionLevel} />
+
+      {/* 游戏引导 */}
+      <AnimatePresence>
+        {showTutorial && (
+          <GameTutorial
+            steps={TUTORIAL_STEPS}
+            storageKey={TUTORIAL_KEY}
+            onComplete={() => setShowTutorial(false)}
+          />
+        )}
+      </AnimatePresence>
 
       {/* UI 覆盖层 */}
       <CycleCounter

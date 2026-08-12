@@ -1,14 +1,16 @@
 @import "tailwindcss";
 
 @theme {
-  /* Floo Platform - 哈利波特暗黑魔法风配色 */
-  --color-floo-bg-primary: #0a0e14;
-  --color-floo-bg-secondary: #1a1f29;
-  --color-floo-accent-green: #2ecc71;
-  --color-floo-accent-green-dark: #27ae60;
-  --color-floo-accent-gold: #f39c12;
-  --color-floo-text-primary: #ecf0f1;
-  --color-floo-text-muted: #7f8c8d;
+  /* Floo Platform - 沉稳棕金配色 */
+  --color-floo-bg-primary: #0e0c09;
+  --color-floo-bg-secondary: #1a1610;
+  --color-floo-accent-green: #c8934a;
+  --color-floo-accent-green-dark: #a07535;
+  --color-floo-accent-gold: #b8973a;
+  --color-floo-text-primary: #e4ddd2;
+  --color-floo-text-muted: #7d7268;
+  --color-floo-accent-blue: #5a8aa8;
+  --color-floo-accent-red: #b85450;
 
   --font-heading: 'Cinzel', system-ui, serif;
   --font-body: 'Lora', 'Merriweather', system-ui, serif;

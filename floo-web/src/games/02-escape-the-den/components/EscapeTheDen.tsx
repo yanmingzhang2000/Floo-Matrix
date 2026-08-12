@@ -14,6 +14,7 @@ import { SceneBackdrop } from '@/core/components/SceneBackdrop'
 import { InvestigationPanel } from '@/core/components/InvestigationPanel'
 import { ClueDrawer } from '@/core/components/ClueDrawer'
 import { ReasoningBoard } from '@/core/components/ReasoningBoard'
+import { GameTutorial } from '@/core/components/GameTutorial'
 import { useStoryEngine } from '@/core/hooks/useStoryEngine'
 import { audioManager } from '@/core/engine/audioManager'
 import type { StoryData } from '@/core/types/story'
@@ -40,10 +41,34 @@ const SFX_SOUNDS: Record<string, string> = {
   clue: `${base}audio/sfx/clue.wav`,
 }
 
+const TUTORIAL_KEY = 'floo-tutorial-escape-the-den'
+const TUTORIAL_STEPS = [
+  {
+    icon: '📖',
+    title: '阅读与抉择',
+    content: '你是一个失忆的女人，被困在连环杀手的地下室中。阅读故事文本，在关键节点做出选择。错误选择可能导致死亡，但你可以随时重新抉择。',
+  },
+  {
+    icon: '🔍',
+    title: '调查与线索',
+    content: '留意场景中出现的调查按钮，点击可发现隐藏信息和线索。线索会自动收入左上角的线索抽屉，随时可以查看。',
+  },
+  {
+    icon: '🧩',
+    title: '推理与真相',
+    content: '最终抉择前，你需要在推理板上将线索与角色关联，指认真凶。只有一条路通向真相——七次抉择，一线生天。',
+  },
+]
+
 export function EscapeTheDen({ onExit }: EscapeTheDenProps) {
   const { currentNode, availableChoices, selectChoice, advanceNode, jumpToNode, canAdvance, isEnding } =
     useStoryEngine(storyData as StoryData)
   const registeredRef = useRef(false)
+
+  // 引导状态
+  const [showTutorial, setShowTutorial] = useState(() => {
+    return !localStorage.getItem(TUTORIAL_KEY)
+  })
 
   // 线索收集状态
   const [discoveredClues, setDiscoveredClues] = useState<Set<string>>(new Set())
@@ -107,6 +132,17 @@ export function EscapeTheDen({ onExit }: EscapeTheDenProps) {
   return (
     <div className="min-h-screen relative flex flex-col items-center justify-center px-6 py-12 overflow-hidden">
       <SceneBackdrop scene={currentNode.scene} tensionLevel={currentNode.tensionLevel} />
+
+      {/* 游戏引导 */}
+      <AnimatePresence>
+        {showTutorial && (
+          <GameTutorial
+            steps={TUTORIAL_STEPS}
+            storageKey={TUTORIAL_KEY}
+            onComplete={() => setShowTutorial(false)}
+          />
+        )}
+      </AnimatePresence>
 
       {/* 线索抽屉 */}
       <ClueDrawer
