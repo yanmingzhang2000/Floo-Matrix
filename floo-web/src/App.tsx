@@ -116,9 +116,9 @@ function App() {
     <>
       <AudioControl />
 
-      {/* 右上角登录状态按钮 */}
+      {/* 右上角登录状态按钮（放在音量控制左边） */}
       {!activeGameId && (
-        <div className="fixed top-4 right-4 z-40 flex items-center gap-2">
+        <div className="fixed top-4 right-16 z-40 flex items-center gap-2">
           {user ? (
             <>
               <span className="text-xs text-floo-text-muted hidden sm:inline">
