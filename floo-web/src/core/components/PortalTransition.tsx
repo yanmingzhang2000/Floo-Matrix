@@ -139,7 +139,7 @@ export function PortalTransition({
               y: '-50%',
               width: 200,
               height: 200,
-              background: 'radial-gradient(circle, #2ecc71 0%, #27ae60 40%, transparent 70%)',
+              background: 'radial-gradient(circle, var(--color-floo-accent-green) 0%, var(--color-floo-accent-green-dark) 40%, transparent 70%)',
               filter: 'blur(20px)',
             }}
             initial={{ scale: 0.5, opacity: 0 }}
@@ -177,8 +177,8 @@ export function PortalTransition({
                 top: fireplaceY,
                 width: p.size,
                 height: p.size,
-                background: 'radial-gradient(circle, #2ecc71, #27ae60)',
-                boxShadow: '0 0 8px rgba(46, 204, 113, 0.8)',
+                background: 'radial-gradient(circle, var(--color-floo-accent-green), var(--color-floo-accent-green-dark))',
+                boxShadow: '0 0 8px rgba(200, 147, 74, 0.8)',
                 filter: 'blur(2px)',
               }}
               initial={{ x: 0, y: 0, opacity: 1, scale: 1 }}

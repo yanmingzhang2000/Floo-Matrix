@@ -57,8 +57,8 @@ export function PowderToss({ startX, startY, targetX, targetY, onComplete }: Pow
             top: p.y,
             width: p.size,
             height: p.size,
-            background: 'radial-gradient(circle, #2ecc71, #27ae60)',
-            boxShadow: '0 0 8px rgba(46, 204, 113, 0.8)',
+            background: 'radial-gradient(circle, var(--color-floo-accent-green), var(--color-floo-accent-green-dark))',
+            boxShadow: '0 0 8px rgba(200, 147, 74, 0.8)',
             filter: 'blur(1px)',
             rotate: p.rotation,
           }}
