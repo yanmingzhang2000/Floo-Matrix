@@ -14,8 +14,8 @@ export type ClueType = 'fact' | 'testimony' | 'anomaly'
 
 /** 条件判断类型（用于分支剧情、道具检查） */
 export interface Condition {
-  /** 条件类型：拥有道具 / 剧情标记 / 变量比较 */
-  type: 'hasItem' | 'flag' | 'variable'
+  /** 条件类型：拥有道具 / 剧情标记 / 变量比较 / 是否认识角色 */
+  type: 'hasItem' | 'flag' | 'variable' | 'metCharacter'
   key: string
   /** 比较值（variable 类型时使用） */
   value?: string | number | boolean
@@ -23,9 +23,13 @@ export interface Condition {
   operator?: 'eq' | 'neq' | 'gt' | 'lt' | 'gte' | 'lte'
 }
 
+/** 人物阵营（玩家视角） */
+export type Alignment = 'good' | 'bad' | 'neutral' | 'unknown'
+
 /** 效果类型（选择后触发的副作用） */
 export interface Effect {
   type: 'addItem' | 'removeItem' | 'setFlag' | 'setVariable'
+    | 'meetCharacter' | 'setAlignment' | 'updateAffinity'
   key: string
   value?: string | number | boolean
 }
@@ -79,6 +83,8 @@ export interface Character {
   suspicious?: boolean
   /** 人物描述（随剧情更新） */
   description?: string
+  /** 真实阵营（剧情预设，可逐步揭示） */
+  realAlignment?: Alignment
 }
 
 /** 剧本节点 */

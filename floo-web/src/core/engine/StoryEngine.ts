@@ -5,15 +5,18 @@
  * 设计原则：引擎本身不感知具体游戏内容，只负责通用的剧本树解析逻辑，
  * 具体游戏的 UI 展现交给 games/[game-id]/components 实现。
  */
-import type { Choice, Condition, Effect, StoryData, StoryNode } from '@/core/types/story'
+import type { Choice, Condition, Effect, StoryData, StoryNode, Alignment } from '@/core/types/story'
 import { useInventoryStore } from '@/core/store/inventoryStore'
 import { useHubStore } from '@/core/store/hubStore'
+import { useRelationshipStore } from '@/core/store/relationshipStore'
 
 export class StoryEngine {
   private story: StoryData
+  private gameId: string
 
-  constructor(story: StoryData) {
+  constructor(story: StoryData, gameId?: string) {
     this.story = story
+    this.gameId = gameId ?? story.gameId
   }
 
   /** 获取剧本起始节点 */
@@ -38,6 +41,7 @@ export class StoryEngine {
   checkCondition(condition: Condition): boolean {
     const inventory = useInventoryStore.getState()
     const hub = useHubStore.getState()
+    const relationship = useRelationshipStore.getState()
 
     switch (condition.type) {
       case 'hasItem':
@@ -49,6 +53,11 @@ export class StoryEngine {
       case 'variable': {
         const current = hub.variables[condition.key]
         return this.compareValues(current, condition.operator ?? 'eq', condition.value)
+      }
+
+      case 'metCharacter': {
+        const relation = relationship.getRelation(this.gameId, condition.key)
+        return relation.met === (condition.value ?? true)
       }
 
       default:
@@ -68,12 +77,13 @@ export class StoryEngine {
     return node.choices.filter((choice) => this.checkAllConditions(choice.conditions))
   }
 
-  /** 执行一组效果（道具增减、标记/变量设置） */
+  /** 执行一组效果（道具增减、标记/变量设置、人物关系） */
   applyEffects(effects?: Effect[]): void {
     if (!effects || effects.length === 0) return
 
     const inventory = useInventoryStore.getState()
     const hub = useHubStore.getState()
+    const relationship = useRelationshipStore.getState()
 
     for (const effect of effects) {
       switch (effect.type) {
@@ -93,6 +103,19 @@ export class StoryEngine {
         case 'setVariable':
           if (effect.value !== undefined) {
             hub.setVariable(effect.key, effect.value)
+          }
+          break
+        case 'meetCharacter':
+          relationship.metCharacter(this.gameId, effect.key)
+          break
+        case 'setAlignment':
+          if (effect.value !== undefined) {
+            relationship.setAlignment(this.gameId, effect.key, effect.value as Alignment)
+          }
+          break
+        case 'updateAffinity':
+          if (effect.value !== undefined) {
+            relationship.updateAffinity(this.gameId, effect.key, Number(effect.value))
           }
           break
       }
