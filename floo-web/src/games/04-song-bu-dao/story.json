@@ -1,0 +1,749 @@
+{
+  "gameId": "04-song-bu-dao",
+  "title": "开端番外·送不到",
+  "description": "快递员宋卜道因一份永远送不到的快递陷入时间循环。在一次次循环中，他送快递、救人、寻找真相，最终阻止一场注定发生的爆炸。",
+  "startNode": "loop1_start",
+  "characters": [
+    { "id": "protagonist", "name": "宋卜道", "description": "刚上岗的快递员，因无法送达肖鹤云的快递而陷入时间循环" },
+    { "id": "qin_rourou", "name": "秦柔柔", "description": "编剧/作家，被空调工骚扰，唯一相信宋卜道的人" },
+    { "id": "xiao_heyun", "name": "肖鹤云", "description": "游戏架构师，快递收件人，45路公交车乘客" },
+    { "id": "li_shiqing", "name": "李诗情", "description": "大学生，与肖鹤云一起经历时间循环" },
+    { "id": "dr_jiang", "name": "姜医生", "description": "寄件人，医生，涉及医疗纠纷" },
+    { "id": "ac_worker", "name": "空调工", "description": "骚扰秦柔柔的空调安装工" },
+    { "id": "elderly_man", "name": "流浪老人", "description": "想求死的孤独流浪老人" },
+    { "id": "falling_child", "name": "坠楼小孩", "description": "意外坠楼的儿童" },
+    { "id": "old_zhang", "name": "张队", "description": "刑警队长，经验丰富" },
+    { "id": "master", "name": "师傅", "description": "快递站老师傅，宋卜道的师父" }
+  ],
+  "clues": [
+    {
+      "id": "clue_package_undeliverable",
+      "title": "送不到的快递",
+      "type": "fact",
+      "content": "收件人肖鹤云的快递始终无法送达，电话无人接听，地址找不到人。",
+      "location": "快递站"
+    },
+    {
+      "id": "clue_explosion_news",
+      "title": "爆炸新闻",
+      "type": "fact",
+      "content": "45路公交车在跨江大桥附近发生爆炸，多人伤亡。",
+      "location": "商场大屏幕"
+    },
+    {
+      "id": "clue_xiao_heyun",
+      "title": "肖鹤云的身份",
+      "type": "fact",
+      "content": "收件人肖鹤云是游戏架构师，当天乘坐45路公交车。",
+      "location": "游戏公司"
+    },
+    {
+      "id": "clue_sender_doctor",
+      "title": "寄件人是姜医生",
+      "type": "fact",
+      "content": "快递寄件人是姜医生，一位医生。",
+      "location": "快递系统"
+    },
+    {
+      "id": "clue_usb_contents",
+      "title": "U盘内容",
+      "type": "fact",
+      "content": "快递里是一个U盘，记录着医疗纠纷的真相。",
+      "location": "快递包裹"
+    },
+    {
+      "id": "clue_medical_dispute",
+      "title": "医患纠纷真相",
+      "type": "testimony",
+      "content": "患者父亲因女儿离世误解姜医生，真相是女儿的病无法治愈。",
+      "location": "调查所得"
+    },
+    {
+      "id": "clue_elderly_story",
+      "title": "流浪老人的故事",
+      "type": "testimony",
+      "content": "孤独的流浪老人，儿女不孝，老伴去世，想求死。",
+      "location": "桥边"
+    },
+    {
+      "id": "clue_elderly_hope",
+      "title": "老人的希望",
+      "type": "testimony",
+      "content": "老人决定去福利院，重新开始生活。",
+      "location": "福利院"
+    },
+    {
+      "id": "clue_child_story",
+      "title": "孩子的家庭",
+      "type": "testimony",
+      "content": "父母工作太忙，忽视了孩子，孩子想引起注意。",
+      "location": "居民区"
+    },
+    {
+      "id": "clue_child_drawing",
+      "title": "孩子的画",
+      "type": "fact",
+      "content": "孩子画了一幅画送给宋卜道，画上是快递员接住小孩。",
+      "location": "居民区"
+    },
+    {
+      "id": "clue_ac_worker_evidence",
+      "title": "空调工的证据",
+      "type": "fact",
+      "content": "空调工多次骚扰女性，证据确凿。",
+      "location": "秦柔柔家"
+    },
+    {
+      "id": "clue_qin_rourou_gratitude",
+      "title": "秦柔柔的感谢",
+      "type": "testimony",
+      "content": "秦柔柔感谢宋卜道的帮助，愿意相信他。",
+      "location": "秦柔柔家"
+    },
+    {
+      "id": "clue_romance_moment",
+      "title": "心动时刻",
+      "type": "testimony",
+      "content": "秦柔柔说：'如果真的有循环，我希望每天都能遇见你。'",
+      "location": "天台"
+    },
+    {
+      "id": "clue_career_dream",
+      "title": "快递站梦想",
+      "type": "fact",
+      "content": "宋卜道梦想攒钱开自己的快递站，但循环让一切归零。",
+      "location": "快递站"
+    }
+  ],
+  "nodes": {
+    "loop1_start": {
+      "id": "loop1_start",
+      "type": "dialogue",
+      "scene": "courier_station",
+      "ambientSound": "courier_station",
+      "tensionLevel": 1,
+      "content": "今天是你第一天独自送快递。\n\n凌晨六点，你来到快递站，师傅已经在那里等你了。他拍了拍你的肩膀：'小宋，今天你独立跑，记住，快递就是使命，每一件都要送到。'\n\n你点点头，接过今天的配送清单。十二个快递，分布在城市的各个角落。\n\n你骑上电动车，迎着朝阳出发了。这是普通的一天，和往常一样。",
+      "clues": ["clue_career_dream"],
+      "investigations": [
+        {
+          "id": "inv_career_dream",
+          "label": "回想自己的梦想",
+          "content": "你梦想着有一天能攒够钱，开自己的快递站。不是为了赚大钱，而是想证明：快递不只是送东西，是把人和人连在一起。",
+          "clueId": "clue_career_dream"
+        }
+      ],
+      "nextNode": "loop1_deliver"
+    },
+    "loop1_deliver": {
+      "id": "loop1_deliver",
+      "type": "dialogue",
+      "scene": "city_street",
+      "ambientSound": "city_street",
+      "tensionLevel": 1,
+      "content": "你顺利送完了前几个快递。\n\n小区门口的张阿姨收到了包裹，笑着对你说谢谢；写字楼前台的小哥签收后继续低头工作；便利店的老板帮你代收了三个包裹。\n\n一切都很顺利。直到你拨打最后一个电话。\n\n'您好，我是快递员，您的快递到了——'\n\n电话那头无人接听。你又拨了一次，还是没人接。\n\n收件人：肖鹤云。到付件，贵重物品。",
+      "clues": ["clue_package_undeliverable"],
+      "nextNode": "loop1_choice"
+    },
+    "loop1_choice": {
+      "id": "loop1_choice",
+      "type": "choice",
+      "scene": "city_street",
+      "tensionLevel": 1,
+      "content": "你看着手机上肖鹤云的地址，犹豫了。\n\n是先去他的地址看看，还是等他回电话？",
+      "choices": [
+        {
+          "id": "c1_a",
+          "text": "先去肖鹤云的地址看看",
+          "nextNode": "loop1_address",
+          "effects": [{ "type": "setFlag", "key": "visited_xiao_address", "value": true }]
+        },
+        {
+          "id": "c1_b",
+          "text": "等他回电话，先完成其他快递",
+          "nextNode": "loop1_other"
+        }
+      ]
+    },
+    "loop1_address": {
+      "id": "loop1_address",
+      "type": "dialogue",
+      "scene": "city_street",
+      "tensionLevel": 1,
+      "content": "你来到肖鹤云的地址——一个普通的居民小区。\n\n你按了门铃，没有人。你又敲了敲门，还是没有回应。\n\n邻居告诉你：'肖先生？他好像出差了，好几天没见他了。'\n\n你叹了口气，这份快递今天是送不到了。\n\n你骑着电动车回快递站，路过商场时，大屏幕上正在播放一则新闻——",
+      "nextNode": "loop1_news"
+    },
+    "loop1_other": {
+      "id": "loop1_other",
+      "type": "dialogue",
+      "scene": "city_street",
+      "tensionLevel": 1,
+      "content": "你决定等肖鹤云回电话，先完成其他快递。\n\n但直到你送完所有快递，他也没有回电话。\n\n你骑着电动车回快递站，路过商场时，大屏幕上正在播放一则新闻——",
+      "nextNode": "loop1_news"
+    },
+    "loop1_news": {
+      "id": "loop1_news",
+      "type": "dialogue",
+      "scene": "city_street",
+      "tensionLevel": 2,
+      "content": "'今日下午1点45分，一辆45路公交车在跨江大桥附近发生爆炸，造成多人伤亡……'\n\n你停下电动车，呆呆地看着屏幕。\n\n45路公交车……爆炸……\n\n你突然感到一阵眩晕，眼前的画面开始模糊。当你再次睁开眼睛时——\n\n你发现自己又回到了快递站，师傅正站在你面前：'小宋，今天你独立跑，记住，快递就是使命，每一件都要送到。'",
+      "clues": ["clue_explosion_news"],
+      "nextNode": "loop2_start"
+    },
+    "loop2_start": {
+      "id": "loop2_start",
+      "type": "dialogue",
+      "scene": "courier_station",
+      "ambientSound": "courier_station",
+      "tensionLevel": 1,
+      "content": "第二天。\n\n你又在快递站醒来。这感觉很奇怪——你明明记得昨天已经完成了这些快递，但清单上的内容一模一样。\n\n你看了看手机——日期显示的是昨天。\n\n'小宋，今天你独立跑，记住，快递就是使命，每一件都要送到。'师傅说了和昨天一模一样的话。\n\n你开始怀疑：难道你陷入了时间循环？",
+      "nextNode": "loop2_deliver"
+    },
+    "loop2_deliver": {
+      "id": "loop2_deliver",
+      "type": "dialogue",
+      "scene": "city_street",
+      "ambientSound": "city_street",
+      "tensionLevel": 1,
+      "content": "你又开始了今天的配送。\n\n这一次，你更快了——因为你记得每条路线，每个地址。你甚至比昨天提前了半小时完成前几个快递。\n\n但当你拨打肖鹤云的电话时，依然是无人接听。\n\n你决定这次直接去他的地址。",
+      "nextNode": "loop2_choice"
+    },
+    "loop2_choice": {
+      "id": "loop2_choice",
+      "type": "choice",
+      "scene": "city_street",
+      "tensionLevel": 1,
+      "content": "你站在肖鹤云的家门口，犹豫着。\n\n你已经知道他不在家，但你还是想试试。\n\n是直接敲门，还是去调查他为什么不在家？",
+      "choices": [
+        {
+          "id": "c2_a",
+          "text": "直接敲门",
+          "nextNode": "loop2_knock"
+        },
+        {
+          "id": "c2_b",
+          "text": "去调查他为什么不在家",
+          "nextNode": "loop2_investigate",
+          "effects": [{ "type": "setFlag", "key": "investigated_xiao_heyun", "value": true }]
+        }
+      ]
+    },
+    "loop2_knock": {
+      "id": "loop2_knock",
+      "type": "dialogue",
+      "scene": "city_street",
+      "tensionLevel": 1,
+      "content": "你敲了敲门，依然没有人回应。\n\n你叹了口气，正准备离开——\n\n突然，你听到楼下传来一阵骚动。你往下看，看到一群人围在那里。\n\n你走过去，发现商场的大屏幕上正在播放那则新闻——\n\n'今日下午1点45分，一辆45路公交车在跨江大桥附近发生爆炸……'\n\n你又看到了那则新闻。然后，你又回到了快递站。",
+      "nextNode": "loop3_start"
+    },
+    "loop2_investigate": {
+      "id": "loop2_investigate",
+      "type": "dialogue",
+      "scene": "city_street",
+      "tensionLevel": 2,
+      "content": "你决定调查肖鹤云为什么不在家。\n\n你来到他工作的游戏公司。前台告诉你：'肖鹤云？他今天请假了。'\n\n'为什么请假？'\n\n'不知道，他最近好像遇到了什么麻烦，情绪不太好。'\n\n你离开公司，路过商场时，大屏幕上正在播放那则新闻——\n\n然后，你又回到了快递站。",
+      "clues": ["clue_xiao_heyun"],
+      "nextNode": "loop3_start"
+    },
+    "loop3_start": {
+      "id": "loop3_start",
+      "type": "dialogue",
+      "scene": "courier_station",
+      "ambientSound": "courier_station",
+      "tensionLevel": 2,
+      "content": "第三天。\n\n你已经确定自己陷入了时间循环。每天早上六点，你都会在快递站醒来，师傅会说同样的话，配送清单上的内容一模一样。\n\n但你记得所有事情——每一次循环，每一次配送，每一次失败。\n\n你决定调查这件事。为什么你会陷入循环？为什么肖鹤云的快递送不到？为什么45路公交车会爆炸？\n\n这一切之间，一定有什么联系。",
+      "nextNode": "loop3_choice"
+    },
+    "loop3_choice": {
+      "id": "loop3_choice",
+      "type": "choice",
+      "scene": "city_street",
+      "tensionLevel": 2,
+      "content": "你站在快递站门口，思考着下一步。\n\n你有三个选择：\n\n1. 去肖鹤云的公司，继续调查他\n2. 去45路公交车的路线，调查爆炸案\n3. 去找张队，告诉他你知道的一切",
+      "choices": [
+        {
+          "id": "c3_a",
+          "text": "去肖鹤云的公司继续调查",
+          "nextNode": "loop3_xiao_company",
+          "effects": [{ "type": "setFlag", "key": "investigated_xiao_company", "value": true }]
+        },
+        {
+          "id": "c3_b",
+          "text": "去45路公交车路线调查爆炸案",
+          "nextNode": "loop3_bus_route",
+          "effects": [{ "type": "setFlag", "key": "investigated_bus_explosion", "value": true }]
+        },
+        {
+          "id": "c3_c",
+          "text": "去找张队，告诉他你知道的一切",
+          "nextNode": "loop3_zhang_dui",
+          "effects": [{ "type": "setFlag", "key": "told_zhang_dui", "value": true }]
+        }
+      ]
+    },
+    "loop3_xiao_company": {
+      "id": "loop3_xiao_company",
+      "type": "dialogue",
+      "scene": "city_street",
+      "tensionLevel": 2,
+      "content": "你来到肖鹤云工作的游戏公司。\n\n这一次，你没有直接问前台，而是悄悄溜进了肖鹤云的工位。\n\n他的桌上散落着一些文件。你翻了翻，发现了一张快递单——寄件人：姜医生。收件人：肖鹤云。物品：U盘（贵重）。\n\n你正想继续查看，突然听到身后传来声音：'你在干什么？'\n\n你转身，看到一个保安正盯着你。",
+      "nextNode": "loop3_end"
+    },
+    "loop3_bus_route": {
+      "id": "loop3_bus_route",
+      "type": "dialogue",
+      "scene": "city_street",
+      "tensionLevel": 2,
+      "content": "你来到45路公交车的路线。\n\n你沿着公交车的行驶路线走了一遍，发现了几个关键地点：\n\n1. 起点站——大学城站\n2. 中间站——高新园区站\n3. 终点站——跨江大桥\n\n你注意到，公交车在经过跨江大桥时，会有一个弯道。也许，爆炸就发生在那里。\n\n你正想着，突然看到一辆45路公交车驶过。你下意识地想追上去——\n\n但公交车已经开远了。",
+      "nextNode": "loop3_end"
+    },
+    "loop3_zhang_dui": {
+      "id": "loop3_zhang_dui",
+      "type": "dialogue",
+      "scene": "police_station",
+      "ambientSound": "police_station",
+      "tensionLevel": 2,
+      "content": "你来到警局，找到了张队。\n\n'张队，我知道这听起来很荒谬，但我陷入了时间循环。45路公交车会爆炸，我知道是谁干的……'\n\n张队看着你，眼神复杂：'你说的这些，我没办法相信。但你提供的信息很详细，这让我不得不重视。'\n\n他站起身：'我会安排人去调查。如果你们说的是真的，我会帮你们。'\n\n你看到了一丝希望。",
+      "clues": ["clue_xiao_heyun"],
+      "nextNode": "loop3_end"
+    },
+    "loop3_end": {
+      "id": "loop3_end",
+      "type": "dialogue",
+      "scene": "city_street",
+      "tensionLevel": 2,
+      "content": "你离开那个地方，继续你的调查。\n\n你知道，你必须找到更多线索。肖鹤云、姜医生、U盘、45路公交车……这一切之间，一定有什么联系。\n\n但时间不等人——下午1点45分，公交车会爆炸。\n\n你必须在那之前找到答案。",
+      "nextNode": "loop4_start"
+    },
+    "loop4_start": {
+      "id": "loop4_start",
+      "type": "dialogue",
+      "scene": "courier_station",
+      "ambientSound": "courier_station",
+      "tensionLevel": 1,
+      "content": "第四天。\n\n你继续你的配送工作，但这一次，你开始留意路上遇到的人和事。\n\n当你经过一座桥时，你看到一个流浪老人站在桥边，似乎想要跳下去。",
+      "nextNode": "loop4_elderly_choice"
+    },
+    "loop4_elderly_choice": {
+      "id": "loop4_elderly_choice",
+      "type": "choice",
+      "scene": "bridge_side",
+      "ambientSound": "bridge_side",
+      "tensionLevel": 2,
+      "content": "老人站在桥边，风吹动着他破旧的衣服。他的眼神空洞，仿佛已经放弃了所有希望。\n\n你该怎么办？",
+      "choices": [
+        {
+          "id": "c4_a",
+          "text": "放下快递，冲过去劝说他",
+          "nextNode": "loop4_elderly_save",
+          "effects": [
+            { "type": "setFlag", "key": "saved_elderly_man", "value": true },
+            { "type": "setFlag", "key": "subline1_unlocked", "value": true }
+          ]
+        },
+        {
+          "id": "c4_b",
+          "text": "直接报警求助",
+          "nextNode": "loop4_elderly_police"
+        }
+      ]
+    },
+    "loop4_elderly_save": {
+      "id": "loop4_elderly_save",
+      "type": "dialogue",
+      "scene": "bridge_side",
+      "tensionLevel": 3,
+      "content": "你扔下手中的快递，冲过去拉住了老人。\n\n'大爷，您不能这样做！'你喊道。\n\n老人回头看了你一眼，眼中满是绝望：'小伙子，你别管我。我活够了。'\n\n'大爷，您有什么想不开的？告诉我，也许我能帮您。'\n\n老人沉默了很久，然后慢慢开口：'我的老伴去年走了。我的儿女……他们已经十年没来看我了。我一个人，活着有什么意义？'\n\n你握紧他的手：'大爷，我给您送个快递吧——是生命快递，收件人是您自己。'",
+      "clues": ["clue_elderly_story"],
+      "nextNode": "loop4_end"
+    },
+    "loop4_elderly_police": {
+      "id": "loop4_elderly_police",
+      "type": "dialogue",
+      "scene": "bridge_side",
+      "tensionLevel": 2,
+      "content": "你掏出手机，拨打了报警电话。\n\n'喂，110吗？这里有一个人想要跳桥……'\n\n警察很快赶到了。他们把老人带走了。\n\n你看着老人离去的背影，心里有些复杂。你救了他，但你不知道他是否真的会改变。",
+      "nextNode": "loop4_end"
+    },
+    "loop4_end": {
+      "id": "loop4_end",
+      "type": "dialogue",
+      "scene": "city_street",
+      "tensionLevel": 1,
+      "content": "你继续你的配送工作。\n\n但今天发生的事情，让你开始思考：在这个循环里，你除了送快递，还能做什么？\n\n也许，你不仅仅是一个快递员。也许，你可以成为更多。",
+      "nextNode": "loop5_start"
+    },
+    "loop5_start": {
+      "id": "loop5_start",
+      "type": "dialogue",
+      "scene": "courier_station",
+      "ambientSound": "courier_station",
+      "tensionLevel": 1,
+      "content": "第五天。\n\n你在居民区送快递时，听到头顶传来孩子的哭声。\n\n你抬头一看，一个小孩正趴在窗台上，摇摇欲坠。",
+      "nextNode": "loop5_child_choice"
+    },
+    "loop5_child_choice": {
+      "id": "loop5_child_choice",
+      "type": "choice",
+      "scene": "residential",
+      "tensionLevel": 3,
+      "content": "孩子的小手紧紧抓着窗台，眼里满是恐惧。他似乎只是想看看外面，却不知道自己已经身处危险。\n\n你该怎么办？",
+      "choices": [
+        {
+          "id": "c5_a",
+          "text": "扔下快递，冲过去接住他",
+          "nextNode": "loop5_child_save",
+          "effects": [
+            { "type": "setFlag", "key": "saved_falling_child", "value": true },
+            { "type": "setFlag", "key": "subline2_unlocked", "value": true }
+          ]
+        },
+        {
+          "id": "c5_b",
+          "text": "大喊让周围的人帮忙",
+          "nextNode": "loop5_child_help"
+        }
+      ]
+    },
+    "loop5_child_save": {
+      "id": "loop5_child_save",
+      "type": "dialogue",
+      "scene": "residential",
+      "tensionLevel": 3,
+      "content": "你扔下手中的快递，冲过去在下面接住了掉下来的孩子。\n\n孩子哭着抱住你：'叔叔……我怕……'\n\n你抱着他，轻轻拍着他的背：'没事了，没事了。'\n\n孩子的父母冲过来，抱着孩子痛哭：'谢谢你！谢谢你！'\n\n你看着他们，心里涌上一股暖流。这就是快递的意义——不仅仅是送东西，而是连接人与人。",
+      "clues": ["clue_child_story"],
+      "nextNode": "loop5_end"
+    },
+    "loop5_child_help": {
+      "id": "loop5_child_help",
+      "type": "dialogue",
+      "scene": "residential",
+      "tensionLevel": 2,
+      "content": "你大喊：'快来人！有孩子要掉下来了！'\n\n周围的人冲过来，一起接住了掉下来的孩子。\n\n孩子哭着，他的父母也赶来了。大家七嘴八舌地安慰着他们。\n\n你站在一旁，看着这一幕，心里有些复杂。你救了孩子，但你知道，如果再晚一点，后果不堪设想。",
+      "nextNode": "loop5_end"
+    },
+    "loop5_end": {
+      "id": "loop5_end",
+      "type": "dialogue",
+      "scene": "city_street",
+      "tensionLevel": 1,
+      "content": "你继续你的配送工作。\n\n今天发生的事情，让你更加坚定了一个想法：在这个循环里，你不仅仅是在送快递。你有机会改变一些事情，帮助一些人。\n\n也许，这就是你陷入循环的真正原因。",
+      "nextNode": "loop6_start"
+    },
+    "loop6_start": {
+      "id": "loop6_start",
+      "type": "dialogue",
+      "scene": "courier_station",
+      "ambientSound": "courier_station",
+      "tensionLevel": 1,
+      "content": "第六天。\n\n你去一个小区送快递，开门的是一个年轻女性，她的表情很不自然。\n\n你注意到屋里还有一个男人——是来修空调的工人。\n\n秦柔柔用眼神向你求助，你立刻明白了什么。",
+      "nextNode": "loop6_qin_choice"
+    },
+    "loop6_qin_choice": {
+      "id": "loop6_qin_choice",
+      "type": "choice",
+      "scene": "apartment",
+      "ambientSound": "apartment",
+      "tensionLevel": 2,
+      "content": "秦柔柔站在门口，空调工在屋里东张西望。她的眼神里充满了恐惧和求助。\n\n你该怎么办？",
+      "choices": [
+        {
+          "id": "c6_a",
+          "text": "帮秦柔柔摆脱空调工",
+          "nextNode": "loop6_qin_save",
+          "effects": [
+            { "type": "setFlag", "key": "saved_qin_rourou", "value": true },
+            { "type": "setFlag", "key": "subline4_unlocked", "value": true }
+          ]
+        },
+        {
+          "id": "c6_b",
+          "text": "直接报警",
+          "nextNode": "loop6_qin_police"
+        }
+      ]
+    },
+    "loop6_qin_save": {
+      "id": "loop6_qin_save",
+      "type": "dialogue",
+      "scene": "apartment",
+      "tensionLevel": 3,
+      "content": "你说：'小姐，您的快递需要本人签收，请出来一下。'\n\n秦柔柔看了你一眼，立刻明白了你的意思。她走出门口，空调工想跟出来，你挡住了他。\n\n'这位先生，请您在屋里等一下，我有话要和这位小姐说。'\n\n空调工脸色一变，但不敢发作。你带着秦柔柔走到楼下。\n\n'谢谢你……'她声音颤抖，'他……他经常来骚扰我……'\n\n'别怕，以后我会保护你。'你说。\n\n她抬头看着你，眼中闪过一丝感激。",
+      "clues": ["clue_qin_rourou_gratitude"],
+      "nextNode": "loop6_end"
+    },
+    "loop6_qin_police": {
+      "id": "loop6_qin_police",
+      "type": "dialogue",
+      "scene": "apartment",
+      "tensionLevel": 2,
+      "content": "你掏出手机，拨打了报警电话。\n\n'喂，110吗？这里有一个人在骚扰女性……'\n\n警察很快赶到了。空调工被带走调查。\n\n秦柔柔看着你，眼中满是感激：'谢谢你……'\n\n'不客气，这是我应该做的。'\n\n你转身离开，心里有些复杂。你救了她，但你知道，这只是暂时的。",
+      "nextNode": "loop6_end"
+    },
+    "loop6_end": {
+      "id": "loop6_end",
+      "type": "dialogue",
+      "scene": "city_street",
+      "tensionLevel": 1,
+      "content": "你继续你的配送工作。\n\n今天发生的事情，让你更加坚定了一个想法：在这个循环里，你有机会改变一些事情，帮助一些人。\n\n但你也知道，时间不等人——下午1点45分，公交车会爆炸。\n\n你必须找到真相。",
+      "nextNode": "loop7_start"
+    },
+    "loop7_start": {
+      "id": "loop7_start",
+      "type": "dialogue",
+      "scene": "courier_station",
+      "ambientSound": "courier_station",
+      "tensionLevel": 2,
+      "content": "第七天。\n\n你决定调查肖鹤云那份快递的寄件人。\n\n你来到快递站查询系统，发现寄件人是一个叫'姜医生'的人。你按照寄件地址找到了一个医院。",
+      "nextNode": "loop7_choice"
+    },
+    "loop7_choice": {
+      "id": "loop7_choice",
+      "type": "choice",
+      "scene": "city_street",
+      "tensionLevel": 2,
+      "content": "你站在医院门口，思考着下一步。\n\n你是直接去找姜医生，还是先调查他的背景？",
+      "choices": [
+        {
+          "id": "c7_a",
+          "text": "直接去找姜医生",
+          "nextNode": "loop7_dr_jiang",
+          "effects": [{ "type": "setFlag", "key": "met_dr_jiang", "value": true }]
+        },
+        {
+          "id": "c7_b",
+          "text": "先调查姜医生的背景",
+          "nextNode": "loop7_investigate",
+          "effects": [{ "type": "setFlag", "key": "investigated_dr_jiang", "value": true }]
+        }
+      ]
+    },
+    "loop7_dr_jiang": {
+      "id": "loop7_dr_jiang",
+      "type": "dialogue",
+      "scene": "city_street",
+      "tensionLevel": 2,
+      "content": "你来到姜医生的办公室。\n\n他看起来很疲惫，眼眶发黑，似乎很久没有好好休息了。\n\n'你是？'\n\n'我是快递员，我有一份您的快递，收件人是肖鹤云。'\n\n姜医生的脸色一变：'那份快递……你送到了吗？'\n\n'没有，他始终联系不上。'\n\n姜医生沉默了很久，然后说：'那是一份很重要的快递。里面有……有证据。'\n\n'什么证据？'\n\n'关于一场医疗纠纷的证据。一个患者的父亲，因为误解我，想要报复我。'",
+      "clues": ["clue_sender_doctor", "clue_usb_contents"],
+      "nextNode": "loop7_end"
+    },
+    "loop7_investigate": {
+      "id": "loop7_investigate",
+      "type": "dialogue",
+      "scene": "city_street",
+      "tensionLevel": 2,
+      "content": "你先调查了姜医生的背景。\n\n你发现，姜医生是一位优秀的外科医生，曾经救过很多人。但一年前，他卷入了一场医疗纠纷——一个患者的女儿去世了，患者的父亲认为是姜医生的错。\n\n你继续调查，发现姜医生曾经多次收到威胁信。他寄给肖鹤云的U盘，里面存着那场医疗纠纷的完整证据——证明姜医生没有错。\n\n但为什么是寄给肖鹤云？肖鹤云和这件事有什么关系？",
+      "clues": ["clue_sender_doctor", "clue_usb_contents", "clue_medical_dispute"],
+      "nextNode": "loop7_end"
+    },
+    "loop7_end": {
+      "id": "loop7_end",
+      "type": "dialogue",
+      "scene": "city_street",
+      "tensionLevel": 2,
+      "content": "你离开医院，思考着这一切。\n\n姜医生、肖鹤云、U盘、医疗纠纷……这一切之间，一定有什么联系。\n\n但你还没有找到答案。你必须继续调查。\n\n下午1点45分，公交车会爆炸。你还有时间。",
+      "nextNode": "loop8_start"
+    },
+    "loop8_start": {
+      "id": "loop8_start",
+      "type": "dialogue",
+      "scene": "courier_station",
+      "ambientSound": "courier_station",
+      "tensionLevel": 3,
+      "content": "第八天。\n\n所有线索开始串联起来。\n\n你发现：肖鹤云是45路公交车的乘客，姜医生寄给他的U盘里存着医疗纠纷的证据，而寄送这份快递的人……正是公交车司机王兴德。\n\n你终于明白：王兴德在绝望中寄出了这份快递，而肖鹤云是唯一能帮助他的人。\n\n但为什么是肖鹤云？他和这件事有什么关系？",
+      "clues": ["clue_medical_dispute"],
+      "nextNode": "loop8_choice"
+    },
+    "loop8_choice": {
+      "id": "loop8_choice",
+      "type": "choice",
+      "scene": "city_street",
+      "tensionLevel": 3,
+      "content": "你站在快递站门口，思考着下一步。\n\n你有两个选择：\n\n1. 去找张队，告诉他你知道的一切\n2. 自己去阻止爆炸",
+      "choices": [
+        {
+          "id": "c8_a",
+          "text": "去找张队",
+          "nextNode": "loop8_zhang_dui",
+          "effects": [{ "type": "setFlag", "key": "police_support", "value": true }]
+        },
+        {
+          "id": "c8_b",
+          "text": "自己去阻止爆炸",
+          "nextNode": "loop8_alone"
+        }
+      ]
+    },
+    "loop8_zhang_dui": {
+      "id": "loop8_zhang_dui",
+      "type": "dialogue",
+      "scene": "police_station",
+      "ambientSound": "police_station",
+      "tensionLevel": 3,
+      "content": "你来到警局，找到了张队。\n\n'张队，我知道45路公交车会爆炸。炸弹是司机王兴德的前妻陶映红制造的，王兴德也在配合。'\n\n张队看着你，眼神复杂：'你说的这些……你是怎么知道的？'\n\n'我陷入了时间循环。我看过很多次爆炸，我调查了很多次。'\n\n张队沉默了很久，然后说：'好，我相信你。我们会安排人去调查。'\n\n你看到了一丝希望。",
+      "nextNode": "loop9_start"
+    },
+    "loop8_alone": {
+      "id": "loop8_alone",
+      "type": "dialogue",
+      "scene": "city_street",
+      "tensionLevel": 3,
+      "content": "你决定自己去阻止爆炸。\n\n你骑着电动车，向45路公交车的方向赶去。但你知道，你一个人的力量是有限的。\n\n你必须找到帮手。",
+      "nextNode": "loop9_start"
+    },
+    "loop9_start": {
+      "id": "loop9_start",
+      "type": "dialogue",
+      "scene": "courier_station",
+      "ambientSound": "courier_station",
+      "tensionLevel": 3,
+      "content": "第九天。\n\n你找到秦柔柔，告诉她你陷入了时间循环。\n\n她没有嘲笑你，反而认真地听着。\n\n'我相信你，'她说，'因为每次循环，你都会来救我。'\n\n你第一次感到不是一个人在战斗。",
+      "nextNode": "loop9_choice"
+    },
+    "loop9_choice": {
+      "id": "loop9_choice",
+      "type": "choice",
+      "scene": "apartment",
+      "ambientSound": "apartment",
+      "tensionLevel": 3,
+      "content": "秦柔柔看着你，眼中满是信任。\n\n'我帮你。我们一起阻止爆炸。'\n\n你该怎么办？",
+      "choices": [
+        {
+          "id": "c9_a",
+          "text": "与秦柔柔合作",
+          "nextNode": "loop9_cooperate",
+          "effects": [{ "type": "setFlag", "key": "qin_rourou_trust", "value": true }]
+        },
+        {
+          "id": "c9_b",
+          "text": "独自行动",
+          "nextNode": "loop9_alone"
+        }
+      ]
+    },
+    "loop9_cooperate": {
+      "id": "loop9_cooperate",
+      "type": "dialogue",
+      "scene": "apartment",
+      "tensionLevel": 3,
+      "content": "你和秦柔柔制定了计划。\n\n她负责联系张队，你负责去公交车上阻止王兴德。\n\n'小心，'她说，'我不希望你出事。'\n\n'我会的。'\n\n你转身离开，心里充满了力量。你不再是一个人在战斗。",
+      "nextNode": "loop10_start"
+    },
+    "loop9_alone": {
+      "id": "loop9_alone",
+      "type": "dialogue",
+      "scene": "city_street",
+      "tensionLevel": 3,
+      "content": "你决定独自行动。\n\n你骑着电动车，向45路公交车的方向赶去。但你知道，你一个人的力量是有限的。\n\n你必须找到其他方法。",
+      "nextNode": "loop10_start"
+    },
+    "loop10_start": {
+      "id": "loop10_start",
+      "type": "dialogue",
+      "scene": "city_street",
+      "ambientSound": "city_street",
+      "tensionLevel": 4,
+      "content": "第十天。最后的机会。\n\n你知道，今天下午1点45分，45路公交车会爆炸。你必须在那之前阻止它。\n\n你看着手中的快递——肖鹤云的那份。你决定先完成你的使命，再去阻止爆炸。",
+      "nextNode": "loop10_choice"
+    },
+    "loop10_choice": {
+      "id": "loop10_choice",
+      "type": "choice",
+      "scene": "city_street",
+      "tensionLevel": 4,
+      "content": "你站在十字路口，一边是肖鹤云的地址，一边是45路公交车的路线。\n\n你只有一个小时。\n\n你该怎么办？",
+      "choices": [
+        {
+          "id": "c10_a",
+          "text": "先送快递，再去阻止爆炸",
+          "nextNode": "loop10_package_first"
+        },
+        {
+          "id": "c10_b",
+          "text": "直接去阻止爆炸，放弃快递",
+          "nextNode": "loop10_explosion_first"
+        },
+        {
+          "id": "c10_c",
+          "text": "同时进行，让秦柔柔帮忙送快递",
+          "nextNode": "loop10_cooperate",
+          "conditions": [
+            { "type": "flag", "key": "qin_rourou_trust" }
+          ]
+        }
+      ]
+    },
+    "loop10_package_first": {
+      "id": "loop10_package_first",
+      "type": "dialogue",
+      "scene": "city_street",
+      "tensionLevel": 5,
+      "content": "你决定先送快递。\n\n你骑着电动车，飞快地赶往肖鹤云的地址。但当你到达时，肖鹤云已经出门了——他正要去坐45路公交车。\n\n你追上去，把快递塞到他手里：'肖先生，这是您的快递！'\n\n肖鹤云愣了一下，接过快递。你趁机说：'那辆公交车有炸弹，不要上去！'\n\n他看着你，眼中满是困惑。但公交车已经来了。\n\n你看到肖鹤云犹豫了一下，最终没有上车。\n\n公交车驶向跨江大桥——\n\n轰。\n\n爆炸发生了。但肖鹤云活了下来。",
+      "nextNode": "good_ending_3"
+    },
+    "loop10_explosion_first": {
+      "id": "loop10_explosion_first",
+      "type": "dialogue",
+      "scene": "bus",
+      "ambientSound": "bus",
+      "tensionLevel": 5,
+      "content": "你直接冲向45路公交车。\n\n你拦住王兴德，告诉他你知道一切。\n\n'王师傅，我知道你很痛。但爆炸不能解决问题。'\n\n王兴德看着你，眼中闪过一丝动摇。但陶映红已经按下了引爆器……\n\n你冲向炸弹，用尽最后的力气拆除引信。\n\n爆炸在你身边发生，但你成功保护了所有人。\n\n你活了下来，但你失去了意识。\n\n当你再次醒来时，你发现自己在医院里。秦柔柔坐在你床边，眼中满是泪水。\n\n'你回来了……'她说。\n\n'快递……送到了吗？'\n\n她点点头：'送到了。肖鹤云收到了。'\n\n你笑了。循环结束了。",
+      "nextNode": "good_ending_1"
+    },
+    "loop10_cooperate": {
+      "id": "loop10_cooperate",
+      "type": "dialogue",
+      "scene": "city_street",
+      "tensionLevel": 4,
+      "content": "你联系秦柔柔，请她帮忙送快递。\n\n'没问题，'她说，'你去阻止爆炸，我来送快递。'\n\n你们分头行动。\n\n你骑着电动车，飞快地赶往45路公交车。秦柔柔则赶往肖鹤云的地址。\n\n你在公交车上拦住了王兴德，告诉他你知道一切。\n\n'王师傅，我知道你很痛。但爆炸不能解决问题。'\n\n王兴德看着你，眼中闪过一丝动摇。陶映红想按引爆器，但被赶来的警察制服了。\n\n爆炸被阻止了。\n\n与此同时，秦柔柔把快递送到了肖鹤云手里。\n\n循环结束了。你和秦柔柔站在桥上，看着夕阳。\n\n'我们做到了。'她说。\n\n'是的，我们做到了。'\n\n你握住她的手。新的开始了。",
+      "nextNode": "good_ending_2"
+    },
+    "good_ending_1": {
+      "id": "good_ending_1",
+      "type": "ending",
+      "endingVariant": "good",
+      "scene": "hospital",
+      "effects": [{ "type": "addItem", "key": "sacrifice_crystal", "value": "牺牲记忆水晶" }],
+      "content": "你活了下来。\n\n在医院里，你看到了新闻：45路公交车爆炸案成功告破，凶手被抓获，所有乘客安全。\n\n你躺在病床上，看着窗外的阳光。循环结束了。\n\n秦柔柔来看你，她带来了你最喜欢的吃的。\n\n'你知道吗，'她说，'肖鹤云收到了快递。他说，谢谢你。'\n\n你笑了。这就够了。\n\n—— 牺牲与救赎 ——"
+    },
+    "good_ending_2": {
+      "id": "good_ending_2",
+      "type": "ending",
+      "endingVariant": "good",
+      "scene": "bridge",
+      "effects": [{ "type": "addItem", "key": "connection_crystal", "value": "连接记忆水晶" }],
+      "content": "你和秦柔柔站在桥上，看着夕阳。\n\n'我们做到了。'她说。\n\n'是的，我们做到了。'\n\n你握住她的手。新的开始了。\n\n后来，你继续做快递员。秦柔柔继续写她的剧本。你们偶尔会见面，一起吃饭，一起聊天。\n\n有一天，她问你：'你还会梦到循环吗？'\n\n你摇摇头：'不会了。但我会记得，在那个循环里，我遇到了你。'\n\n她笑了。你也是。\n\n—— 新的开始 ——"
+    },
+    "good_ending_3": {
+      "id": "good_ending_3",
+      "type": "ending",
+      "endingVariant": "good",
+      "scene": "city_street",
+      "effects": [{ "type": "addItem", "key": "delivery_crystal", "value": "送达记忆水晶" }],
+      "content": "肖鹤云活了下来。\n\n他站在你面前，看着手中的快递，眼中满是困惑：'你是怎么知道公交车有炸弹的？'\n\n你笑了笑：'这是一个很长的故事。'\n\n你告诉他关于循环的一切，关于姜医生的U盘，关于医疗纠纷的真相。\n\n肖鹤云听完，沉默了很久：'谢谢你。'\n\n后来，肖鹤云帮助姜医生澄清了医疗纠纷。王兴德被逮捕，陶映红也被抓获。\n\n你继续做你的快递员。每一天都是普通的一天，但你知道，你曾经改变过一些事情。\n\n—— 完美送达 ——"
+    },
+    "bad_ending_1": {
+      "id": "bad_ending_1",
+      "type": "ending",
+      "endingVariant": "bad",
+      "scene": "city_street",
+      "checkpointNodeId": "loop10_start",
+      "content": "你错过了阻止爆炸的机会。\n\n当你赶到时，爆炸已经发生了。你看着远处的火光，心中充满了悔恨。\n\n你又回到了快递站。一切又重来了。\n\n你永远无法打破循环——因为你自己选择了错误的道路。"
+    },
+    "bad_ending_2": {
+      "id": "bad_ending_2",
+      "type": "ending",
+      "endingVariant": "bad",
+      "scene": "city_street",
+      "checkpointNodeId": "loop9_start",
+      "content": "你独自行动，无法阻止爆炸。\n\n你被陶映红制服，眼睁睁看着爆炸发生。\n\n你又回到了快递站。一切又重来了。\n\n你永远无法打破循环——因为你选择了独自面对。"
+    },
+    "bad_ending_3": {
+      "id": "bad_ending_3",
+      "type": "ending",
+      "endingVariant": "bad",
+      "scene": "courier_station",
+      "checkpointNodeId": "loop3_start",
+      "content": "你放弃了调查。\n\n你继续每天送快递，看着45路公交车一次又一次爆炸。你什么都做不了。\n\n你永远无法打破循环——因为你自己选择了放弃。"
+    }
+  }
+}

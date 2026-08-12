@@ -52,6 +52,30 @@ const SCENE_STYLES: Record<SceneId, { gradient: string; vignette: string }> = {
     gradient: 'radial-gradient(circle at 50% 20%, #1a2025 0%, #080a0d 80%)',
     vignette: 'rgba(0, 0, 0, 0.55)',
   },
+  courier_station: {
+    gradient: 'radial-gradient(circle at 50% 30%, #2a2520 0%, #0e0c09 70%)',
+    vignette: 'rgba(0, 0, 0, 0.5)',
+  },
+  city_street: {
+    gradient: 'radial-gradient(circle at 50% 35%, #1a1a1a 0%, #0a0a0a 75%)',
+    vignette: 'rgba(0, 0, 0, 0.6)',
+  },
+  bridge_side: {
+    gradient: 'radial-gradient(circle at 50% 20%, #1a2530 0%, #080a0d 80%)',
+    vignette: 'rgba(0, 0, 0, 0.55)',
+  },
+  residential: {
+    gradient: 'radial-gradient(circle at 50% 30%, #25201a 0%, #0e0c09 70%)',
+    vignette: 'rgba(0, 0, 0, 0.5)',
+  },
+  apartment: {
+    gradient: 'radial-gradient(circle at 50% 35%, #1e1a18 0%, #0e0c09 75%)',
+    vignette: 'rgba(0, 0, 0, 0.6)',
+  },
+  hospital: {
+    gradient: 'radial-gradient(circle at 50% 25%, #252830 0%, #0e0c09 80%)',
+    vignette: 'rgba(0, 0, 0, 0.5)',
+  },
 }
 
 export function SceneBackdrop({ scene, tensionLevel = 0 }: SceneBackdropProps) {

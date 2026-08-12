@@ -14,10 +14,12 @@ import { useUserStore } from '@/core/store/userStore'
 import { downloadProgress, uploadProgress } from '@/core/services/syncService'
 import { EscapeTheDen } from '@/games/02-escape-the-den/components/EscapeTheDen'
 import { KaiDuan } from '@/games/03-kai-duan/components/KaiDuan'
+import { SongBuDao } from '@/games/04-song-bu-dao/components/SongBuDao'
 
 const GAME_COMPONENTS: Record<string, ComponentType<{ onExit: () => void }>> = {
   '02-escape-the-den': EscapeTheDen,
   '03-kai-duan': KaiDuan,
+  '04-song-bu-dao': SongBuDao,
 }
 
 function App() {
@@ -72,6 +74,14 @@ function App() {
       title: '开端',
       subtitle: '时间循环，寻找真相',
       flameColor: '#c8934a',
+      unlocked: true,
+      completed: false,
+    })
+    registerFireplace({
+      gameId: '04-song-bu-dao',
+      title: '开端番外·送不到',
+      subtitle: '快递员的时间循环',
+      flameColor: '#d4a574',
       unlocked: true,
       completed: false,
     })
