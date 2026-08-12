@@ -16,6 +16,7 @@ import { ChoicePanel } from '@/core/components/ChoicePanel'
 import { SceneBackdrop } from '@/core/components/SceneBackdrop'
 import { InvestigationPanel } from '@/core/components/InvestigationPanel'
 import { ClueDrawer } from '@/core/components/ClueDrawer'
+import { RelationshipGraph } from '@/core/components/RelationshipGraph'
 import { GameTutorial } from '@/core/components/GameTutorial'
 import { useStoryEngine } from '@/core/hooks/useStoryEngine'
 import { audioManager } from '@/core/engine/audioManager'
@@ -233,6 +234,12 @@ export function KaiDuan({ onExit }: KaiDuanProps) {
       <ClueDrawer
         allClues={storyData.clues || []}
         discoveredIds={discoveredClues}
+      />
+
+      {/* 人物关系图谱 */}
+      <RelationshipGraph
+        gameId={storyData.gameId}
+        characters={storyData.characters || []}
       />
 
       {/* 循环重置动画 */}

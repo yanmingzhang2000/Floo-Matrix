@@ -14,6 +14,7 @@ import { SceneBackdrop } from '@/core/components/SceneBackdrop'
 import { InvestigationPanel } from '@/core/components/InvestigationPanel'
 import { ClueDrawer } from '@/core/components/ClueDrawer'
 import { ReasoningBoard } from '@/core/components/ReasoningBoard'
+import { RelationshipGraph } from '@/core/components/RelationshipGraph'
 import { GameTutorial } from '@/core/components/GameTutorial'
 import { useStoryEngine } from '@/core/hooks/useStoryEngine'
 import { audioManager } from '@/core/engine/audioManager'
@@ -148,6 +149,12 @@ export function EscapeTheDen({ onExit }: EscapeTheDenProps) {
       <ClueDrawer
         allClues={storyData.clues || []}
         discoveredIds={discoveredClues}
+      />
+
+      {/* 人物关系图谱 */}
+      <RelationshipGraph
+        gameId={storyData.gameId}
+        characters={storyData.characters || []}
       />
 
       <AnimatePresence mode="wait">

@@ -250,6 +250,7 @@
       "tensionLevel": 2,
       "content": "你再次在公交车上醒来。这一次你更加清醒——刚才的爆炸不是梦。\n\n你尝试提前下车，但公交车门紧锁，司机拒绝停车。\n\n你注意到坐在你旁边的年轻男人（肖鹤云）似乎也经历了什么——他的表情同样惊恐，额头上布满冷汗。",
       "clues": ["clue_explosion_time"],
+      "effects": [{ "type": "meetCharacter", "key": "xiao_heyun" }],
       "investigations": [
         {
           "id": "inv_xiao_heyun",
@@ -300,6 +301,7 @@
       "tensionLevel": 1,
       "content": "第三次循环。时间回到了1点35分。\n\n这一次，你注意到坐在后排的一个戴着黑色帽子、口罩的年轻人（卢迪）。他的背包里似乎装着什么奇怪的东西——你瞥见了一角彩色的布料和一些道具。\n\n当公交车经过一个站点时，卢迪匆匆下车，背包里的东西散落了一地——那是一套精美的cosplay服装。",
       "clues": ["clue_lu_di_cosplay"],
+      "effects": [{ "type": "meetCharacter", "key": "lu_di" }],
       "investigations": [
         {
           "id": "inv_lu_di_backpack",
@@ -359,6 +361,7 @@
       "tensionLevel": 1,
       "content": "第四次循环。时间回到了1点33分。\n\n你决定仔细观察车上的每一位乘客。\n\n那个热心的老大爷（老张）正在和旁边的人聊天，看起来很孤独；那个中年男人（马国强）带着一箱西瓜，时不时看向窗外；那个农民工（老焦）的行李箱破旧不堪，却擦得干干净净。每个人背后似乎都有故事。",
       "clues": ["clue_lao_zhang", "clue_ma_guoqiang", "clue_lao_jiao"],
+      "effects": [{ "type": "meetCharacter", "key": "lao_zhang" }, { "type": "meetCharacter", "key": "ma_guoqiang" }, { "type": "meetCharacter", "key": "lao_jiao" }],
       "investigations": [
         {
           "id": "inv_lao_zhang",
@@ -495,6 +498,7 @@
       "tensionLevel": 2,
       "content": "第六次循环。时间回到了1点25分。\n\n你和肖鹤云因为可疑行为被警方带走。在审讯室里，经验丰富的张队仔细观察着你们。\n\n“你们是怎么知道这些的？”张队问道，眼神犀利，“你们对公交车上每一个乘客的了解程度，超出了常理。”",
       "clues": ["clue_zhang_dui_suspicion", "clue_police_investigation"],
+      "effects": [{ "type": "meetCharacter", "key": "zhang_dui" }, { "type": "meetCharacter", "key": "xiao_jiang" }],
       "investigations": [
         {
           "id": "inv_zhang_dui",
@@ -577,6 +581,7 @@
       "tensionLevel": 2,
       "content": "第七次循环。时间回到了1点20分。\n\n你决定调查王萌萌五年前的真相。你找到了当年目击王萌萌被骚扰的女学生——刘瑶。\n\n她看起来很憔悴，眼神中充满恐惧和愧疚。\n\n“那天在公交车上，我看到一个男人在骚扰那个女孩，”刘瑶说，声音颤抖，“但我不敢出声。后来她跳车了……都是我的错。”",
       "clues": ["clue_liu_yao_witness", "clue_network_violence", "clue_wang_mengmeng_truth"],
+      "effects": [{ "type": "meetCharacter", "key": "liu_yao" }],
       "investigations": [
         {
           "id": "inv_liu_yao",
@@ -643,6 +648,7 @@
       "tensionLevel": 2,
       "content": "第八次循环。时间回到了1点15分。\n\n你来到陶映红曾经工作的化工厂。工友们说她以前是个温和的人，但自从女儿去世后就变了。\n\n你发现她曾多次向警方请求重新调查女儿的案件，但都被拒绝。在她的住所里，你发现了炸弹的配方和制作记录——这个女人用了整整三年时间，策划了这场爆炸。",
       "clues": ["clue_tao_factory", "clue_bomb_recipe", "clue_couple_history"],
+      "effects": [{ "type": "meetCharacter", "key": "tao_yinghong" }],
       "investigations": [
         {
           "id": "inv_factory",
@@ -772,6 +778,7 @@
       "tensionLevel": 3,
       "content": "第十次循环。时间回到了1点05分。\n\n在一次循环中，你意外地看到了王萌萌的幻影——她站在跨江大桥上，回头看了你一眼，眼中满是悲伤。\n\n你突然明白了：这个循环不是惩罚，而是求救。王萌萌的灵魂被困在了这个时间点，她希望有人能阻止她的父母伤害无辜的人。",
       "clues": ["clue_cycle_source", "clue_cycle_purpose"],
+      "effects": [{ "type": "meetCharacter", "key": "wang_mengmeng" }],
       "investigations": [
         {
           "id": "inv_ghost",
@@ -869,6 +876,7 @@
       "ambientSound": "bus",
       "tensionLevel": 5,
       "content": "第十二次循环。最后的机会。时间回到了1点整。\n\n你站在王兴德面前，告诉他你知道一切——关于王萌萌，关于五年前的真相，关于他的痛苦。\n\n“我知道你很痛，”你说，“但爆炸不能解决问题。王萌萌不会希望你这样做。”\n\n王兴德的眼中闪过一丝动摇。但陶映红已经拿出了引爆器……",
+      "effects": [{ "type": "meetCharacter", "key": "driver_wang" }, { "type": "meetCharacter", "key": "tao_yinghong" }],
       "nextNode": "loop12_final_choice"
     },
     "loop12_final_choice": {
