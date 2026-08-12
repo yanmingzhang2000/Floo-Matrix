@@ -40,7 +40,6 @@ const AMBIENT_SOUNDS: Record<string, string> = {
 const SFX_SOUNDS: Record<string, string> = {
   heartbeat: `${base}audio/sfx/heartbeat.wav`,
   'loop-reset': `${base}audio/sfx/bad-ending-impact.wav`,
-  clue: `${base}audio/sfx/clue.wav`,
   'good-ending': `${base}audio/sfx/good-ending-chime.wav`,
   'bad-ending': `${base}audio/sfx/bad-ending-impact.wav`,
   explosion: `${base}audio/sfx/bad-ending-impact.wav`,
@@ -120,7 +119,6 @@ export function SongBuDao({ onExit }: SongBuDaoProps) {
       if (prev.has(clueId)) return prev
       const next = new Set(prev)
       next.add(clueId)
-      audioManager.play('clue')
       return next
     })
   }, [])
@@ -190,29 +188,29 @@ export function SongBuDao({ onExit }: SongBuDaoProps) {
     }
   }, [currentNode, currentLoop])
 
-  // 计算循环进度
-  const loopProgress = useMemo(() => {
-    return Math.min(100, ((currentLoop - 1) / 9) * 100)
-  }, [currentLoop])
-
-  if (!currentNode) return null
-
   const handleRetry = () => {
-    if (currentNode.checkpointNodeId) {
+    if (currentNode?.checkpointNodeId) {
       jumpToNode(currentNode.checkpointNodeId)
     } else {
       onExit()
     }
   }
 
-  const isBadEnding = isEnding && currentNode.endingVariant === 'bad'
-  const isGoodEnding = isEnding && currentNode.endingVariant === 'good'
-  const investigations = currentNode.investigations || []
+  const isBadEnding = isEnding && currentNode?.endingVariant === 'bad'
+  const isGoodEnding = isEnding && currentNode?.endingVariant === 'good'
+  const investigations = currentNode?.investigations || []
 
   // 计算已解锁副线的显示标签
   const sublineDisplayLabels = useMemo(() => {
     return Array.from(unlockedSublines).map((key) => SUBLINE_LABELS[key] || key)
   }, [unlockedSublines])
+
+  // Keep all hooks above the early return while the story engine initializes.
+  const loopProgress = useMemo(() => {
+    return Math.min(100, ((currentLoop - 1) / 9) * 100)
+  }, [currentLoop])
+
+  if (!currentNode) return null
 
   return (
     <div className="min-h-screen relative flex flex-col items-center justify-center px-6 py-12 overflow-hidden">
