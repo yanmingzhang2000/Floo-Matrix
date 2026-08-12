@@ -34,6 +34,12 @@ app.get('/health', (_req, res) => {
 app.use('/api/auth', authRouter)
 app.use('/api/progress', progressRouter)
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, '0.0.0.0', () => {
   console.log(`[floo-backend] running on port ${PORT}`)
+  console.log(`[floo-backend] listening on 0.0.0.0:${PORT}`)
+})
+
+server.on('error', (err) => {
+  console.error('[floo-backend] Server error:', err)
+  process.exit(1)
 })
