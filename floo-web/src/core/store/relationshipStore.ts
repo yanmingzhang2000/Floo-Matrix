@@ -33,7 +33,7 @@ interface RelationshipState {
   /** 设置阵营判断 */
   setAlignment: (gameId: string, characterId: string, alignment: Alignment) => void
   /** 更新好感度 */
-  updateAffinity: (gameId: string, characterId: string, delta: number, label?: string) => void
+  updateAffinity: (gameId: string, characterId: string, delta: number, label?: string, charName?: string) => void
   /** 设置已揭示的身份 */
   setUnlockedIdentity: (gameId: string, characterId: string, identity: string) => void
   /** 获取某游戏已认识的角色数 */
@@ -93,7 +93,7 @@ export const useRelationshipStore = create<RelationshipState>()(
         })
       },
 
-      updateAffinity: (gameId, characterId, delta, label) => {
+      updateAffinity: (gameId, characterId, delta, label, charName) => {
         set((state) => {
           const gameRelations = state.relations[gameId] || {}
           const existing = gameRelations[characterId] || DEFAULT_RELATION
@@ -101,10 +101,8 @@ export const useRelationshipStore = create<RelationshipState>()(
           const newAffinity = Math.max(0, Math.min(100, currentAffinity + delta))
 
           // 触发 toast 通知
-          const charName = characterId
-            .replace(/_/g, ' ')
-            .replace(/\b\w/g, (c) => c.toUpperCase())
-          useToastStore.getState().addToast(charName, delta, newAffinity)
+          const displayName = charName || characterId
+          useToastStore.getState().addToast(displayName, delta, newAffinity)
 
           return {
             relations: {

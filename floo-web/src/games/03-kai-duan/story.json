@@ -283,7 +283,7 @@
             { "type": "setVariable", "key": "currentLoop", "value": 3 },
             { "type": "setVariable", "key": "trust_xiao", "value": 1 },
             { "type": "setFlag", "key": "trust_xiao_high", "value": true },
-            { "type": "updateAffinity", "key": "xiao_heyun", "value": 20 }
+            { "type": "updateAffinity", "key": "xiao_heyun", "value": 20, "name": "肖鹤云" }
           ]
         },
         {
@@ -386,7 +386,7 @@
           "nextNode": "loop4_lao_zhang",
           "effects": [
             { "type": "setFlag", "key": "investigated_lao_zhang", "value": true },
-            { "type": "updateAffinity", "key": "lao_zhang", "value": 15 }
+            { "type": "updateAffinity", "key": "lao_zhang", "value": 15, "name": "老张" }
           ]
         },
         {
@@ -395,7 +395,7 @@
           "nextNode": "loop4_ma_guoqiang",
           "effects": [
             { "type": "setFlag", "key": "investigated_ma_guoqiang", "value": true },
-            { "type": "updateAffinity", "key": "ma_guoqiang", "value": 15 }
+            { "type": "updateAffinity", "key": "ma_guoqiang", "value": 15, "name": "马国强" }
           ]
         },
         {
@@ -404,7 +404,7 @@
           "nextNode": "loop4_lao_jiao",
           "effects": [
             { "type": "setFlag", "key": "investigated_lao_jiao", "value": true },
-            { "type": "updateAffinity", "key": "lao_jiao", "value": 15 }
+            { "type": "updateAffinity", "key": "lao_jiao", "value": 15, "name": "老焦" }
           ]
         },
         {
@@ -532,7 +532,7 @@
             { "type": "setFlag", "key": "police_cooperation_possible", "value": true },
             { "type": "setVariable", "key": "trust_zhang", "value": 1 },
             { "type": "setVariable", "key": "currentLoop", "value": 6 },
-            { "type": "updateAffinity", "key": "zhang_dui", "value": 20 }
+            { "type": "updateAffinity", "key": "zhang_dui", "value": 20, "name": "张队" }
           ]
         },
         {
@@ -543,7 +543,7 @@
             { "type": "setFlag", "key": "police_suspicion_low", "value": true },
             { "type": "setFlag", "key": "police_cooperation_lost", "value": true },
             { "type": "setVariable", "key": "currentLoop", "value": 6 },
-            { "type": "updateAffinity", "key": "zhang_dui", "value": -10 }
+            { "type": "updateAffinity", "key": "zhang_dui", "value": -10, "name": "张队" }
           ]
         },
         {
@@ -553,7 +553,7 @@
           "effects": [
             { "type": "setFlag", "key": "police_cooperation_lost", "value": true },
             { "type": "setVariable", "key": "currentLoop", "value": 7 },
-            { "type": "updateAffinity", "key": "zhang_dui", "value": -15 }
+            { "type": "updateAffinity", "key": "zhang_dui", "value": -15, "name": "张队" }
           ]
         }
       ]
@@ -621,7 +621,7 @@
             { "type": "setFlag", "key": "liu_yao_trust_high", "value": true },
             { "type": "setFlag", "key": "liu_yao_will_testify", "value": true },
             { "type": "setVariable", "key": "currentLoop", "value": 8 },
-            { "type": "updateAffinity", "key": "liu_yao", "value": 20 }
+            { "type": "updateAffinity", "key": "liu_yao", "value": 20, "name": "刘瑶" }
           ]
         },
         {
@@ -637,7 +637,7 @@
           "effects": [
             { "type": "setFlag", "key": "liu_yao_trust_low", "value": true },
             { "type": "setVariable", "key": "currentLoop", "value": 8 },
-            { "type": "updateAffinity", "key": "liu_yao", "value": -15 }
+            { "type": "updateAffinity", "key": "liu_yao", "value": -15, "name": "刘瑶" }
           ]
         }
       ]
@@ -753,7 +753,7 @@
           "effects": [
             { "type": "setFlag", "key": "trust_xiao_very_high", "value": true },
             { "type": "setVariable", "key": "currentLoop", "value": 10 },
-            { "type": "updateAffinity", "key": "xiao_heyun", "value": 10 }
+            { "type": "updateAffinity", "key": "xiao_heyun", "value": 10, "name": "肖鹤云" }
           ]
         },
         {
@@ -763,7 +763,7 @@
           "effects": [
             { "type": "setFlag", "key": "xiao_sacrifice_attempted", "value": true },
             { "type": "setVariable", "key": "currentLoop", "value": 10 },
-            { "type": "updateAffinity", "key": "xiao_heyun", "value": -20 }
+            { "type": "updateAffinity", "key": "xiao_heyun", "value": -20, "name": "肖鹤云" }
           ]
         },
         {
@@ -773,7 +773,7 @@
           "effects": [
             { "type": "setFlag", "key": "self_sacrifice_intent", "value": true },
             { "type": "setVariable", "key": "currentLoop", "value": 10 },
-            { "type": "updateAffinity", "key": "xiao_heyun", "value": 30 }
+            { "type": "updateAffinity", "key": "xiao_heyun", "value": 30, "name": "肖鹤云" }
           ]
         }
       ]
@@ -824,7 +824,7 @@
           "effects": [
             { "type": "setFlag", "key": "lu_di_family_visit", "value": true },
             { "type": "setVariable", "key": "currentLoop", "value": 10 },
-            { "type": "updateAffinity", "key": "lu_di", "value": 25 }
+            { "type": "updateAffinity", "key": "lu_di", "value": 25, "name": "卢迪" }
           ]
         },
         {

@@ -39,7 +39,7 @@ const SFX_SOUNDS: Record<string, string> = {
   heartbeat: `${base}audio/sfx/heartbeat.wav`,
   'bad-ending-impact': `${base}audio/sfx/bad-ending-impact.wav`,
   'good-ending-chime': `${base}audio/sfx/good-ending-chime.wav`,
-  clue: `${base}audio/sfx/clue.wav`,
+  clue: `${base}audio/sfx/heartbeat.wav`,
 }
 
 const TUTORIAL_KEY = 'floo-tutorial-escape-the-den'

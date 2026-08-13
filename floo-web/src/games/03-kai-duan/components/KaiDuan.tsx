@@ -41,7 +41,7 @@ const AMBIENT_SOUNDS: Record<string, string> = {
 const SFX_SOUNDS: Record<string, string> = {
   heartbeat: `${base}audio/sfx/heartbeat.wav`,
   'loop-reset': `${base}audio/sfx/bad-ending-impact.wav`,
-  clue: `${base}audio/sfx/clue.wav`,
+  clue: `${base}audio/sfx/heartbeat.wav`,
   'good-ending': `${base}audio/sfx/good-ending-chime.wav`,
   'bad-ending': `${base}audio/sfx/bad-ending-impact.wav`,
   explosion: `${base}audio/sfx/bad-ending-impact.wav`,

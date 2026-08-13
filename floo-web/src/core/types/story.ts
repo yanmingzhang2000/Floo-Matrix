@@ -32,6 +32,8 @@ export interface Effect {
     | 'meetCharacter' | 'setAlignment' | 'updateAffinity'
   key: string
   value?: string | number | boolean
+  /** 角色中文名，仅 updateAffinity 使用，用于 toast 通知显示 */
+  name?: string
 }
 
 /** 选项分支 */

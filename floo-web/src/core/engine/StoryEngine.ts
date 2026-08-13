@@ -115,7 +115,7 @@ export class StoryEngine {
           break
         case 'updateAffinity':
           if (effect.value !== undefined) {
-            relationship.updateAffinity(this.gameId, effect.key, Number(effect.value))
+            relationship.updateAffinity(this.gameId, effect.key, Number(effect.value), effect.name)
           }
           break
       }
