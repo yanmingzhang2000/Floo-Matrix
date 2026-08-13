@@ -6,17 +6,17 @@
   "characters": [
     { "id": "protagonist", "name": "你", "description": "在45路公交车上遭遇爆炸的普通人，进入时间循环" },
     { "id": "li_shiqing", "name": "李诗情", "description": "大学生，善良勇敢，第一个进入循环的人" },
-    { "id": "xiao_heyun", "name": "肖鹤云", "description": "游戏架构师，理性冷静，被李诗情拉入循环" },
+    { "id": "xiao_heyun", "name": "肖鹤云", "description": "游戏架构师，理性冷静，被李诗情拉入循环", "teammateThreshold": 50 },
     { "id": "driver_wang", "name": "王兴德", "description": "45路公交车司机，沉默寡言，曾是好人模范" },
     { "id": "tao_yinghong", "name": "陶映红", "description": "司机前妻，炸弹制造者，精神状态不稳定" },
     { "id": "wang_mengmeng", "name": "王萌萌", "description": "司机女儿，五年前在公交车上被骚扰后跳车自杀" },
-    { "id": "lu_di", "name": "卢迪", "description": "二次元少年，患有哮喘，热爱ACG文化，全名：卢·猫之使徒·哮喘终结者·被光选中的人·笛" },
-    { "id": "lao_zhang", "name": "老张", "description": "退休工人，热心但孤独的老年乘客" },
+    { "id": "lu_di", "name": "卢迪", "description": "二次元少年，患有哮喘，热爱ACG文化，全名：卢·猫之使徒·哮喘终结者·被光选中的人·笛", "teammateThreshold": 55 },
+    { "id": "lao_zhang", "name": "老张", "description": "退休工人，热心但孤独的老年乘客", "teammateThreshold": 60 },
     { "id": "yao_po", "name": "药婆", "description": "老太太，吴语口音，带着装满药物的包" },
-    { "id": "ma_guoqiang", "name": "马国强", "description": "中年农民，出狱后重新开始生活" },
-    { "id": "lao_jiao", "name": "老焦", "description": "农民工，生活窘迫，行李箱装满全部家当" },
-    { "id": "liu_yao", "name": "刘瑶", "description": "五年前目击王萌萌被骚扰但没有发声的女学生" },
-    { "id": "zhang_dui", "name": "张队", "description": "刑警队长，经验丰富，睿智亲切" },
+    { "id": "ma_guoqiang", "name": "马国强", "description": "中年农民，出狱后重新开始生活", "teammateThreshold": 60 },
+    { "id": "lao_jiao", "name": "老焦", "description": "农民工，生活窘迫，行李箱装满全部家当", "teammateThreshold": 60 },
+    { "id": "liu_yao", "name": "刘瑶", "description": "五年前目击王萌萌被骚扰但没有发声的女学生", "teammateThreshold": 65 },
+    { "id": "zhang_dui", "name": "张队", "description": "刑警队长，经验丰富，睿智亲切", "teammateThreshold": 70 },
     { "id": "xiao_jiang", "name": "小江", "description": "年轻警官，刚从警校毕业" },
     { "id": "undercover", "name": "便衣警察", "description": "张队安排的便衣，负责拆弹任务" }
   ],
@@ -282,7 +282,8 @@
           "effects": [
             { "type": "setVariable", "key": "currentLoop", "value": 3 },
             { "type": "setVariable", "key": "trust_xiao", "value": 1 },
-            { "type": "setFlag", "key": "trust_xiao_high", "value": true }
+            { "type": "setFlag", "key": "trust_xiao_high", "value": true },
+            { "type": "updateAffinity", "key": "xiao_heyun", "value": 20 }
           ]
         },
         {
@@ -383,19 +384,28 @@
           "id": "c4_a",
           "text": "重点调查老张",
           "nextNode": "loop4_lao_zhang",
-          "effects": [{ "type": "setFlag", "key": "investigated_lao_zhang", "value": true }]
+          "effects": [
+            { "type": "setFlag", "key": "investigated_lao_zhang", "value": true },
+            { "type": "updateAffinity", "key": "lao_zhang", "value": 15 }
+          ]
         },
         {
           "id": "c4_b",
           "text": "重点调查马国强",
           "nextNode": "loop4_ma_guoqiang",
-          "effects": [{ "type": "setFlag", "key": "investigated_ma_guoqiang", "value": true }]
+          "effects": [
+            { "type": "setFlag", "key": "investigated_ma_guoqiang", "value": true },
+            { "type": "updateAffinity", "key": "ma_guoqiang", "value": 15 }
+          ]
         },
         {
           "id": "c4_c",
           "text": "重点调查老焦",
           "nextNode": "loop4_lao_jiao",
-          "effects": [{ "type": "setFlag", "key": "investigated_lao_jiao", "value": true }]
+          "effects": [
+            { "type": "setFlag", "key": "investigated_lao_jiao", "value": true },
+            { "type": "updateAffinity", "key": "lao_jiao", "value": 15 }
+          ]
         },
         {
           "id": "c4_d",
@@ -521,7 +531,8 @@
             { "type": "setFlag", "key": "police_suspicion_high", "value": true },
             { "type": "setFlag", "key": "police_cooperation_possible", "value": true },
             { "type": "setVariable", "key": "trust_zhang", "value": 1 },
-            { "type": "setVariable", "key": "currentLoop", "value": 6 }
+            { "type": "setVariable", "key": "currentLoop", "value": 6 },
+            { "type": "updateAffinity", "key": "zhang_dui", "value": 20 }
           ]
         },
         {
@@ -531,7 +542,8 @@
           "effects": [
             { "type": "setFlag", "key": "police_suspicion_low", "value": true },
             { "type": "setFlag", "key": "police_cooperation_lost", "value": true },
-            { "type": "setVariable", "key": "currentLoop", "value": 6 }
+            { "type": "setVariable", "key": "currentLoop", "value": 6 },
+            { "type": "updateAffinity", "key": "zhang_dui", "value": -10 }
           ]
         },
         {
@@ -540,7 +552,8 @@
           "nextNode": "loop6_silence",
           "effects": [
             { "type": "setFlag", "key": "police_cooperation_lost", "value": true },
-            { "type": "setVariable", "key": "currentLoop", "value": 7 }
+            { "type": "setVariable", "key": "currentLoop", "value": 7 },
+            { "type": "updateAffinity", "key": "zhang_dui", "value": -15 }
           ]
         }
       ]
@@ -607,7 +620,8 @@
           "effects": [
             { "type": "setFlag", "key": "liu_yao_trust_high", "value": true },
             { "type": "setFlag", "key": "liu_yao_will_testify", "value": true },
-            { "type": "setVariable", "key": "currentLoop", "value": 8 }
+            { "type": "setVariable", "key": "currentLoop", "value": 8 },
+            { "type": "updateAffinity", "key": "liu_yao", "value": 20 }
           ]
         },
         {
@@ -622,7 +636,8 @@
           "nextNode": "loop7_confront",
           "effects": [
             { "type": "setFlag", "key": "liu_yao_trust_low", "value": true },
-            { "type": "setVariable", "key": "currentLoop", "value": 8 }
+            { "type": "setVariable", "key": "currentLoop", "value": 8 },
+            { "type": "updateAffinity", "key": "liu_yao", "value": -15 }
           ]
         }
       ]
@@ -737,7 +752,8 @@
           "nextNode": "loop10_start",
           "effects": [
             { "type": "setFlag", "key": "trust_xiao_very_high", "value": true },
-            { "type": "setVariable", "key": "currentLoop", "value": 10 }
+            { "type": "setVariable", "key": "currentLoop", "value": 10 },
+            { "type": "updateAffinity", "key": "xiao_heyun", "value": 10 }
           ]
         },
         {
@@ -746,7 +762,8 @@
           "nextNode": "loop9_sacrifice_fail",
           "effects": [
             { "type": "setFlag", "key": "xiao_sacrifice_attempted", "value": true },
-            { "type": "setVariable", "key": "currentLoop", "value": 10 }
+            { "type": "setVariable", "key": "currentLoop", "value": 10 },
+            { "type": "updateAffinity", "key": "xiao_heyun", "value": -20 }
           ]
         },
         {
@@ -755,7 +772,8 @@
           "nextNode": "loop9_self_sacrifice_intent",
           "effects": [
             { "type": "setFlag", "key": "self_sacrifice_intent", "value": true },
-            { "type": "setVariable", "key": "currentLoop", "value": 10 }
+            { "type": "setVariable", "key": "currentLoop", "value": 10 },
+            { "type": "updateAffinity", "key": "xiao_heyun", "value": 30 }
           ]
         }
       ]
@@ -805,7 +823,8 @@
           "nextNode": "loop10_lu_di_family",
           "effects": [
             { "type": "setFlag", "key": "lu_di_family_visit", "value": true },
-            { "type": "setVariable", "key": "currentLoop", "value": 10 }
+            { "type": "setVariable", "key": "currentLoop", "value": 10 },
+            { "type": "updateAffinity", "key": "lu_di", "value": 25 }
           ]
         },
         {

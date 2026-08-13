@@ -10,7 +10,6 @@ import { LoopResetOverlay } from './LoopResetOverlay'
 import { FlashbackOverlay } from './FlashbackOverlay'
 import { CycleCounter } from './CycleCounter'
 import { TimelineBar } from './TimelineBar'
-import { TrustMeter } from './TrustMeter'
 import { DialogueBox } from '@/core/components/DialogueBox'
 import { ChoicePanel } from '@/core/components/ChoicePanel'
 import { SceneBackdrop } from '@/core/components/SceneBackdrop'
@@ -228,8 +227,6 @@ export function KaiDuan({ onExit }: KaiDuanProps) {
         explosionTime="1:45"
         progress={timeProgress}
       />
-
-      <TrustMeter trustLevel={85} />
 
       {/* 线索抽屉 */}
       <ClueDrawer

@@ -14,6 +14,7 @@ import { SceneBackdrop } from '@/core/components/SceneBackdrop'
 import { InvestigationPanel } from '@/core/components/InvestigationPanel'
 import { ClueDrawer } from '@/core/components/ClueDrawer'
 import { ReasoningBoard } from '@/core/components/ReasoningBoard'
+import { RelationshipGraph } from '@/core/components/RelationshipGraph'
 import { GameTutorial } from '@/core/components/GameTutorial'
 import { useStoryEngine } from '@/core/hooks/useStoryEngine'
 import { audioManager } from '@/core/engine/audioManager'
@@ -341,6 +342,12 @@ export function SongBuDao({ onExit }: SongBuDaoProps) {
         clues={storyData.clues || []}
         clueLinks={storyData.clueLinks}
         discoveredClueIds={discoveredClues}
+      />
+
+      {/* 人物关系图 */}
+      <RelationshipGraph
+        gameId={storyData.gameId}
+        characters={storyData.characters || []}
       />
 
       {/* 循环重置动画 */}

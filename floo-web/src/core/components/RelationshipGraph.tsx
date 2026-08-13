@@ -284,6 +284,46 @@ export function RelationshipGraph({ gameId, characters }: RelationshipGraphProps
                         互动次数：{selectedRelation.interactCount}
                       </p>
 
+                      {/* 信任度 */}
+                      {selectedRelation.affinity !== undefined && (
+                        <div className="mb-3">
+                          <div className="flex items-center justify-between mb-1.5">
+                            <span className="text-xs text-floo-text-muted/60 font-ui">信任度</span>
+                            <span className={`text-sm font-heading ${
+                              selectedRelation.affinity >= 70
+                                ? 'text-floo-accent-green'
+                                : selectedRelation.affinity >= 40
+                                  ? 'text-floo-accent-gold'
+                                  : 'text-red-400'
+                            }`}>
+                              {selectedRelation.affinity}/100
+                            </span>
+                          </div>
+                          <div className="w-full h-2 rounded-full bg-floo-bg-secondary overflow-hidden">
+                            <motion.div
+                              className="h-full rounded-full"
+                              style={{
+                                backgroundColor:
+                                  selectedRelation.affinity >= 70
+                                    ? '#4aa06c'
+                                    : selectedRelation.affinity >= 40
+                                      ? '#c8934a'
+                                      : '#b85450',
+                              }}
+                              initial={{ width: 0 }}
+                              animate={{ width: `${selectedRelation.affinity}%` }}
+                              transition={{ duration: 0.8, ease: 'easeOut' }}
+                            />
+                          </div>
+                          {selectedChar.teammateThreshold !== undefined &&
+                            selectedRelation.affinity >= selectedChar.teammateThreshold && (
+                            <p className="text-xs text-floo-accent-green font-ui mt-1.5">
+                              ✦ 可信赖队友
+                            </p>
+                          )}
+                        </div>
+                      )}
+
                       {/* 阵营标记 */}
                       <div className="flex items-center gap-2">
                         <span className="text-xs text-floo-text-muted/60 font-ui">标记为：</span>

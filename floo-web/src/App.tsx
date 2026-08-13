@@ -8,6 +8,7 @@ import { FireplaceWall } from '@/core/components/FireplaceWall'
 import { PortalTransition } from '@/core/components/PortalTransition'
 import { AudioControl } from '@/core/components/AudioControl'
 import { AuthModal } from '@/core/components/AuthModal'
+import { ToastNotification } from '@/core/components/ToastNotification'
 import { useHubStore } from '@/core/store/hubStore'
 import { useGameStore } from '@/core/store/gameStore'
 import { useUserStore } from '@/core/store/userStore'
@@ -127,6 +128,7 @@ function App() {
   return (
     <>
       <AudioControl />
+      <ToastNotification />
 
       {/* 右上角登录状态按钮（放在音量控制左边） */}
       {!activeGameId && (

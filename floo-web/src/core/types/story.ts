@@ -97,6 +97,8 @@ export interface Character {
   description?: string
   /** 真实阵营（剧情预设，可逐步揭示） */
   realAlignment?: Alignment
+  /** 信任度阈值：达到此值可作为队友 */
+  teammateThreshold?: number
 }
 
 /** 剧本节点 */

@@ -6,6 +6,7 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 import type { Alignment } from '@/core/types/story'
+import { useToastStore } from './toastStore'
 
 /** 单个角色的关系状态 */
 export interface CharacterRelation {
@@ -98,6 +99,13 @@ export const useRelationshipStore = create<RelationshipState>()(
           const existing = gameRelations[characterId] || DEFAULT_RELATION
           const currentAffinity = existing.affinity ?? 50
           const newAffinity = Math.max(0, Math.min(100, currentAffinity + delta))
+
+          // 触发 toast 通知
+          const charName = characterId
+            .replace(/_/g, ' ')
+            .replace(/\b\w/g, (c) => c.toUpperCase())
+          useToastStore.getState().addToast(charName, delta, newAffinity)
+
           return {
             relations: {
               ...state.relations,
