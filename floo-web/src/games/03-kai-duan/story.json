@@ -225,7 +225,8 @@
         {
           "id": "c1_a",
           "text": "尝试提前下车",
-          "nextNode": "bad_ending_1"
+          "nextNode": "loop1_panic",
+          "effects": [{ "type": "setFlag", "key": "wasted_first_loop", "value": true }]
         },
         {
           "id": "c1_b",
@@ -235,13 +236,13 @@
         }
       ]
     },
-    "bad_ending_1": {
-      "id": "bad_ending_1",
-      "type": "ending",
-      "endingVariant": "bad",
+    "loop1_panic": {
+      "id": "loop1_panic",
+      "type": "dialogue",
       "scene": "bus",
-      "checkpointNodeId": "loop1_awaken",
-      "content": "你猛地站起来，冲向车门，疯狂地拍打着车门要求下车。\n\n司机回头看了你一眼，没有理会。车门紧锁，公交车依然向前行驶。\n\n下一秒——轰。\n\n白光一闪，你什么都来不及想。\n\n你再次醒来，发现自己又回到了公交车上，时间回到了1点40分。\n\n你没能逃出循环。"
+      "content": "你猛地站起来，冲向车门，疯狂地拍打着车门要求下车。\n\n司机回头看了你一眼，没有理会。车门紧锁，公交车依然向前行驶。\n\n你试了所有办法——砸窗、撬门、恳求司机。但一切都是徒劳。\n\n1点45分。爆炸发生了。\n\n白光一闪。\n\n你再次在公交车上醒来，时间回到了1点40分。心脏狂跳，冷汗浸透了后背。\n\n你明白了——你逃不掉。你必须阻止爆炸本身。",
+      "nextNode": "loop2_start",
+      "effects": [{ "type": "setVariable", "key": "currentLoop", "value": 2 }]
     },
     "loop2_start": {
       "id": "loop2_start",
@@ -410,7 +411,10 @@
       "scene": "bus",
       "content": "你坐到老张旁边的空位上。他立刻转过头来，眼睛亮了一下。\n\n\"小姑娘，你也是坐这趟车的？\"他笑呵呵地问，像是等了很久终于有人搭话。\n\n你点点头。他便开始絮絮叨叨地讲起来——儿子在深圳做程序员，一年回来一次；女儿嫁到了杭州，上次见面还是过年。老伴去年走了，家里就剩他一个人。\n\n\"你知道吗，\"他压低声音，像是在分享什么秘密，\"我每天坐这趟公交车，就是想跟人说说话。\"\n\n他指了指自己的胸口：\"公交车上的人虽然不认识，但至少是活生生的人。在家里待着，连个说话的人都没有，那才叫难受。\"\n\n你看着他浑浊却温暖的眼睛，心里一阵酸楚。这个老人，每天独自起床、独自吃饭、独自坐上这辆公交车，只是为了找人说几句话。\n\n他也是爆炸的受害者之一。他也会在1点45分死去。\n\n老张似乎察觉到你的异样，拍了拍你的手：\"小姑娘，你怎么了？眼睛红红的。\"\n\n\"没什么，\"你挤出一个笑容，\"风太大了。\"",
       "nextNode": "loop5_start",
-      "effects": [{ "type": "setVariable", "key": "currentLoop", "value": 5 }]
+      "effects": [
+        { "type": "setFlag", "key": "investigated_lao_zhang", "value": true },
+        { "type": "setFlag", "key": "passengers_investigated", "value": true }
+      ]
     },
     "loop4_ma_guoqiang": {
       "id": "loop4_ma_guoqiang",
@@ -418,7 +422,10 @@
       "scene": "bus",
       "content": "马国强小心翼翼地抱着那箱西瓜，像是抱着什么珍贵的宝物。\n\n你走过去，在他旁边坐下。他警惕地看了你一眼，身体微微侧了侧，把西瓜护得更紧了。\n\n\"大哥，这西瓜是买给谁的？\"你故作轻松地问。\n\n他的表情松动了一些：\"给我老婆和孩子的。\"\n\n他顿了顿，低声说：\"我刚出来，三年了。\"\n\n你没有追问'出来'是什么意思。他却自己说了下去：\n\n\"我老婆带着孩子等我，我答应过要给她带西瓜，她最爱吃西瓜。\"他低头看着那箱西瓜，嘴角扯出一个苦涩的笑，\"我知道别人怎么看我。但我想重新开始，真的想。\"\n\n他的手指粗糙，指甲缝里塞着泥土，手背上有几道旧伤疤。他说话的时候，眼睛一直盯着西瓜，像是怕它们碎了。\n\n你看着这个男人，想起了一件事——他把全部的希望都寄托在那箱西瓜上。如果爆炸发生，这些西瓜会碎掉，他的承诺会落空，他的重新开始会变成一场空。\n\n\"大哥，\"你说，\"西瓜会送到的。\"\n\n他愣了一下，然后笑了，笑容里有一丝感激。",
       "nextNode": "loop5_start",
-      "effects": [{ "type": "setVariable", "key": "currentLoop", "value": 5 }]
+      "effects": [
+        { "type": "setFlag", "key": "investigated_ma_guoqiang", "value": true },
+        { "type": "setFlag", "key": "passengers_investigated", "value": true }
+      ]
     },
     "loop4_lao_jiao": {
       "id": "loop4_lao_jiao",
@@ -426,7 +433,10 @@
       "scene": "bus",
       "content": "老焦的行李箱擦得干干净净，虽然已经很旧了，箱角磨损得厉害，但表面没有一点灰尘。\n\n你在他旁边坐下。他立刻把行李箱往自己脚边挪了挪，像是怕它碍到你。\n\n\"大哥，你这是去哪？\"你问。\n\n\"去城里，\"他憨厚地笑了笑，\"我闺女在城里上大学，我是来给她送生活费的。\"\n\n他从口袋里掏出一张照片——一个扎着马尾辫的女孩，笑得灿烂。照片的边角已经磨损了，但被保护得很好。\n\n\"她不知道我干的是什么活，\"他挠了挠头，声音里带着一丝骄傲和心虚交织的复杂情绪，\"我告诉她我在工地当管理员。其实我就是搬砖的。\"\n\n他看了看自己的双手——满是老茧，指甲缝里嵌着洗不掉的水泥灰。\n\n\"但只要她能念书，我搬多少砖都行。\"\n\n你看着这个男人，他的背挺得笔直，衣服虽然旧但洗得干干净净。他把全部的希望都寄托在那个照片上的女孩身上。如果爆炸发生，他女儿永远等不到那笔生活费了。",
       "nextNode": "loop5_start",
-      "effects": [{ "type": "setVariable", "key": "currentLoop", "value": 5 }]
+      "effects": [
+        { "type": "setFlag", "key": "investigated_lao_jiao", "value": true },
+        { "type": "setFlag", "key": "passengers_investigated", "value": true }
+      ]
     },
     "loop5_start": {
       "id": "loop5_start",
@@ -527,7 +537,11 @@
         {
           "id": "c6_c",
           "text": "保持沉默",
-          "nextNode": "bad_ending_2"
+          "nextNode": "loop6_silence",
+          "effects": [
+            { "type": "setFlag", "key": "police_cooperation_lost", "value": true },
+            { "type": "setVariable", "key": "currentLoop", "value": 7 }
+          ]
         }
       ]
     },
@@ -547,13 +561,12 @@
       "nextNode": "loop7_start",
       "effects": [{ "type": "setVariable", "key": "currentLoop", "value": 7 }]
     },
-    "bad_ending_2": {
-      "id": "bad_ending_2",
-      "type": "ending",
-      "endingVariant": "bad",
+    "loop6_silence": {
+      "id": "loop6_silence",
+      "type": "dialogue",
       "scene": "police_station",
-      "checkpointNodeId": "loop6_start",
-      "content": "你选择了沉默。\n\n张队等了很久，审讯室里的空气像是凝固了。最终，他摇了摇头。\n\n\"既然你们不愿意配合，那就先拘留吧。\"\n\n你被关进了一间狭小的拘留室。铁门在身后关上，发出沉闷的响声。\n\n墙壁是灰色的，天花板上有一盏昏黄的灯，发出嗡嗡的声响。你坐在硬邦邦的铁床上，看着墙上的时钟——秒针一格一格地走着。\n\n1点40分。1点41分。1点42分。\n\n你什么都做不了。你被困在这里，无法阻止爆炸，也无法离开。\n\n1点45分。\n\n远处传来一声闷响。沉闷，但你听到了。\n\n爆炸还是发生了。\n\n你靠在墙上，闭上眼睛。循环重置的黑暗将你吞没。\n\n你被困在循环中，无法逃脱。"
+      "content": "你选择了沉默。\n\n张队等了很久，审讯室里的空气像是凝固了。最终，他摇了摇头。\n\n\"既然你们不愿意配合，我也不勉强。\"\n\n他站起身，走到门口，回头看了你们一眼：\"如果你们改主意了，随时来找我。\"\n\n门关上了。你和肖鹤云被晾在审讯室里。\n\n走出警察局的时候，肖鹤云低声说：\"他其实想帮我们。但你浪费了这个机会。\"\n\n你沉默了。你知道他说得对。\n\n循环重置的白光闪过，你回到了公交车上。时间来到了第七次循环。",
+      "nextNode": "loop7_start"
     },
     "loop7_start": {
       "id": "loop7_start",
@@ -678,17 +691,20 @@
         {
           "id": "c8_c",
           "text": "尝试劝说陶映红放弃",
-          "nextNode": "bad_ending_3"
+          "nextNode": "loop8_persuade_fail",
+          "effects": [
+            { "type": "setFlag", "key": "tao_confrontation_failed", "value": true },
+            { "type": "setVariable", "key": "currentLoop", "value": 9 }
+          ]
         }
       ]
     },
-    "bad_ending_3": {
-      "id": "bad_ending_3",
-      "type": "ending",
-      "endingVariant": "bad",
+    "loop8_persuade_fail": {
+      "id": "loop8_persuade_fail",
+      "type": "dialogue",
       "scene": "factory",
-      "checkpointNodeId": "loop8_start",
-      "content": "你找到了陶映红。她站在化工厂的仓库里，手里拿着引爆器。\n\n\"我知道你很难过，\"你说，声音尽量保持平稳，\"但爆炸不能解决问题。\"\n\n她转过头来，看着你。她的眼睛里没有疯狂，只有一种深入骨髓的疲惫。\n\n\"你知道一个母亲失去孩子的痛苦吗？\"她的声音沙哑，\"你什么都不知道。\"\n\n\"我知道王萌萌的事——\"\n\n\"你不知道！\"她突然尖叫起来，\"你不知道我女儿是怎么死的！她被骚扰，她跳车，她被卡车撞死——而那些人，那些网络上的人，他们说她'活该'！\"\n\n她的手开始颤抖，引爆器在她手里摇晃。\n\n\"我向警察求助，他们说证据不足。我上网发帖，他们说我在造谣。我的女儿死了，没有人在乎！\"\n\n你看着她，心里涌上一阵无力感。你说什么都没用——她的绝望已经超越了理智。\n\n她按下了引爆器。\n\n火光一闪。你再次醒来，又回到了公交车上。"
+      "content": "你找到了陶映红。她站在化工厂的仓库里，手里拿着引爆器。\n\n\"我知道你很难过，\"你说，声音尽量保持平稳，\"但爆炸不能解决问题。\"\n\n她转过头来，看着你。她的眼睛里没有疯狂，只有一种深入骨髓的疲惫。\n\n\"你知道一个母亲失去孩子的痛苦吗？\"她的声音沙哑，\"你什么都不知道。\"\n\n\"我知道王萌萌的事——\"\n\n\"你不知道！\"她突然尖叫起来，\"你不知道我女儿是怎么死的！她被骚扰，她跳车，她被卡车撞死——而那些人，那些网络上的人，他们说她'活该'！\"\n\n她的手开始颤抖，引爆器在她手里摇晃。\n\n你意识到，现在的你根本说服不了她。你还没有足够的筹码——没有刘瑶的证词，没有王兴德的配合，没有警察的支持。\n\n你后退了一步。她没有追上来。\n\n循环重置的白光闪过。你回到了公交车上。时间来到了第九次循环。",
+      "nextNode": "loop9_start"
     },
     "loop9_start": {
       "id": "loop9_start",
@@ -727,22 +743,36 @@
         {
           "id": "c9_b",
           "text": "接受肖鹤云的提议",
-          "nextNode": "bad_ending_4"
+          "nextNode": "loop9_sacrifice_fail",
+          "effects": [
+            { "type": "setFlag", "key": "xiao_sacrifice_attempted", "value": true },
+            { "type": "setVariable", "key": "currentLoop", "value": 10 }
+          ]
         },
         {
           "id": "c9_c",
           "text": "决定自己牺牲",
-          "nextNode": "good_ending_2"
+          "nextNode": "loop9_self_sacrifice_intent",
+          "effects": [
+            { "type": "setFlag", "key": "self_sacrifice_intent", "value": true },
+            { "type": "setVariable", "key": "currentLoop", "value": 10 }
+          ]
         }
       ]
     },
-    "bad_ending_4": {
-      "id": "bad_ending_4",
-      "type": "ending",
-      "endingVariant": "bad",
+    "loop9_sacrifice_fail": {
+      "id": "loop9_sacrifice_fail",
+      "type": "dialogue",
       "scene": "bus",
-      "checkpointNodeId": "loop9_start",
-      "content": "你沉默了。\n\n肖鹤云苦笑了一下，站起身。他的身体摇晃了一下，你下意识地伸手去扶他，但他推开了你的手。\n\n\"让我去，\"他说，\"这是我自己的选择。\"\n\n你看着他走向陶映红的方向。他的背影单薄而脆弱，每一步都像是在用尽全身的力气。\n\n他走到陶映红面前，说了些什么。你听不到，但你看到陶映红的表情变了——从惊讶到困惑，再到一丝动摇。\n\n肖鹤云伸出手，试图拆除炸弹。\n\n但他的手在颤抖。他太虚弱了，手指几乎握不住工具。\n\n就在这时，爆炸发生了。\n\n火光吞噬了一切。你看到肖鹤云的身影在火焰中倒下。\n\n你冲过去，但一切都太晚了。你抱着他渐渐冰冷的身体，泪水夺眶而出。\n\n循环重置。你再次回到了公交车上。\n\n牺牲失败了。"
+      "content": "你沉默了。\n\n肖鹤云苦笑了一下，站起身。他的身体摇晃了一下，你下意识地伸手去扶他，但他推开了你的手。\n\n\"让我去，\"他说，\"这是我自己的选择。\"\n\n你看着他走向陶映红的方向。他的背影单薄而脆弱，每一步都像是在用尽全身的力气。\n\n他走到陶映红面前，说了些什么。你听不到，但你看到陶映红的表情变了——从惊讶到困惑，再到一丝动摇。\n\n肖鹤云伸出手，试图拆除炸弹。\n\n但他的手在颤抖。他太虚弱了，手指几乎握不住工具。\n\n就在这时，爆炸发生了。\n\n火光吞噬了一切。\n\n你再次醒来，又回到了公交车上。肖鹤云还在你旁边，虚弱地咳嗽着。\n\n你紧紧抓住他的手。这次你不会让他一个人去。",
+      "nextNode": "loop10_start"
+    },
+    "loop9_self_sacrifice_intent": {
+      "id": "loop9_self_sacrifice_intent",
+      "type": "dialogue",
+      "scene": "bus",
+      "content": "\"让我来，\"你说。\n\n肖鹤云愣住了：\"你——\"\n\n\"你已经为我牺牲了太多次，\"你打断他，\"这次轮到我了。\"\n\n他看着你，眼眶泛红。他想说什么，但最终只是点了点头。\n\n\"好，\"他轻声说，\"但不是现在。我们还有时间准备。\"\n\n你握紧了他的手。你知道，你已经做好了最坏的打算。但你也要尽力争取最好的结果。\n\n循环重置。你回到了公交车上。时间来到了第十次循环。",
+      "nextNode": "loop10_start"
     },
     "good_ending_2": {
       "id": "good_ending_2",
@@ -836,17 +866,20 @@
         {
           "id": "c11_b",
           "text": "放弃计划",
-          "nextNode": "bad_ending_5"
+          "nextNode": "loop11_give_up",
+          "effects": [
+            { "type": "setFlag", "key": "plan_abandoned", "value": true },
+            { "type": "setVariable", "key": "currentLoop", "value": 12 }
+          ]
         }
       ]
     },
-    "bad_ending_5": {
-      "id": "bad_ending_5",
-      "type": "ending",
-      "endingVariant": "bad",
+    "loop11_give_up": {
+      "id": "loop11_give_up",
+      "type": "dialogue",
       "scene": "bus",
-      "checkpointNodeId": "loop11_start",
-      "content": "你放弃了。\n\n恐惧战胜了勇气。你坐在座位上，双手紧紧攥着扶手，指节泛白。你的脑海里一片空白，只有一个声音在重复：'我做不到，我做不到。'\n\n你看着窗外的风景，看着阳光洒在江面上，看着远处的桥墩越来越近。\n\n1点45分。\n\n爆炸如期而至。你没有挣扎，也没有逃跑。你只是闭上眼睛，等待着不可避免的结局。\n\n火光吞噬了一切。你再次醒来，又回到了公交车上。\n\n你永远无法打破循环——因为你自己选择了放弃。"
+      "content": "你放弃了。\n\n恐惧战胜了勇气。你坐在座位上，双手紧紧攥着扶手，指节泛白。你的脑海里一片空白，只有一个声音在重复：'我做不到，我做不到。'\n\n你看着窗外的风景，看着阳光洒在江面上，看着远处的桥墩越来越近。\n\n1点45分。爆炸如期而至。\n\n白光一闪。\n\n你再次醒来。最后一次循环。1点整。\n\n肖鹤云看着你，他的眼神在说：这是最后的机会了。",
+      "nextNode": "loop12_start"
     },
     "loop12_start": {
       "id": "loop12_start",
