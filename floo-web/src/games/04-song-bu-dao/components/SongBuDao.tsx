@@ -13,6 +13,7 @@ import { ChoicePanel } from '@/core/components/ChoicePanel'
 import { SceneBackdrop } from '@/core/components/SceneBackdrop'
 import { InvestigationPanel } from '@/core/components/InvestigationPanel'
 import { ClueDrawer } from '@/core/components/ClueDrawer'
+import { ReasoningBoard } from '@/core/components/ReasoningBoard'
 import { GameTutorial } from '@/core/components/GameTutorial'
 import { useStoryEngine } from '@/core/hooks/useStoryEngine'
 import { audioManager } from '@/core/engine/audioManager'
@@ -332,6 +333,14 @@ export function SongBuDao({ onExit }: SongBuDaoProps) {
       <ClueDrawer
         allClues={storyData.clues || []}
         discoveredIds={discoveredClues}
+      />
+
+      {/* 推理板 */}
+      <ReasoningBoard
+        characters={storyData.characters || []}
+        clues={storyData.clues || []}
+        clueLinks={storyData.clueLinks}
+        discoveredClueIds={discoveredClues}
       />
 
       {/* 循环重置动画 */}

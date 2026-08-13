@@ -73,7 +73,6 @@ export function EscapeTheDen({ onExit }: EscapeTheDenProps) {
 
   // 线索收集状态
   const [discoveredClues, setDiscoveredClues] = useState<Set<string>>(new Set())
-  const [hasReasoned, setHasReasoned] = useState(false)
 
   const handleClueFound = useCallback((clueId: string) => {
     setDiscoveredClues((prev) => {
@@ -151,6 +150,14 @@ export function EscapeTheDen({ onExit }: EscapeTheDenProps) {
         discoveredIds={discoveredClues}
       />
 
+      {/* 推理板 */}
+      <ReasoningBoard
+        characters={storyData.characters || []}
+        clues={storyData.clues || []}
+        clueLinks={storyData.clueLinks}
+        discoveredClueIds={discoveredClues}
+      />
+
       {/* 人物关系图谱 */}
       <RelationshipGraph
         gameId={storyData.gameId}
@@ -187,16 +194,6 @@ export function EscapeTheDen({ onExit }: EscapeTheDenProps) {
                 points={investigations}
                 onClueFound={handleClueFound}
                 discoveredClues={discoveredClues}
-              />
-            )}
-
-            {/* 最后选择前的推理板 */}
-            {currentNode.id === 'choice_7' && !hasReasoned && (
-              <ReasoningBoard
-                characters={storyData.characters || []}
-                clues={storyData.clues || []}
-                discoveredClueIds={discoveredClues}
-                onConfirm={() => setHasReasoned(true)}
               />
             )}
 

@@ -73,6 +73,18 @@ export interface Clue {
   relatedTo?: string[]
 }
 
+/** 线索之间的关联关系 */
+export interface ClueLink {
+  /** 关联的线索A ID */
+  sourceClueId: string
+  /** 关联的线索B ID */
+  targetClueId: string
+  /** 关联描述，如 "两份证词互相矛盾" */
+  description: string
+  /** 关联类型：支持/矛盾/补充/因果 */
+  linkType: 'support' | 'contradict' | 'supplement' | 'cause'
+}
+
 /** 人物档案：随剧情逐步揭示 */
 export interface Character {
   id: string
@@ -126,6 +138,8 @@ export interface StoryData {
   characters?: Character[]
   /** 全局线索库 */
   clues?: Clue[]
+  /** 线索之间的关联关系 */
+  clueLinks?: ClueLink[]
   nodes: Record<string, StoryNode>
 }
 
