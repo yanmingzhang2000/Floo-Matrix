@@ -223,7 +223,7 @@ export function RelationshipGraph({ gameId, characters }: RelationshipGraphProps
                           fontSize="11"
                           fontFamily="'Noto Serif SC', serif"
                         >
-                          {isMet ? char.name : '???'}
+                          {char.name}
                         </text>
                       </g>
                     )
@@ -251,7 +251,7 @@ export function RelationshipGraph({ gameId, characters }: RelationshipGraphProps
 
                 {/* 选中角色详情 */}
                 <AnimatePresence>
-                  {selectedChar && selectedRelation?.met && (
+                  {selectedChar && (
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -261,11 +261,16 @@ export function RelationshipGraph({ gameId, characters }: RelationshipGraphProps
                       <div className="flex items-center gap-3 mb-3">
                         <div
                           className="w-4 h-4 rounded-full"
-                          style={{ backgroundColor: ALIGNMENT_COLORS[selectedRelation.alignment] }}
+                          style={{ backgroundColor: ALIGNMENT_COLORS[selectedRelation?.alignment ?? 'unknown'] }}
                         />
                         <h3 className="font-heading text-floo-text-primary">
                           {selectedChar.name}
                         </h3>
+                        {!selectedRelation?.met && (
+                          <span className="text-xs text-floo-text-muted/50 font-ui px-2 py-0.5 rounded border border-floo-text-muted/20">
+                            未认识
+                          </span>
+                        )}
                       </div>
 
                       {selectedChar.description && (
@@ -274,81 +279,86 @@ export function RelationshipGraph({ gameId, characters }: RelationshipGraphProps
                         </p>
                       )}
 
-                      {selectedRelation.unlockedIdentity && (
-                        <p className="text-sm text-floo-accent-gold font-body mb-3">
-                          身份：{selectedRelation.unlockedIdentity}
-                        </p>
-                      )}
-
-                      <p className="text-xs text-floo-text-muted/60 font-ui mb-3">
-                        互动次数：{selectedRelation.interactCount}
-                      </p>
-
-                      {/* 信任度 */}
-                      {selectedRelation.affinity !== undefined && (
-                        <div className="mb-3">
-                          <div className="flex items-center justify-between mb-1.5">
-                            <span className="text-xs text-floo-text-muted/60 font-ui">信任度</span>
-                            <span className={`text-sm font-heading ${
-                              selectedRelation.affinity >= 70
-                                ? 'text-floo-accent-green'
-                                : selectedRelation.affinity >= 40
-                                  ? 'text-floo-accent-gold'
-                                  : 'text-red-400'
-                            }`}>
-                              {selectedRelation.affinity}/100
-                            </span>
-                          </div>
-                          <div className="w-full h-2 rounded-full bg-floo-bg-secondary overflow-hidden">
-                            <motion.div
-                              className="h-full rounded-full"
-                              style={{
-                                backgroundColor:
-                                  selectedRelation.affinity >= 70
-                                    ? '#4aa06c'
-                                    : selectedRelation.affinity >= 40
-                                      ? '#c8934a'
-                                      : '#b85450',
-                              }}
-                              initial={{ width: 0 }}
-                              animate={{ width: `${selectedRelation.affinity}%` }}
-                              transition={{ duration: 0.8, ease: 'easeOut' }}
-                            />
-                          </div>
-                          {selectedChar.teammateThreshold !== undefined &&
-                            selectedRelation.affinity >= selectedChar.teammateThreshold && (
-                            <p className="text-xs text-floo-accent-green font-ui mt-1.5">
-                              ✦ 可信赖队友
+                      {/* 以下信息仅认识后显示 */}
+                      {selectedRelation?.met && (
+                        <>
+                          {selectedRelation.unlockedIdentity && (
+                            <p className="text-sm text-floo-accent-gold font-body mb-3">
+                              身份：{selectedRelation.unlockedIdentity}
                             </p>
                           )}
-                        </div>
-                      )}
 
-                      {/* 阵营标记 */}
-                      <div className="flex items-center gap-2">
-                        <span className="text-xs text-floo-text-muted/60 font-ui">标记为：</span>
-                        {(['good', 'bad', 'neutral', 'unknown'] as Alignment[]).map((a) => (
-                          <button
-                            key={a}
-                            type="button"
-                            onClick={() => handleSetAlignment(selectedChar.id, a)}
-                            className={`px-2 py-1 rounded text-xs font-ui transition-colors ${
-                              selectedRelation.alignment === a
-                                ? 'text-floo-bg-primary'
-                                : 'text-floo-text-muted hover:text-floo-text-primary'
-                            }`}
-                            style={{
-                              backgroundColor:
-                                selectedRelation.alignment === a
-                                  ? ALIGNMENT_COLORS[a]
-                                  : 'transparent',
-                              border: `1px solid ${ALIGNMENT_COLORS[a]}40`,
-                            }}
-                          >
-                            {ALIGNMENT_LABELS[a]}
-                          </button>
-                        ))}
-                      </div>
+                          <p className="text-xs text-floo-text-muted/60 font-ui mb-3">
+                            互动次数：{selectedRelation.interactCount}
+                          </p>
+
+                          {/* 信任度 */}
+                          {selectedRelation.affinity !== undefined && (
+                            <div className="mb-3">
+                              <div className="flex items-center justify-between mb-1.5">
+                                <span className="text-xs text-floo-text-muted/60 font-ui">信任度</span>
+                                <span className={`text-sm font-heading ${
+                                  selectedRelation.affinity >= 70
+                                    ? 'text-floo-accent-green'
+                                    : selectedRelation.affinity >= 40
+                                      ? 'text-floo-accent-gold'
+                                      : 'text-red-400'
+                                }`}>
+                                  {selectedRelation.affinity}/100
+                                </span>
+                              </div>
+                              <div className="w-full h-2 rounded-full bg-floo-bg-secondary overflow-hidden">
+                                <motion.div
+                                  className="h-full rounded-full"
+                                  style={{
+                                    backgroundColor:
+                                      selectedRelation.affinity >= 70
+                                        ? '#4aa06c'
+                                        : selectedRelation.affinity >= 40
+                                          ? '#c8934a'
+                                          : '#b85450',
+                                  }}
+                                  initial={{ width: 0 }}
+                                  animate={{ width: `${selectedRelation.affinity}%` }}
+                                  transition={{ duration: 0.8, ease: 'easeOut' }}
+                                />
+                              </div>
+                              {selectedChar.teammateThreshold !== undefined &&
+                                selectedRelation.affinity >= selectedChar.teammateThreshold && (
+                                <p className="text-xs text-floo-accent-green font-ui mt-1.5">
+                                  ✦ 可信赖队友
+                                </p>
+                              )}
+                            </div>
+                          )}
+
+                          {/* 阵营标记 */}
+                          <div className="flex items-center gap-2">
+                            <span className="text-xs text-floo-text-muted/60 font-ui">标记为：</span>
+                            {(['good', 'bad', 'neutral', 'unknown'] as Alignment[]).map((a) => (
+                              <button
+                                key={a}
+                                type="button"
+                                onClick={() => handleSetAlignment(selectedChar.id, a)}
+                                className={`px-2 py-1 rounded text-xs font-ui transition-colors ${
+                                  selectedRelation.alignment === a
+                                    ? 'text-floo-bg-primary'
+                                    : 'text-floo-text-muted hover:text-floo-text-primary'
+                                }`}
+                                style={{
+                                  backgroundColor:
+                                    selectedRelation.alignment === a
+                                      ? ALIGNMENT_COLORS[a]
+                                      : 'transparent',
+                                  border: `1px solid ${ALIGNMENT_COLORS[a]}40`,
+                                }}
+                              >
+                                {ALIGNMENT_LABELS[a]}
+                              </button>
+                            ))}
+                          </div>
+                        </>
+                      )}
                     </motion.div>
                   )}
                 </AnimatePresence>
