@@ -10,7 +10,6 @@ import { useEffect, useRef, useState, useCallback, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import storyDataJson from '../story.json'
 import { LoopResetOverlay } from './LoopResetOverlay'
-import { FlashbackOverlay } from './FlashbackOverlay'
 import { CycleCounter } from './CycleCounter'
 import { TimelineBar } from './TimelineBar'
 import { DialogueBox } from '@/core/components/DialogueBox'
@@ -94,7 +93,7 @@ const TUTORIAL_STEPS = [
 ]
 
 export function KaiDuan({ onExit }: KaiDuanProps) {
-  const { currentNode, availableChoices, selectChoice, advanceNode, jumpToNode, canAdvance, isEnding } =
+  const { currentNode, availableChoices, selectChoice, advanceNode, canAdvance, isEnding } =
     useStoryEngine(storyData as StoryData)
   const registeredRef = useRef(false)
 

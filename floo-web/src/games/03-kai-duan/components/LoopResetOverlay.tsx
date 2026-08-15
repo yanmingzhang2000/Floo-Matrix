@@ -8,6 +8,10 @@ import { motion, AnimatePresence } from 'framer-motion'
 interface LoopResetOverlayProps {
   active: boolean
   onComplete: () => void
+  /** @deprecated 不再使用，保留向后兼容 */
+  fromLoop?: number
+  /** @deprecated 不再使用，保留向后兼容 */
+  toLoop?: number
 }
 
 export function LoopResetOverlay({ active, onComplete }: LoopResetOverlayProps) {
