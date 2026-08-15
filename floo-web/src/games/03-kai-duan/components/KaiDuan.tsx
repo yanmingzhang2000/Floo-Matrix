@@ -2,6 +2,9 @@
  * 开端 - 游戏主视图
  * 时间循环互动叙事游戏
  * 集成循环系统、线索系统、信任系统、时间线系统
+ *
+ * 核心设计：世界会重置，信息不会。
+ * 每次失败都产出新信息，玩家靠不断失败拼出真相。
  */
 import { useEffect, useRef, useState, useCallback, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -36,6 +39,7 @@ const AMBIENT_SOUNDS: Record<string, string> = {
   police_station: `${base}audio/ambient/cabin.wav`,
   factory: `${base}audio/ambient/basement.wav`,
   bridge: `${base}audio/ambient/forest.wav`,
+  residential: `${base}audio/ambient/cabin.wav`,
 }
 
 const SFX_SOUNDS: Record<string, string> = {
@@ -43,24 +47,26 @@ const SFX_SOUNDS: Record<string, string> = {
   'loop-reset': `${base}audio/sfx/bad-ending-impact.wav`,
   clue: `${base}audio/sfx/heartbeat.wav`,
   'good-ending': `${base}audio/sfx/good-ending-chime.wav`,
-  'bad-ending': `${base}audio/sfx/bad-ending-impact.wav`,
   explosion: `${base}audio/sfx/bad-ending-impact.wav`,
 }
 
-// 循环对应的爆炸前时间
-const LOOP_TIMES: Record<number, string> = {
-  1: '1:40',
-  2: '1:38',
-  3: '1:35',
-  4: '1:33',
-  5: '1:30',
-  6: '1:25',
-  7: '1:20',
-  8: '1:15',
-  9: '1:10',
-  10: '1:05',
-  11: '1:00',
-  12: '1:00',
+// 幕对应的当前时间（玩家感知到的时间）
+const ACT_TIMES: Record<number, string> = {
+  0: '1:20',  // 序章
+  1: '1:20',  // 理解循环
+  2: '1:20',  // 认识肖鹤云
+  3: '1:20',  // 油罐车
+  4: '1:20',  // 排除油罐车
+  5: '1:20',  // 调查乘客
+  6: '1:20',  // 卢迪/老张/马国强/老焦
+  7: '1:20',  // 发现炸弹
+  8: '1:15',  // 陶映红的真相
+  9: '1:10',  // 警方线
+  10: '1:05', // 王萌萌的真相
+  11: '1:00', // 王兴德
+  12: '1:00', // 肖鹤云
+  13: '12:55', // 所有线索汇合
+  14: '12:50', // 最终循环
 }
 
 const TUTORIAL_KEY = 'floo-tutorial-kai-duan'
@@ -68,22 +74,22 @@ const TUTORIAL_STEPS = [
   {
     icon: '🔄',
     title: '时间循环',
-    content: '你在45路公交车上，爆炸将在1:45发生。每次死亡或失败，时间会倒流——但你会回到更早的时间点。',
+    content: '你在45路公交车上，爆炸将在1:45发生。每次失败，时间会倒流——但你会回到更早的时间点，带着之前的记忆。',
   },
   {
     icon: '🔍',
-    title: '探索与线索',
-    content: '每次循环可以调查不同的乘客和场景。点击调查按钮收集线索，解锁副线故事。线索会收入左上角的线索抽屉。',
+    title: '探索与信息',
+    content: '每次循环可以调查不同的乘客和场景。点击调查按钮收集信息，了解车上每个人的故事。',
   },
   {
-    icon: '🔗',
-    title: '积累与解锁',
-    content: '你的选择会设置隐藏标记，影响后续循环中可用的对话选项。尽量在早期循环中探索更多内容，为最终循环做准备。',
+    icon: '💡',
+    title: '失败即信息',
+    content: '每次失败都会让你获得新信息。躲开油罐车仍爆炸？说明问题在车内。尝试下车失败？说明必须留在车上。',
   },
   {
     icon: '⚡',
     title: '最终循环',
-    content: '第12次循环是最后机会。你的结局取决于之前积累的标记——可能是4种不同结局之一。尽量解锁所有副线！',
+    content: '当你收集了足够多的信息，就能进入最终循环。你的结局取决于之前建立的联系和积累的信息。',
   },
 ]
 
@@ -101,10 +107,9 @@ export function KaiDuan({ onExit }: KaiDuanProps) {
   const [discoveredClues, setDiscoveredClues] = useState<Set<string>>(new Set())
 
   // 循环相关状态
-  const [currentLoop, setCurrentLoop] = useState(1)
+  const [currentAct, setCurrentAct] = useState(0)
   const [showLoopReset, setShowLoopReset] = useState(false)
-  const [prevLoop, setPrevLoop] = useState(1)
-  const [unlockedSublines, setUnlockedSublines] = useState<Set<string>>(new Set())
+  const [unlockedConnections, setUnlockedConnections] = useState<Set<string>>(new Set())
 
   const handleClueFound = useCallback((clueId: string) => {
     setDiscoveredClues((prev) => {
@@ -137,64 +142,53 @@ export function KaiDuan({ onExit }: KaiDuanProps) {
       audioManager.playBgm(currentNode.ambientSound)
     }
 
-    // 检测循环变化
-    const newLoop = (() => {
+    // 检测阶段变化（从节点ID中提取 act 编号）
+    const newAct = (() => {
       const id = currentNode.id
-      const match = id.match(/^loop(\d+)_/)
+      // 匹配 prologue
+      if (id === 'prologue' || id.startsWith('prologue_')) return 0
+      // 匹配 actX
+      const match = id.match(/^act(\d+)_/)
       if (match) return parseInt(match[1])
-      return currentLoop
+      // 匹配 ending
+      if (id.startsWith('ending_')) return 14
+      return currentAct
     })()
 
-    if (newLoop !== currentLoop && newLoop > 1) {
-      setPrevLoop(currentLoop)
-      setCurrentLoop(newLoop)
-      setShowLoopReset(true)
-      audioManager.play('loop-reset')
-      setTimeout(() => setShowLoopReset(false), 2500)
-    } else if (newLoop !== currentLoop) {
-      setCurrentLoop(newLoop)
+    if (newAct !== currentAct) {
+      setCurrentAct(newAct)
+      // 只有进入新的 act（非序章）时才显示重置动画
+      if (newAct > 0) {
+        setShowLoopReset(true)
+        audioManager.play('loop-reset')
+        setTimeout(() => setShowLoopReset(false), 2500)
+      }
     }
 
-    // 检测副线解锁
+    // 检测人物联系解锁
     if (currentNode.effects) {
       currentNode.effects.forEach((effect) => {
-        if (effect.type === 'setFlag' && effect.key.startsWith('subline')) {
-          setUnlockedSublines((prev) => new Set(prev).add(effect.key))
-        }
-        if (effect.type === 'setFlag' && effect.key.startsWith('investigated_')) {
-          setUnlockedSublines((prev) => new Set(prev).add(effect.key))
+        if (effect.type === 'setFlag') {
+          setUnlockedConnections((prev) => new Set(prev).add(effect.key))
         }
       })
     }
 
     // 结局音效
-    if (currentNode.type === 'ending') {
-      if (currentNode.endingVariant === 'bad') {
-        audioManager.play('bad-ending')
-      } else if (currentNode.endingVariant === 'good') {
-        audioManager.play('good-ending')
-      }
+    if (currentNode.type === 'ending' && currentNode.endingVariant === 'good') {
+      audioManager.play('good-ending')
     }
-  }, [currentNode, currentLoop])
+  }, [currentNode, currentAct])
 
   // 计算时间线进度
   const timeProgress = useMemo(() => {
-    return Math.min(100, ((currentLoop - 1) / 11) * 100)
-  }, [currentLoop])
+    return Math.min(100, (currentAct / 14) * 100)
+  }, [currentAct])
 
-  const currentTimeStr = LOOP_TIMES[currentLoop] || '1:40'
+  const currentTimeStr = ACT_TIMES[currentAct] || '1:20'
 
   if (!currentNode) return null
 
-  const handleRetry = () => {
-    if (currentNode.checkpointNodeId) {
-      jumpToNode(currentNode.checkpointNodeId)
-    } else {
-      onExit()
-    }
-  }
-
-  const isBadEnding = isEnding && currentNode.endingVariant === 'bad'
   const isGoodEnding = isEnding && currentNode.endingVariant === 'good'
   const investigations = currentNode.investigations || []
 
@@ -215,11 +209,10 @@ export function KaiDuan({ onExit }: KaiDuanProps) {
 
       {/* UI 覆盖层 */}
       <CycleCounter
-        currentLoop={currentLoop}
-        maxLoop={12}
+        currentTime={currentTimeStr}
         discoveredClues={discoveredClues.size}
         totalClues={storyData.clues?.length || 0}
-        unlockedSublines={Array.from(unlockedSublines)}
+        unlockedConnections={Array.from(unlockedConnections)}
       />
 
       <TimelineBar
@@ -251,54 +244,11 @@ export function KaiDuan({ onExit }: KaiDuanProps) {
       {/* 循环重置动画 */}
       <LoopResetOverlay
         active={showLoopReset}
-        fromLoop={prevLoop}
-        toLoop={currentLoop}
         onComplete={() => setShowLoopReset(false)}
       />
 
       <AnimatePresence mode="wait">
-        {isBadEnding ? (
-          <motion.div
-            key={currentNode.id}
-            className="flex flex-col items-center"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          >
-            <div className="max-w-2xl text-center">
-              {/* 坏结局红色闪烁 */}
-              <motion.div
-                className="mb-8"
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6 }}
-              >
-                <motion.div
-                  className="w-16 h-16 mx-auto mb-4 rounded-full border-2 border-red-500/50 flex items-center justify-center"
-                  animate={{ borderColor: ['rgba(239,68,68,0.3)', 'rgba(239,68,68,0.8)', 'rgba(239,68,68,0.3)'] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                >
-                  <span className="text-red-400 text-2xl">✕</span>
-                </motion.div>
-                <h2 className="font-heading text-red-400 text-xl tracking-wider mb-2">循环失败</h2>
-                <p className="text-floo-text-muted text-sm font-ui">时间将重新开始</p>
-              </motion.div>
-
-              <DialogueBox content={currentNode.content} />
-
-              <motion.button
-                type="button"
-                onClick={handleRetry}
-                className="mt-6 px-6 py-3 rounded-lg border border-red-400/40 bg-floo-bg-secondary text-floo-text-primary font-ui hover:bg-red-400/10 hover:border-red-400/60 transition-colors"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.5 }}
-              >
-                重新开始循环 →
-              </motion.button>
-            </div>
-          </motion.div>
-        ) : isGoodEnding ? (
+        {isGoodEnding ? (
           <motion.div
             key={currentNode.id}
             className="flex flex-col items-center"
@@ -344,17 +294,6 @@ export function KaiDuan({ onExit }: KaiDuanProps) {
                 </motion.button>
               </motion.div>
             </div>
-          </motion.div>
-        ) : currentNode.scene === 'bridge' && currentNode.type === 'cutscene' ? (
-          <motion.div
-            key={currentNode.id}
-            className="flex flex-col items-center"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <FlashbackOverlay content={currentNode.content} onAdvance={advanceNode} />
           </motion.div>
         ) : (
           <motion.div
