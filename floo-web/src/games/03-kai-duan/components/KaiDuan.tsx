@@ -6,7 +6,7 @@
  * 核心设计：世界会重置，信息不会。
  * 每次失败都产出新信息，玩家靠不断失败拼出真相。
  */
-import { useEffect, useRef, useState, useCallback, useMemo } from 'react'
+import { useEffect, useRef, useState, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import storyDataJson from '../story_v2.json'
 import { LoopResetOverlay } from './LoopResetOverlay'
