@@ -8,7 +8,7 @@
  */
 import { useEffect, useRef, useState, useCallback, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import storyDataJson from '../story.json'
+import storyDataJson from '../story_v2.json'
 import { LoopResetOverlay } from './LoopResetOverlay'
 import { CycleCounter } from './CycleCounter'
 import { TimelineBar } from './TimelineBar'
@@ -57,7 +57,7 @@ const ACT_TIMES: Record<number, string> = {
   3: '1:20',  // 油罐车
   4: '1:20',  // 排除油罐车
   5: '1:20',  // 调查乘客
-  6: '1:20',  // 卢迪/老张/马国强/老焦
+  6: '1:20',  // 卢迪/马国强/老焦/药婆
   7: '1:20',  // 发现炸弹
   8: '1:15',  // 陶映红的真相
   9: '1:10',  // 警方线
