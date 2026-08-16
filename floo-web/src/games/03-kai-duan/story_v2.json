@@ -541,6 +541,11 @@
       "content": "你和肖鹤云对视一眼。车厢里的人还在睡。你该从谁开始？",
       "choices": [
         {
+          "id": "h_suspect",
+          "text": "去看看其他人",
+          "nextNode": "act_suspect_choice"
+        },
+        {
           "id": "h_lu_1",
           "text": "继续调查卢迪",
           "nextNode": "sub_lu_di_2",
