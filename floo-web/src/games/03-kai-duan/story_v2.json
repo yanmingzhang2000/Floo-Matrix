@@ -541,9 +541,59 @@
       "content": "你和肖鹤云对视一眼。车厢里的人还在睡。你该从谁开始？",
       "choices": [
         {
-          "id": "h_suspect",
-          "text": "去看看其他人",
-          "nextNode": "act_suspect_choice"
+          "id": "h_new_lu",
+          "text": "后排背双肩包的黑帽青年",
+          "nextNode": "sub_lu_di_1",
+          "conditions": [
+            {
+              "type": "flagNot",
+              "key": "inv_lu_di"
+            }
+          ]
+        },
+        {
+          "id": "h_new_ma",
+          "text": "带蛇皮袋的中年男人",
+          "nextNode": "sub_ma_1",
+          "conditions": [
+            {
+              "type": "flagNot",
+              "key": "inv_ma"
+            }
+          ]
+        },
+        {
+          "id": "h_new_jiao",
+          "text": "带行李箱的农民工",
+          "nextNode": "sub_jiao_1",
+          "conditions": [
+            {
+              "type": "flagNot",
+              "key": "inv_jiao"
+            }
+          ]
+        },
+        {
+          "id": "h_new_yao",
+          "text": "提着药包的老太太",
+          "nextNode": "sub_yao_1",
+          "conditions": [
+            {
+              "type": "flagNot",
+              "key": "inv_yao"
+            }
+          ]
+        },
+        {
+          "id": "h_new_wang",
+          "text": "司机",
+          "nextNode": "sub_wang_1",
+          "conditions": [
+            {
+              "type": "flagNot",
+              "key": "inv_wang"
+            }
+          ]
         },
         {
           "id": "h_lu_1",
