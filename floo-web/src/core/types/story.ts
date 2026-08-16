@@ -15,7 +15,7 @@ export type ClueType = 'fact' | 'testimony' | 'anomaly'
 /** 条件判断类型（用于分支剧情、道具检查） */
 export interface Condition {
   /** 条件类型：拥有道具 / 剧情标记 / 变量比较 / 是否认识角色 */
-  type: 'hasItem' | 'flag' | 'variable' | 'metCharacter'
+  type: 'hasItem' | 'flag' | 'flagNot' | 'variable' | 'metCharacter'
   key: string
   /** 比较值（variable 类型时使用） */
   value?: string | number | boolean

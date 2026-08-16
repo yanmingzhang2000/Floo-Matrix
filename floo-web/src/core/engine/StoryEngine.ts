@@ -50,6 +50,9 @@ export class StoryEngine {
       case 'flag':
         return Boolean(hub.flags[condition.key]) === (condition.value ?? true)
 
+      case 'flagNot':
+        return !Boolean(hub.flags[condition.key])
+
       case 'variable': {
         const current = hub.variables[condition.key]
         return this.compareValues(current, condition.operator ?? 'eq', condition.value)
