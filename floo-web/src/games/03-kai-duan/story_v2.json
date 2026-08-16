@@ -1,7 +1,7 @@
 {
   "gameId": "03-kai-duan",
   "title": "开端",
-  "description": "在时间循环中寻找真相，阻止一场注定发生的爆炸。世界会重置，信息不会。你先怀疑每一个人，才慢慢看见他们——这辆车上坐着的是人，不是NPC。",
+  "description": "在时间循环中寻找真相，阻止一场注定发生的爆炸。世界会重置，信息不会。你先怀疑每一个人，才慢慢看见他们——这辆车上坐着的是人，不是NPC。每一次循环，只推进一条线。",
   "startNode": "prologue",
   "characters": [
     {
@@ -65,16 +65,6 @@
       "name": "张队",
       "description": "刑警队长，理性，信证据不信神话",
       "teammateThreshold": 70
-    },
-    {
-      "id": "xiao_jiang",
-      "name": "小江",
-      "description": "年轻警官，刚从警校毕业，急于表现"
-    },
-    {
-      "id": "undercover",
-      "name": "便衣警察",
-      "description": "张队安排的便衣，负责拆弹任务"
     }
   ],
   "clues": [
@@ -241,9 +231,9 @@
     },
     {
       "id": "clue_undercover",
-      "title": "便衣警察",
+      "title": "专业人员",
       "type": "fact",
-      "content": "张队安排了一名便衣警察在公交车上，负责拆弹任务。",
+      "content": "张队安排了一名专业人员在公交车上，负责拆弹任务。",
       "location": "警局"
     },
     {
@@ -327,7 +317,7 @@
       "scene": "bus",
       "ambientSound": "bus",
       "tensionLevel": 0,
-      "content": "我叫李诗情。\n\n这是我每天上学都会坐的45路公交车。\n\n对我来说，这只是一段再普通不过的上学路。\n\n我认识这条路上的站点。\n\n也习惯了车厢里这些熟悉又陌生的面孔。\n\n我从来没有想过……\n\n有一天，我会在这辆车上死去。\n\n而且，不止一次。",
+      "content": "我叫李诗情。\n\n这是我每天上学都会坐的45路公交车。\n\n对我来说，这只是一段再普通不过的上学路。\n\n我认识这条路上的站点，也习惯了车厢里这些熟悉又陌生的面孔。\n\n我从来没有想过……\n\n有一天，这辆车会成为我人生里最可怕的地方。",
       "nextNode": "prologue_scene"
     },
     "prologue_scene": {
@@ -336,23 +326,24 @@
       "scene": "bus",
       "ambientSound": "bus",
       "tensionLevel": 0,
-      "content": "阳光透过车窗洒在脸上。司机是个沉默寡言的中年男人，开车很稳，到站会多等两秒让老人上来。\n\n车厢里人不多，各自低头。一切都很普通。你甚至有点犯困。",
-      "investigations": [
+      "content": "那天早上，我像往常一样坐上45路。\n\n车开得很稳。到站的时候，司机还会多等两秒，让老人慢慢上车。\n\n我坐在靠窗的位置，翻了翻书包，突然发现——钱包不见了。\n\n我急得翻遍口袋。\n\n司机回头看了一眼：\n\n“姑娘，别急，慢慢找。”\n\n他把车靠边停了一下，帮我一起找。\n\n最后，钱包从座椅缝里掉了出来。\n\n“找到了。”\n\n那时候我还不知道，这个叫王兴德的司机，后来会和我一起经历一场永远停在1点45分的循环。",
+      "effects": [
         {
-          "id": "inv_look",
-          "label": "看一眼车厢",
-          "content": "普通的公交车，普通的乘客。没有谁看上去像会出事的人。",
-          "clueId": "clue_explosion_time"
+          "type": "meetCharacter",
+          "key": "driver_wang"
         }
       ],
-      "nextNode": "prologue_sleep"
+      "clues": [
+        "clue_wallet_memory"
+      ],
+      "nextNode": "prologue_scene_2"
     },
     "prologue_sleep": {
       "id": "prologue_sleep",
       "type": "dialogue",
       "scene": "bus",
       "tensionLevel": 0,
-      "content": "你靠着车窗犯困，睡了过去。\n\n再睁眼时，车已经上了跨江大桥。手机显示下午1点40分。\n\n1点45分——\n\n一辆油罐车撞上来。白光。一切归于黑暗。\n\n（这是你第一次死。循环，由此开始。）",
+      "content": "你靠着车窗犯困，睡了过去。\n\n再睁眼时，车已经上了跨江大桥。手机显示下午1点40分。\n\n1点45分——\n\n一辆油罐车撞上来。白光。尖叫。然后一切归于黑暗。\n\n这是你第一次死。\n\n也是循环真正开始的地方。",
       "nextNode": "awaken_1"
     },
     "awaken_1": {
@@ -406,7 +397,7 @@
       "type": "dialogue",
       "scene": "bus",
       "tensionLevel": 2,
-      "content": "肖鹤云大喊：\"师傅小心前面！\"\n\n王兴德猛打方向盘，公交车擦着油罐车驶过。\n\n你松了口气。应该没事了。\n\n1:43。车厢里有人笑了一声。\n\n1:44。\n\n1:45。\n\n轰——\n\n白光。你活过了油罐车，却没活过这一轮。\n\n\"哦哦哦……油罐车不是原因。\"肖鹤云在黑暗里嘟囔。",
+      "content": "肖鹤云大喊：“师傅，小心前面！”\n\n王兴德猛打方向盘，公交车擦着油罐车驶过。\n\n你松了一口气。\n\n1:43。\n\n1:44。\n\n1:45。\n\n轰——\n\n白光。\n\n你活过了油罐车，却没活过这一轮。\n\n再次睁眼时，肖鹤云低声说：\n“油罐车不是原因。”",
       "clues": [
         "clue_oil_tanker_not_cause"
       ],
@@ -417,7 +408,7 @@
       "type": "dialogue",
       "scene": "bus",
       "tensionLevel": 2,
-      "content": "你喊停车，但已经来不及。油罐车撞上，白光。\n\n循环重置。你和肖鹤云都明白了：油罐车只是表象。",
+      "content": "你喊停车，但已经来不及。\n\n油罐车撞上来。白光。\n\n——循环重置——\n\n你和肖鹤云都活了下来，却只多得到一个结论：这一次，你连油罐车都没躲开。",
       "clues": [
         "clue_oil_tanker_not_cause"
       ],
@@ -428,10 +419,9 @@
       "type": "dialogue",
       "scene": "bus",
       "tensionLevel": 3,
-      "content": "你坐着没动。油罐车撞上，白光。\n\n重置后肖鹤云说：\"躲开也炸，不躲也炸。问题不在外面，在车里。\"",
+      "content": "你坐着没动。\n\n油罐车撞上来，白光。\n\n——循环重置——\n\n肖鹤云看着你：\n“至少现在知道一件事：不管你怎么做，这辆车都会在1点45分出事。”",
       "clues": [
-        "clue_oil_tanker_not_cause",
-        "clue_bomb_suspect"
+        "clue_oil_tanker_not_cause"
       ],
       "nextNode": "act_suspect"
     },
@@ -551,13 +541,17 @@
       "content": "这一轮你推进哪条线？（引擎按你已认识的深度，给你能做的下一步）",
       "choices": [
         {
-          "id": "h_lu12",
-          "text": "继续卢迪线（喂猫）",
+          "id": "h_lu_1",
+          "text": "继续调查卢迪",
           "nextNode": "sub_lu_di_2",
           "conditions": [
             {
               "type": "flag",
-              "key": "inv_lu_di"
+              "key": "lu_stage_1"
+            },
+            {
+              "type": "flagNot",
+              "key": "lu_stage_2"
             },
             {
               "type": "flagNot",
@@ -566,13 +560,17 @@
           ]
         },
         {
-          "id": "h_lu34",
-          "text": "卢迪线收束（父母/哮喘）",
+          "id": "h_lu_2",
+          "text": "继续调查卢迪",
           "nextNode": "sub_lu_di_3",
           "conditions": [
             {
               "type": "flag",
-              "key": "inv_lu_di"
+              "key": "lu_stage_2"
+            },
+            {
+              "type": "flagNot",
+              "key": "lu_stage_3"
             },
             {
               "type": "flagNot",
@@ -581,13 +579,32 @@
           ]
         },
         {
-          "id": "h_ma",
-          "text": "继续马国强线",
+          "id": "h_lu_3",
+          "text": "了解卢迪和父母",
+          "nextNode": "sub_lu_di_4",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "lu_stage_3"
+            },
+            {
+              "type": "flagNot",
+              "key": "known_lu_di"
+            }
+          ]
+        },
+        {
+          "id": "h_ma_1",
+          "text": "继续调查马国强",
           "nextNode": "sub_ma_2",
           "conditions": [
             {
               "type": "flag",
-              "key": "inv_ma"
+              "key": "ma_stage_1"
+            },
+            {
+              "type": "flagNot",
+              "key": "ma_stage_2"
             },
             {
               "type": "flagNot",
@@ -596,13 +613,51 @@
           ]
         },
         {
-          "id": "h_jiao",
-          "text": "继续老焦线",
+          "id": "h_ma_2",
+          "text": "继续调查马国强",
+          "nextNode": "sub_ma_3",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "ma_stage_2"
+            },
+            {
+              "type": "flagNot",
+              "key": "ma_stage_3"
+            },
+            {
+              "type": "flagNot",
+              "key": "known_ma"
+            }
+          ]
+        },
+        {
+          "id": "h_ma_3",
+          "text": "弄清马国强为什么带西瓜",
+          "nextNode": "sub_ma_4",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "ma_stage_3"
+            },
+            {
+              "type": "flagNot",
+              "key": "known_ma"
+            }
+          ]
+        },
+        {
+          "id": "h_jiao_1",
+          "text": "继续调查老焦",
           "nextNode": "sub_jiao_2",
           "conditions": [
             {
               "type": "flag",
-              "key": "inv_jiao"
+              "key": "jiao_stage_1"
+            },
+            {
+              "type": "flagNot",
+              "key": "jiao_stage_2"
             },
             {
               "type": "flagNot",
@@ -611,13 +666,51 @@
           ]
         },
         {
-          "id": "h_yao",
-          "text": "继续药婆线",
+          "id": "h_jiao_2",
+          "text": "继续调查老焦",
+          "nextNode": "sub_jiao_3",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "jiao_stage_2"
+            },
+            {
+              "type": "flagNot",
+              "key": "jiao_stage_3"
+            },
+            {
+              "type": "flagNot",
+              "key": "known_jiao"
+            }
+          ]
+        },
+        {
+          "id": "h_jiao_3",
+          "text": "弄清老焦为什么拼命工作",
+          "nextNode": "sub_jiao_4",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "jiao_stage_3"
+            },
+            {
+              "type": "flagNot",
+              "key": "known_jiao"
+            }
+          ]
+        },
+        {
+          "id": "h_yao_1",
+          "text": "继续调查药婆",
           "nextNode": "sub_yao_2",
           "conditions": [
             {
               "type": "flag",
-              "key": "inv_yao"
+              "key": "yao_stage_1"
+            },
+            {
+              "type": "flagNot",
+              "key": "yao_stage_2"
             },
             {
               "type": "flagNot",
@@ -626,13 +719,85 @@
           ]
         },
         {
-          "id": "h_wang",
-          "text": "继续王兴德线",
+          "id": "h_yao_2",
+          "text": "继续调查药婆",
+          "nextNode": "sub_yao_3",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "yao_stage_2"
+            },
+            {
+              "type": "flagNot",
+              "key": "yao_stage_3"
+            },
+            {
+              "type": "flagNot",
+              "key": "known_yao"
+            }
+          ]
+        },
+        {
+          "id": "h_yao_3",
+          "text": "跟着药婆看看她要去哪",
+          "nextNode": "sub_yao_4",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "yao_stage_3"
+            },
+            {
+              "type": "flagNot",
+              "key": "known_yao"
+            }
+          ]
+        },
+        {
+          "id": "h_wang_1",
+          "text": "继续观察王师傅",
           "nextNode": "sub_wang_2",
           "conditions": [
             {
               "type": "flag",
-              "key": "inv_wang"
+              "key": "wang_stage_1"
+            },
+            {
+              "type": "flagNot",
+              "key": "wang_stage_2"
+            },
+            {
+              "type": "flagNot",
+              "key": "known_wang"
+            }
+          ]
+        },
+        {
+          "id": "h_wang_2",
+          "text": "回想和王师傅有关的记忆",
+          "nextNode": "sub_wang_3",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "wang_stage_2"
+            },
+            {
+              "type": "flagNot",
+              "key": "wang_stage_3"
+            },
+            {
+              "type": "flagNot",
+              "key": "known_wang"
+            }
+          ]
+        },
+        {
+          "id": "h_wang_3",
+          "text": "调查王师傅为什么看陶映红",
+          "nextNode": "sub_wang_4",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "wang_stage_3"
             },
             {
               "type": "flagNot",
@@ -647,7 +812,7 @@
           "conditions": [
             {
               "type": "flagNot",
-              "key": "inv_tao"
+              "key": "tao_stage_1"
             }
           ]
         },
@@ -674,13 +839,17 @@
           ]
         },
         {
-          "id": "h_truth",
-          "text": "查清陶映红真相+找刘瑶",
+          "id": "h_tao_truth",
+          "text": "继续追查陶映红的过去",
           "nextNode": "sub_tao_truth",
           "conditions": [
             {
               "type": "flag",
-              "key": "inv_tao"
+              "key": "tao_stage_1"
+            },
+            {
+              "type": "flagNot",
+              "key": "tao_truth_stage_1"
             },
             {
               "type": "flagNot",
@@ -696,6 +865,93 @@
             {
               "type": "flagNot",
               "key": "xiao_career_shown"
+            }
+          ]
+        },
+        {
+          "id": "h_xiao_turn",
+          "text": "再和肖鹤云谈谈",
+          "nextNode": "sub_xiao_turn",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "xiao_career_shown"
+            },
+            {
+              "type": "flagNot",
+              "key": "trust_xiao_high"
+            }
+          ]
+        },
+        {
+          "id": "h_liu_1",
+          "text": "找到刘瑶",
+          "nextNode": "sub_liu_1",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "known_tao"
+            },
+            {
+              "type": "flagNot",
+              "key": "liu_stage_1"
+            },
+            {
+              "type": "flagNot",
+              "key": "known_liu"
+            }
+          ]
+        },
+        {
+          "id": "h_liu_2",
+          "text": "继续和刘瑶谈谈",
+          "nextNode": "sub_liu_2",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "liu_stage_1"
+            },
+            {
+              "type": "flagNot",
+              "key": "liu_stage_2"
+            },
+            {
+              "type": "flagNot",
+              "key": "known_liu"
+            }
+          ]
+        },
+        {
+          "id": "h_liu_3",
+          "text": "听刘瑶最后说完",
+          "nextNode": "sub_liu_3",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "liu_stage_2"
+            },
+            {
+              "type": "flagNot",
+              "key": "liu_stage_3"
+            }
+          ]
+        },
+        {
+          "id": "h_zhang_verify",
+          "text": "请张队验证已经找到的证据",
+          "nextNode": "sub_zhang_verify",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "police_cooperation_possible"
+            },
+            {
+              "type": "flag",
+              "key": "known_liu"
+            },
+            {
+              "type": "flagNot",
+              "key": "zhang_verified"
             }
           ]
         },
@@ -829,7 +1085,11 @@
             },
             {
               "type": "flag",
-              "key": "inv_tao"
+              "key": "known_tao"
+            },
+            {
+              "type": "flag",
+              "key": "zhang_verified"
             }
           ]
         }
@@ -846,41 +1106,60 @@
         {
           "type": "meetCharacter",
           "key": "lu_di"
+        },
+        {
+          "type": "setFlag",
+          "key": "lu_stage_1",
+          "value": true
         }
       ],
       "clues": [
         "clue_lu_di_cosplay"
       ],
-      "nextNode": "sub_lu_di_2"
+      "nextNode": "loop_hub"
     },
     "sub_lu_di_2": {
       "id": "sub_lu_di_2",
       "type": "dialogue",
       "scene": "convention",
       "tensionLevel": 1,
-      "content": "后来你跟着他下车，发现他根本没回家——他拐进漫展角落，蹲下来，从包里倒出猫粮。三只流浪猫围过来。\n\n他轻声和猫说话，动作轻柔得像怕惊着它们。那一刻你看清了：这个在车上看起来有点怪的人，其实特别温柔。\n\n你没打扰他，转身回了车上。",
+      "content": "下一轮，你已经知道他会去漫展。\n\n这一次你提前跟下车，发现他拐进漫展角落，从包里倒出猫粮。三只流浪猫围了过来。\n\n他蹲下来，小声和猫说话，动作轻得像怕惊着它们。\n\n这个在车上看起来有点怪的年轻人，好像只是很喜欢这些没人管的生命。\n\n你没有打扰他。",
       "clues": [
         "clue_lu_di_cat"
       ],
-      "nextNode": "loop_hub"
+      "nextNode": "loop_hub",
+      "effects": [
+        {
+          "type": "setFlag",
+          "key": "lu_stage_2",
+          "value": true
+        }
+      ]
     },
     "sub_lu_di_3": {
       "id": "sub_lu_di_3",
       "type": "dialogue",
       "scene": "bus",
       "tensionLevel": 2,
-      "content": "又一次循环里，卢迪突然捂住胸口，呼吸急促——哮喘发作了。你翻遍包找到他的药，递过去。他吸完，脸色缓过来，小声说：\"谢谢。\"\n\n\"你爸妈知道你这样还养猫？\"你问。\n\n他低头：\"他们不让我养。猫毛……会引发这个。他们怕失去我。\"\n\n肖鹤云在旁边轻声说：\"所以那些猫，是他偷偷养的。\"",
+      "content": "又一轮，你注意到卢迪呼吸不对。\n\n他突然捂住胸口，呼吸急促。你翻遍包找到他的药递过去。\n\n缓过来后，他低声说：“谢谢。”\n\n你问：“你爸妈知道你这样还养猫？”\n\n他低下头：“他们不让我养。猫毛……会引发这个。”\n\n你第一次意识到，他偷偷靠近那些猫，并不只是叛逆。",
       "clues": [
         "clue_lu_di_asthma"
       ],
-      "nextNode": "sub_lu_di_4"
+      "nextNode": "loop_hub",
+      "effects": [
+        {
+          "type": "setFlag",
+          "key": "lu_stage_3",
+          "value": true
+        }
+      ]
     },
     "sub_lu_di_4": {
       "id": "sub_lu_di_4",
       "type": "dialogue",
       "scene": "convention",
       "tensionLevel": 2,
-      "content": "你陪他去了他家。父母不是控制狂，是曾经差点失去孩子、所以过度害怕的人。他爸说：\"他小时候喘过一次，我们以为要没了。\"\n\n卢迪站在一旁，没顶嘴。你忽然懂了：他不是和父母对着干，他只是不甘心——想有自己的生活。\n\n而父母也不是不懂他，只是怕。两边都爱，爱变成了限制。",
+      "content": "再下一轮，你终于跟着卢迪回了家。\n\n他的父母并不是控制狂。\n\n他爸爸说：“他小时候喘过一次，我们以为要没了。”\n\n卢迪站在一旁，没有顶嘴。\n\n你忽然懂了：两边都在爱，只是爱变成了限制。\n\n而卢迪真正想要的，也不过是拥有一点属于自己的生活。",
       "effects": [
         {
           "type": "setFlag",
@@ -892,6 +1171,11 @@
           "key": "lu_di",
           "value": 25,
           "name": "卢迪"
+        },
+        {
+          "type": "setFlag",
+          "key": "investigated_lu_di",
+          "value": true
         }
       ],
       "clues": [
@@ -911,28 +1195,47 @@
         {
           "type": "meetCharacter",
           "key": "ma_guoqiang"
+        },
+        {
+          "type": "setFlag",
+          "key": "ma_stage_1",
+          "value": true
         }
       ],
-      "nextNode": "sub_ma_2"
+      "nextNode": "loop_hub"
     },
     "sub_ma_2": {
       "id": "sub_ma_2",
       "type": "dialogue",
       "scene": "city",
       "tensionLevel": 2,
-      "content": "你后来跟着他进了城。他没去卖瓜——他站在一栋写字楼外，仰头看。一个穿西装的年轻人匆匆出来，手机响，看了一眼，没接，塞回兜里。\n\n那是他儿子。\n\n马国强掏出手机，打了字，又删掉。最后发了一句：\"爸最近忙，过几天回去。\"然后盯着屏幕，等。\n\n屏幕没亮。",
-      "nextNode": "sub_ma_3"
+      "content": "下一轮，你跟着马国强下车。\n\n他没去卖西瓜，而是站在一栋写字楼外，仰头看着楼上。\n\n一个穿西装的年轻人匆匆走出来，手机响了，看了一眼，又塞回口袋。\n\n马国强掏出手机，打了一行字，又删掉。\n\n你开始明白：他来这里不是为了卖瓜。",
+      "nextNode": "loop_hub",
+      "effects": [
+        {
+          "type": "setFlag",
+          "key": "ma_stage_2",
+          "value": true
+        }
+      ]
     },
     "sub_ma_3": {
       "id": "sub_ma_3",
       "type": "dialogue",
       "scene": "city",
       "tensionLevel": 2,
-      "content": "你走近：\"叔，你儿子？\"\n\n他有点窘：\"年轻人忙。\"停了停，\"他小时候，最爱吃西瓜。我每年都带。他现在不怎么吃了，我还是带。\"\n\n他拍了拍西瓜。\n\n\"他小时候喜欢。\"\n\n就这一句。一个父亲表达爱的方式，还停在孩子小时候。",
+      "content": "再下一轮，你走近问他：“叔，那是你儿子？”\n\n他有点窘：“年轻人忙。”\n\n停了停，他拍了拍西瓜。\n\n“他小时候，最爱吃这个。我每年都带。他现在不怎么吃了，我还是带。”\n\n“他小时候喜欢。”\n\n一个父亲表达爱的方式，好像还停在孩子小时候。",
       "clues": [
         "clue_ma_guoqiang"
       ],
-      "nextNode": "sub_ma_4"
+      "nextNode": "loop_hub",
+      "effects": [
+        {
+          "type": "setFlag",
+          "key": "ma_stage_3",
+          "value": true
+        }
+      ]
     },
     "sub_ma_4": {
       "id": "sub_ma_4",
@@ -966,40 +1269,59 @@
       "scene": "bus",
       "ambientSound": "bus",
       "tensionLevel": 1,
-      "content": "你注意到那个农民工一直护着行李箱。第一反应：炸弹？\n\n你借口帮他捡东西，打开箱盖——没有炸药。只有：女儿照片、几件衣服、一张奖状、学校资料、一点生活用品。\n\n他赶紧合上：\"别弄乱了。\"\n\n肖鹤云在旁边看了一眼，没说话，在备忘录上写了：\"箱子，排除。\"",
+      "content": "你注意到那个农民工一直护着行李箱。\n\n第一反应：炸弹？\n\n你借口帮他捡东西，打开箱盖——没有炸药。\n\n只有女儿的照片、几件衣服、一张奖状、学校资料和一点生活用品。\n\n他赶紧合上：“别弄乱了。”\n\n你暂时排除了一个嫌疑人，也第一次看见：一个父亲出门在外，带着的可能不是行李，而是家。",
       "effects": [
         {
           "type": "meetCharacter",
           "key": "lao_jiao"
+        },
+        {
+          "type": "setFlag",
+          "key": "jiao_stage_1",
+          "value": true
         }
       ],
-      "nextNode": "sub_jiao_2"
+      "nextNode": "loop_hub"
     },
     "sub_jiao_2": {
       "id": "sub_jiao_2",
       "type": "dialogue",
       "scene": "bus",
       "tensionLevel": 1,
-      "content": "\"大哥，去城里？\"\n\n\"给闺女送生活费。\"他掏出照片，扎马尾的女孩笑得灿烂，\"她不知道我干搬砖的，我跟她说我是管理员。\"\n\n他手上有老茧，指甲缝里是洗不掉的水泥灰。\"只要她能念书，我搬多少都行。\"",
+      "content": "下一轮，你故意坐到老焦附近。\n\n他拿出一张学校缴费通知，看了半天，又小心塞回行李箱。\n\n你问：“孩子上学？”\n\n他点点头：“姑娘想继续读。”\n\n他说得很轻，好像这件事本来不值得说。\n\n但你看得出来，他来城里干活，就是为了这张纸。",
       "clues": [
         "clue_lao_jiao"
       ],
-      "nextNode": "sub_jiao_3"
+      "nextNode": "loop_hub",
+      "effects": [
+        {
+          "type": "setFlag",
+          "key": "jiao_stage_2",
+          "value": true
+        }
+      ]
     },
     "sub_jiao_3": {
       "id": "sub_jiao_3",
       "type": "dialogue",
       "scene": "bus",
       "tensionLevel": 3,
-      "content": "某一轮，车上有人差点从站台摔下。老焦第一个冲过去捞人。你后来问他：\"你不怕？\"\n\n他顿了一下：\"怕。\"\n\n\"但人都快掉下去了，总不能看着吧。\"",
-      "nextNode": "sub_jiao_4"
+      "content": "再下一轮，你看到老焦在路边帮一个摔倒的老人搬东西。\n\n有人劝他：“你赶车呢，别管了。”\n\n他只是摆摆手：“搭把手的事。”\n\n你忽然意识到，这个人不是因为不怕死才愿意帮别人。\n\n他只是习惯了在别人需要的时候搭一把手。",
+      "nextNode": "loop_hub",
+      "effects": [
+        {
+          "type": "setFlag",
+          "key": "jiao_stage_3",
+          "value": true
+        }
+      ]
     },
     "sub_jiao_4": {
       "id": "sub_jiao_4",
       "type": "dialogue",
       "scene": "bus",
       "tensionLevel": 2,
-      "content": "你又问：\"你不是还得回去给闺女交学费？\"\n\n他沉默了很久。\n\n\"所以我得活着。\"\n\n他不是不怕死。他只是比别人更有理由活下去。",
+      "content": "又一次循环里，你问他：“你这么拼命干活，不怕出事吗？”\n\n老焦沉默了一会儿。\n\n“怕。”\n\n“我姑娘还等我交学费呢。”\n\n他拍了拍行李箱。\n\n“所以我得活着。”\n\n一个为了女儿求生的父亲。",
       "effects": [
         {
           "type": "setFlag",
@@ -1009,7 +1331,7 @@
         {
           "type": "updateAffinity",
           "key": "lao_jiao",
-          "value": 20,
+          "value": 25,
           "name": "老焦"
         },
         {
@@ -1034,30 +1356,44 @@
         },
         {
           "type": "setFlag",
-          "key": "auto_known_yao",
+          "key": "yao_stage_1",
           "value": true
         }
       ],
-      "nextNode": "sub_yao_2"
+      "nextNode": "loop_hub"
     },
     "sub_yao_2": {
       "id": "sub_yao_2",
       "type": "dialogue",
       "scene": "bus",
       "tensionLevel": 1,
-      "content": "她给车上好多人递过关心：提醒孕妇让座，嘟囔\"坐稳咯\"，记得谁在哪站下。你以为她爱管闲事。",
-      "nextNode": "sub_yao_3"
+      "content": "下一轮，你再次坐到药婆旁边。\n\n她还是把药包护在怀里，却先问你：“姑娘，你脸色怎么不好？”\n\n你说没事。\n\n她又摸出一颗糖：“含一颗。”\n\n你突然觉得，这个被你当作嫌疑人的老太太，甚至比很多人都更习惯照顾陌生人。",
+      "nextNode": "loop_hub",
+      "effects": [
+        {
+          "type": "setFlag",
+          "key": "yao_stage_2",
+          "value": true
+        }
+      ]
     },
     "sub_yao_3": {
       "id": "sub_yao_3",
       "type": "dialogue",
       "scene": "hospital",
       "tensionLevel": 2,
-      "content": "你跟着她下车，才发现她每天坐这趟车，是去医院看老伴。她把药包理了又理：\"他每天这个点等我送药。\"\n\n她不是爱管闲事的老太太。她是知道人生很脆弱，才对陌生人也更温柔。",
+      "content": "再下一轮，你发现药婆下车后没有回家，而是去了医院。\n\n她熟门熟路地走进病房。\n\n床上的老人见到她，第一句话是：“怎么今天晚了？”\n\n她笑：“路上慢。”\n\n原来她每天带着这么多药，是来看自己的老伴。",
       "clues": [
         "clue_yao_po"
       ],
-      "nextNode": "sub_yao_4"
+      "nextNode": "loop_hub",
+      "effects": [
+        {
+          "type": "setFlag",
+          "key": "yao_stage_3",
+          "value": true
+        }
+      ]
     },
     "sub_yao_4": {
       "id": "sub_yao_4",
@@ -1096,19 +1432,24 @@
         {
           "type": "meetCharacter",
           "key": "driver_wang"
+        },
+        {
+          "type": "setFlag",
+          "key": "wang_stage_1",
+          "value": true
         }
       ],
       "clues": [
         "clue_wallet_memory"
       ],
-      "nextNode": "sub_wang_2"
+      "nextNode": "loop_hub"
     },
     "sub_wang_2": {
       "id": "sub_wang_2",
       "type": "dialogue",
       "scene": "bus",
       "tensionLevel": 1,
-      "content": "你又想起：后来你送过他一副手套，他冬天开车手冷。\n\n你摸了摸口袋——这循环里手套不在。但记忆是真的。一个陌生司机，和你之间有过这点温热。",
+      "content": "又一轮，你坐在驾驶位附近。\n\n看着王师傅握方向盘，你忽然想起一段更久以前的记忆。\n\n那天冬天，你送过他一副手套。\n\n“王师傅，你每天开车，手不冷吗？”\n\n他笑着说：“习惯了。”\n\n这不是爆炸前发生的事，而是一段后来才重新浮上来的回忆。\n\n一个陌生司机，和你之间原来真的有过这样一点温热。",
       "clues": [
         "clue_glove_memory"
       ],
@@ -1117,28 +1458,40 @@
           "type": "setFlag",
           "key": "gave_glove",
           "value": true
+        },
+        {
+          "type": "setFlag",
+          "key": "wang_stage_2",
+          "value": true
         }
       ],
-      "nextNode": "sub_wang_3"
+      "nextNode": "loop_hub"
     },
     "sub_wang_3": {
       "id": "sub_wang_3",
       "type": "dialogue",
       "scene": "bus",
       "tensionLevel": 2,
-      "content": "可你越了解他，越觉得不对。他偶尔从后视镜看那个红塑料袋女人，眼神复杂。\n\n你查到：他女儿叫王萌萌，五年前在这条线上出事。他太太和他离了。\n\n一个好司机，背后停着一件事。",
+      "content": "再下一轮，你开始观察王兴德为什么总会看向后排那个红塑料袋。\n\n他没有和陶映红说话，却会在后视镜里看她。\n\n你暂时不知道原因。\n\n只是记下这一点：\n\n这个司机，似乎认识她。",
       "clues": [
         "clue_wang_mengmeng",
         "clue_couple_history"
       ],
-      "nextNode": "sub_wang_4"
+      "nextNode": "loop_hub",
+      "effects": [
+        {
+          "type": "setFlag",
+          "key": "wang_stage_3",
+          "value": true
+        }
+      ]
     },
     "sub_wang_4": {
       "id": "sub_wang_4",
       "type": "dialogue",
       "scene": "bus",
       "tensionLevel": 3,
-      "content": "你终于明白：王萌萌死后，他的生活停住了。所有人都往前，只有他没动。\n\n他不是坏人。他是一个没从失去女儿里走出来的人。而那辆红塑料袋里的东西，和他有关。",
+      "content": "又一次循环，你才查到王兴德的女儿叫王萌萌。\n\n五年前，她在这条线上出事。\n\n他的生活像停在了那一天。\n\n你第一次意识到：一个很好的人，也可能背着一件别人不知道的事。\n\n但你还不知道这件事和陶映红到底是什么关系。",
       "effects": [
         {
           "type": "setFlag",
@@ -1160,7 +1513,7 @@
       "scene": "bus",
       "ambientSound": "bus",
       "tensionLevel": 2,
-      "content": "你盯上那个红塑料袋女人。她安静、局促，抱着袋子像抱着什么秘密。\n\n你越来越确定：炸弹在她那儿。但规矩是——先怀疑，先认识，不能急着动她。\n\n这一轮，你想凑近点。",
+      "content": "你盯上那个红塑料袋女人。\n\n她抱着一个锅，几乎不和任何人说话。\n\n她确实可疑。\n\n但“可疑”不等于“就是炸弹客”。\n\n这一轮，你决定先凑近一点，看看能不能问出什么。",
       "effects": [
         {
           "type": "meetCharacter",
@@ -1172,9 +1525,7 @@
           "value": true
         }
       ],
-      "clues": [
-        "clue_bomb_location"
-      ],
+      "clues": [],
       "nextNode": "sub_tao_early_choice"
     },
     "sub_tao_early_choice": {
@@ -1201,8 +1552,15 @@
       "type": "dialogue",
       "scene": "bus",
       "tensionLevel": 2,
-      "content": "你揉了揉鼻子，装出过敏的样子：\"阿姨，这什么味儿啊，好冲，里面炖的什么？\"\n\n她瞥你一眼，淡淡说：\"炖肉的香料。受不了就下车。\"\n\n你心里嘀咕：哦哦哦是啊，谁家好人会对炖肉的香料过敏……要不还是先调查其他人看看？\n\n（你确定是她。但现在，还不能直接动她。）",
-      "nextNode": "loop_hub"
+      "content": "你揉了揉鼻子，装出过敏的样子：\n\n“阿姨，我过敏，你锅里味道好大，是啥呀？”\n\n她瞥你一眼。\n\n“炖肉的香料。”\n\n你又试着问了一句。\n\n她明显不耐烦：\n\n“受不了就下车。”\n\n她重新低下头，不再理你。\n\n你没有继续逼问。\n\n这个人确实不太好交流。\n\n但现在还没有证据。\n\n先调查下一个人。",
+      "nextNode": "loop_hub",
+      "effects": [
+        {
+          "type": "setFlag",
+          "key": "tao_stage_1",
+          "value": true
+        }
+      ]
     },
     "sub_zhang_alone": {
       "id": "sub_zhang_alone",
@@ -1225,15 +1583,11 @@
       "type": "dialogue",
       "scene": "police_station",
       "tensionLevel": 3,
-      "content": "值班警察把你当闹事/博眼球。半小时后，一个五十多岁的男人出现——洗得发白的夹克，眼神锐利。\n\n\"我姓张。\"他说，\"你说车上有炸弹？证据呢。\"\n\n你给不出证据。循环记忆没法呈堂。他被你烦得不行，但没直接赶你走。",
+      "content": "值班警察把你当成情绪激动的乘客。\n\n没过多久，一个五十多岁的男人出现，穿着洗得发白的夹克，眼神很锐利。\n\n“我姓张。”\n\n你说45路公交车上有炸弹，而且1点45分一定会爆。\n\n他没有相信循环，只问你：\n\n“证据呢？”\n\n你拿不出一份能交到案卷里的证据。\n\n但他没有立刻赶你走。",
       "effects": [
         {
           "type": "meetCharacter",
           "key": "zhang_dui"
-        },
-        {
-          "type": "meetCharacter",
-          "key": "xiao_jiang"
         }
       ],
       "clues": [
@@ -1298,7 +1652,7 @@
       "type": "dialogue",
       "scene": "police_station",
       "tensionLevel": 2,
-      "content": "你说了循环。张队没信，但说：\"我会查证。证据到位，我动。\"\n\n他不轻信神话，但肯验证。这点，后来救了所有人。",
+      "content": "你把循环的事情全部告诉张队。\n\n他沉默了一会儿。\n\n“我不信你说的时间循环。”\n\n你心里一沉。\n\n“但我信你现在是真的害怕。”\n\n他把笔放下：\n\n“我会查。证据到位，我动。”\n\n他不轻信神话，但愿意验证。",
       "nextNode": "loop_hub"
     },
     "sub_zhang_partial": {
@@ -1306,7 +1660,7 @@
       "type": "dialogue",
       "scene": "police_station",
       "tensionLevel": 2,
-      "content": "你说看到红塑料袋可疑。张队记下了：\"我会盯45路。\"——半信，但行动了。",
+      "content": "你没有提循环，只说红塑料袋和那个女人可疑。\n\n张队记下：“我会盯45路。”\n\n他没有承诺相信你，但至少愿意把这条信息留下。",
       "nextNode": "loop_hub"
     },
     "sub_zhang_silence": {
@@ -1328,25 +1682,13 @@
           "id": "esc_a",
           "text": "冲去见赶来的亲人（亲人副本）",
           "nextNode": "sub_family_episode",
-          "effects": [
-            {
-              "type": "setFlag",
-              "key": "escape_triggered",
-              "value": true
-            }
-          ]
+          "effects": []
         },
         {
           "id": "esc_b",
           "text": "回到循环，救所有人",
           "nextNode": "loop_hub",
-          "effects": [
-            {
-              "type": "setFlag",
-              "key": "escape_triggered",
-              "value": true
-            }
-          ]
+          "effects": []
         }
       ]
     },
@@ -1356,7 +1698,14 @@
       "scene": "hospital",
       "tensionLevel": 4,
       "content": "你和肖鹤云站在医院走廊。赶来的人，是你在循环里认识过的那些人的亲人——\n\n卢迪父母抱着猫粮愣住：\"他今天说去漫展……这猫粮是他让我买的。\"\n\n马国强的儿子，西装，手机终于回拨——\"爸？……爸？\"没人接了。\n\n老焦的女儿攥着学费照片哭：\"他说今天来送钱……车票我查了，是他那班。\"\n\n药婆的老伴在走廊尽头：\"她每天这个点来……今天怎么还没到。\"\n\n你逃出来了。但他们没有下一天。",
-      "nextNode": "loop_hub"
+      "nextNode": "loop_hub",
+      "effects": [
+        {
+          "type": "setFlag",
+          "key": "escape_triggered",
+          "value": true
+        }
+      ]
     },
     "sub_tao_truth": {
       "id": "sub_tao_truth",
@@ -1364,19 +1713,23 @@
       "scene": "factory",
       "ambientSound": "factory",
       "tensionLevel": 2,
-      "content": "你查到陶映红的过去。她曾是化工厂工人，女儿死后离职。她在笔记本上写满公式，最后一页：\"萌萌，妈妈来了。\"\n\n三年。她用三年把绝望做成炸弹。她不是想杀陌生人，她想报复一个让她女儿死、还被网暴的世界。\n\n肖鹤云看着那些公式，沉默了很久：\"她……其实可以报警的。\"\n\n\"她报过。\"你说，\"但没人理她。\"",
+      "content": "你开始查陶映红的过去。\n\n你找到她曾在化工厂工作的记录，也找到一些关于爆炸物的资料痕迹。\n\n这说明她有接触危险材料的经历。\n\n但这仍然只能证明她“有能力”，不能证明她就是凶手。\n\n你把这条线记下来，准备下一轮继续追。",
       "effects": [
         {
-          "type": "meetCharacter",
-          "key": "tao_yinghong"
+          "type": "setFlag",
+          "key": "tao_truth_stage_1",
+          "value": true
+        },
+        {
+          "type": "setFlag",
+          "key": "tao_has_factory_history",
+          "value": true
         }
       ],
       "clues": [
-        "clue_tao_factory",
-        "clue_bomb_recipe",
-        "clue_tao_despair"
+        "clue_tao_factory"
       ],
-      "nextNode": "sub_tao_4"
+      "nextNode": "loop_hub"
     },
     "sub_tao_4": {
       "id": "sub_tao_4",
@@ -1384,8 +1737,13 @@
       "scene": "factory",
       "ambientSound": "factory",
       "tensionLevel": 3,
-      "content": "你又找到一张照片。陶映红年轻时抱着一个小女孩，笑得很温柔。照片背面写着：\"萌萌两岁。\"\n\n肖鹤云轻声说：\"她也曾是个好妈妈。\"\n\n你点点头。悲伤可以变成伤害，但伤害的起点，往往是爱。\n\n她不是坏人。她只是一个没从失去女儿里走出来的人。",
+      "content": "下一轮，你找到一张旧照片。\n\n照片里的陶映红抱着一个小女孩，笑得很温柔。\n\n照片背面写着：“萌萌两岁。”\n\n你第一次知道，她曾经也是一个普通母亲。\n\n悲伤可以变成伤害，但伤害的起点，往往是爱。",
       "effects": [
+        {
+          "type": "setFlag",
+          "key": "tao_truth_stage_2",
+          "value": true
+        },
         {
           "type": "setFlag",
           "key": "known_tao",
@@ -1401,7 +1759,7 @@
       "clues": [
         "clue_wang_mengmeng"
       ],
-      "nextNode": "sub_liu_1"
+      "nextNode": "loop_hub"
     },
     "sub_liu_1": {
       "id": "sub_liu_1",
@@ -1413,9 +1771,14 @@
         {
           "type": "meetCharacter",
           "key": "liu_yao"
+        },
+        {
+          "type": "setFlag",
+          "key": "liu_stage_1",
+          "value": true
         }
       ],
-      "nextNode": "sub_liu_2"
+      "nextNode": "loop_hub"
     },
     "sub_liu_2": {
       "id": "sub_liu_2",
@@ -1439,17 +1802,29 @@
           "key": "liu_yao",
           "value": 20,
           "name": "刘瑶"
+        },
+        {
+          "type": "setFlag",
+          "key": "liu_stage_2",
+          "value": true
         }
       ],
-      "nextNode": "sub_liu_3"
+      "nextNode": "loop_hub"
     },
     "sub_liu_3": {
       "id": "sub_liu_3",
       "type": "dialogue",
       "scene": "bus",
       "tensionLevel": 2,
-      "content": "刘瑶擦了眼泪：\"下次……我愿意站出来。\"\n\n你回到车上。所有人，你都认识了。该收网了。",
-      "nextNode": "loop_hub"
+      "content": "刘瑶擦了眼泪：“下次……我愿意站出来。”\n\n你没有再追问。\n\n有些人不是不知道真相，只是终于鼓起勇气，把自己知道的说出来。",
+      "nextNode": "loop_hub",
+      "effects": [
+        {
+          "type": "setFlag",
+          "key": "liu_stage_3",
+          "value": true
+        }
+      ]
     },
     "fragment_yao_sugar": {
       "id": "fragment_yao_sugar",
@@ -1613,7 +1988,7 @@
           "value": true
         }
       ],
-      "nextNode": "sub_xiao_turn"
+      "nextNode": "loop_hub"
     },
     "sub_xiao_turn": {
       "id": "sub_xiao_turn",
@@ -1640,25 +2015,30 @@
           "name": "肖鹤云"
         }
       ],
-      "nextNode": "sub_zhang_verify"
+      "nextNode": "loop_hub"
     },
     "sub_zhang_verify": {
       "id": "sub_zhang_verify",
       "type": "dialogue",
       "scene": "police_station",
       "tensionLevel": 3,
-      "content": "张队调了监控、查了陶映红前科、核了王萌萌旧案。小江急着表现，差点惊动陶映红，张队一把拉回他：\n\n\"真正的警察不是不犯错，是犯错后知道下次怎么做。\"\n\n这和循环一模一样——你们也是一直失败，一直学。\n\n张队最终信了证据：\"便衣我布车上。但你想救所有人，得说服王兴德。\"",
+      "content": "你把已经找到的证据一件件交给张队。\n\n化工厂经历、王萌萌旧案、刘瑶的证词，以及你反复验证过的1点45分。\n\n张队没有问你“循环到底是什么”。\n\n他只问：“如果下一次还是1点45分，你能确认陶映红会带着那个压力锅上车吗？”\n\n你点头。\n\n张队合上材料：\n\n“那我就按证据做准备。”\n\n他没有相信神话。\n\n他相信的是你们一次次验证出来的事实。",
       "effects": [
         {
-          "type": "meetCharacter",
-          "key": "undercover"
+          "type": "setFlag",
+          "key": "zhang_verified",
+          "value": true
+        },
+        {
+          "type": "setFlag",
+          "key": "police_ready",
+          "value": true
         }
       ],
       "clues": [
-        "clue_final_plan",
-        "clue_undercover"
+        "clue_final_plan"
       ],
-      "nextNode": "act_final"
+      "nextNode": "loop_hub"
     },
     "act_final": {
       "id": "act_final",
@@ -1674,18 +2054,30 @@
           "conditions": [
             {
               "type": "flag",
+              "key": "known_wang"
+            },
+            {
+              "type": "flag",
+              "key": "gave_glove"
+            },
+            {
+              "type": "flag",
+              "key": "known_liu"
+            },
+            {
+              "type": "flag",
               "key": "trust_xiao_high"
             }
           ]
         },
         {
           "id": "fin_b",
-          "text": "向便衣发信号拆弹",
+          "text": "请张队启动拆弹方案",
           "nextNode": "ending_defuse",
           "conditions": [
             {
               "type": "flag",
-              "key": "police_cooperation_possible"
+              "key": "police_ready"
             }
           ]
         },
@@ -1696,21 +2088,21 @@
           "conditions": [
             {
               "type": "flag",
-              "key": "investigated_ma_guoqiang"
+              "key": "known_ma"
             },
             {
               "type": "flag",
-              "key": "investigated_lao_jiao"
+              "key": "known_jiao"
             },
             {
               "type": "flag",
-              "key": "investigated_yao_po"
+              "key": "known_yao"
             }
           ]
         },
         {
           "id": "fin_d",
-          "text": "自己冲上去夺引爆器扔出车",
+          "text": "自己冲上去夺引爆器（高风险）",
           "nextNode": "ending_sacrifice"
         },
         {
@@ -1745,6 +2137,10 @@
             {
               "type": "flag",
               "key": "known_liu"
+            },
+            {
+              "type": "flag",
+              "key": "known_tao"
             }
           ]
         }
@@ -1776,7 +2172,7 @@
           "value": "拆弹记忆水晶"
         }
       ],
-      "content": "你向便衣点头。他从人群里挤过去：\"放下！\"陶映红手一松，引爆器被踩碎。\n\n张队说：\"我相信证据。\"\n\n车停了。所有人，活了。\n\n—— 拆弹成功 ——"
+      "content": "你向张队发出信号。\n\n车外早已准备好的专业人员迅速控制现场。\n\n没有人靠运气冲上去，也没有人把命押在一个陌生的引爆器上。\n\n陶映红的手终于松开。\n\n张队只说了一句：\n“按证据做事。”\n\n车停了。\n\n所有人，都活了。\n\n—— 拆弹成功 ——"
     },
     "ending_unite": {
       "id": "ending_unite",
@@ -1795,7 +2191,7 @@
     "ending_sacrifice": {
       "id": "ending_sacrifice",
       "type": "ending",
-      "endingVariant": "good",
+      "endingVariant": "bad",
       "scene": "bridge",
       "effects": [
         {
@@ -1804,7 +2200,7 @@
           "value": "牺牲记忆水晶"
         }
       ],
-      "content": "你冲向陶映红，夺下引爆器，转身扔出车窗。爆炸在车外炸开，玻璃碎，你护着头倒下，手臂流血。\n\n但所有人都活了。肖鹤云扶起你：\"你为什么要这样。\"\n\n\"因为这就是开端——新的开始。\"\n\n—— 牺牲与救赎 ——"
+      "content": "你没有时间再等。\n\n你冲向陶映红，试图夺下引爆器。\n\n可你不知道它的结构，也不知道她下一秒会做什么。\n\n你赌错了。\n\n白光再次吞没车厢。\n\n—— 冲动不是答案 ——"
     },
     "ending_echo": {
       "id": "ending_echo",
@@ -1819,6 +2215,26 @@
         }
       ],
       "content": "循环断了。你没有停在\"你和肖鹤云活下来\"。\n\n你看见他们的下一天：卢迪摘了口罩，遛三只猫；马国强的儿子回拨电话，喊了声爸；老焦女儿收到学费，笑出泪；药婆老伴出院，两人手牵手；王兴德和陶映红在探视里沉默地坐了一会儿。\n\n画外音：原来循环不是要我逃，是要我记得——他们每个人都该有下一天。\n\n—— 下一天（隐藏） ——"
+    },
+    "prologue_scene_2": {
+      "id": "prologue_scene_2",
+      "type": "dialogue",
+      "scene": "bus",
+      "ambientSound": "bus",
+      "tensionLevel": 0,
+      "content": "后来，我还是每天坐45路。\n\n司机还是那个司机。\n\n而我也还是那个普通的学生。\n\n我没有想到，这一天会发生一件事——\n\n会让我一次又一次回到同一个下午。\n\n而我必须在1点45分之前，弄清楚到底发生了什么。",
+      "nextNode": "prologue_sleep"
     }
+  },
+  "_designNotes": {
+    "version": "3.0",
+    "logicFocus": [
+      "钱包只发生在序章；手套留到后期王兴德回忆线。",
+      "油罐车选择无论成功失败都会进入下一轮；成功躲开才明确证明油罐车不是爆炸原因。",
+      "每次循环只推进一段人物线，不再一次播放完整人物故事。",
+      "陶映红前期只是可疑对象，不提前告诉玩家她就是凶手。",
+      "警方线只有张队；没有小江、老张、便衣警察。",
+      "最终结局由前面真正获得的线索和关系条件决定。"
+    ]
   }
 }
