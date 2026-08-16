@@ -11,7 +11,6 @@ import { motion, AnimatePresence } from 'framer-motion'
 import storyDataJson from '../story_v2.json'
 import { LoopResetOverlay } from './LoopResetOverlay'
 import { CycleCounter } from './CycleCounter'
-import { TimelineBar } from './TimelineBar'
 import { DialogueBox } from '@/core/components/DialogueBox'
 import { ChoicePanel } from '@/core/components/ChoicePanel'
 import { SceneBackdrop } from '@/core/components/SceneBackdrop'
@@ -179,11 +178,6 @@ export function KaiDuan({ onExit }: KaiDuanProps) {
     }
   }, [currentNode, currentAct])
 
-  // 计算时间线进度
-  const timeProgress = useMemo(() => {
-    return Math.min(100, (currentAct / 14) * 100)
-  }, [currentAct])
-
   const currentTimeStr = ACT_TIMES[currentAct] || '1:20'
 
   if (!currentNode) return null
@@ -212,12 +206,6 @@ export function KaiDuan({ onExit }: KaiDuanProps) {
         discoveredClues={discoveredClues.size}
         totalClues={storyData.clues?.length || 0}
         unlockedConnections={Array.from(unlockedConnections)}
-      />
-
-      <TimelineBar
-        currentTime={currentTimeStr}
-        explosionTime="1:45"
-        progress={timeProgress}
       />
 
       {/* 线索抽屉 */}
