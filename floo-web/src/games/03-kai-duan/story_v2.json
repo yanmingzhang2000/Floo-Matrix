@@ -439,11 +439,11 @@
       "type": "choice",
       "scene": "bus",
       "tensionLevel": 2,
-      "content": "你决定先深入观察谁？\n\n（每个人都是嫌疑人。你怀疑他们，所以你想认识他们。每次循环你只能深攻一条线，其余留到往后轮次。）",
+      "content": "你看着车厢里的人。哪一个，会是那个要炸了全车的人？",
       "choices": [
         {
           "id": "sus_a",
-          "text": "后排黑帽青年（卢迪）",
+          "text": "后排背双肩包的黑帽青年",
           "nextNode": "sub_lu_di_1",
           "effects": [
             {
@@ -455,7 +455,7 @@
         },
         {
           "id": "sus_b",
-          "text": "抱西瓜的中年男人（马国强）",
+          "text": "带蛇皮袋的中年男人",
           "nextNode": "sub_ma_1",
           "effects": [
             {
@@ -467,7 +467,7 @@
         },
         {
           "id": "sus_c",
-          "text": "护行李箱的农民工（老焦）",
+          "text": "带行李箱的农民工",
           "nextNode": "sub_jiao_1",
           "effects": [
             {
@@ -479,7 +479,7 @@
         },
         {
           "id": "sus_d",
-          "text": "带药包的老太太（药婆）",
+          "text": "提着药包的老太太",
           "nextNode": "sub_yao_1",
           "effects": [
             {
@@ -491,7 +491,7 @@
         },
         {
           "id": "sus_e",
-          "text": "司机王兴德",
+          "text": "司机",
           "nextNode": "sub_wang_1",
           "effects": [
             {
@@ -503,7 +503,7 @@
         },
         {
           "id": "sus_f",
-          "text": "先不锁定，看看前排那个阿姨",
+          "text": "前排带高压锅的阿姨",
           "nextNode": "act_suspect_observe"
         }
       ]
