@@ -80,7 +80,7 @@
       "ambientSound": "rain_heavy",
       "tensionLevel": 1,
       "speaker": "洪霞",
-      "content": "‘跪下！五千块钱！我半个月工资就这么赔给人家了！你还有脸哭？学校里那么多人，人家为什么不欺负别人，偏偏欺负你？！啊？！’",
+      "content": "'跪下！五千块钱！我半个月工资就这么赔给人家了！你还有脸哭？学校里那么多人，人家为什么不欺负别人，偏偏欺负你？啊？！'",
       "clues": [],
       "effects": [
         { "type": "setFlag", "key": "mother_voice_unlocked", "value": true }
@@ -95,7 +95,7 @@
       "ambientSound": "wind_cold",
       "tensionLevel": 1,
       "speaker": "甄真",
-      "content": "后来我和同桌男生在汉堡店吃汉堡，妈妈赶过来当众打了我和男生各一巴掌，骂我廉耻都不要了。那天晚上，我把墙上的奖状一张张撕下来烧成了灰烬，在她骂我‘白眼狼’的怒吼声中推门离家出走。",
+      "content": "后来我和同桌男生在汉堡店吃汉堡，妈妈赶过来当众打了我和男生各一巴掌，骂我廉耻都不要了。那天晚上，我把墙上的奖状一张张撕下来烧成了灰烬，在她骂我'白眼狼'的怒吼声中推门离家出走。",
       "clues": [],
       "effects": [],
       "investigations": [],
@@ -128,7 +128,7 @@
       "ambientSound": "wind_cold",
       "tensionLevel": 2,
       "speaker": "甄真",
-      "content": "几天后晓彤要回家，我身上一分钱也没有，连饭都吃不起。我不敢回家，只能游荡在寒冷的街头。在公交站台旁，一张电线杆上的招聘广告吸引了我：‘招高薪日结工，包吃包住，当天发钱’。",
+      "content": "几天后晓彤要回家，我身上一分钱也没有，连饭都吃不起。我不敢回家，只能游荡在寒冷的街头。在公交站台旁，一张电线杆上的招聘广告吸引了我：'招高薪日结工，包吃包住，当天发钱'。",
       "clues": [],
       "effects": [],
       "investigations": [],
@@ -141,7 +141,7 @@
       "ambientSound": "city_noise",
       "tensionLevel": 2,
       "speaker": "宋红玉",
-      "content": "‘姑娘，看你冻得这样，没吃饭吧？来，先把这杯热牛奶喝了。阿姨这包吃包住，一天给八十！看你是个学生样，阿姨不骗你，走，跟阿姨上车去厂里看下。’",
+      "content": "'姑娘，看你冻得这样，没吃饭吧？来，先把这杯热牛奶喝了。阿姨这包吃包住，一天给八十！看你是个学生样，阿姨不骗你，走，跟阿姨上车去厂里看下。'",
       "clues": [],
       "effects": [],
       "investigations": [
@@ -152,19 +152,45 @@
           "clueId": "clue_car_childlock"
         }
       ],
-      "nextNode": "node_06_car_locked_inside"
+      "nextNode": "node_06_get_in_car"
     },
-    "node_06_car_locked_inside": {
-      "id": "node_06_car_locked_inside",
+    "node_06_get_in_car": {
+      "id": "node_06_get_in_car",
+      "type": "dialogue",
+      "scene": "inside_van",
+      "ambientSound": "engine_hum",
+      "tensionLevel": 3,
+      "speaker": "甄真",
+      "content": "我犹豫了一下，还是上了车。面包车后门'咔嗒'一声关上，那声音不对劲——像是从外面锁死了。我坐在后排，看见吉大顺从后视镜看了我一眼，又移开了。",
+      "clues": [],
+      "effects": [],
+      "investigations": [],
+      "nextNode": "node_07_signal_gone"
+    },
+    "node_07_signal_gone": {
+      "id": "node_07_signal_gone",
+      "type": "dialogue",
+      "scene": "inside_van",
+      "ambientSound": "engine_hum",
+      "tensionLevel": 3,
+      "speaker": "甄真",
+      "content": "车开出市区，窗外的楼一栋比一栋陌生。我偷偷掏出手机——信号格从两格闪到一格，又闪了一下，彻底变为空白。邓立钢在副驾驶冷冷抽着烟，一句话没说。",
+      "clues": [],
+      "effects": [],
+      "investigations": [],
+      "nextNode": "node_08_car_choice"
+    },
+    "node_08_car_choice": {
+      "id": "node_08_car_choice",
       "type": "choice",
       "scene": "inside_van",
       "ambientSound": "engine_hum",
       "tensionLevel": 3,
-      "content": "面包车开出市区，窗外的路越来越偏僻。后视镜里驾驶员吉大顺眼神阴沉，副驾驶的邓立钢冷冷抽着烟。甄真试着偷偷拉门，门被内侧死锁；拿出手机，信号格闪烁几下彻底变为空白！",
+      "content": "车在减速，前面像是个路口。后视镜里吉大顺的眼神阴沉。甄真试着偷偷拉门，门被内侧死锁。心跳得我耳朵发嗡。",
       "choices": [
         {
           "id": "choice_scream_in_car",
-          "text": "大声质问‘这不是去厂里的路，我要下车！’",
+          "text": "大声质问'这不是去厂里的路，我要下车！'",
           "nextNode": "node_bad_end_car_beaten",
           "conditions": [],
           "effects": []
@@ -172,14 +198,14 @@
         {
           "id": "choice_stay_quiet_car",
           "text": "压下恐惧，装作发晕低头观察地形",
-          "nextNode": "node_07_meat_factory_arrival",
+          "nextNode": "node_09_meat_factory_arrival",
           "conditions": [],
           "effects": [{ "type": "setFlag", "key": "stay_calm_car", "value": true }]
         }
       ]
     },
-    "node_07_meat_factory_arrival": {
-      "id": "node_07_meat_factory_arrival",
+    "node_09_meat_factory_arrival": {
+      "id": "node_09_meat_factory_arrival",
       "type": "dialogue",
       "scene": "meat_factory_room",
       "ambientSound": "room_damp",
@@ -189,53 +215,53 @@
       "clues": [],
       "effects": [],
       "investigations": [],
-      "nextNode": "node_08_qiufeng_truth"
+      "nextNode": "node_10_qiufeng_truth"
     },
-    "node_08_qiufeng_truth": {
-      "id": "node_08_qiufeng_truth",
+    "node_10_qiufeng_truth": {
+      "id": "node_10_qiufeng_truth",
       "type": "dialogue",
       "scene": "meat_factory_room",
       "ambientSound": "room_damp",
       "tensionLevel": 4,
       "speaker": "邱枫",
-      "content": "（颤抖着扑过来捂住甄真的嘴，极低声）‘别出声……他们是恶魔！他们前几天抓了我，拿了我的钥匙去出租屋搜东西……你是因为借住我的房间、用了我的物品，才被他们顺藤摸瓜找上的！甄真，对不起，是我害了你！’",
+      "content": "（颤抖着扑过来捂住甄真的嘴，极低声）'别出声……他们是恶魔！他们前几天抓了我，拿了我的钥匙去出租屋搜东西……你是因为借住我的房间、用了我的物品，才被他们顺藤摸瓜找上的！甄真，对不起，是我害了你！'",
       "clues": [],
       "effects": [],
       "investigations": [],
-      "nextNode": "node_09_deng_forced_call"
+      "nextNode": "node_11_deng_forced_call"
     },
-    "node_09_deng_forced_call": {
-      "id": "node_09_deng_forced_call",
+    "node_11_deng_forced_call": {
+      "id": "node_11_deng_forced_call",
       "type": "choice",
       "scene": "meat_factory_room",
       "ambientSound": "room_damp",
       "tensionLevel": 5,
-      "content": "邓立钢拎着铁棍踹门进来，一把卡住甄真的脖子把手机砸在她脸上：‘给你妈打！要三万块赎金！敢说错一个字，我现在就把你和你这个室友剁了！’",
+      "content": "邓立钢拎着铁棍踹门进来，一把卡住甄真的脖子把手机砸在她脸上：'给你妈打！要三万块赎金！敢说错一个字，我现在就把你和你这个室友剁了！'",
       "choices": [
         {
           "id": "choice_call_normal",
           "text": "吓得大哭，完全照搬邓立钢的要求向家里要钱",
-          "nextNode": "node_10_bathroom_water_prep",
+          "nextNode": "node_12_bathroom_locked",
           "conditions": [],
           "effects": [{ "type": "setFlag", "key": "secret_code_sent", "value": false }]
         },
         {
           "id": "choice_call_secret_code",
           "text": "按要求要钱，但故意叫错老家县城名与母亲的昵称",
-          "nextNode": "node_10_bathroom_water_prep",
+          "nextNode": "node_12_bathroom_locked",
           "conditions": [],
           "effects": [{ "type": "setFlag", "key": "secret_code_sent", "value": true }]
         }
       ]
     },
-    "node_10_bathroom_water_prep": {
-      "id": "node_10_bathroom_water_prep",
+    "node_12_bathroom_locked": {
+      "id": "node_12_bathroom_locked",
       "type": "dialogue",
-      "scene": "meat_factory_room",
+      "scene": "bathroom",
       "ambientSound": "water_dripping",
       "tensionLevel": 4,
       "speaker": "甄真",
-      "content": "打完电话后，我被关进卫生间。脑海里突然响过妈妈骂我的声音：‘做事动动脑子！’……四楼是有邻居住的！只要让四楼爆水管，楼下一定会跑上楼砸门！",
+      "content": "打完电话后，我被关进卫生间。铁门从外面反锁。我缩在墙角，听见宋红玉在外面跟邓立钢低声说话。卫生间很小，只有一扇生锈的推拉窗，窗外是五楼外墙。",
       "clues": ["clue_bathroom_window", "clue_bloodless_injury"],
       "effects": [],
       "investigations": [
@@ -246,10 +272,10 @@
           "clueId": "clue_bathroom_window"
         }
       ],
-      "nextNode": "node_11_water_attack_execute"
+      "nextNode": "node_13_water_attack_execute"
     },
-    "node_11_water_attack_execute": {
-      "id": "node_11_water_attack_execute",
+    "node_13_water_attack_execute": {
+      "id": "node_13_water_attack_execute",
       "type": "choice",
       "scene": "bathroom",
       "ambientSound": "water_running_heavy",
@@ -259,7 +285,7 @@
         {
           "id": "choice_qiufeng_block_door",
           "text": "喊邱枫死顶木门，自己迅速推开卫生间小窗",
-          "nextNode": "node_12_qiufeng_sacrifice",
+          "nextNode": "node_14_qiufeng_sacrifice",
           "conditions": [],
           "effects": []
         },
@@ -272,26 +298,52 @@
         }
       ]
     },
-    "node_12_qiufeng_sacrifice": {
-      "id": "node_12_qiufeng_sacrifice",
+    "node_14_qiufeng_sacrifice": {
+      "id": "node_14_qiufeng_sacrifice",
       "type": "dialogue",
       "scene": "outer_wall",
       "ambientSound": "wind_high",
       "tensionLevel": 5,
       "speaker": "邱枫",
-      "content": "（撞门声与摔打声中，用身体和铁架床死死抵住木门）‘甄真！爬出去！别管我！你才17岁，给我好好活着逃出去！！’\n\n邱枫用血肉之躯卡住了死路。我眼眶撕裂，推开生锈的小窗爬出了五楼外墙！",
+      "content": "（撞门声与摔打声中，用身体和铁架床死死抵住木门）'甄真！爬出去！别管我！你才17岁，给我好好活着逃出去！！'",
       "clues": [],
       "effects": [],
       "investigations": [],
-      "nextNode": "node_13_outer_wall_climb"
+      "nextNode": "node_15_outer_wall_climb"
     },
-    "node_13_outer_wall_climb": {
-      "id": "node_13_outer_wall_climb",
+    "node_15_outer_wall_climb": {
+      "id": "node_15_outer_wall_climb",
+      "type": "dialogue",
+      "scene": "outer_wall",
+      "ambientSound": "wind_high",
+      "tensionLevel": 5,
+      "speaker": "甄真",
+      "content": "邱枫用血肉之躯卡住了死路。我眼眶撕裂，推开生锈的小窗爬出了五楼外墙！冷风如刀，脚下只有十厘米宽的水泥沿，下面是深远的街道。",
+      "clues": [],
+      "effects": [],
+      "investigations": [],
+      "nextNode": "node_16_neighbor_noise"
+    },
+    "node_16_neighbor_noise": {
+      "id": "node_16_neighbor_noise",
+      "type": "dialogue",
+      "scene": "outer_wall",
+      "ambientSound": "wind_high",
+      "tensionLevel": 5,
+      "speaker": "甄真",
+      "content": "恰在此时，四楼邻居因为天花板漏水，气急败坏冲上五楼疯狂砸门咆哮！邓立钢和宋红玉被迫开门去应付！我贴在墙上，听见他们的争吵声，一动不敢动。",
+      "clues": [],
+      "effects": [],
+      "investigations": [],
+      "nextNode": "node_17_outer_wall_choice"
+    },
+    "node_17_outer_wall_choice": {
+      "id": "node_17_outer_wall_choice",
       "type": "choice",
       "scene": "outer_wall",
       "ambientSound": "wind_high",
       "tensionLevel": 5,
-      "content": "五楼高空，冷风如刀。脚下只有十厘米宽的水泥沿，前方是生锈的空调外机。恰在此时，四楼邻居因为天花板漏水，气急败坏冲上五楼疯狂砸门咆哮！邓立钢和宋红玉被迫开门去应付！",
+      "content": "前方是生锈的空调外机，再往前是隔壁房间的窗。身后卫生间的窗被猛地推开，邓立钢探出大半个身子张望！",
       "choices": [
         {
           "id": "choice_look_down_height",
@@ -303,24 +355,24 @@
         {
           "id": "choice_stare_ahead_ac",
           "text": "死盯前方空调外机，忍着双手麻木强行向前挪",
-          "nextNode": "node_14_ac_unit_blindspot",
+          "nextNode": "node_18_ac_unit_blindspot",
           "conditions": [],
           "effects": []
         }
       ]
     },
-    "node_14_ac_unit_blindspot": {
-      "id": "node_14_ac_unit_blindspot",
+    "node_18_ac_unit_blindspot": {
+      "id": "node_18_ac_unit_blindspot",
       "type": "choice",
       "scene": "outer_wall",
       "ambientSound": "wind_high",
       "tensionLevel": 5,
-      "content": "双脚刚踏上空调外机，卫生间窗户被猛地推开，邓立钢探出大半个身子张望！脑海里再次响起母亲的指责：‘你这个白眼狼！’——‘我偏要活着回去！’",
+      "content": "双脚刚踏上空调外机，邓立钢的视线扫过来！脑海里再次响起母亲的指责：'你这个白眼狼！'——'我偏要活着回去！'",
       "choices": [
         {
           "id": "choice_shrink_in_blindspot",
           "text": "屏住呼吸，死死缩在外机与墙体夹角盲区",
-          "nextNode": "node_15_empty_room_entry",
+          "nextNode": "node_19_empty_room_entry",
           "conditions": [],
           "effects": []
         },
@@ -333,8 +385,8 @@
         }
       ]
     },
-    "node_15_empty_room_entry": {
-      "id": "node_15_empty_room_entry",
+    "node_19_empty_room_entry": {
+      "id": "node_19_empty_room_entry",
       "type": "dialogue",
       "scene": "neighbor_room",
       "ambientSound": "indoor_silence",
@@ -351,34 +403,34 @@
           "clueId": "clue_forced_phone_call"
         }
       ],
-      "nextNode": "node_16_empty_room_decision"
+      "nextNode": "node_20_empty_room_decision"
     },
-    "node_16_empty_room_decision": {
-      "id": "node_16_empty_room_decision",
+    "node_20_empty_room_decision": {
+      "id": "node_20_empty_room_decision",
       "type": "choice",
       "scene": "neighbor_room",
       "ambientSound": "indoor_silence",
       "tensionLevel": 4,
-      "content": "走廊里四楼邻居正拽着邓立钢扭打理论，隔壁墙内传来邱枫故意大声顶撞打掩护的声音。甄真把手贴在冰冷的墙上：‘邱枫姐，等我！’",
+      "content": "走廊里四楼邻居正拽着邓立钢扭打理论，隔壁墙内传来邱枫故意大声顶撞打掩护的声音。甄真把手贴在冰冷的墙上：'邱枫姐，等我！'",
       "choices": [
         {
           "id": "choice_call_110_quietly",
-          "text": "用衣服捂住嘴，极低声用座机拨打110报出‘肉联厂宿舍’",
-          "nextNode": "node_17_escape_corridor",
+          "text": "用衣服捂住嘴，极低声用座机拨打110报出'肉联厂宿舍'",
+          "nextNode": "node_21_escape_corridor",
           "conditions": [],
           "effects": [{ "type": "setFlag", "key": "called_police_in_room", "value": true }]
         },
         {
           "id": "choice_run_corridor_direct",
           "text": "不冒暴露风险，直接开门趁走廊混乱溜下楼",
-          "nextNode": "node_17_escape_corridor",
+          "nextNode": "node_21_escape_corridor",
           "conditions": [],
           "effects": [{ "type": "setFlag", "key": "called_police_in_room", "value": false }]
         }
       ]
     },
-    "node_17_escape_corridor": {
-      "id": "node_17_escape_corridor",
+    "node_21_escape_corridor": {
+      "id": "node_21_escape_corridor",
       "type": "dialogue",
       "scene": "corridor",
       "ambientSound": "corridor_noise",
@@ -388,10 +440,10 @@
       "clues": [],
       "effects": [],
       "investigations": [],
-      "nextNode": "node_18_alley_ambush"
+      "nextNode": "node_22_alley_ambush"
     },
-    "node_18_alley_ambush": {
-      "id": "node_18_alley_ambush",
+    "node_22_alley_ambush": {
+      "id": "node_22_alley_ambush",
       "type": "dialogue",
       "scene": "street_day",
       "ambientSound": "street_busy",
@@ -401,20 +453,20 @@
       "clues": [],
       "effects": [],
       "investigations": [],
-      "nextNode": "node_19_alley_struggle"
+      "nextNode": "node_23_alley_struggle"
     },
-    "node_19_alley_struggle": {
-      "id": "node_19_alley_struggle",
+    "node_23_alley_struggle": {
+      "id": "node_23_alley_struggle",
       "type": "choice",
       "scene": "street_day",
       "ambientSound": "street_busy",
       "tensionLevel": 5,
-      "content": "‘臭丫头！真让你跑出来了！’邓立钢眼神爆裂，一把卡住我的脖子死命往死胡同拖！脑海里浮现出邱枫替我顶门时的眼神！",
+      "content": "'臭丫头！真让你跑出来了！'邓立钢眼神爆裂，一把卡住我的脖子死命往死胡同拖！脑海里浮现出邱枫替我顶门时的眼神！",
       "choices": [
         {
           "id": "choice_bite_and_smash_stall",
           "text": "爆发野兽般的求生欲，狠咬邓立钢虎口，疯狂撞翻路边水果摊",
-          "nextNode": "node_20_police_siren_rescue",
+          "nextNode": "node_24_police_siren_rescue",
           "conditions": [],
           "effects": []
         },
@@ -427,25 +479,25 @@
         }
       ]
     },
-    "node_20_police_siren_rescue": {
-      "id": "node_20_police_siren_rescue",
+    "node_24_police_siren_rescue": {
+      "id": "node_24_police_siren_rescue",
       "type": "dialogue",
       "scene": "street_day",
       "ambientSound": "siren_loud",
       "tensionLevel": 3,
       "speaker": "邓立钢",
-      "content": "‘啊！！’邓立钢剧痛甩手，水果摊轰然倒地，烂苹果滚了一地，路人纷纷围观喝斥！\n\n就在此时——刺耳破空的警笛声由远及近疾驰而来！警方彭兆林警官带队赶到！邓立钢见状不敢当街作案，恶狠狠骂了一句仓皇逃窜！",
+      "content": "'啊！！'邓立钢剧痛甩手，水果摊轰然倒地，烂苹果滚了一地，路人纷纷围观喝斥！\n\n就在此时——刺耳破空的警笛声由远及近疾驰而来！警方彭兆林警官带队赶到！邓立钢见状不敢当街作案，恶狠狠骂了一句仓皇逃窜！",
       "clues": [],
       "effects": [],
       "investigations": [],
-      "nextNode": "node_21_ending_good"
+      "nextNode": "node_25_ending_good"
     },
-    "node_21_ending_good": {
-      "id": "node_21_ending_good",
+    "node_25_ending_good": {
+      "id": "node_25_ending_good",
       "type": "ending",
       "endingVariant": "good",
       "scene": "police_station",
-      "content": "我瘫软在烂水果堆里，迎来了救赎。邱枫被成功解救，恶徒团伙被彻底缉拿归案。\n\n多年后，雨夜的案发现场。警官甄真站在窗前。年轻警员问她当年是怎么从高楼外墙爬过来的。\n甄真看着窗户上自己的倒影缓缓开口：‘那时候我手抖得厉害，我只是想活着……因为当年有人一直没有放弃我，所以我才来到了这扇窗户的这一边。’",
+      "content": "我瘫软在烂水果堆里，迎来了救赎。邱枫被成功解救，恶徒团伙被彻底缉拿归案。\n\n多年后，雨夜的案发现场。警官甄真站在窗前。年轻警员问她当年是怎么从高楼外墙爬过来的。\n甄真看着窗户上自己的倒影缓缓开口：'那时候我手抖得厉害，我只是想活着……因为当年有人一直没有放弃我，所以我才来到了这扇窗户的这一边。'",
       "effects": []
     },
     "node_bad_end_car_beaten": {
@@ -453,7 +505,7 @@
       "type": "ending",
       "endingVariant": "bad",
       "scene": "inside_van",
-      "checkpointNodeId": "node_06_car_locked_inside",
+      "checkpointNodeId": "node_08_car_choice",
       "content": "【 Bad End：打草惊蛇 】\n你的尖叫让吉大顺直接停车把你捆死塞住嘴。你失去了最后的自由与观察地形的机会。",
       "effects": []
     },
@@ -462,7 +514,7 @@
       "type": "ending",
       "endingVariant": "bad",
       "scene": "bathroom",
-      "checkpointNodeId": "node_11_water_attack_execute",
+      "checkpointNodeId": "node_13_water_attack_execute",
       "content": "【 Bad End：犹豫沦陷 】\n门被撞开，宋红玉和邓立钢冲了进来。你错失了邱枫用生命为你争取到的唯一逃生窗口。",
       "effects": []
     },
@@ -471,7 +523,7 @@
       "type": "ending",
       "endingVariant": "bad",
       "scene": "outer_wall",
-      "checkpointNodeId": "node_13_outer_wall_climb",
+      "checkpointNodeId": "node_17_outer_wall_choice",
       "content": "【 Bad End：高空眩晕 】\n你在五楼高空朝脚下看了一眼，强烈的眩晕感导致瞬间脱力坠楼……（提示：高空逃生时，绝不能往下看！）",
       "effects": []
     },
@@ -480,7 +532,7 @@
       "type": "ending",
       "endingVariant": "bad",
       "scene": "outer_wall",
-      "checkpointNodeId": "node_14_ac_unit_blindspot",
+      "checkpointNodeId": "node_18_ac_unit_blindspot",
       "content": "【 Bad End：暴露位置 】\n你的呼救声暴露了位置。邓立钢探出窗户抓住你的衣服，将你硬生生扯回了五楼室内……",
       "effects": []
     },
@@ -489,7 +541,7 @@
       "type": "ending",
       "endingVariant": "bad",
       "scene": "street_day",
-      "checkpointNodeId": "node_19_alley_struggle",
+      "checkpointNodeId": "node_23_alley_struggle",
       "content": "【 Bad End：功亏一篑 】\n在最后的巷口，你因惊慌失去反抗意志，被邓立钢再次拖入黑车强行带走……",
       "effects": []
     }
