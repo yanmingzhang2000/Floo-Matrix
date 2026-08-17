@@ -1,38 +1,49 @@
 {
-  "gameId": "05-piao-bai-zhen-zhen",
-  "title": "漂白·窗外",
-  "description": "17岁少女甄真离家出走后借住空房，误入伪善招工陷阱。面对死锁的面包车、遍体鳞伤的室友邱枫以及凶残的肉联厂恶徒，她必须靠着智谋与求生本能踏出高空逃生的第一步。",
-  "startNode": "node_01_prologue_chide",
+  "gameId": "05-piao-bai-zhen-zhen-v2.1",
+  "title": "漂白·窗外 · 精简沉浸版",
+  "description": "17岁少女甄真在体力极限与生死抉择下的高空逃生。保留体力值作为唯一核心机制，恐惧/体温/噪音回归纯叙事描写，26个高密度抉择点完整保留。",
+  "startNode": "node_01_mother_chide",
+  "globalMechanics": {
+    "staminaSystem": {
+      "description": "体力值，唯一量化指标。影响动作精度与逃生成功率。初始100，消耗于屏息、推窗、高空移动、狂奔等场景。低于20时选项出现'手滑/腿软'风险。",
+      "initial": 100,
+      "max": 100,
+      "criticalThreshold": 20
+    },
+    "psychologicalEcho": {
+      "description": "母亲洪霞的指责在高压节点以闪回形式出现，干扰决策。纯叙事机制，无数值。"
+    }
+  },
   "characters": [
     {
       "id": "protagonist",
       "name": "甄真",
-      "description": "17岁高二学生，倔强、敏感。在原生家庭的指责下自尊心极强，但在绝境中拥有极强的观察力与求生本能。"
+      "description": "17岁高二学生。倔强敏感，绝境中拥有极强观察力与求生本能。体力耗尽时会出现手抖、腿软、视野发黑等真实反应。"
     },
     {
       "id": "qiufeng",
       "name": "邱枫",
-      "description": "甄真的室友，早一步被绑架。遍体鳞伤却意志顽强，在关键时刻牺牲自己为甄真争取生路。"
+      "description": "甄真室友，早一步被绑架。遍体鳞伤却意志顽强，关键时刻以血肉之躯为甄真争取逃生窗口。"
     },
     {
       "id": "deng_ligang",
       "name": "邓立钢",
-      "description": "犯罪团伙头目，凶残暴戾，疑心极重，对人命毫无敬畏。"
+      "description": "犯罪团伙头目，凶残暴戾，疑心极重。听力敏锐，对异常响动反应极快。"
     },
     {
       "id": "song_hongyu",
       "name": "宋红玉",
-      "description": "团伙成员，擅长用热心大妈的伪善面孔诱骗年轻女孩，心思缜密。"
+      "description": "团伙成员，擅长用热心大妈的伪善面孔诱骗年轻女孩，心思缜密，负责看守。"
     },
     {
       "id": "ji_dashun",
       "name": "吉大顺",
-      "description": "团伙打手兼司机，身材高大，性格粗暴听话。"
+      "description": "团伙打手兼司机，身材高大，性格粗暴听话，驾驶时从后视镜观察猎物。"
     },
     {
       "id": "mother_hongxia",
       "name": "洪霞",
-      "description": "甄真的母亲，典型的东亚指责型家长，口头禅是'为什么偏偏欺负你'。她的怒骂构成了甄真脑海中的心理回声。"
+      "description": "甄真的母亲，典型的东亚指责型家长。她的怒骂构成了甄真脑海中的心理回声，在绝境中既是枷锁也是反向燃料。"
     }
   ],
   "clues": [
@@ -70,480 +81,854 @@
       "type": "anomaly",
       "content": "因长时间被捆绑与冻饿，甄真的双臂血液循环极差，肌肉频繁剧烈发麻发抖。",
       "location": "甄真自身状态"
+    },
+    {
+      "id": "clue_drain_clog",
+      "title": "地漏堵塞战术",
+      "type": "fact",
+      "content": "用毛巾和脏衣服塞死地漏，水龙头开到最大，积水可在90秒内渗过地板漫到四楼天花板。",
+      "location": "卫生间"
+    },
+    {
+      "id": "clue_neighbor_conflict",
+      "title": "四楼邻居的暴怒",
+      "type": "fact",
+      "content": "四楼住户因天花板漏水会冲上楼疯狂砸门，与邓立钢发生激烈冲突，制造关键 distraction。",
+      "location": "四楼走廊"
+    },
+    {
+      "id": "clue_thin_wall",
+      "title": "预制板薄墙",
+      "type": "anomaly",
+      "content": "空屋与囚室之间的预制板墙隔音极差，隔壁和走廊的争吵声、脚步声清晰可闻。",
+      "location": "隔壁空屋"
     }
   ],
   "nodes": {
-    "node_01_prologue_chide": {
-      "id": "node_01_prologue_chide",
+    "node_01_mother_chide": {
+      "id": "node_01_mother_chide",
       "type": "dialogue",
       "scene": "home_room",
       "ambientSound": "rain_heavy",
       "tensionLevel": 1,
       "speaker": "洪霞",
-      "content": "'跪下！五千块钱！我半个月工资就这么赔给人家了！你还有脸哭？学校里那么多人，人家为什么不欺负别人，偏偏欺负你？啊？！'",
+      "content": "'跪下！五千块钱！我半个月工资就这么赔给人家了！你还有脸哭？学校里那么多人，人家为什么不欺负别人，偏偏欺负你？啊？！'\n\n母亲的唾沫星子溅在你脸上。你的膝盖撞在冰冷的地砖上，不是疼，是一种从骨头缝里渗出来的——\n\n胃部猛然抽搐，喉咙发紧，眼泪被硬生生憋了回去。你知道哭只会让她更愤怒。",
       "clues": [],
       "effects": [
-        { "type": "setFlag", "key": "mother_voice_unlocked", "value": true }
+        {
+          "type": "setFlag",
+          "key": "mother_voice_unlocked",
+          "value": true
+        }
       ],
       "investigations": [],
-      "nextNode": "node_02_prologue_burger"
+      "nextNode": "node_02_burn_award"
     },
-    "node_02_prologue_burger": {
-      "id": "node_02_prologue_burger",
+    "node_02_burn_award": {
+      "id": "node_02_burn_award",
       "type": "dialogue",
       "scene": "street_night",
       "ambientSound": "wind_cold",
       "tensionLevel": 1,
       "speaker": "甄真",
-      "content": "后来我和同桌男生在汉堡店吃汉堡，妈妈赶过来当众打了我和男生各一巴掌，骂我廉耻都不要了。那天晚上，我把墙上的奖状一张张撕下来烧成了灰烬，在她骂我'白眼狼'的怒吼声中推门离家出走。",
+      "content": "后来我和同桌男生在汉堡店吃汉堡，妈妈赶过来当众打了我和男生各一巴掌，骂我廉耻都不要了。\n\n那天晚上，我把墙上的奖状一张张撕下来烧成了灰烬，在她骂我'白眼狼'的怒吼声中推门离家出走。\n\n雨夜的寒风像刀子。你只穿了一件校服外套，牙齿开始不受控制地打颤。胃里空得发疼，从中午到现在什么都没吃。",
       "clues": [],
-      "effects": [],
+      "effects": [
+        {
+          "type": "setFlag",
+          "key": "stamina",
+          "value": 85
+        }
+      ],
       "investigations": [],
-      "nextNode": "node_03_friend_house"
+      "nextNode": "node_03_friend_room"
     },
-    "node_03_friend_house": {
-      "id": "node_03_friend_house",
+    "node_03_friend_room": {
+      "id": "node_03_friend_room",
       "type": "dialogue",
       "scene": "friend_apartment",
       "ambientSound": "room_silence",
       "tensionLevel": 2,
       "speaker": "甄真",
-      "content": "我投奔了同学林晓彤，借住进她和别人合租的老旧公寓。屋内另一个房间住着一个叫邱枫的姐姐。然而奇怪的是，邱枫的毛巾还是湿的，牙刷和行李都在，人却失踪好几天了。",
-      "clues": ["clue_qiufeng_belongings"],
+      "content": "我投奔了同学林晓彤，借住进她和别人合租的老旧公寓。屋内另一个房间住着一个叫邱枫的姐姐。\n\n然而奇怪的是，邱枫的毛巾还是湿的，牙刷和行李都在，人却失踪好几天了。",
+      "clues": [
+        "clue_qiufeng_belongings"
+      ],
       "effects": [],
       "investigations": [
         {
-          "id": "investigate_qiufeng_room",
-          "label": "检查邱枫的房间",
-          "content": "房间床单凌乱，桌上还有没喝完的半杯水，钥匙和外套都不见了。她绝对不是出远门！",
+          "id": "investigate_towel",
+          "label": "触摸邱枫的毛巾",
+          "content": "毛巾触手冰凉但潮湿——不是自然风干，是今天早上还有人用过。",
+          "clueId": "clue_qiufeng_belongings"
+        },
+        {
+          "id": "investigate_bed",
+          "label": "按压邱枫的床铺",
+          "content": "被褥中心已经凉透，说明她至少两天没在床上睡过。但枕头上有几根长发，被扯断的。",
+          "clueId": "clue_qiufeng_belongings"
+        },
+        {
+          "id": "investigate_cup",
+          "label": "观察桌上的半杯水",
+          "content": "水杯边缘有淡淡的口红印，水面漂浮着极细的灰尘——至少放了48小时以上。",
           "clueId": "clue_qiufeng_belongings"
         }
       ],
-      "nextNode": "node_04_no_money_out"
+      "nextNode": "node_04_cold_hunger"
     },
-    "node_04_no_money_out": {
-      "id": "node_04_no_money_out",
+    "node_04_cold_hunger": {
+      "id": "node_04_cold_hunger",
       "type": "dialogue",
       "scene": "bus_station",
       "ambientSound": "wind_cold",
       "tensionLevel": 2,
       "speaker": "甄真",
-      "content": "几天后晓彤要回家，我身上一分钱也没有，连饭都吃不起。我不敢回家，只能游荡在寒冷的街头。在公交站台旁，一张电线杆上的招聘广告吸引了我：'招高薪日结工，包吃包住，当天发钱'。",
+      "content": "几天后晓彤要回家，我身上一分钱也没有，连饭都吃不起。我不敢回家，只能游荡在寒冷的街头。\n\n饥饿感已经从'饿'变成了'疼'，像有一只手在胃袋里拧。手指发麻，视线偶尔发黑——低血糖的前兆。在公交站台旁，一张电线杆上的招聘广告吸引了我：'招高薪日结工，包吃包住，当天发钱'。",
       "clues": [],
-      "effects": [],
+      "effects": [
+        {
+          "type": "setFlag",
+          "key": "stamina",
+          "value": 70
+        }
+      ],
       "investigations": [],
-      "nextNode": "node_05_song_hongyu_trap"
+      "nextNode": "node_05_song_trap"
     },
-    "node_05_song_hongyu_trap": {
-      "id": "node_05_song_hongyu_trap",
-      "type": "dialogue",
+    "node_05_song_trap": {
+      "id": "node_05_song_trap",
+      "type": "choice",
       "scene": "bus_station",
       "ambientSound": "city_noise",
       "tensionLevel": 2,
       "speaker": "宋红玉",
-      "content": "'姑娘，看你冻得这样，没吃饭吧？来，先把这杯热牛奶喝了。阿姨这包吃包住，一天给八十！看你是个学生样，阿姨不骗你，走，跟阿姨上车去厂里看下。'",
-      "clues": [],
+      "content": "'姑娘，看你冻得这样，没吃饭吧？来，先把这杯热牛奶喝了。阿姨这包吃包住，一天给八十！看你是个学生样，阿姨不骗你，走，跟阿姨上车去厂里看下。'\n\n宋红玉满脸堆笑，手里的纸杯冒着热气。那热气扑在你脸上，你闻到了牛奶的甜香。\n\n你的胃发出一声响亮的痉挛。手不受控制地伸向纸杯——但另一个声音在脑子里尖叫：'为什么偏偏找你？'",
+      "choices": [
+        {
+          "id": "choice_drink_real",
+          "text": "接过牛奶一饮而尽（胃里终于有了一丝暖意，但警惕降低）",
+          "nextNode": "node_06_car_lock",
+          "effects": [
+            {
+              "type": "setFlag",
+              "key": "alertness",
+              "value": 30
+            }
+          ]
+        },
+        {
+          "id": "choice_drink_fake",
+          "text": "假装喝，实际含在嘴里随后吐掉（保持清醒，但手抖得厉害）",
+          "nextNode": "node_06_car_lock",
+          "effects": [
+            {
+              "type": "setFlag",
+              "key": "alertness",
+              "value": 65
+            }
+          ]
+        },
+        {
+          "id": "choice_refuse",
+          "text": "摇头拒绝：'我不去了，谢谢阿姨。'（转身想走）",
+          "nextNode": "node_05_refuse_fail",
+          "effects": []
+        }
+      ]
+    },
+    "node_05_refuse_fail": {
+      "id": "node_05_refuse_fail",
+      "type": "dialogue",
+      "scene": "bus_station",
+      "ambientSound": "city_noise",
+      "tensionLevel": 3,
+      "speaker": "宋红玉",
+      "content": "'哎别走啊！'宋红玉一把攥住你的手腕，力道大得惊人。她脸上的笑容没变，但指甲已经掐进了你的肉里。\n\n'阿姨都给你热牛奶了，你不给面子？大顺，帮阿姨扶一下这位同学。'\n\n一只像铁钳一样的大手从背后扣住了你的肩膀。你根本挣脱不了。",
+      "effects": [],
+      "investigations": [],
+      "nextNode": "node_06_car_lock"
+    },
+    "node_06_car_lock": {
+      "id": "node_06_car_lock",
+      "type": "choice",
+      "scene": "bus_station",
+      "ambientSound": "engine_hum",
+      "tensionLevel": 3,
+      "speaker": "甄真",
+      "content": "我被半推半搡地带到一辆灰扑扑的面包车前。宋红玉拉开侧门，示意我上去。\n\n车门内侧的把手不见了，只剩一个黑洞洞的凹槽。驾驶座上，一个高大男人从后视镜看了我一眼——那眼神不像在看人，像在看货物。",
+      "clues": [
+        "clue_car_childlock"
+      ],
       "effects": [],
       "investigations": [
         {
           "id": "investigate_car_door",
-          "label": "上车前触碰后门拉手",
-          "content": "手摸向面包车门内侧，发现拉手已经被完全拆除，只剩一个冷冰冰的洞眼！",
+          "label": "触碰后门内侧凹槽",
+          "content": "手指探入凹槽，摸到冰冷的铁丝和断裂的塑料残片——这门从里面根本打不开！",
+          "clueId": "clue_car_childlock"
+        },
+        {
+          "id": "investigate_driver",
+          "label": "偷看后视镜里的司机",
+          "content": "吉大顺的右手搭在档把上，指关节粗大，手背上有新鲜的抓痕。",
           "clueId": "clue_car_childlock"
         }
       ],
-      "nextNode": "node_06_get_in_car"
+      "choices": [
+        {
+          "id": "choice_get_in",
+          "text": "硬着头皮上车（心跳如雷，手心全是冷汗）",
+          "nextNode": "node_07_signal_zero",
+          "effects": []
+        }
+      ]
     },
-    "node_06_get_in_car": {
-      "id": "node_06_get_in_car",
+    "node_07_signal_zero": {
+      "id": "node_07_signal_zero",
       "type": "dialogue",
       "scene": "inside_van",
       "ambientSound": "engine_hum",
       "tensionLevel": 3,
       "speaker": "甄真",
-      "content": "我犹豫了一下，还是上了车。面包车后门'咔嗒'一声关上，那声音不对劲——像是从外面锁死了。我坐在后排，看见吉大顺从后视镜看了我一眼，又移开了。",
-      "clues": [],
+      "content": "面包车后门'咔嗒'一声关上。那声音不对劲——像是从外面锁死了。\n\n车开出市区，窗外的楼一栋比一栋陌生。我偷偷掏出手机——信号格从两格闪到一格，又闪了一下，彻底变为空白。\n\n邓立钢在副驾驶冷冷抽着烟，一句话没说。烟雾飘到后排，呛得你想咳嗽，但你死死捂住了嘴。喉咙痒得发疼，眼泪憋了出来。",
       "effects": [],
       "investigations": [],
-      "nextNode": "node_07_signal_gone"
+      "nextNode": "node_08_car_gamble"
     },
-    "node_07_signal_gone": {
-      "id": "node_07_signal_gone",
-      "type": "dialogue",
-      "scene": "inside_van",
-      "ambientSound": "engine_hum",
-      "tensionLevel": 3,
-      "speaker": "甄真",
-      "content": "车开出市区，窗外的楼一栋比一栋陌生。我偷偷掏出手机——信号格从两格闪到一格，又闪了一下，彻底变为空白。邓立钢在副驾驶冷冷抽着烟，一句话没说。",
-      "clues": [],
-      "effects": [],
-      "investigations": [],
-      "nextNode": "node_08_car_choice"
-    },
-    "node_08_car_choice": {
-      "id": "node_08_car_choice",
+    "node_08_car_gamble": {
+      "id": "node_08_car_gamble",
       "type": "choice",
       "scene": "inside_van",
       "ambientSound": "engine_hum",
-      "tensionLevel": 3,
-      "content": "车在减速，前面像是个路口。后视镜里吉大顺的眼神阴沉。甄真试着偷偷拉门，门被内侧死锁。心跳得我耳朵发嗡。",
+      "tensionLevel": 4,
+      "speaker": "甄真",
+      "content": "车在减速，前面像是个路口。后视镜里吉大顺的眼神阴沉。\n\n甄真试着偷偷拉门，门被内侧死锁。心跳得我耳朵发嗡。\n\n肾上腺素飙升，手指发麻，视野边缘开始发白。你必须做一个决定——",
       "choices": [
         {
           "id": "choice_scream_in_car",
-          "text": "大声质问'这不是去厂里的路，我要下车！'",
-          "nextNode": "node_bad_end_car_beaten",
-          "conditions": [],
+          "text": "大声质问'这不是去厂里的路，我要下车！'（恐惧压过理智，声音尖锐变调）",
+          "nextNode": "node_bad_01_car_beaten",
           "effects": []
         },
         {
           "id": "choice_stay_quiet_car",
-          "text": "压下恐惧，装作发晕低头观察地形",
-          "nextNode": "node_09_meat_factory_arrival",
-          "conditions": [],
-          "effects": [{ "type": "setFlag", "key": "stay_calm_car", "value": true }]
+          "text": "压下恐惧，装作晕车低头观察地形（胃部抽搐着忍下尖叫，咬破口腔内壁）",
+          "nextNode": "node_09_dark_room",
+          "effects": [
+            {
+              "type": "setFlag",
+              "key": "stay_calm_car",
+              "value": true
+            },
+            {
+              "type": "setFlag",
+              "key": "stamina",
+              "value": 65
+            }
+          ]
         }
       ]
     },
-    "node_09_meat_factory_arrival": {
-      "id": "node_09_meat_factory_arrival",
+    "node_09_dark_room": {
+      "id": "node_09_dark_room",
       "type": "dialogue",
       "scene": "meat_factory_room",
       "ambientSound": "room_damp",
       "tensionLevel": 4,
       "speaker": "甄真",
-      "content": "我被推入一间破旧潮湿的楼房内，重重的防盗铁门在身后哐当锁死！屋里散发着霉味和血腥味。而在房间角落的破草席上，赫然瘫坐着一个人——满脸血痕、嘴唇干裂，居然就是失踪多日的邱枫！",
-      "clues": [],
-      "effects": [],
+      "content": "我被推入一间破旧潮湿的楼房内，重重的防盗铁门在身后哐当锁死！\n\n屋里散发着霉味和血腥味。而在房间角落的破草席上，赫然瘫坐着一个人——满脸血痕、嘴唇干裂，居然就是失踪多日的邱枫！\n\n那味道让你瞬间干呕，胃酸涌到喉咙口。邱枫的脸肿得变形，左眼只剩一条缝，但她看见你时，那只完好的右眼猛地睁大了。",
+      "effects": [
+        {
+          "type": "setFlag",
+          "key": "stamina",
+          "value": 60
+        }
+      ],
       "investigations": [],
-      "nextNode": "node_10_qiufeng_truth"
+      "nextNode": "node_10_qiufeng_whisper"
     },
-    "node_10_qiufeng_truth": {
-      "id": "node_10_qiufeng_truth",
+    "node_10_qiufeng_whisper": {
+      "id": "node_10_qiufeng_whisper",
       "type": "dialogue",
       "scene": "meat_factory_room",
       "ambientSound": "room_damp",
       "tensionLevel": 4,
       "speaker": "邱枫",
-      "content": "（颤抖着扑过来捂住甄真的嘴，极低声）'别出声……他们是恶魔！他们前几天抓了我，拿了我的钥匙去出租屋搜东西……你是因为借住我的房间、用了我的物品，才被他们顺藤摸瓜找上的！甄真，对不起，是我害了你！'",
-      "clues": [],
+      "content": "（颤抖着扑过来捂住甄真的嘴，极低声，气息喷在你耳廓上）\n\n'别出声……他们是恶魔！他们前几天抓了我，拿了我的钥匙去出租屋搜东西……你是因为借住我的房间、用了我的物品，才被他们顺藤摸瓜找上的！甄真，对不起，是我害了你！'\n\n她的手指冰凉，带着血腥味，在你嘴唇上压得很紧。你能感觉到她在发抖——不是因为害怕，是因为疼。",
       "effects": [],
       "investigations": [],
-      "nextNode": "node_11_deng_forced_call"
+      "nextNode": "node_11_forced_call"
     },
-    "node_11_deng_forced_call": {
-      "id": "node_11_deng_forced_call",
+    "node_11_forced_call": {
+      "id": "node_11_forced_call",
       "type": "choice",
       "scene": "meat_factory_room",
       "ambientSound": "room_damp",
       "tensionLevel": 5,
-      "content": "邓立钢拎着铁棍踹门进来，一把卡住甄真的脖子把手机砸在她脸上：'给你妈打！要三万块赎金！敢说错一个字，我现在就把你和你这个室友剁了！'",
+      "speaker": "邓立钢",
+      "content": "邓立钢拎着铁棍踹门进来，一把卡住甄真的脖子把手机砸在她脸上：'给你妈打！要三万块赎金！敢说错一个字，我现在就把你和你这个室友剁了！'\n\n他的手指像钢筋一样箍住你的气管。你呼吸困难，视线发黑，手抖得几乎握不住手机。你必须在窒息和恐惧中组织语言——",
       "choices": [
         {
           "id": "choice_call_normal",
-          "text": "吓得大哭，完全照搬邓立钢的要求向家里要钱",
-          "nextNode": "node_12_bathroom_locked",
-          "conditions": [],
-          "effects": [{ "type": "setFlag", "key": "secret_code_sent", "value": false }]
+          "text": "吓得大哭，完全照搬邓立钢的要求向家里要钱（声音颤抖破碎，说不出完整句子）",
+          "nextNode": "node_12_bathroom_prison",
+          "effects": [
+            {
+              "type": "setFlag",
+              "key": "secret_code_sent",
+              "value": false
+            }
+          ]
         },
         {
           "id": "choice_call_secret_code",
-          "text": "按要求要钱，但故意叫错老家县城名与母亲的昵称",
-          "nextNode": "node_12_bathroom_locked",
-          "conditions": [],
-          "effects": [{ "type": "setFlag", "key": "secret_code_sent", "value": true }]
+          "text": "按要求要钱，但故意叫错老家县城名与母亲的昵称（手抖得厉害，声音带着哭腔的'口误'）",
+          "nextNode": "node_12_bathroom_prison",
+          "effects": [
+            {
+              "type": "setFlag",
+              "key": "secret_code_sent",
+              "value": true
+            },
+            {
+              "type": "setFlag",
+              "key": "stamina",
+              "value": 55
+            }
+          ]
         }
       ]
     },
-    "node_12_bathroom_locked": {
-      "id": "node_12_bathroom_locked",
+    "node_12_bathroom_prison": {
+      "id": "node_12_bathroom_prison",
       "type": "dialogue",
       "scene": "bathroom",
       "ambientSound": "water_dripping",
       "tensionLevel": 4,
       "speaker": "甄真",
-      "content": "打完电话后，我被关进卫生间。铁门从外面反锁。我缩在墙角，听见宋红玉在外面跟邓立钢低声说话。卫生间很小，只有一扇生锈的推拉窗，窗外是五楼外墙。",
-      "clues": ["clue_bathroom_window", "clue_bloodless_injury"],
+      "content": "打完电话后，我被关进卫生间。铁门从外面反锁。\n\n我缩在墙角，听见宋红玉在外面跟邓立钢低声说话。卫生间很小，只有一扇生锈的推拉窗，窗外是五楼外墙。\n\n长时间捆绑的后遗症开始发作——双臂血液循环极差，肌肉频繁剧烈发麻发抖。手指像有无数根针在扎。",
+      "clues": [
+        "clue_bathroom_window",
+        "clue_bloodless_injury"
+      ],
+      "effects": [],
+      "investigations": [],
+      "nextNode": "node_13_micro_investigate"
+    },
+    "node_13_micro_investigate": {
+      "id": "node_13_micro_investigate",
+      "type": "choice",
+      "scene": "bathroom",
+      "ambientSound": "water_dripping",
+      "tensionLevel": 4,
+      "speaker": "甄真",
+      "content": "你强迫自己冷静下来，环顾这个不到三平米的卫生间。每一秒都可能有脚步声靠近。\n\n你的视线扫过：生锈的推拉窗、圆形地漏、头顶昏黄的灯泡、门外隐约的说话声。手臂的麻木感让你几乎握不紧拳头。",
+      "clues": [
+        "clue_drain_clog",
+        "clue_neighbor_conflict"
+      ],
       "effects": [],
       "investigations": [
         {
-          "id": "investigate_drain",
-          "label": "观察卫生间地漏",
-          "content": "用毛巾和脏衣服塞死地漏，水龙头开到最大，积水很快就会渗过地板漫到四楼天花板！",
+          "id": "investigate_window_rust",
+          "label": "检查生锈推拉窗",
+          "content": "窗框锈死，轨道里积满黑泥。推开会发出刺耳的金属摩擦声——但窗外确实有十厘米宽的水泥沿。",
           "clueId": "clue_bathroom_window"
+        },
+        {
+          "id": "investigate_drain",
+          "label": "抠开地漏盖",
+          "content": "地漏直径约8厘米，排水口通畅。如果堵死它并打开水龙头……",
+          "clueId": "clue_drain_clog"
+        },
+        {
+          "id": "investigate_downstairs_noise",
+          "label": "趴在地上听楼下动静",
+          "content": "四楼有电视声和一个男人的咳嗽声。如果天花板漏水，他一定会冲上来。",
+          "clueId": "clue_neighbor_conflict"
         }
       ],
-      "nextNode": "node_13_water_attack_execute"
+      "choices": [
+        {
+          "id": "choice_investigate_done",
+          "text": "调查完毕，开始制定逃生计划（心跳如鼓，但大脑强制运转）",
+          "nextNode": "node_14_water_decision",
+          "effects": [
+            {
+              "type": "setFlag",
+              "key": "stamina",
+              "value": 50
+            }
+          ]
+        }
+      ]
     },
-    "node_13_water_attack_execute": {
-      "id": "node_13_water_attack_execute",
+    "node_14_water_decision": {
+      "id": "node_14_water_decision",
       "type": "choice",
       "scene": "bathroom",
       "ambientSound": "water_running_heavy",
       "tensionLevel": 5,
-      "content": "我把毛巾死死塞进地漏，将水龙头拧到最大！水迅速漫过脚踝渗入地板。门外突然传来宋红玉插钥匙掏门栓的声音！",
+      "speaker": "甄真",
+      "content": "我把毛巾死死塞进地漏，将水龙头拧到最大！水迅速漫过脚踝渗入地板。\n\n积水以肉眼可见的速度上涨。卫生间的地面不平，水向门缝流去。门外突然传来宋红玉插钥匙掏门栓的声音！\n\n'里面什么声音？！开门！'",
       "choices": [
         {
           "id": "choice_qiufeng_block_door",
-          "text": "喊邱枫死顶木门，自己迅速推开卫生间小窗",
-          "nextNode": "node_14_qiufeng_sacrifice",
-          "conditions": [],
-          "effects": []
+          "text": "喊邱枫死顶木门，自己迅速推开卫生间小窗（声音嘶哑，手指因麻木而打滑）",
+          "nextNode": "node_15_barrier_sacrifice",
+          "effects": [
+            {
+              "type": "setFlag",
+              "key": "water_trap_triggered",
+              "value": true
+            },
+            {
+              "type": "setFlag",
+              "key": "stamina",
+              "value": 45
+            }
+          ]
         },
         {
           "id": "choice_panic_freeze",
-          "text": "吓得缩在马桶后面不敢动",
-          "nextNode": "node_bad_end_caught_in_bathroom",
-          "conditions": [],
+          "text": "吓得缩在马桶后面不敢动（全身僵硬，牙齿打颤发出咯咯声）",
+          "nextNode": "node_bad_02_bathroom_caught",
           "effects": []
         }
       ]
     },
-    "node_14_qiufeng_sacrifice": {
-      "id": "node_14_qiufeng_sacrifice",
+    "node_15_barrier_sacrifice": {
+      "id": "node_15_barrier_sacrifice",
       "type": "dialogue",
       "scene": "outer_wall",
       "ambientSound": "wind_high",
       "tensionLevel": 5,
       "speaker": "邱枫",
-      "content": "（撞门声与摔打声中，用身体和铁架床死死抵住木门）'甄真！爬出去！别管我！你才17岁，给我好好活着逃出去！！'",
-      "clues": [],
-      "effects": [],
+      "content": "（撞门声与摔打声中，用身体和铁架床死死抵住木门）\n\n'甄真！爬出去！别管我！你才17岁，给我好好活着逃出去！！'\n\n木门在邓立钢的撞击下剧烈变形，邱枫的背抵着门，每一次撞击都让她的身体弹起来。血从她的额头流进眼睛里。她回头看你的那一眼——那不是求救，是燃烧自己给你点灯。",
+      "effects": [
+        {
+          "type": "setFlag",
+          "key": "qiufeng_sacrifice",
+          "value": true
+        },
+        {
+          "type": "setFlag",
+          "key": "stamina",
+          "value": 40
+        }
+      ],
       "investigations": [],
-      "nextNode": "node_15_outer_wall_climb"
+      "nextNode": "node_16_rusty_window"
     },
-    "node_15_outer_wall_climb": {
-      "id": "node_15_outer_wall_climb",
+    "node_16_rusty_window": {
+      "id": "node_16_rusty_window",
+      "type": "choice",
+      "scene": "outer_wall",
+      "ambientSound": "wind_high",
+      "tensionLevel": 5,
+      "speaker": "甄真",
+      "content": "邱枫用血肉之躯卡住了死路。我眼眶撕裂，双手抓住生锈的窗框。\n\n窗框锈死，轨道里全是黑泥。寒风从缝隙里灌进来，像无数根冰针扎在脸上。你的手指因为长时间捆绑而痉挛，几乎使不上力。\n\n推开这扇窗，必然会有声音。",
+      "choices": [
+        {
+          "id": "choice_push_slow",
+          "text": "慢慢咬牙推开生锈窗框（耗费体力/无声，但每一下都疼得钻心）",
+          "nextNode": "node_17_first_step",
+          "effects": [
+            {
+              "type": "setFlag",
+              "key": "stamina",
+              "value": 32
+            }
+          ]
+        },
+        {
+          "id": "choice_kick_open",
+          "text": "一脚踹开（省力/但发出剧烈响动，窗框撞击声在楼道里回荡）",
+          "nextNode": "node_17_first_step",
+          "effects": [
+            {
+              "type": "setFlag",
+              "key": "stamina",
+              "value": 38
+            }
+          ]
+        }
+      ]
+    },
+    "node_17_first_step": {
+      "id": "node_17_first_step",
+      "type": "choice",
+      "scene": "outer_wall",
+      "ambientSound": "wind_high",
+      "tensionLevel": 5,
+      "speaker": "甄真",
+      "content": "窗开了。五楼的高空寒风灌入，脚下只有十厘米宽的水泥沿。\n\n你的双腿像灌了铅，又像棉花。往下看一眼的念头像毒蛇一样钻进脑子。\n\n【心理回声】'你这个白眼狼！'——母亲的声音突然在脑海里炸响。'为什么偏偏是你？！'\n\n视野边缘开始发白，平衡感受到严重干扰。你必须控制自己的身体——",
+      "choices": [
+        {
+          "id": "choice_close_eyes",
+          "text": "闭上眼死咬牙关，凭触觉和记忆往右挪（降低视觉冲击，但失足风险极高）",
+          "nextNode": "node_18_ac_creak",
+          "effects": [
+            {
+              "type": "setFlag",
+              "key": "stamina",
+              "value": 28
+            }
+          ]
+        },
+        {
+          "id": "choice_open_eyes",
+          "text": "睁眼寻找脚踩点（必须承受五楼下方的视觉冲击，眩晕感瞬间翻倍）",
+          "nextNode": "node_18_ac_creak",
+          "effects": [
+            {
+              "type": "setFlag",
+              "key": "stamina",
+              "value": 25
+            }
+          ]
+        },
+        {
+          "id": "choice_look_down",
+          "text": "忍不住低头看了一眼五楼地面（强烈的眩晕感如海啸般袭来）",
+          "nextNode": "node_bad_03_fall",
+          "effects": []
+        }
+      ]
+    },
+    "node_18_ac_creak": {
+      "id": "node_18_ac_creak",
+      "type": "choice",
+      "scene": "outer_wall",
+      "ambientSound": "wind_high",
+      "tensionLevel": 5,
+      "speaker": "甄真",
+      "content": "双脚刚踏上空调外机，生锈的支架发出一声不堪重负的——\n\n'吱呀——嘎！！'\n\n那声音在寂静中像一声尖叫。你的血液瞬间凝固。\n\n外机表面结了一层薄冰，脚底打滑。你的双臂因麻木而发抖，必须死死抠住墙砖缝隙才能保持平衡。",
+      "choices": [
+        {
+          "id": "choice_freeze_on_ac",
+          "text": "立刻僵住不动，等声音散去（屏住呼吸，心跳声大得像打鼓）",
+          "nextNode": "node_19_deng_peek",
+          "effects": [
+            {
+              "type": "setFlag",
+              "key": "stamina",
+              "value": 22
+            }
+          ]
+        },
+        {
+          "id": "choice_rush_ac",
+          "text": "不管了，趁外机还没塌赶紧挪过去（外机剧烈摇晃，螺丝崩飞）",
+          "nextNode": "node_19_deng_peek",
+          "effects": [
+            {
+              "type": "setFlag",
+              "key": "stamina",
+              "value": 18
+            }
+          ]
+        }
+      ]
+    },
+    "node_19_deng_peek": {
+      "id": "node_19_deng_peek",
       "type": "dialogue",
       "scene": "outer_wall",
       "ambientSound": "wind_high",
       "tensionLevel": 5,
       "speaker": "甄真",
-      "content": "邱枫用血肉之躯卡住了死路。我眼眶撕裂，推开生锈的小窗爬出了五楼外墙！冷风如刀，脚下只有十厘米宽的水泥沿，下面是深远的街道。",
-      "clues": [],
+      "content": "卫生间的窗被猛地推开！邓立钢探出大半个身子张望！\n\n他的目光像探照灯一样扫过外墙。你甚至能闻到他嘴里烟臭的味道。他的一只手搭在窗框上，青筋暴起。\n\n'妈的，人呢？！'他的吼声在五楼外墙上撞出回音。",
       "effects": [],
       "investigations": [],
-      "nextNode": "node_16_neighbor_noise"
+      "nextNode": "node_20_blindspot"
     },
-    "node_16_neighbor_noise": {
-      "id": "node_16_neighbor_noise",
+    "node_20_blindspot": {
+      "id": "node_20_blindspot",
+      "type": "choice",
+      "scene": "outer_wall",
+      "ambientSound": "wind_high",
+      "tensionLevel": 5,
+      "speaker": "甄真",
+      "content": "邓立钢的视线扫过来！\n\n【心理回声】脑海里再次响起母亲的指责：'你这个白眼狼！'\n\n你的心脏狂跳得要冲破肋骨。肺里的空气不够用，本能地想大口喘气——但喘气声会暴露你。\n\n你必须控制呼吸。每一秒都是煎熬。",
+      "choices": [
+        {
+          "id": "choice_shrink_blindspot",
+          "text": "屏住呼吸，死死缩在外机与墙体夹角盲区（肺部灼烧，视线发黑，但邓立钢的视线掠过了你）",
+          "nextNode": "node_21_neighbor_glass",
+          "effects": [
+            {
+              "type": "setFlag",
+              "key": "stamina",
+              "value": 12
+            }
+          ]
+        },
+        {
+          "id": "choice_scream_help",
+          "text": "实在撑不住，在空调外机上大声呼救（声音撕裂，带着哭腔）",
+          "nextNode": "node_bad_04_deng_grab",
+          "effects": []
+        }
+      ]
+    },
+    "node_21_neighbor_glass": {
+      "id": "node_21_neighbor_glass",
       "type": "dialogue",
       "scene": "outer_wall",
       "ambientSound": "wind_high",
       "tensionLevel": 5,
       "speaker": "甄真",
-      "content": "恰在此时，四楼邻居因为天花板漏水，气急败坏冲上五楼疯狂砸门咆哮！邓立钢和宋红玉被迫开门去应付！我贴在墙上，听见他们的争吵声，一动不敢动。",
-      "clues": [],
-      "effects": [],
+      "content": "邓立钢以为我摔了下去，骂了一声缩回头去。\n\n我用尽最后一丝力气，贴着墙壁向隔壁挪动。手指抠进砖缝，指甲翻裂了也感觉不到疼。风把眼泪吹得满脸都是。\n\n前方是一扇小窗，里面有灯光，有人影晃动。但窗户是锁着的。",
+      "effects": [
+        {
+          "type": "setFlag",
+          "key": "stamina",
+          "value": 8
+        }
+      ],
       "investigations": [],
-      "nextNode": "node_17_outer_wall_choice"
+      "nextNode": "node_22_panic_plea"
     },
-    "node_17_outer_wall_choice": {
-      "id": "node_17_outer_wall_choice",
+    "node_22_panic_plea": {
+      "id": "node_22_panic_plea",
       "type": "choice",
       "scene": "outer_wall",
       "ambientSound": "wind_high",
       "tensionLevel": 5,
-      "content": "前方是生锈的空调外机，再往前是隔壁房间的窗。身后卫生间的窗被猛地推开，邓立钢探出大半个身子张望！",
+      "speaker": "甄真",
+      "content": "你贴在隔壁的小窗外，透过脏兮兮的玻璃看见里面有人——一个中年男人正在看电视。\n\n你的手指在玻璃上留下血痕。求救的冲动像洪水一样冲击着喉咙，但你记得邓立钢可能还在附近。\n\n手臂的痉挛已经到了极限，你再不找到支撑点，就会从五楼掉下去。",
       "choices": [
         {
-          "id": "choice_look_down_height",
-          "text": "忍不住低头看一眼脚下到底有多高",
-          "nextNode": "node_bad_end_fall_height",
-          "conditions": [],
-          "effects": []
+          "id": "choice_smash_glass",
+          "text": "用拳头狠狠砸玻璃喊救命（玻璃碎裂声巨响，但手臂力量不足，第一拳没砸破）",
+          "nextNode": "node_23_safe_room",
+          "effects": [
+            {
+              "type": "setFlag",
+              "key": "stamina",
+              "value": 5
+            }
+          ]
         },
         {
-          "id": "choice_stare_ahead_ac",
-          "text": "死盯前方空调外机，忍着双手麻木强行向前挪",
-          "nextNode": "node_18_ac_unit_blindspot",
-          "conditions": [],
-          "effects": []
+          "id": "choice_bloody_hand_plea",
+          "text": "用满是血迹和泥污的手掌贴住玻璃，眼神哀求（无声，但依赖对方注意到你）",
+          "nextNode": "node_23_safe_room",
+          "effects": [
+            {
+              "type": "setFlag",
+              "key": "stamina",
+              "value": 6
+            }
+          ]
         }
       ]
     },
-    "node_18_ac_unit_blindspot": {
-      "id": "node_18_ac_unit_blindspot",
-      "type": "choice",
-      "scene": "outer_wall",
-      "ambientSound": "wind_high",
-      "tensionLevel": 5,
-      "content": "双脚刚踏上空调外机，邓立钢的视线扫过来！脑海里再次响起母亲的指责：'你这个白眼狼！'——'我偏要活着回去！'",
-      "choices": [
-        {
-          "id": "choice_shrink_in_blindspot",
-          "text": "屏住呼吸，死死缩在外机与墙体夹角盲区",
-          "nextNode": "node_19_empty_room_entry",
-          "conditions": [],
-          "effects": []
-        },
-        {
-          "id": "choice_wait_on_ac_scream",
-          "text": "实在撑不住，在空调外机上大声呼救",
-          "nextNode": "node_bad_end_deng_grab",
-          "conditions": [],
-          "effects": []
-        }
-      ]
-    },
-    "node_19_empty_room_entry": {
-      "id": "node_19_empty_room_entry",
+    "node_23_safe_room": {
+      "id": "node_23_safe_room",
       "type": "dialogue",
       "scene": "neighbor_room",
       "ambientSound": "indoor_silence",
       "tensionLevel": 4,
       "speaker": "甄真",
-      "content": "邓立钢以为我摔了下去，骂了一声缩回头去。我用尽最后一丝力气，翻进了隔壁开着通风的小窗——这里居然是一间无人居住的空屋！",
-      "clues": [],
+      "content": "（砸玻璃/贴玻璃后，隔壁男人惊恐地打开窗，把你拽了进去）\n\n你跌坐在地，浑身发抖，像一滩泥。这里居然是一间无人居住的空屋——男人是对面住户，听见响动过来看。\n\n房间里有张旧桌子，上面放着一部座机。预制板墙薄得离谱，隔壁囚室的动静、走廊的脚步声，甚至邓立钢的低吼都清晰可闻。",
+      "clues": [
+        "clue_thin_wall",
+        "clue_forced_phone_call"
+      ],
       "effects": [],
       "investigations": [
         {
-          "id": "investigate_room_landline",
-          "label": "检查桌上的旧座机",
-          "content": "座机有信号，但预制板墙隔音极差，隔壁和走廊的争吵声清晰可见。",
+          "id": "investigate_landline",
+          "label": "检查旧座机",
+          "content": "座机有信号，但预制板墙隔音极差。你拿起听筒，能听见隔壁邱枫故意大声顶撞打掩护的声音。",
+          "clueId": "clue_thin_wall"
+        },
+        {
+          "id": "investigate_wall_listen",
+          "label": "贴墙听隔壁动静",
+          "content": "邓立钢正在殴打邱枫，逼问你的下落。邱枫的惨叫让你指甲掐进了掌心。",
           "clueId": "clue_forced_phone_call"
         }
       ],
-      "nextNode": "node_20_empty_room_decision"
+      "nextNode": "node_24_110_whisper"
     },
-    "node_20_empty_room_decision": {
-      "id": "node_20_empty_room_decision",
+    "node_24_110_whisper": {
+      "id": "node_24_110_whisper",
       "type": "choice",
       "scene": "neighbor_room",
       "ambientSound": "indoor_silence",
       "tensionLevel": 4,
-      "content": "走廊里四楼邻居正拽着邓立钢扭打理论，隔壁墙内传来邱枫故意大声顶撞打掩护的声音。甄真把手贴在冰冷的墙上：'邱枫姐，等我！'",
+      "speaker": "甄真",
+      "content": "走廊里四楼邻居正拽着邓立钢扭打理论（因为天花板漏水），隔壁墙内传来邱枫故意大声顶撞打掩护的声音。\n\n甄真把手贴在冰冷的墙上：'邱枫姐，等我！'\n\n旧座机的拨号音在寂静中像警报。你必须用衣服捂住话筒，把声音压到最低——",
       "choices": [
         {
-          "id": "choice_call_110_quietly",
-          "text": "用衣服捂住嘴，极低声用座机拨打110报出'肉联厂宿舍'",
-          "nextNode": "node_21_escape_corridor",
-          "conditions": [],
-          "effects": [{ "type": "setFlag", "key": "called_police_in_room", "value": true }]
+          "id": "choice_call_110_quiet",
+          "text": "用衣服捂住嘴，极低声用座机拨打110报出'肉联厂宿舍五楼'（每个字都像从牙缝里挤出来）",
+          "nextNode": "node_25_stair_escape",
+          "effects": [
+            {
+              "type": "setFlag",
+              "key": "called_police_in_room",
+              "value": true
+            },
+            {
+              "type": "setFlag",
+              "key": "exact_address",
+              "value": true
+            },
+            {
+              "type": "setFlag",
+              "key": "stamina",
+              "value": 10
+            }
+          ]
         },
         {
-          "id": "choice_run_corridor_direct",
-          "text": "不冒暴露风险，直接开门趁走廊混乱溜下楼",
-          "nextNode": "node_21_escape_corridor",
-          "conditions": [],
-          "effects": [{ "type": "setFlag", "key": "called_police_in_room", "value": false }]
+          "id": "choice_run_direct",
+          "text": "不冒暴露风险，直接开门趁走廊混乱溜下楼（双腿发软，几乎站不稳）",
+          "nextNode": "node_25_stair_escape",
+          "effects": [
+            {
+              "type": "setFlag",
+              "key": "called_police_in_room",
+              "value": false
+            },
+            {
+              "type": "setFlag",
+              "key": "stamina",
+              "value": 12
+            }
+          ]
         }
       ]
     },
-    "node_21_escape_corridor": {
-      "id": "node_21_escape_corridor",
+    "node_25_stair_escape": {
+      "id": "node_25_stair_escape",
       "type": "dialogue",
       "scene": "corridor",
       "ambientSound": "corridor_noise",
       "tensionLevel": 4,
       "speaker": "甄真",
-      "content": "趁着邓立钢被怒不可遏的楼下邻居死死缠住，我猫着腰贴着墙角溜出空屋，顺着漆黑的楼梯一路狂奔下楼！",
-      "clues": [],
-      "effects": [],
+      "content": "趁着邓立钢被怒不可遏的楼下邻居死死缠住，我猫着腰贴着墙角溜出空屋，顺着漆黑的楼梯一路狂奔下楼！\n\n双腿像不是自己的，每一步都踩在棉花上。胃里的酸水涌到喉咙口。但你不敢停——\n\n刺眼的阳光突然照在脸上。我冲出了大门。",
+      "effects": [
+        {
+          "type": "setFlag",
+          "key": "stamina",
+          "value": 5
+        }
+      ],
       "investigations": [],
-      "nextNode": "node_22_alley_ambush"
+      "nextNode": "node_26_face_to_face"
     },
-    "node_22_alley_ambush": {
-      "id": "node_22_alley_ambush",
+    "node_26_face_to_face": {
+      "id": "node_26_face_to_face",
       "type": "dialogue",
       "scene": "street_day",
       "ambientSound": "street_busy",
       "tensionLevel": 5,
       "speaker": "甄真",
-      "content": "我一口气冲出了肉联厂大门！刺眼的阳光照在脸上，我以为自己终于自由了——然而刚转过巷口，一个高大的阴影迎面撞来！是巡视回来的邓立钢！",
-      "clues": [],
-      "effects": [],
+      "content": "我一口气冲出了肉联厂大门！刺眼的阳光照在脸上，我以为自己终于自由了——\n\n然而刚转过巷口，一个高大的阴影迎面撞来！\n\n是巡视回来的邓立钢！\n\n【心理回声】'为什么偏偏是你？！'母亲的声音在脑子里炸响。你的血液瞬间冻结，双腿像被钉在地上。\n\n瞳孔骤缩，呼吸停滞，胃部痉挛到想吐。阳光下的邓立钢比黑暗中更恐怖——你能看清他脸上每一道横肉和眼里的血丝。",
+      "effects": [
+        {
+          "type": "setFlag",
+          "key": "stamina",
+          "value": 8
+        }
+      ],
       "investigations": [],
-      "nextNode": "node_23_alley_struggle"
+      "nextNode": "node_27_beast_mode"
     },
-    "node_23_alley_struggle": {
-      "id": "node_23_alley_struggle",
+    "node_27_beast_mode": {
+      "id": "node_27_beast_mode",
       "type": "choice",
       "scene": "street_day",
       "ambientSound": "street_busy",
       "tensionLevel": 5,
-      "content": "'臭丫头！真让你跑出来了！'邓立钢眼神爆裂，一把卡住我的脖子死命往死胡同拖！脑海里浮现出邱枫替我顶门时的眼神！",
+      "speaker": "邓立钢",
+      "content": "'臭丫头！真让你跑出来了！'邓立钢眼神爆裂，一把卡住我的脖子死命往死胡同拖！\n\n他的拇指压在你的气管上，视野开始发黑。脑海里浮现出邱枫替你顶门时的眼神！\n\n你的身体在尖叫：'会死的！会死的！'但另一个更原始的声音在咆哮——",
       "choices": [
         {
-          "id": "choice_bite_and_smash_stall",
-          "text": "爆发野兽般的求生欲，狠咬邓立钢虎口，疯狂撞翻路边水果摊",
-          "nextNode": "node_24_police_siren_rescue",
-          "conditions": [],
-          "effects": []
+          "id": "choice_bite_smash",
+          "text": "爆发野兽般的求生欲，狠咬邓立钢虎口，疯狂撞翻路边水果摊（牙齿咬穿皮肉，血腥味充满口腔）",
+          "nextNode": "node_28_siren_hope",
+          "effects": [
+            {
+              "type": "setFlag",
+              "key": "stamina",
+              "value": 2
+            }
+          ]
         },
         {
-          "id": "choice_freeze_fear_alley",
-          "text": "被卡住脖子，吓得僵硬不敢动",
-          "nextNode": "node_bad_end_dragged_back",
-          "conditions": [],
+          "id": "choice_freeze_fear",
+          "text": "被卡住脖子，吓得僵硬不敢动（瞳孔放大，失禁，意识模糊）",
+          "nextNode": "node_bad_05_alley_drag",
           "effects": []
         }
       ]
     },
-    "node_24_police_siren_rescue": {
-      "id": "node_24_police_siren_rescue",
+    "node_28_siren_hope": {
+      "id": "node_28_siren_hope",
       "type": "dialogue",
       "scene": "street_day",
       "ambientSound": "siren_loud",
       "tensionLevel": 3,
       "speaker": "邓立钢",
-      "content": "'啊！！'邓立钢剧痛甩手，水果摊轰然倒地，烂苹果滚了一地，路人纷纷围观喝斥！\n\n就在此时——刺耳破空的警笛声由远及近疾驰而来！警方彭兆林警官带队赶到！邓立钢见状不敢当街作案，恶狠狠骂了一句仓皇逃窜！",
-      "clues": [],
+      "content": "'啊！！'邓立钢剧痛甩手，水果摊轰然倒地，烂苹果滚了一地，路人纷纷围观喝斥！\n\n就在此时——刺耳破空的警笛声由远及近疾驰而来！\n\n（如果你之前拨打了110并提供了确切地址）警方彭兆林警官带队精准赶到！\n\n邓立钢见状不敢当街作案，恶狠狠骂了一句仓皇逃窜！",
       "effects": [],
       "investigations": [],
-      "nextNode": "node_25_ending_good"
+      "nextNode": "node_29_good_ending"
     },
-    "node_25_ending_good": {
-      "id": "node_25_ending_good",
+    "node_29_good_ending": {
+      "id": "node_29_good_ending",
       "type": "ending",
       "endingVariant": "good",
       "scene": "police_station",
-      "content": "我瘫软在烂水果堆里，迎来了救赎。邱枫被成功解救，恶徒团伙被彻底缉拿归案。\n\n多年后，雨夜的案发现场。警官甄真站在窗前。年轻警员问她当年是怎么从高楼外墙爬过来的。\n甄真看着窗户上自己的倒影缓缓开口：'那时候我手抖得厉害，我只是想活着……因为当年有人一直没有放弃我，所以我才来到了这扇窗户的这一边。'",
+      "content": "我瘫软在烂水果堆里，迎来了救赎。邱枫被成功解救，恶徒团伙被彻底缉拿归案。\n\n多年后，雨夜的案发现场。警官甄真站在窗前。年轻警员问她当年是怎么从高楼外墙爬过来的。\n\n甄真看着窗户上自己的倒影缓缓开口：'那时候我手抖得厉害，我只是想活着……因为当年有人一直没有放弃我，所以我才来到了这扇窗户的这一边。'",
       "effects": []
     },
-    "node_bad_end_car_beaten": {
-      "id": "node_bad_end_car_beaten",
+    "node_bad_01_car_beaten": {
+      "id": "node_bad_01_car_beaten",
       "type": "ending",
       "endingVariant": "bad",
       "scene": "inside_van",
-      "checkpointNodeId": "node_08_car_choice",
-      "content": "【 Bad End：打草惊蛇 】\n你的尖叫让吉大顺直接停车把你捆死塞住嘴。你失去了最后的自由与观察地形的机会。",
-      "effects": []
+      "checkpointNodeId": "node_08_car_gamble",
+      "content": "【 Bad End：打草惊蛇 】\n\n你的尖叫让吉大顺直接停车。邓立钢拉开车门，一巴掌把你扇到车厢壁上。\n\n'找死。'\n\n你被捆死、塞住嘴，像一件货物一样被扔在后排。你失去了最后的自由与观察地形的机会。\n\n【失败分析】在封闭车厢内与两名成年男性正面对抗，是17岁少女在生理上不可能获胜的博弈。你的'质问'只是恐惧的宣泄，不是策略。"
     },
-    "node_bad_end_caught_in_bathroom": {
-      "id": "node_bad_end_caught_in_bathroom",
+    "node_bad_02_bathroom_caught": {
+      "id": "node_bad_02_bathroom_caught",
       "type": "ending",
       "endingVariant": "bad",
       "scene": "bathroom",
-      "checkpointNodeId": "node_13_water_attack_execute",
-      "content": "【 Bad End：犹豫沦陷 】\n门被撞开，宋红玉和邓立钢冲了进来。你错失了邱枫用生命为你争取到的唯一逃生窗口。",
-      "effects": []
+      "checkpointNodeId": "node_14_water_decision",
+      "content": "【 Bad End：犹豫沦陷 】\n\n门被撞开，积水四溅。宋红玉和邓立钢冲了进来。\n\n邓立钢一把揪住你的头发把你拖出卫生间。你最后看见的是邱枫被吉大顺一棍打倒在地，血从她额头喷出来。\n\n你错失了邱枫用生命为你争取到的唯一逃生窗口。\n\n【失败分析】在绝境中，'不动'是最危险的选项。恐惧会让你瘫痪，但瘫痪等于死亡。"
     },
-    "node_bad_end_fall_height": {
-      "id": "node_bad_end_fall_height",
+    "node_bad_03_fall": {
+      "id": "node_bad_03_fall",
       "type": "ending",
       "endingVariant": "bad",
       "scene": "outer_wall",
-      "checkpointNodeId": "node_17_outer_wall_choice",
-      "content": "【 Bad End：高空眩晕 】\n你在五楼高空朝脚下看了一眼，强烈的眩晕感导致瞬间脱力坠楼……（提示：高空逃生时，绝不能往下看！）",
-      "effects": []
+      "checkpointNodeId": "node_17_first_step",
+      "content": "【 Bad End：高空眩晕 】\n\n你在五楼高空朝脚下看了一眼。\n\n地面像一张巨大的嘴，向你扑来。强烈的眩晕感导致瞬间脱力——你的手指从窗框上滑落。\n\n风从耳边呼啸而过。\n\n【失败分析】高空逃生时，绝不能往下看。人类的深度感知会在极端恐惧下产生视觉扭曲，导致平衡系统崩溃。这是生理本能，不是意志能完全克服的。"
     },
-    "node_bad_end_deng_grab": {
-      "id": "node_bad_end_deng_grab",
+    "node_bad_04_deng_grab": {
+      "id": "node_bad_04_deng_grab",
       "type": "ending",
       "endingVariant": "bad",
       "scene": "outer_wall",
-      "checkpointNodeId": "node_18_ac_unit_blindspot",
-      "content": "【 Bad End：暴露位置 】\n你的呼救声暴露了位置。邓立钢探出窗户抓住你的衣服，将你硬生生扯回了五楼室内……",
-      "effects": []
+      "checkpointNodeId": "node_20_blindspot",
+      "content": "【 Bad End：暴露位置 】\n\n你的呼救声在五楼外墙上撞出回音。\n\n邓立钢猛地探出窗户，像一只捕食的蜥蜴。他的手抓住你的校服领子，将你硬生生扯回了五楼室内。\n\n你的后脑勺撞在窗框上，眼前一黑。\n\n【失败分析】在捕食者距离你不到两米时，任何声音都是自杀。屏息不是选择，是生存本能。"
     },
-    "node_bad_end_dragged_back": {
-      "id": "node_bad_end_dragged_back",
+    "node_bad_05_alley_drag": {
+      "id": "node_bad_05_alley_drag",
       "type": "ending",
       "endingVariant": "bad",
       "scene": "street_day",
-      "checkpointNodeId": "node_23_alley_struggle",
-      "content": "【 Bad End：功亏一篑 】\n在最后的巷口，你因惊慌失去反抗意志，被邓立钢再次拖入黑车强行带走……",
-      "effects": []
+      "checkpointNodeId": "node_27_beast_mode",
+      "content": "【 Bad End：功亏一篑 】\n\n在最后的巷口，你因惊慌失去反抗意志。\n\n邓立钢像拖一只死狗一样把你拖进黑车。车门关上的瞬间，你看见阳光被隔绝在外面。\n\n你的手指在地面上抓出五道血痕，但无济于事。\n\n【失败分析】巷口是最后的战场。17岁的身体虽然弱小，但牙齿和指甲是造物主给所有生灵的最后武器。放弃反抗，等于放弃生命。"
     }
   }
 }
