@@ -1,0 +1,1132 @@
+{
+  "gameId": "04-piao-bai-zhen-zhen",
+  "title": "窗外",
+  "description": "十七岁的甄珍离家出走后借住同学空房，阴差阳错卷入肉联厂团伙。她不知道警察有没有听到那通电话，不知道他们什么时候会来——只能靠自己看见的、听见的、感觉到的，去判断身后那些人到底在怕什么。",
+  "startNode": "node_00_runaway",
+  "characters": [
+    {
+      "id": "protagonist",
+      "name": "甄珍",
+      "description": "十七岁的女孩，离家后独自借住同学空房，敏感、倔强，也比自己想象中更勇敢。玩家就是少女时期的她。"
+    },
+    {
+      "id": "classmate_a",
+      "name": "林晓彤",
+      "description": "甄珍的同学，同样未成年，成绩不如甄珍，已先一步去了另一座城市，留下空房间给甄珍借住。"
+    },
+    {
+      "id": "qiu_feng",
+      "name": "邱枫",
+      "description": "比甄珍年长许多的社会女性，林晓彤的室友，曾在夜场谋生；因倔强不肯向团伙低头遭宋红玉反复刁难，却因此在囚禁中替甄珍扛下大部分折磨。两人从合住时的摩擦，到绝境里互相撑着活了下来。"
+    },
+    {
+      "id": "deng_ligang",
+      "name": "邓立钢",
+      "description": "肉联厂团伙的核心人物之一，沉着、警惕。甄珍看不见他在想什么，只能看见他看手机、看门外、突然锁门。"
+    },
+    {
+      "id": "song_hongyu",
+      "name": "宋红玉",
+      "description": "表面亲切、会安抚年轻女孩的女性。甄珍不知道她到底站在哪边，只记得她劝自己'配合一点'。"
+    },
+    {
+      "id": "ji_dashun",
+      "name": "吉大顺",
+      "description": "肉联厂团伙成员，负责接送和看管。话很少，但甄珍总觉得他从后视镜里看过自己。"
+    },
+    {
+      "id": "zhenzhen_father",
+      "name": "甄珍父亲",
+      "description": "甄珍离家后始终牵挂女儿的人。甄珍不知道他有没有听懂电话里的意思，也不知道他是不是在找自己。"
+    },
+    {
+      "id": "neighbor",
+      "name": "邻居",
+      "description": "甄珍逃出房间后可能接触到的普通人。甄珍不知道那是谁，只知道自己终于碰到了另一个活人。"
+    },
+    {
+      "id": "police",
+      "name": "警察",
+      "description": "甄珍始终不知道他们在哪里。她只能从远处的声音、突如其来的动静和歹徒的反应，去猜他们有没有正在靠近。"
+    }
+  ],
+  "clues": [
+    {
+      "id": "clue_job_ad",
+      "title": "街边的小广告",
+      "type": "fact",
+      "content": "我在同学家住了几天，出门时看见公交站旁贴着一张招工的小广告。纸角卷着，被风吹得哗哗响。",
+      "location": "街边"
+    },
+    {
+      "id": "clue_classmate_room",
+      "title": "林晓彤的空房",
+      "type": "fact",
+      "content": "我和林晓彤同班，都还没成年。她成绩一直不如我，家里人嫌她，她先一步去了另一座城市。临走把钥匙塞给我：'闹翻了就来我这住。'",
+      "location": "林晓彤家"
+    },
+    {
+      "id": "clue_qiufeng_roommate",
+      "title": "室友邱枫不见了",
+      "type": "fact",
+      "content": "林晓彤的室友叫邱枫，比我大很多，在社会上混。我借住那天，邱枫的行李还在，人却不见了。我没多想。",
+      "location": "林晓彤家"
+    },
+    {
+      "id": "clue_qiufeng_missing",
+      "title": "她比我先出事",
+      "type": "anomaly",
+      "content": "被关进来以后我才看见邱枫。她朝我摇头，不让我出声。我忽然明白——她比我先一步落进这帮人手里，我是因为借住了那间房才被一起带走的。",
+      "location": "房间"
+    },
+    {
+      "id": "clue_wrong_route",
+      "title": "不认识的路",
+      "type": "anomaly",
+      "content": "车开出去以后，路越来越陌生。我问他还有多久到，他没回答。窗外的楼我一个都不认识。",
+      "location": "车内"
+    },
+    {
+      "id": "clue_locked_door",
+      "title": "打不开的车门",
+      "type": "fact",
+      "content": "我试着拉门把手。能拉动，但车门没有开。和普通的车不一样。",
+      "location": "车内"
+    },
+    {
+      "id": "clue_deng_caution",
+      "title": "后视镜里的眼睛",
+      "type": "anomaly",
+      "content": "前排的人偶尔从后视镜看我一眼。我对上他的视线，他又移开了。我不知道他在看什么。",
+      "location": "车内"
+    },
+    {
+      "id": "clue_phone_signal",
+      "title": "时有时无的信号",
+      "type": "anomaly",
+      "content": "我摸出手机。信号刚才还有两格，现在只剩一格，闪了一下，没了。我握着它，不知道这算不算还能打通。",
+      "location": "车内"
+    },
+    {
+      "id": "clue_forced_call",
+      "title": "那通电话",
+      "type": "testimony",
+      "content": "他们把手机递给我，让我给家里打电话。我听见爸爸的声音。挂断以后，我不知道他有没有听懂我的意思，也不知道这通电话有没有被谁听见。",
+      "location": "房间"
+    },
+    {
+      "id": "clue_deng_phone",
+      "title": "他看手机的样子",
+      "type": "anomaly",
+      "content": "电话挂了以后，邓立钢看了一眼自己的手机。又走到窗边往外看。过了一会儿，他回头盯了我几秒。我不知道他在等什么，也不知道他看见了什么。",
+      "location": "房间"
+    },
+    {
+      "id": "clue_window",
+      "title": "卫生间的小窗",
+      "type": "fact",
+      "content": "卫生间有一扇窗。不大，但可以推开。窗外是风，是楼下的灯，是一段很窄的墙沿。",
+      "location": "卫生间"
+    },
+    {
+      "id": "clue_neighbor_window",
+      "title": "隔壁的窗",
+      "type": "fact",
+      "content": "从卫生间窗往外，能看到不远的另一扇窗。黑着。我不知道那边有没有人。",
+      "location": "外墙"
+    },
+    {
+      "id": "clue_footsteps",
+      "title": "门外的脚步",
+      "type": "anomaly",
+      "content": "门外常有脚步声。有时候停一下，又走开。我不知道那是谁来过，也不知道他们是不是已经知道我在听。",
+      "location": "房间"
+    },
+    {
+      "id": "clue_distant_noise",
+      "title": "远处的响动",
+      "type": "anomaly",
+      "content": "逃跑时我偶尔听见远处有车声、有喊声。我分不清那是不是警车，也不敢回头看。",
+      "location": "街道"
+    },
+    {
+      "id": "clue_police_hint",
+      "title": "我不敢确定",
+      "type": "anomaly",
+      "content": "门外脚步停了很久。又响起。我缩在墙角，想：是不是有人来了。可我真的不能确定。",
+      "location": "隔壁房间"
+    },
+    {
+      "id": "clue_bloodless_injury",
+      "title": "腿软",
+      "type": "fact",
+      "content": "跑了太久，我的腿在发抖。蹲下来喘息的时候，手心抵着墙，凉得发麻。",
+      "location": "逃跑途中"
+    },
+    {
+      "id": "clue_song_tone",
+      "title": "宋红玉的话",
+      "type": "testimony",
+      "content": "宋红玉站在门口劝我：'配合一点，事情很快就过去了。'她笑得很自然。我不知道她说的'过去'是什么意思。",
+      "location": "房间"
+    },
+    {
+      "id": "clue_song_beats_qiufeng",
+      "title": "隔间的动静",
+      "type": "anomaly",
+      "content": "宋红玉走后，我听见隔间传来闷响，还有邱枫压低的呼吸。她脾气倔，不肯照他们说的做。我不知道她挨了什么，只听见她没出声。",
+      "location": "房间"
+    },
+    {
+      "id": "clue_outer_wall_narrow",
+      "title": "墙沿太窄",
+      "type": "fact",
+      "content": "窗外是一段墙沿，只够侧着脚尖踩。下面是街道，很远。我没敢往下看第二次。",
+      "location": "外墙"
+    },
+    {
+      "id": "clue_neighbor_absent",
+      "title": "隔壁没人",
+      "type": "fact",
+      "content": "我翻进隔壁那间。空的。门在前面，电话在桌上。我终于离开了他们关我的那间。",
+      "location": "隔壁房间"
+    },
+    {
+      "id": "clue_deng_lock",
+      "title": "他锁了门",
+      "type": "anomaly",
+      "content": "邓立钢忽然把门锁上。咔哒一声。我不知道为什么。他之前不常锁。",
+      "location": "房间"
+    },
+    {
+      "id": "clue_deng_whisper",
+      "title": "他和人低语",
+      "type": "anomaly",
+      "content": "邓立钢背过身，和另一个人压低声音说话。我听不清字。只看见他点了一下头。",
+      "location": "房间"
+    },
+    {
+      "id": "clue_qiufeng_state",
+      "title": "邱枫的样子",
+      "type": "fact",
+      "content": "邱枫缩在角落，嘴角有干了的印子。她看见我，摇头，不让我出声。她比我先出事，我没敢问她疼不疼。",
+      "location": "房间"
+    },
+    {
+      "id": "clue_door_sound",
+      "title": "门外的声",
+      "type": "anomaly",
+      "content": "门外常有脚步。有时停很久。我贴着门缝听，只听见远远的说话，听不出是谁。",
+      "location": "房间"
+    },
+    {
+      "id": "clue_song_face",
+      "title": "宋红玉的笑",
+      "type": "anomaly",
+      "content": "宋红玉笑的时候，眼睛没弯。她劝我配合，可我没在她脸上看到一点真的在意。",
+      "location": "房间"
+    },
+    {
+      "id": "clue_ji_park",
+      "title": "车停的地方",
+      "type": "anomaly",
+      "content": "车停在一栋没灯的楼前。吉大顺没熄火。他手搭在方向盘上，像在等什么人。",
+      "location": "车外"
+    }
+  ],
+  "nodes": {
+    "node_00_runaway": {
+      "id": "node_00_runaway",
+      "type": "choice",
+      "scene": "night_street",
+      "ambientSound": "night_wind",
+      "tensionLevel": 1,
+      "content": "那年我十七岁。\n\n我还不知道，一个人真的害怕到极点的时候，是会忘记怎么呼吸的。\n\n我和我妈吵了一架。话赶话，我拎了包就出了门。\n\n街上很冷。风往领口里钻。\n\n我站在路灯下面，手心都是凉的。\n\n我该去找谁的帮助？",
+      "effects": [
+        {
+          "type": "meetCharacter",
+          "key": "protagonist"
+        }
+      ],
+      "choices": [
+        {
+          "id": "go_classmate",
+          "text": "去林晓彤的空房住一晚",
+          "nextNode": "node_00b_classmate",
+          "effects": [
+            {
+              "type": "setFlag",
+              "key": "stayed_at_classmate",
+              "value": true
+            }
+          ]
+        },
+        {
+          "id": "wander_street",
+          "text": "不想麻烦别人，在街上乱走",
+          "nextNode": "node_00c_wander"
+        }
+      ]
+    },
+    "node_00b_classmate": {
+      "id": "node_00b_classmate",
+      "type": "dialogue",
+      "scene": "classmate_flat",
+      "ambientSound": "room_silence",
+      "tensionLevel": 1,
+      "content": "林晓彤和我同班，都没成年。她成绩不如我，家里人嫌她，她先去了另一座城市。\n\n临走前把钥匙塞我：'跟你妈闹翻了，就来我这住。'\n\n我没想到真会用上。\n\n推开门，屋里一股冷掉的香水味。\n\n还有另一个女孩的东西——晓彤说过，她室友叫邱枫，比我大不少，在社会上混。\n\n今天邱枫不在。行李在，人不见了。\n\n我没多想。太累了，我靠着墙坐下来。",
+      "clues": [
+        "clue_classmate_room",
+        "clue_qiufeng_roommate"
+      ],
+      "effects": [
+        {
+          "type": "meetCharacter",
+          "key": "classmate_a"
+        },
+        {
+          "type": "meetCharacter",
+          "key": "qiu_feng"
+        }
+      ],
+      "nextNode": "node_01_bus"
+    },
+    "node_00c_wander": {
+      "id": "node_00c_wander",
+      "type": "dialogue",
+      "scene": "night_street",
+      "ambientSound": "night_wind",
+      "tensionLevel": 1,
+      "content": "我不想去谁家。也不想低头回家。\n\n就在街上走，越走越偏。天快亮时我冻得发抖，才想起林晓彤给过我一把钥匙。\n\n她说'闹翻了就来我这住'。\n\n我犹豫了一下，还是去了。\n\n推开门，冷掉的香水味。她室友邱枫比我大很多，不在。行李在，人不见了。\n\n我靠着墙坐下。太累了。",
+      "clues": [
+        "clue_classmate_room",
+        "clue_qiufeng_roommate"
+      ],
+      "nextNode": "node_01_bus"
+    },
+    "node_01_bus": {
+      "id": "node_01_bus",
+      "type": "dialogue",
+      "scene": "city_bus",
+      "ambientSound": "bus_engine",
+      "tensionLevel": 1,
+      "content": "我在晓彤的空房里住了几天。\n\n不能一直躲着。我得出去找个活。\n\n出门时，公交站旁贴着一张招工的小广告，纸角被风吹得哗哗响。\n\n我上了那趟车。\n\n车窗外的街一点点退后。\n\n我不知道这趟车会去哪。",
+      "clues": [
+        "clue_job_ad"
+      ],
+      "nextNode": "node_02_song"
+    },
+    "node_02_song": {
+      "id": "node_02_song",
+      "type": "dialogue",
+      "scene": "street",
+      "ambientSound": "city_street",
+      "tensionLevel": 1,
+      "content": "一个女人拦住我。她看起来不像坏人。\n\n'是不是在找工作？'她笑得很自然。\n\n我点点头。\n\n她说有个地方招人，包吃住，工资还可以。\n\n我在外面转了很久，听见这几个字，心里动了一下。\n\n她叫宋红玉。",
+      "effects": [
+        {
+          "type": "meetCharacter",
+          "key": "song_hongyu"
+        }
+      ],
+      "nextNode": "node_03_job_choice"
+    },
+    "node_03_job_choice": {
+      "id": "node_03_job_choice",
+      "type": "choice",
+      "scene": "street",
+      "tensionLevel": 1,
+      "content": "她说可以带我过去看看。\n\n我看着她，又看了一眼不远处停着的车。\n\n我其实犹豫了一下。\n\n可我不知道，这一下犹豫够不够让我转身走掉。",
+      "choices": [
+        {
+          "id": "take_offer",
+          "text": "先去看看",
+          "nextNode": "node_04_car",
+          "effects": [
+            {
+              "type": "setFlag",
+              "key": "accepted_offer",
+              "value": true
+            }
+          ]
+        },
+        {
+          "id": "ask_more",
+          "text": "先问清楚工作的事",
+          "nextNode": "node_04_song_questions"
+        },
+        {
+          "id": "refuse_offer",
+          "text": "拒绝，自己继续找",
+          "nextNode": "node_05_refuse",
+          "effects": [
+            {
+              "type": "setFlag",
+              "key": "refused_first_offer",
+              "value": true
+            }
+          ]
+        }
+      ]
+    },
+    "node_04_song_questions": {
+      "id": "node_04_song_questions",
+      "type": "dialogue",
+      "scene": "street",
+      "ambientSound": "city_street",
+      "tensionLevel": 1,
+      "content": "我问：工作在哪？做什么？为什么包吃住？\n\n她都答了。没不耐烦。\n\n反而一直劝我别想太多。'先去看看嘛，不合适再回来。'\n\n她说得轻巧。\n\n我后来还是跟她上了车。\n\n车门关上的时候，我听见咔哒一声。",
+      "nextNode": "node_04_car"
+    },
+    "node_05_refuse": {
+      "id": "node_05_refuse",
+      "type": "dialogue",
+      "scene": "street",
+      "ambientSound": "city_street",
+      "tensionLevel": 1,
+      "content": "我摇头。'不了，我再自己找。'\n\n宋红玉没留我，笑了笑：'那你自己小心。'\n\n我转身走。那一刻真以为躲开了麻烦。\n\n可天黑了。我没钱，不知道晚上住哪。\n\n走很久，又想起她那句话。\n\n我回头了。",
+      "effects": [
+        {
+          "type": "setFlag",
+          "key": "returned_to_offer",
+          "value": true
+        }
+      ],
+      "nextNode": "node_04_car"
+    },
+    "node_04_car": {
+      "id": "node_04_car",
+      "type": "dialogue",
+      "scene": "car",
+      "ambientSound": "car_engine",
+      "tensionLevel": 2,
+      "content": "车开出去，路越来越陌生。\n\n我问还有多久到。没人答。\n\n我看窗外。刚才还认得的楼，现在一个都没有了。\n\n前排坐着个男人，一直没回头。",
+      "clues": [
+        "clue_wrong_route"
+      ],
+      "effects": [
+        {
+          "type": "meetCharacter",
+          "key": "ji_dashun"
+        }
+      ],
+      "nextNode": "node_06_car_investigate"
+    },
+    "node_06_car_investigate": {
+      "id": "node_06_car_investigate",
+      "type": "dialogue",
+      "scene": "car",
+      "ambientSound": "car_engine",
+      "tensionLevel": 2,
+      "content": "我认真看车里。\n\n门。手机。窗。前排那个男人的后脑勺。\n\n他没回头。可我觉得他知道我在看。",
+      "clues": [
+        "clue_locked_door"
+      ],
+      "investigations": [
+        {
+          "id": "investigate_door",
+          "label": "拉一下车门",
+          "content": "把手能拉动。车门没开。和普通的车不一样。",
+          "clueId": "clue_locked_door"
+        },
+        {
+          "id": "investigate_phone",
+          "label": "看手机信号",
+          "content": "两格。闪一下。一格。又没了。我握着它，不知道这算不算还能打通。",
+          "clueId": "clue_phone_signal"
+        },
+        {
+          "id": "investigate_driver",
+          "label": "看前排的男人",
+          "content": "他从后视镜看我一眼。我对上，他又移开。我不知道他在看什么。",
+          "clueId": "clue_deng_caution"
+        }
+      ],
+      "nextNode": "node_06b_decide"
+    },
+    "node_07_escape_car": {
+      "id": "node_07_escape_car",
+      "type": "choice",
+      "scene": "car",
+      "tensionLevel": 3,
+      "content": "我忽然明白一件事：再不走，可能没机会了。\n\n车在减速。前面像是个路口。\n\n我不知道下一个路口会不会更安全。也不知道他们是不是已经看出我不对。\n\n心跳得我耳朵发嗡。",
+      "choices": [
+        {
+          "id": "escape_now",
+          "text": "趁减速，试着下车",
+          "nextNode": "node_08_escape_attempt",
+          "effects": [
+            {
+              "type": "setFlag",
+              "key": "attempted_car_escape",
+              "value": true
+            }
+          ]
+        },
+        {
+          "id": "wait",
+          "text": "忍住，继续看",
+          "nextNode": "node_09_arrive"
+        },
+        {
+          "id": "ask_stop",
+          "text": "直接说我要下车",
+          "nextNode": "node_10_confront"
+        }
+      ]
+    },
+    "node_08_escape_attempt": {
+      "id": "node_08_escape_attempt",
+      "type": "choice",
+      "scene": "roadside",
+      "tensionLevel": 4,
+      "content": "车速慢了。\n\n我的手放在门把上。掌心的汗把塑料把柄浸得发滑。\n\n我不知道门一开会发生什么。可我也知道，什么都不做，我会越来越怕。",
+      "choices": [
+        {
+          "id": "open_door",
+          "text": "拉开车门，往外跑",
+          "nextNode": "node_11_escape_success",
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "attempted_car_escape"
+            }
+          ]
+        },
+        {
+          "id": "hesitate",
+          "text": "再等一会儿",
+          "nextNode": "node_09_arrive"
+        }
+      ]
+    },
+    "node_09_arrive": {
+      "id": "node_09_arrive",
+      "type": "dialogue",
+      "scene": "unknown_location",
+      "ambientSound": "car_engine",
+      "tensionLevel": 4,
+      "content": "车停了。\n\n我看窗外。不是我认识的任何地方。\n\n前排的男人下车。门关上。咔哒。很轻。\n\n我心里忽然清楚了一件事：刚才那一下，我错过了。",
+      "nextNode": "node_12_confinement",
+      "investigations": [
+        {
+          "id": "watch_ji_park",
+          "label": "看吉大顺",
+          "content": "车停在一栋没灯的楼前。吉大顺没熄火，手搭方向盘，像在等什么人。他在等谁？",
+          "clueId": "clue_ji_park"
+        }
+      ]
+    },
+    "node_10_confront": {
+      "id": "node_10_confront",
+      "type": "dialogue",
+      "scene": "car",
+      "ambientSound": "car_engine",
+      "tensionLevel": 4,
+      "content": "'我要下车。'\n\n没人应。\n\n我又说一遍。\n\n前排的男人回过头。脸上没什么表情。\n\n'到了自然让你下。'\n\n我没再说话。\n\n可我第一次确定：他们不打算听我的。",
+      "clues": [
+        "clue_locked_door"
+      ],
+      "nextNode": "node_12_confinement"
+    },
+    "node_11_escape_success": {
+      "id": "node_11_escape_success",
+      "type": "dialogue",
+      "scene": "roadside",
+      "ambientSound": "city_street",
+      "tensionLevel": 4,
+      "content": "我跳下车。脚落地有点软。\n\n没回头。一直跑。\n\n听不到车声了，我才停。\n\n站在路边大口喘。\n\n那一刻我以为，离开那辆车就结束了。\n\n可我还不知道，他们已经看清楚我的样子。",
+      "effects": [
+        {
+          "type": "setFlag",
+          "key": "escaped_first_vehicle",
+          "value": true
+        }
+      ],
+      "nextNode": "node_13_recaptured"
+    },
+    "node_12_confinement": {
+      "id": "node_12_confinement",
+      "type": "dialogue",
+      "scene": "room",
+      "ambientSound": "room_silence",
+      "tensionLevel": 4,
+      "content": "后来怎么被带进这间屋的，我不愿多想。\n\n门在身后关上。\n\n我坐着，听外面的声音来来去去。\n\n不知道几点。不知道这是哪。\n\n最怕的不是屋子小。是我不知道门什么时候再开。\n\n然后我看见了邱枫。\n\n就是晓彤那个比我大很多的室友。\n\n我们之前不对付——合住时为点小事拌过嘴。\n\n可现在，没人能帮我们，只有彼此。\n\n她偷偷塞我一张纸：别出声，等机会。\n\n我这才懂，她比我先一步出事。我是因为借住了那间房，才被一起带进来的。",
+      "clues": [
+        "clue_qiufeng_missing"
+      ],
+      "nextNode": "node_14_song_visit",
+      "investigations": [
+        {
+          "id": "watch_qiufeng",
+          "label": "看邱枫",
+          "content": "她缩在角落，嘴角有干了的印子。看见我，摇头，不让我出声。我没敢问她疼不疼。",
+          "clueId": "clue_qiufeng_state"
+        },
+        {
+          "id": "listen_door",
+          "label": "贴门听",
+          "content": "门外常有脚步。有时停很久。我贴门缝听，只听见远远的说话，听不出是谁。",
+          "clueId": "clue_door_sound"
+        }
+      ]
+    },
+    "node_13_recaptured": {
+      "id": "node_13_recaptured",
+      "type": "dialogue",
+      "scene": "roadside",
+      "ambientSound": "night_wind",
+      "tensionLevel": 5,
+      "content": "我才跑出去没多久，就发现自己根本不认路。\n\n身后车声过来。我躲到路边。\n\n车慢慢停了。\n\n我没敢动。\n\n可最后还是被看见了。\n\n那一刻我才懂：第一次逃出去，不等于真的安全。",
+      "nextNode": "node_12_confinement"
+    },
+    "node_14_song_visit": {
+      "id": "node_14_song_visit",
+      "type": "dialogue",
+      "scene": "room",
+      "ambientSound": "door_open",
+      "tensionLevel": 3,
+      "content": "宋红玉来过一次。站门口，没进来。\n\n'别闹了。'她像哄不听话的小孩，'配合一点，事情很快过去。'\n\n我看着她。不知道她是在安慰我，还是在说：这里发生的事，对他们只是要处理的事。\n\n她走后，我听见隔间闷响，还有邱枫压低的呼吸。她脾气倔，不肯照他们说的做，宋红玉就难为她。\n\n我缩在墙角。第一次明白：她替我把那些扛了。",
+      "clues": [
+        "clue_song_tone",
+        "clue_song_beats_qiufeng"
+      ],
+      "nextNode": "node_15_forced_call",
+      "investigations": [
+        {
+          "id": "watch_song_face",
+          "label": "看宋红玉的表情",
+          "content": "她笑的时候眼睛没弯。劝我配合，可脸上没一点真的在意。她在想什么，我猜不到。",
+          "clueId": "clue_song_face"
+        },
+        {
+          "id": "listen_qiufeng_room",
+          "label": "听隔间",
+          "content": "她走后，隔间传来闷响和邱枫压低的呼吸。她不肯照他们说的做。我不知道她挨了什么。",
+          "clueId": "clue_song_beats_qiufeng"
+        }
+      ]
+    },
+    "node_15_forced_call": {
+      "id": "node_15_forced_call",
+      "type": "choice",
+      "scene": "room",
+      "tensionLevel": 4,
+      "content": "后来他们把手机递给我，让我给家里打。\n\n我知道该说什么。\n\n可这也可能是唯一让家里知道我还活着的办法。\n\n手机在我手里。我能听见自己的呼吸声。",
+      "choices": [
+        {
+          "id": "normal_call",
+          "text": "照他们说的打",
+          "nextNode": "node_16_call_normal",
+          "effects": [
+            {
+              "type": "setFlag",
+              "key": "made_forced_call",
+              "value": true
+            }
+          ]
+        },
+        {
+          "id": "hint_distress",
+          "text": "不让他们察觉地，暗示我出事了",
+          "nextNode": "node_17_call_hint",
+          "effects": [
+            {
+              "type": "setFlag",
+              "key": "sent_hidden_hint",
+              "value": true
+            }
+          ]
+        },
+        {
+          "id": "stay_silent",
+          "text": "什么都不说",
+          "nextNode": "node_18_call_silent"
+        }
+      ]
+    },
+    "node_16_call_normal": {
+      "id": "node_16_call_normal",
+      "type": "dialogue",
+      "scene": "room",
+      "ambientSound": "phone_call",
+      "tensionLevel": 4,
+      "content": "通了。是爸爸。\n\n那一瞬我差点哭出来。可不敢。\n\n我照他们教的一句句说。\n\n挂了以后，我还保持着原来的姿势。\n\n我不知道爸爸听没听出我不对。\n\n也不知道这通电话有没有被谁听见。\n\n我甚至不知道——有没有人在找我。",
+      "clues": [
+        "clue_forced_call"
+      ],
+      "nextNode": "node_19_deng_reaction"
+    },
+    "node_17_call_hint": {
+      "id": "node_17_call_hint",
+      "type": "dialogue",
+      "scene": "room",
+      "ambientSound": "phone_call",
+      "tensionLevel": 5,
+      "content": "我尽量让声音和平时一样。\n\n一句话中间，我故意停了一下。说出只有家里人懂的称呼。又很快带过去。\n\n爸爸听懂没？会不会觉得奇怪？\n\n我不知道。\n\n挂了以后，我心里冒出一个很小很小的念头：也许外面有人知道我还活着。\n\n可我也马上想：也许只是我以为。",
+      "clues": [
+        "clue_forced_call"
+      ],
+      "nextNode": "node_19_deng_reaction"
+    },
+    "node_18_call_silent": {
+      "id": "node_18_call_silent",
+      "type": "dialogue",
+      "scene": "room",
+      "ambientSound": "phone_call",
+      "tensionLevel": 5,
+      "content": "通了。我不出声。\n\n听爸爸喊我的名字。我咬着嘴唇。\n\n最后手机被抽走。\n\n这有没有用？我不知道。\n\n可那几秒，我听见了家里的声音。\n\n那让我第一次觉得，自己没被整个世界忘掉。",
+      "clues": [
+        "clue_forced_call"
+      ],
+      "nextNode": "node_19_deng_reaction"
+    },
+    "node_19_deng_reaction": {
+      "id": "node_19_deng_reaction",
+      "type": "dialogue",
+      "scene": "room",
+      "ambientSound": "room_silence",
+      "tensionLevel": 5,
+      "content": "挂了电话，邓立钢没马上说话。\n\n他看了一眼自己的手机。\n\n走到窗边往外看。\n\n过一会儿，回头盯了我几秒。\n\n我不知道他在等什么。也不知道他看见了什么。\n\n他为什么突然这样？\n\n是我刚才说错什么了？还是他发现了什么？\n\n我不敢问。把这些一下下记在心里。",
+      "clues": [
+        "clue_deng_phone"
+      ],
+      "nextNode": "node_19b_read",
+      "investigations": [
+        {
+          "id": "watch_deng_phone",
+          "label": "看邓立钢的手机",
+          "content": "他低头看手机屏幕。亮了一下，又灭。他皱了下眉。我不知道上面写了什么。",
+          "clueId": "clue_deng_phone"
+        },
+        {
+          "id": "watch_deng_window",
+          "label": "看他往窗外",
+          "content": "他走到窗边，帘子掀开一条缝，往外看了很久。像在等谁从路上过来。",
+          "clueId": "clue_deng_phone"
+        },
+        {
+          "id": "watch_deng_lock",
+          "label": "看他有没有锁门",
+          "content": "他忽然转身，把门锁上。咔哒。他之前不常锁门。我后背发凉——他为什么突然这样？",
+          "clueId": "clue_deng_lock"
+        },
+        {
+          "id": "watch_deng_whisper",
+          "label": "听他和人说话",
+          "content": "他背过身，和门口另一个人压低声音。我听不清字，只看见他点了一下头。",
+          "clueId": "clue_deng_whisper"
+        }
+      ]
+    },
+    "node_20_observe_room": {
+      "id": "node_20_observe_room",
+      "type": "dialogue",
+      "scene": "room",
+      "ambientSound": "room_silence",
+      "tensionLevel": 4,
+      "content": "我开始看这间屋。\n\n桌。门。卫生间。窗。\n\n别的都没用。只有卫生间那扇小窗，我多看了几秒。\n\n邱枫之前偷偷比过手势，让我记住房里能出去的地方。\n\n这扇窗，是她教我盯的。",
+      "clues": [
+        "clue_window"
+      ],
+      "investigations": [
+        {
+          "id": "investigate_window",
+          "label": "看卫生间的窗",
+          "content": "不大。能推开。外面是一段窄墙。风从缝里钻进来，凉。",
+          "clueId": "clue_window"
+        },
+        {
+          "id": "investigate_door",
+          "label": "看房门",
+          "content": "门外常有人过。我猜不出他们什么时候回来。",
+          "clueId": "clue_footsteps"
+        },
+        {
+          "id": "investigate_neighbor",
+          "label": "往窗外看",
+          "content": "不远有另一扇窗。黑着。不知道那边有没有人。",
+          "clueId": "clue_neighbor_window"
+        }
+      ],
+      "nextNode": "node_21_window_decision"
+    },
+    "node_21_window_decision": {
+      "id": "node_21_window_decision",
+      "type": "choice",
+      "scene": "room",
+      "tensionLevel": 5,
+      "content": "我站在卫生间里。窗在面前。\n\n伸手摸窗框。凉的。\n\n推开它，我也许真能出去。也可能被发现。\n\n我不知道外面多高。不知道隔壁有没有人。\n\n只知道，这可能是我第一次真看见出口。\n\n邱枫在身后，压低声音：'趁现在。'",
+      "choices": [
+        {
+          "id": "open_window",
+          "text": "推开窗户，找机会",
+          "nextNode": "node_22_window_open",
+          "effects": [
+            {
+              "type": "setFlag",
+              "key": "found_window_escape",
+              "value": true
+            }
+          ]
+        },
+        {
+          "id": "wait",
+          "text": "先不动，继续看",
+          "nextNode": "node_23_wait"
+        }
+      ]
+    },
+    "node_22_window_open": {
+      "id": "node_22_window_open",
+      "type": "dialogue",
+      "scene": "window",
+      "ambientSound": "wind_high",
+      "tensionLevel": 5,
+      "content": "窗一点点推开。风一下灌进来。\n\n我愣了。外面的世界忽然很大。\n\n街。车。楼顶。远处的灯。\n\n我甚至听见了城市的声音。\n\n可我没觉得自由。\n\n因为低头看了一眼——窗外没有路。\n\n只有一段很窄的墙沿。下面是很远很远的街道。",
+      "clues": [
+        "clue_window",
+        "clue_outer_wall_narrow"
+      ],
+      "nextNode": "node_24_outer_wall"
+    },
+    "node_23_wait": {
+      "id": "node_23_wait",
+      "type": "dialogue",
+      "scene": "room",
+      "ambientSound": "room_silence",
+      "tensionLevel": 4,
+      "content": "我没动。\n\n我知道自己只有一次机会。被发现会怎样，我不敢想。\n\n所以继续听。\n\n门外有人过。脚步停了一下。又走远。\n\n我忽然觉得：等，本身也是一种危险。",
+      "clues": [
+        "clue_footsteps"
+      ],
+      "nextNode": "node_22_window_open"
+    },
+    "node_24_outer_wall": {
+      "id": "node_24_outer_wall",
+      "type": "choice",
+      "scene": "outer_wall",
+      "ambientSound": "wind_high",
+      "tensionLevel": 5,
+      "content": "我伸出一只脚。鞋尖碰到墙沿的一瞬，整个人僵住。\n\n太窄了。我不敢往下看。\n\n身后屋里响了一下。\n\n我没时间了。\n\n邱枫在里头低声：'别回头，往前。'",
+      "choices": [
+        {
+          "id": "step_out",
+          "text": "踩上墙沿，往隔壁挪",
+          "nextNode": "node_25_wall_escape",
+          "effects": [
+            {
+              "type": "setFlag",
+              "key": "entered_outer_wall",
+              "value": true
+            }
+          ]
+        },
+        {
+          "id": "return_room",
+          "text": "缩回屋",
+          "nextNode": "node_26_return_room"
+        }
+      ]
+    },
+    "node_25_wall_escape": {
+      "id": "node_25_wall_escape",
+      "type": "dialogue",
+      "scene": "outer_wall",
+      "ambientSound": "wind_high",
+      "tensionLevel": 5,
+      "content": "我一点一点往前挪。手掌贴墙。脚尖没地方踏实。\n\n不敢回头。不敢往下看。\n\n只盯前面那扇窗。它越来越近。\n\n终于，手指碰到窗框。\n\n我扒着翻进去，回头望——邱枫还在身后的屋里，朝我用力点头。\n\n我爬进来的这间，是空的。",
+      "clues": [
+        "clue_neighbor_window",
+        "clue_neighbor_absent"
+      ],
+      "nextNode": "node_27_neighbor"
+    },
+    "node_26_return_room": {
+      "id": "node_26_return_room",
+      "type": "dialogue",
+      "scene": "room",
+      "ambientSound": "door_handle",
+      "tensionLevel": 5,
+      "content": "我刚把脚收回，门外传来钥匙碰响。\n\n我赶紧合上窗。\n\n邱枫在暗处抓住我手腕，没说话，只摇头。\n\n那一瞬我忽然懂：刚才那扇窗，可能是我最后一次有得选。",
+      "nextNode": "node_28_discovered"
+    },
+    "node_27_neighbor": {
+      "id": "node_27_neighbor",
+      "type": "choice",
+      "scene": "neighbor_room",
+      "ambientSound": "indoor_silence",
+      "tensionLevel": 5,
+      "content": "我终于翻进隔壁。脚落地时几乎站不稳。\n\n屋里没人。门在前。电话在桌上。\n\n我第一次真离开他们关我的那间。\n\n可邱枫还在身后的屋里。\n\n我不知道外面安不安全。",
+      "clues": [
+        "clue_neighbor_absent"
+      ],
+      "choices": [
+        {
+          "id": "stay_and_call",
+          "text": "留屋里，报警，等",
+          "nextNode": "node_29_wait_rescue",
+          "effects": [
+            {
+              "type": "setFlag",
+              "key": "chose_to_wait",
+              "value": true
+            }
+          ]
+        },
+        {
+          "id": "continue_escape",
+          "text": "不停，继续往外跑",
+          "nextNode": "node_30_continue_escape",
+          "effects": [
+            {
+              "type": "setFlag",
+              "key": "continued_escape",
+              "value": true
+            }
+          ]
+        }
+      ]
+    },
+    "node_28_discovered": {
+      "id": "node_28_discovered",
+      "type": "dialogue",
+      "scene": "room",
+      "ambientSound": "door_open",
+      "tensionLevel": 5,
+      "content": "门开了。\n\n我站着。邓立钢看我一眼，又看卫生间。\n\n他发现了什么？从什么时候开始疑我的？\n\n我不知道。\n\n只知道，那扇窗我没了。\n\n邱枫在旁边垂着眼，像早料到会这样。",
+      "nextNode": "node_31_bad_checkpoint"
+    },
+    "node_29_wait_rescue": {
+      "id": "node_29_wait_rescue",
+      "type": "dialogue",
+      "scene": "neighbor_room",
+      "ambientSound": "distant_traffic",
+      "tensionLevel": 4,
+      "content": "我关上门。手一直在抖。\n\n找到电话。拨出去。不知道对面什么时候来。\n\n甚至不知道这通电话有没有真传出去。\n\n只能坐那等。每一分钟都长。\n\n外面偶尔有车过。然后，脚步声。\n\n我屏住气。脚步停在门外。很久。又走了。",
+      "clues": [
+        "clue_police_hint"
+      ],
+      "nextNode": "node_32_wait_choice"
+    },
+    "node_30_continue_escape": {
+      "id": "node_30_continue_escape",
+      "type": "dialogue",
+      "scene": "stairwell",
+      "ambientSound": "footsteps_stairs",
+      "tensionLevel": 5,
+      "content": "我没停。\n\n怕。更怕他们追上来。\n\n楼道很静。我的脚步声特别大。\n\n不知道往哪跑。只管往下。\n\n回头望一眼——邱枫没能跟上这扇窗。\n\n我把她的名字，记在心里。",
+      "nextNode": "node_33_chase"
+    },
+    "node_31_bad_checkpoint": {
+      "id": "node_31_bad_checkpoint",
+      "type": "ending",
+      "endingVariant": "bad",
+      "scene": "room",
+      "checkpointNodeId": "node_20_observe_room",
+      "effects": [
+        {
+          "type": "setFlag",
+          "key": "failed_window_attempt",
+          "value": true
+        }
+      ],
+      "content": "我没逃出去。至少这次没有。\n\n邱枫在旁边，很轻：'下次别犹豫。'\n\n后来我才懂，真逃不是看见出口就冲。\n\n有时候，得等到那个不会再来的第二次机会。\n\n【故事回溯】\n\n你回到发现卫生间那扇窗的时候。"
+    },
+    "node_32_wait_choice": {
+      "id": "node_32_wait_choice",
+      "type": "choice",
+      "scene": "neighbor_room",
+      "tensionLevel": 5,
+      "content": "我坐着。不知过了多久。\n\n外面的声越来越杂。远处像有人说话。又有车停。\n\n那是不是他们？是不是有人在找我？\n\n我只能选：继续躲，还是开门看一眼。",
+      "choices": [
+        {
+          "id": "stay",
+          "text": "继续躲，等动静过去",
+          "nextNode": "node_34_rescue",
+          "effects": [
+            {
+              "type": "setFlag",
+              "key": "survived_by_waiting",
+              "value": true
+            }
+          ]
+        },
+        {
+          "id": "check_outside",
+          "text": "开门，确认外面",
+          "nextNode": "node_35_exposure"
+        }
+      ]
+    },
+    "node_33_chase": {
+      "id": "node_33_chase",
+      "type": "choice",
+      "scene": "stairwell",
+      "tensionLevel": 5,
+      "content": "身后有声音。我停了一下。\n\n有人在喊。是不是喊我？不知道。\n\n我往下跑。前面一扇门。门外是什么，不知道。\n\n没时间慢慢想了。",
+      "choices": [
+        {
+          "id": "open_door",
+          "text": "开门，继续往外跑",
+          "nextNode": "node_36_street_escape"
+        },
+        {
+          "id": "hide",
+          "text": "先躲，等他们过",
+          "nextNode": "node_37_hide"
+        }
+      ]
+    },
+    "node_34_rescue": {
+      "id": "node_34_rescue",
+      "type": "ending",
+      "endingVariant": "good",
+      "scene": "neighbor_room",
+      "effects": [
+        {
+          "type": "setFlag",
+          "key": "escaped_successfully",
+          "value": true
+        }
+      ],
+      "content": "我没动。只坐着，听外面的声一点点近。\n\n有人说话。有人快步过楼道。\n\n然后，脚步越来越清楚。\n\n我缩在墙角。门开的那一刻，我闭上眼。\n\n不知道进来的是谁。\n\n直到有声音说：\n\n'别怕。'\n\n那一瞬我才知，我真活下来了。\n\n后来警察找到邱枫时，她已被转到别处。我们都得救，只是不在一间屋。\n\n很多年我仍记得那扇窗，和窗里朝我点头的人。"
+    },
+    "node_35_exposure": {
+      "id": "node_35_exposure",
+      "type": "ending",
+      "endingVariant": "bad",
+      "scene": "neighbor_corridor",
+      "checkpointNodeId": "node_32_wait_choice",
+      "content": "门刚开，就听见楼下有人声。\n\n是谁？该不该继续走？\n\n怕让我仓促做了决定——转身想回。\n\n可来不及了。\n\n【故事回溯】\n\n你回到要不要等的那一刻。"
+    },
+    "node_36_street_escape": {
+      "id": "node_36_street_escape",
+      "type": "dialogue",
+      "scene": "street",
+      "ambientSound": "city_noise",
+      "tensionLevel": 5,
+      "content": "门外是街。我跑出去。风刮脸。\n\n人很多。车很多。\n\n我第一次觉得，自己真站在一个有很多人的地方。\n\n不敢停。一直跑。直到身后再没追赶的声。\n\n回头望那栋楼——邱枫还在里面。",
+      "nextNode": "node_38_escape_result"
+    },
+    "node_37_hide": {
+      "id": "node_37_hide",
+      "type": "dialogue",
+      "scene": "stairwell",
+      "ambientSound": "footsteps_stairs",
+      "tensionLevel": 5,
+      "content": "我躲楼梯角。脚步近了。停了。\n\n我捂嘴。连呼吸都不敢重。\n\n很久，声才远。\n\n我等了很久才敢出。\n\n那瞬忽然懂：活下来有时不是因为你比别人勇。\n\n只是你终于等到了能继续走的机会。",
+      "nextNode": "node_38_escape_result"
+    },
+    "node_38_escape_result": {
+      "id": "node_38_escape_result",
+      "type": "ending",
+      "endingVariant": "good",
+      "scene": "street",
+      "effects": [
+        {
+          "type": "setFlag",
+          "key": "escaped_successfully",
+          "value": true
+        }
+      ],
+      "content": "我不知道警察什么时候来的。也不知道他们怎么找到我。\n\n只知那天以后，我重新站回人群里。\n\n回头。没人追出来。\n\n阳光照在街上。我第一次觉得，普通街道也这么好看。\n\n后来才知，邱枫也被救出，只是没和我同一天离开那栋楼。\n\n那年我十七岁。只想活。\n\n很多年后我成了警察。才慢慢懂，当年救我的不只是一个人。\n\n是没放弃找我的人，和黑暗里朝我点头的人。\n\n后来每次有人对我说'这人可能没救了'，我就想起那扇窗。\n\n我知道。只要还有一个人没放弃，就不能说太晚。",
+      "nextNode": "node_39_returning_memory"
+    },
+    "node_39_returning_memory": {
+      "id": "node_39_returning_memory",
+      "type": "cutscene",
+      "scene": "years_later",
+      "ambientSound": "quiet_office",
+      "tensionLevel": 1,
+      "content": "很多年后，我站在一间审讯室外。\n\n年轻警员问：'甄姐，你当年真从那么高翻出去过？'\n\n我想了想。'我不知道。'\n\n他愣了。我笑：'那时没想那么多。只想活着。'\n\n看向窗外。那扇窗过去很多年了。我一直记得。",
+      "nextNode": "node_40_final"
+    },
+    "node_40_final": {
+      "id": "node_40_final",
+      "type": "ending",
+      "endingVariant": "good",
+      "scene": "years_later",
+      "content": "后来我也开始找那些失踪的人。\n\n因为我知道，等一个人来找自己是什么滋味。\n\n也知道，最怕的时候，只要听见一句'别怕'，就能信自己还有明天。\n\n邱枫后来去了很远的地方，我们没再常见面。\n\n可都知道，对方从那扇窗后活了下来。\n\n有些缘分很短，够两个人记一辈子。"
+    },
+    "node_19b_read": {
+      "id": "node_19b_read",
+      "type": "choice",
+      "scene": "room",
+      "ambientSound": "room_silence",
+      "tensionLevel": 5,
+      "content": "邓立钢看手机、看窗外、锁门、和人低语。\n\n我做了一堆观察，可没有一条告诉我答案。\n\n他为什么突然这么紧张？\n\n我脑子里转着几个可能：警察来了？他发现我不见了？还是他们自己出了什么事？\n\n我永远没法确定。\n\n但我得选一个，决定自己接下来怎么办。",
+      "choices": [
+        {
+          "id": "guess_police",
+          "text": "他可能在怕警察——我该更安静地等",
+          "nextNode": "node_20_observe_room",
+          "effects": [
+            {
+              "type": "setFlag",
+              "key": "read_deng_police",
+              "value": true
+            }
+          ]
+        },
+        {
+          "id": "guess_missing",
+          "text": "他可能发现我要跑——我得更小心，别露痕迹",
+          "nextNode": "node_20_observe_room",
+          "effects": [
+            {
+              "type": "setFlag",
+              "key": "read_deng_missing",
+              "value": true
+            }
+          ]
+        },
+        {
+          "id": "guess_internal",
+          "text": "也许和他们自己人有关——我先不动声色",
+          "nextNode": "node_20_observe_room",
+          "effects": [
+            {
+              "type": "setFlag",
+              "key": "read_deng_internal",
+              "value": true
+            }
+          ]
+        }
+      ]
+    },
+    "node_06b_decide": {
+      "id": "node_06b_decide",
+      "type": "choice",
+      "scene": "car",
+      "tensionLevel": 3,
+      "content": "车门拉不开。信号闪一下就没。前排的男人从后视镜看我。\n\n我手心里全是汗。\n\n我能观察到的就这些。他知不知道我想跑？他是在盯我，还是在盯路？\n\n我不知道。\n\n可车在减速，路口快到了。我要不要赌这一次？",
+      "choices": [
+        {
+          "id": "read_watch",
+          "text": "他只是在看路——趁减速试试",
+          "nextNode": "node_07_escape_car",
+          "effects": [
+            {
+              "type": "setFlag",
+              "key": "read_ji_route",
+              "value": true
+            }
+          ]
+        },
+        {
+          "id": "read_watchme",
+          "text": "他一直盯我——先忍住，别动",
+          "nextNode": "node_07_escape_car",
+          "effects": [
+            {
+              "type": "setFlag",
+              "key": "read_ji_me",
+              "value": true
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

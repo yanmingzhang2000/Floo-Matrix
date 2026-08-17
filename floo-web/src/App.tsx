@@ -16,11 +16,13 @@ import { downloadProgress, uploadProgress } from '@/core/services/syncService'
 import { EscapeTheDen } from '@/games/02-escape-the-den/components/EscapeTheDen'
 import { KaiDuan } from '@/games/03-kai-duan/components/KaiDuan'
 import { SongBuDao } from '@/games/04-song-bu-dao/components/SongBuDao'
+import { PiaoBaiZhenZhen } from '@/games/04-piao-bai-zhen-zhen/components/PiaoBaiZhenZhen'
 
 const GAME_COMPONENTS: Record<string, ComponentType<{ onExit: () => void }>> = {
   '02-escape-the-den': EscapeTheDen,
   '03-kai-duan': KaiDuan,
   '04-song-bu-dao': SongBuDao,
+  '04-piao-bai-zhen-zhen': PiaoBaiZhenZhen,
 }
 
 function App() {
@@ -83,6 +85,14 @@ function App() {
       title: '开端番外·送不到',
       subtitle: '快递员的时间循环',
       flameColor: '#d4a574',
+      unlocked: true,
+      completed: false,
+    })
+    registerFireplace({
+      gameId: '04-piao-bai-zhen-zhen',
+      title: '窗外',
+      subtitle: '漂白·少年甄珍',
+      flameColor: '#7a9eb8',
       unlocked: true,
       completed: false,
     })
