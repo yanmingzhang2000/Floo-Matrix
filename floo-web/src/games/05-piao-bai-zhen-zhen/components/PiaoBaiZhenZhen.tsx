@@ -47,6 +47,15 @@ const AMBIENT_SOUNDS: Record<string, string> = {
   distant_traffic: `${base}audio/ambient/forest.mp3`,
   quiet_office: `${base}audio/ambient/cabin.mp3`,
   years_later: `${base}audio/ambient/cabin.mp3`,
+  rain_heavy: `${base}audio/ambient/forest.mp3`,
+  wind_cold: `${base}audio/ambient/forest.mp3`,
+  room_damp: `${base}audio/ambient/basement.mp3`,
+  water_dripping: `${base}audio/ambient/basement.mp3`,
+  water_running_heavy: `${base}audio/ambient/basement.mp3`,
+  engine_hum: `${base}audio/ambient/basement.mp3`,
+  corridor_noise: `${base}audio/ambient/basement.mp3`,
+  street_busy: `${base}audio/ambient/cabin.mp3`,
+  siren_loud: `${base}audio/ambient/cabin.mp3`,
 }
 
 const SFX_SOUNDS: Record<string, string> = {

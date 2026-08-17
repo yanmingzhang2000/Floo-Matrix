@@ -185,6 +185,7 @@ function App() {
             clickY={transitionCoords.clickY}
             fireplaceX={transitionCoords.fireplaceX}
             fireplaceY={transitionCoords.fireplaceY}
+            flameColor={transitionCoords.flameColor}
             onComplete={handleTransitionComplete}
           />
         </>

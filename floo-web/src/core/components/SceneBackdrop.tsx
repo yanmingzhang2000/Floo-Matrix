@@ -76,6 +76,46 @@ const SCENE_STYLES: Record<SceneId, { gradient: string; vignette: string }> = {
     gradient: 'radial-gradient(circle at 50% 25%, #252830 0%, #0e0c09 80%)',
     vignette: 'rgba(0, 0, 0, 0.5)',
   },
+  home_room: {
+    gradient: 'radial-gradient(circle at 50% 35%, #2a1a18 0%, #0e0c09 75%)',
+    vignette: 'rgba(0, 0, 0, 0.65)',
+  },
+  street_night: {
+    gradient: 'radial-gradient(circle at 50% 20%, #0f1218 0%, #080a0d 80%)',
+    vignette: 'rgba(0, 0, 0, 0.7)',
+  },
+  friend_apartment: {
+    gradient: 'radial-gradient(circle at 50% 30%, #201c1a 0%, #0e0c09 75%)',
+    vignette: 'rgba(0, 0, 0, 0.55)',
+  },
+  bus_station: {
+    gradient: 'radial-gradient(circle at 50% 25%, #1a1d22 0%, #0e0c09 80%)',
+    vignette: 'rgba(0, 0, 0, 0.6)',
+  },
+  inside_van: {
+    gradient: 'radial-gradient(circle at 50% 40%, #15130f 0%, #0a0808 75%)',
+    vignette: 'rgba(0, 0, 0, 0.75)',
+  },
+  meat_factory_room: {
+    gradient: 'radial-gradient(circle at 50% 35%, #1a1510 0%, #0e0c09 75%)',
+    vignette: 'rgba(0, 0, 0, 0.8)',
+  },
+  bathroom: {
+    gradient: 'radial-gradient(circle at 50% 30%, #1a1e22 0%, #0e0c09 80%)',
+    vignette: 'rgba(0, 0, 0, 0.6)',
+  },
+  corridor: {
+    gradient: 'radial-gradient(circle at 50% 30%, #181614 0%, #0a0808 75%)',
+    vignette: 'rgba(0, 0, 0, 0.7)',
+  },
+  street_day: {
+    gradient: 'radial-gradient(circle at 50% 25%, #2a2820 0%, #0e0c09 70%)',
+    vignette: 'rgba(0, 0, 0, 0.5)',
+  },
+  neighbor_room: {
+    gradient: 'radial-gradient(circle at 50% 35%, #1e1c1a 0%, #0e0c09 75%)',
+    vignette: 'rgba(0, 0, 0, 0.55)',
+  },
 }
 
 export function SceneBackdrop({ scene, tensionLevel = 0 }: SceneBackdropProps) {

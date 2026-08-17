@@ -7,7 +7,7 @@
 export type StoryNodeType = 'dialogue' | 'choice' | 'puzzle' | 'cutscene' | 'ending'
 
 /** 场景标识，驱动背景光影与环境音切换 */
-export type SceneId = 'basement' | 'forest' | 'cabin' | 'station' | 'reveal' | 'bus' | 'convention' | 'police_station' | 'factory' | 'bridge' | 'courier_station' | 'city_street' | 'bridge_side' | 'residential' | 'apartment' | 'hospital'
+export type SceneId = 'basement' | 'forest' | 'cabin' | 'station' | 'reveal' | 'bus' | 'convention' | 'police_station' | 'factory' | 'bridge' | 'courier_station' | 'city_street' | 'bridge_side' | 'residential' | 'apartment' | 'hospital' | 'home_room' | 'street_night' | 'friend_apartment' | 'bus_station' | 'inside_van' | 'meat_factory_room' | 'bathroom' | 'corridor' | 'street_day' | 'neighbor_room'
 
 /** 线索类型：事实 / 证词 / 异常 */
 export type ClueType = 'fact' | 'testimony' | 'anomaly'
