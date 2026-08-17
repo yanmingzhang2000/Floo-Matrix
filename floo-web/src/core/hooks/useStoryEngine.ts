@@ -5,6 +5,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { StoryEngine } from '@/core/engine/StoryEngine'
 import { useGameStore } from '@/core/store/gameStore'
+import { useRelationshipStore } from '@/core/store/relationshipStore'
 import type { Choice, StoryData, StoryNode } from '@/core/types/story'
 
 export function useStoryEngine(story: StoryData) {
@@ -14,6 +15,7 @@ export function useStoryEngine(story: StoryData) {
 
   useEffect(() => {
     if (gameId !== story.gameId) {
+      useRelationshipStore.getState().resetGame(story.gameId)
       const startNode = engine.getStartNode()
       startGame(story.gameId, startNode.id)
       engine.enterNode(startNode)

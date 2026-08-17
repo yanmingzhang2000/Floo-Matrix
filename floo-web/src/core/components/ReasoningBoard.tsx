@@ -80,11 +80,11 @@ export function ReasoningBoard({ characters, clues, clueLinks = [], discoveredCl
 
   return (
     <>
-      {/* 触发按钮 - 固定在左上角，与线索按钮并排 */}
+      {/* 触发按钮 - 垂直堆叠在左侧 */}
       <motion.button
         type="button"
         onClick={() => setIsOpen(true)}
-        className="fixed top-4 left-[140px] z-40 flex items-center gap-2 px-3 py-2 rounded-lg bg-floo-bg-secondary/80 border border-floo-text-muted/20 text-floo-text-muted hover:border-floo-accent-gold/40 hover:text-floo-accent-gold transition-colors backdrop-blur-sm"
+        className="fixed top-[52px] left-4 z-40 flex items-center gap-2 px-3 py-2 rounded-lg bg-floo-bg-secondary/80 border border-floo-text-muted/20 text-floo-text-muted hover:border-floo-accent-gold/40 hover:text-floo-accent-gold transition-colors backdrop-blur-sm"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >

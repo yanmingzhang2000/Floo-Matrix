@@ -79,7 +79,7 @@ export function RelationshipGraph({ gameId, characters }: RelationshipGraphProps
       <motion.button
         type="button"
         onClick={() => setIsOpen(true)}
-        className="fixed top-16 left-4 z-40 flex items-center gap-2 px-3 py-2 rounded-lg bg-floo-bg-secondary/80 border border-floo-text-muted/20 text-floo-text-muted hover:border-floo-accent-gold/40 hover:text-floo-accent-gold transition-colors backdrop-blur-sm"
+        className="fixed top-[100px] left-4 z-40 flex items-center gap-2 px-3 py-2 rounded-lg bg-floo-bg-secondary/80 border border-floo-text-muted/20 text-floo-text-muted hover:border-floo-accent-gold/40 hover:text-floo-accent-gold transition-colors backdrop-blur-sm"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >

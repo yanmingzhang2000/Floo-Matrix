@@ -203,8 +203,6 @@ export function KaiDuan({ onExit }: KaiDuanProps) {
       {/* UI 覆盖层 */}
       <CycleCounter
         currentTime={currentTimeStr}
-        discoveredClues={discoveredClues.size}
-        totalClues={storyData.clues?.length || 0}
         unlockedConnections={Array.from(unlockedConnections)}
       />
 
