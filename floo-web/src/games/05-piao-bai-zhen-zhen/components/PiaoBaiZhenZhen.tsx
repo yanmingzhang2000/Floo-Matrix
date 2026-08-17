@@ -11,6 +11,7 @@ import { ChoicePanel } from '@/core/components/ChoicePanel'
 import { SceneBackdrop } from '@/core/components/SceneBackdrop'
 import { InvestigationPanel } from '@/core/components/InvestigationPanel'
 import { ClueDrawer } from '@/core/components/ClueDrawer'
+import { SceneMedia } from '@/core/components/SceneMedia'
 import { GameTutorial } from '@/core/components/GameTutorial'
 import { useStoryEngine } from '@/core/hooks/useStoryEngine'
 import { useHubStore } from '@/core/store/hubStore'
@@ -250,6 +251,10 @@ export function PiaoBaiZhenZhen({ onExit }: PiaoBaiZhenZhenProps) {
                 <p className="text-floo-text-muted text-sm font-ui">故事将从关键节点重新开始</p>
               </motion.div>
 
+              {currentNode.illustration && (
+                <SceneMedia src={currentNode.illustration.src} type={currentNode.illustration.type} alt={currentNode.illustration.alt} />
+              )}
+
               <DialogueBox content={currentNode.content} />
 
               {currentNode.checkpointNodeId && (
@@ -291,6 +296,10 @@ export function PiaoBaiZhenZhen({ onExit }: PiaoBaiZhenZhenProps) {
                 <h2 className="font-heading text-floo-accent-gold text-xl tracking-wider mb-2">逃出生天</h2>
               </motion.div>
 
+              {currentNode.illustration && (
+                <SceneMedia src={currentNode.illustration.src} type={currentNode.illustration.type} alt={currentNode.illustration.alt} />
+              )}
+
               <DialogueBox content={currentNode.content} />
 
               <motion.div
@@ -321,6 +330,10 @@ export function PiaoBaiZhenZhen({ onExit }: PiaoBaiZhenZhenProps) {
             transition={{ duration: 0.5 }}
             className="flex flex-col items-center relative z-10 max-w-4xl"
           >
+            {currentNode.illustration && (
+              <SceneMedia src={currentNode.illustration.src} type={currentNode.illustration.type} alt={currentNode.illustration.alt} />
+            )}
+
             <DialogueBox content={currentNode.content} speaker={currentNode.speaker} />
 
             {investigations.length > 0 && (

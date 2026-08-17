@@ -130,6 +130,15 @@ export interface StoryNode {
   investigations?: InvestigationPoint[]
   /** 该场景可获得的线索ID列表 */
   clues?: string[]
+  /** 节点配图/视频（可选） */
+  illustration?: {
+    /** 文件路径（相对于 public/ 的路径） */
+    src: string
+    /** 媒体类型 */
+    type: 'image' | 'video'
+    /** 可选描述（alt text） */
+    alt?: string
+  }
 }
 
 /** 完整剧本数据 */
