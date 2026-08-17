@@ -13,6 +13,7 @@ import { InvestigationPanel } from '@/core/components/InvestigationPanel'
 import { ClueDrawer } from '@/core/components/ClueDrawer'
 import { GameTutorial } from '@/core/components/GameTutorial'
 import { useStoryEngine } from '@/core/hooks/useStoryEngine'
+import { useHubStore } from '@/core/store/hubStore'
 import { audioManager } from '@/core/engine/audioManager'
 import type { StoryData } from '@/core/types/story'
 
@@ -65,6 +66,9 @@ const SFX_SOUNDS: Record<string, string> = {
   'door-knock': `${base}audio/sfx/bad-ending-impact.mp3`,
 }
 
+const MAX_STAMINA = 100
+const CRITICAL_STAMINA = 20
+
 const TUTORIAL_KEY = 'floo-tutorial-piao-bai-zhen-zhen'
 const TUTORIAL_STEPS = [
   {
@@ -93,6 +97,11 @@ export function PiaoBaiZhenZhen({ onExit }: PiaoBaiZhenZhenProps) {
   const { currentNode, availableChoices, selectChoice, advanceNode, jumpToNode, canAdvance, isEnding } =
     useStoryEngine(storyData as StoryData)
   const registeredRef = useRef(false)
+
+  const stamina = useHubStore((state) => {
+    const val = state.variables['stamina']
+    return typeof val === 'number' ? val : MAX_STAMINA
+  })
 
   const [showTutorial, setShowTutorial] = useState(() => {
     return !localStorage.getItem(TUTORIAL_KEY)
@@ -176,6 +185,36 @@ export function PiaoBaiZhenZhen({ onExit }: PiaoBaiZhenZhenProps) {
             {discoveredClues.size}
           </span>
           <span className="text-floo-text-muted text-xs font-ui">/ {storyData.clues?.length || 0}</span>
+        </div>
+
+        <div className="bg-floo-bg-secondary/80 backdrop-blur-sm border border-floo-text-muted/20 rounded-lg px-4 py-2">
+          <div className="flex items-center justify-between mb-1">
+            <span className="text-floo-text-muted text-xs font-ui">体力</span>
+            <span className={`font-heading text-sm ${
+              stamina <= CRITICAL_STAMINA ? 'text-red-400' : stamina <= 50 ? 'text-yellow-400' : 'text-floo-accent-green'
+            }`}>
+              {stamina}
+            </span>
+          </div>
+          <div className="w-24 h-2 bg-floo-bg-primary rounded-full overflow-hidden">
+            <motion.div
+              className={`h-full rounded-full ${
+                stamina <= CRITICAL_STAMINA ? 'bg-red-500' : stamina <= 50 ? 'bg-yellow-500' : 'bg-floo-accent-green'
+              }`}
+              initial={{ width: '100%' }}
+              animate={{ width: `${(stamina / MAX_STAMINA) * 100}%` }}
+              transition={{ duration: 0.5 }}
+            />
+          </div>
+          {stamina <= CRITICAL_STAMINA && (
+            <motion.p
+              className="text-red-400 text-xs font-ui mt-1"
+              animate={{ opacity: [0.5, 1, 0.5] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+            >
+              体力不支，手在发抖...
+            </motion.p>
+          )}
         </div>
       </motion.div>
 
