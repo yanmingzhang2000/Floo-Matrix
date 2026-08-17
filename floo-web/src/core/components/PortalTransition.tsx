@@ -9,11 +9,12 @@ import { audioManager } from '@/core/engine/audioManager'
 
 interface PortalTransitionProps {
   active: boolean
-  fireplaceX: number // 壁炉中心X坐标
-  fireplaceY: number // 壁炉中心Y坐标
-  clickX: number // 点击位置X
-  clickY: number // 点击位置Y
+  fireplaceX: number
+  fireplaceY: number
+  clickX: number
+  clickY: number
   onComplete?: () => void
+  flameColor?: string
 }
 
 type Stage = 'powder' | 'ignite' | 'consume' | 'fadeout'
@@ -25,9 +26,19 @@ export function PortalTransition({
   clickX,
   clickY,
   onComplete,
+  flameColor = '#c8934a',
 }: PortalTransitionProps) {
   const [stage, setStage] = useState<Stage>('powder')
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+  // 根据 flameColor 生成更深的色调用于渐变
+  const flameColorDark = useMemo(() => {
+    const hex = flameColor.replace('#', '')
+    const r = Math.max(0, parseInt(hex.slice(0, 2), 16) - 40)
+    const g = Math.max(0, parseInt(hex.slice(2, 4), 16) - 40)
+    const b = Math.max(0, parseInt(hex.slice(4, 6), 16) - 40)
+    return `#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}`
+  }, [flameColor])
 
   // 余烬粒子爆发用（阶段3）
   const emberParticles = useMemo(
@@ -117,7 +128,8 @@ export function PortalTransition({
           startY={clickY}
           targetX={fireplaceX}
           targetY={fireplaceY}
-          onComplete={() => {}} // 时序由 useEffect 控制
+          onComplete={() => {}}
+          flameColor={flameColor}
         />
       )}
 
@@ -139,7 +151,7 @@ export function PortalTransition({
               y: '-50%',
               width: 200,
               height: 200,
-              background: 'radial-gradient(circle, var(--color-floo-accent-green) 0%, var(--color-floo-accent-green-dark) 40%, transparent 70%)',
+              background: `radial-gradient(circle, ${flameColor} 0%, ${flameColorDark} 40%, transparent 70%)`,
               filter: 'blur(20px)',
             }}
             initial={{ scale: 0.5, opacity: 0 }}
@@ -177,8 +189,8 @@ export function PortalTransition({
                 top: fireplaceY,
                 width: p.size,
                 height: p.size,
-                background: 'radial-gradient(circle, var(--color-floo-accent-green), var(--color-floo-accent-green-dark))',
-                boxShadow: '0 0 8px rgba(200, 147, 74, 0.8)',
+                background: `radial-gradient(circle, ${flameColor}, ${flameColorDark})`,
+                boxShadow: `0 0 8px ${flameColor}CC`,
                 filter: 'blur(2px)',
               }}
               initial={{ x: 0, y: 0, opacity: 1, scale: 1 }}

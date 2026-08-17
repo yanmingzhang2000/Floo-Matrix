@@ -18,14 +18,23 @@ interface PowderParticle {
 }
 
 interface PowderTossProps {
-  startX: number // 点击位置X（屏幕坐标）
-  startY: number // 点击位置Y
-  targetX: number // 壁炉中心X
-  targetY: number // 壁炉中心Y
-  onComplete?: () => void // 粉末落地回调
+  startX: number
+  startY: number
+  targetX: number
+  targetY: number
+  onComplete?: () => void
+  flameColor?: string
 }
 
-export function PowderToss({ startX, startY, targetX, targetY, onComplete }: PowderTossProps) {
+export function PowderToss({ startX, startY, targetX, targetY, onComplete, flameColor = '#c8934a' }: PowderTossProps) {
+  const flameColorDark = useMemo(() => {
+    const hex = flameColor.replace('#', '')
+    const r = Math.max(0, parseInt(hex.slice(0, 2), 16) - 40)
+    const g = Math.max(0, parseInt(hex.slice(2, 4), 16) - 40)
+    const b = Math.max(0, parseInt(hex.slice(4, 6), 16) - 40)
+    return `#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}`
+  }, [flameColor])
+
   const particles = useMemo<PowderParticle[]>(() => {
     return Array.from({ length: 12 }, (_, i) => {
       // 从起点到目标点的散射锥
@@ -57,8 +66,8 @@ export function PowderToss({ startX, startY, targetX, targetY, onComplete }: Pow
             top: p.y,
             width: p.size,
             height: p.size,
-            background: 'radial-gradient(circle, var(--color-floo-accent-green), var(--color-floo-accent-green-dark))',
-            boxShadow: '0 0 8px rgba(200, 147, 74, 0.8)',
+            background: `radial-gradient(circle, ${flameColor}, ${flameColorDark})`,
+            boxShadow: `0 0 8px ${flameColor}CC`,
             filter: 'blur(1px)',
             rotate: p.rotation,
           }}

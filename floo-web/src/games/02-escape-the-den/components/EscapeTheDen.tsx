@@ -30,16 +30,16 @@ interface EscapeTheDenProps {
 const base = import.meta.env.BASE_URL
 
 const AMBIENT_SOUNDS: Record<string, string> = {
-  basement: `${base}audio/ambient/basement.wav`,
-  forest: `${base}audio/ambient/forest.wav`,
-  cabin: `${base}audio/ambient/cabin.wav`,
+  basement: `${base}audio/ambient/basement.mp3`,
+  forest: `${base}audio/ambient/forest.mp3`,
+  cabin: `${base}audio/ambient/cabin.mp3`,
 }
 
 const SFX_SOUNDS: Record<string, string> = {
-  heartbeat: `${base}audio/sfx/heartbeat.wav`,
-  'bad-ending-impact': `${base}audio/sfx/bad-ending-impact.wav`,
-  'good-ending-chime': `${base}audio/sfx/good-ending-chime.wav`,
-  clue: `${base}audio/sfx/heartbeat.wav`,
+  heartbeat: `${base}audio/sfx/heartbeat.mp3`,
+  'bad-ending-impact': `${base}audio/sfx/bad-ending-impact.mp3`,
+  'good-ending-chime': `${base}audio/sfx/good-ending-chime.mp3`,
+  clue: `${base}audio/sfx/heartbeat.mp3`,
 }
 
 const TUTORIAL_KEY = 'floo-tutorial-escape-the-den'

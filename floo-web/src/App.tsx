@@ -16,13 +16,13 @@ import { downloadProgress, uploadProgress } from '@/core/services/syncService'
 import { EscapeTheDen } from '@/games/02-escape-the-den/components/EscapeTheDen'
 import { KaiDuan } from '@/games/03-kai-duan/components/KaiDuan'
 import { SongBuDao } from '@/games/04-song-bu-dao/components/SongBuDao'
-import { PiaoBaiZhenZhen } from '@/games/04-piao-bai-zhen-zhen/components/PiaoBaiZhenZhen'
+import { PiaoBaiZhenZhen } from '@/games/05-piao-bai-zhen-zhen/components/PiaoBaiZhenZhen'
 
 const GAME_COMPONENTS: Record<string, ComponentType<{ onExit: () => void }>> = {
   '02-escape-the-den': EscapeTheDen,
   '03-kai-duan': KaiDuan,
   '04-song-bu-dao': SongBuDao,
-  '04-piao-bai-zhen-zhen': PiaoBaiZhenZhen,
+  '05-piao-bai-zhen-zhen': PiaoBaiZhenZhen,
 }
 
 function App() {
@@ -49,6 +49,7 @@ function App() {
     clickY: 0,
     fireplaceX: 0,
     fireplaceY: 0,
+    flameColor: '#c8934a',
   })
   const [showAuth, setShowAuth] = useState(false)
 
@@ -89,10 +90,10 @@ function App() {
       completed: false,
     })
     registerFireplace({
-      gameId: '04-piao-bai-zhen-zhen',
+      gameId: '05-piao-bai-zhen-zhen',
       title: '窗外',
       subtitle: '漂白·少年甄珍',
-      flameColor: '#7a9eb8',
+      flameColor: '#b83a2e',
       unlocked: true,
       completed: false,
     })
@@ -105,8 +106,15 @@ function App() {
     fireplaceX: number,
     fireplaceY: number
   ) => {
+    const fireplace = fireplaces.find((f) => f.gameId === gameId)
     setPendingGameId(gameId)
-    setTransitionCoords({ clickX, clickY, fireplaceX, fireplaceY })
+    setTransitionCoords({
+      clickX,
+      clickY,
+      fireplaceX,
+      fireplaceY,
+      flameColor: fireplace?.flameColor || '#c8934a',
+    })
     setTransitioning(true)
   }
 

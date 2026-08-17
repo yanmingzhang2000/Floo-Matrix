@@ -32,20 +32,20 @@ interface KaiDuanProps {
 const base = import.meta.env.BASE_URL
 
 const AMBIENT_SOUNDS: Record<string, string> = {
-  bus: `${base}audio/ambient/basement.wav`,
-  convention: `${base}audio/ambient/forest.wav`,
-  police_station: `${base}audio/ambient/cabin.wav`,
-  factory: `${base}audio/ambient/basement.wav`,
-  bridge: `${base}audio/ambient/forest.wav`,
-  residential: `${base}audio/ambient/cabin.wav`,
+  bus: `${base}audio/ambient/basement.mp3`,
+  convention: `${base}audio/ambient/forest.mp3`,
+  police_station: `${base}audio/ambient/cabin.mp3`,
+  factory: `${base}audio/ambient/basement.mp3`,
+  bridge: `${base}audio/ambient/forest.mp3`,
+  residential: `${base}audio/ambient/cabin.mp3`,
 }
 
 const SFX_SOUNDS: Record<string, string> = {
-  heartbeat: `${base}audio/sfx/heartbeat.wav`,
-  'loop-reset': `${base}audio/sfx/bad-ending-impact.wav`,
-  clue: `${base}audio/sfx/heartbeat.wav`,
-  'good-ending': `${base}audio/sfx/good-ending-chime.wav`,
-  explosion: `${base}audio/sfx/bad-ending-impact.wav`,
+  heartbeat: `${base}audio/sfx/heartbeat.mp3`,
+  'loop-reset': `${base}audio/sfx/bad-ending-impact.mp3`,
+  clue: `${base}audio/sfx/heartbeat.mp3`,
+  'good-ending': `${base}audio/sfx/good-ending-chime.mp3`,
+  explosion: `${base}audio/sfx/bad-ending-impact.mp3`,
 }
 
 // 幕对应的当前时间（玩家感知到的时间）

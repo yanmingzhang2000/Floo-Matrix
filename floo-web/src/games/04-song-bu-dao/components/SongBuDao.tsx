@@ -29,22 +29,22 @@ interface SongBuDaoProps {
 const base = import.meta.env.BASE_URL
 
 const AMBIENT_SOUNDS: Record<string, string> = {
-  courier_station: `${base}audio/ambient/cabin.wav`,
-  city_street: `${base}audio/ambient/forest.wav`,
-  bridge_side: `${base}audio/ambient/forest.wav`,
-  residential: `${base}audio/ambient/cabin.wav`,
-  apartment: `${base}audio/ambient/basement.wav`,
-  bus: `${base}audio/ambient/basement.wav`,
-  police_station: `${base}audio/ambient/cabin.wav`,
-  hospital: `${base}audio/ambient/cabin.wav`,
+  courier_station: `${base}audio/ambient/cabin.mp3`,
+  city_street: `${base}audio/ambient/forest.mp3`,
+  bridge_side: `${base}audio/ambient/forest.mp3`,
+  residential: `${base}audio/ambient/cabin.mp3`,
+  apartment: `${base}audio/ambient/basement.mp3`,
+  bus: `${base}audio/ambient/basement.mp3`,
+  police_station: `${base}audio/ambient/cabin.mp3`,
+  hospital: `${base}audio/ambient/cabin.mp3`,
 }
 
 const SFX_SOUNDS: Record<string, string> = {
-  heartbeat: `${base}audio/sfx/heartbeat.wav`,
-  'loop-reset': `${base}audio/sfx/bad-ending-impact.wav`,
-  'good-ending': `${base}audio/sfx/good-ending-chime.wav`,
-  'bad-ending': `${base}audio/sfx/bad-ending-impact.wav`,
-  explosion: `${base}audio/sfx/bad-ending-impact.wav`,
+  heartbeat: `${base}audio/sfx/heartbeat.mp3`,
+  'loop-reset': `${base}audio/sfx/bad-ending-impact.mp3`,
+  'good-ending': `${base}audio/sfx/good-ending-chime.mp3`,
+  'bad-ending': `${base}audio/sfx/bad-ending-impact.mp3`,
+  explosion: `${base}audio/sfx/bad-ending-impact.mp3`,
 }
 
 // 副线标签
