@@ -114,7 +114,7 @@
   "nodes": {
     "node_01_mother_chide": {
       "id": "node_01_mother_chide",
-      "type": "dialogue",
+      "type": "choice",
       "scene": "home_room",
       "ambientSound": "rain_heavy",
       "tensionLevel": 1,
@@ -128,6 +128,110 @@
           "value": true
         }
       ],
+      "investigations": [],
+      "choices": [
+        {
+          "id": "choice_leave_01",
+          "text": "忍无可忍，推门离家出走",
+          "nextNode": "node_02_burn_award",
+          "effects": []
+        },
+        {
+          "id": "choice_stay_01",
+          "text": "低头跪着，一声不吭",
+          "nextNode": "node_01_nag_01",
+          "effects": []
+        }
+      ]
+    },
+    "node_01_nag_01": {
+      "id": "node_01_nag_01",
+      "type": "choice",
+      "scene": "home_room",
+      "ambientSound": "rain_heavy",
+      "tensionLevel": 1,
+      "speaker": "洪霞",
+      "content": "'五千块！你知道五千块是什么概念吗？我在厂里站一个月流水线，脚肿得穿不进鞋，才挣五千块！就这么让你一句话赔出去了！'\n\n她在你面前来回走，拖鞋踩在瓷砖上啪啪作响。\n\n'你让我在邻居面前怎么抬头？张阿姨昨天还来问我，说你们班主任打电话说你最近上课睡觉——我当时那个脸啊！恨不得找个地缝钻进去！'",
+      "clues": [],
+      "effects": [],
+      "investigations": [],
+      "choices": [
+        {
+          "id": "choice_leave_02",
+          "text": "猛地站起来，拿起书包往门口走",
+          "nextNode": "node_02_burn_award",
+          "effects": []
+        },
+        {
+          "id": "choice_stay_02",
+          "text": "盯着地板，等她骂完",
+          "nextNode": "node_01_nag_02",
+          "effects": []
+        }
+      ]
+    },
+    "node_01_nag_02": {
+      "id": "node_01_nag_02",
+      "type": "choice",
+      "scene": "home_room",
+      "ambientSound": "rain_heavy",
+      "tensionLevel": 1,
+      "speaker": "洪霞",
+      "content": "'你看看人家慧慧！人家慧慧从小到大没让父母操过一天心，年年三好学生，现在人家在银行上班，一个月多少钱？多少钱！你呢？你给我争过什么脸？'\n\n她走到书架前，指着你的奖状：\n\n'这些有什么用？能当饭吃？你表姐初中就出去打工了，人家现在买房了！你读这么多书，读出来一个跟男生在外面鬼混！'",
+      "clues": [],
+      "effects": [],
+      "investigations": [],
+      "choices": [
+        {
+          "id": "choice_leave_03",
+          "text": "握紧拳头，转身就走",
+          "nextNode": "node_02_burn_award",
+          "effects": []
+        },
+        {
+          "id": "choice_stay_03",
+          "text": "咬着牙，继续跪着",
+          "nextNode": "node_01_nag_03",
+          "effects": []
+        }
+      ]
+    },
+    "node_01_nag_03": {
+      "id": "node_01_nag_03",
+      "type": "choice",
+      "scene": "home_room",
+      "ambientSound": "rain_heavy",
+      "tensionLevel": 1,
+      "speaker": "洪霞",
+      "content": "'那个男生是什么东西？你跟他在汉堡店待到几点？你知不知道外面那些人怎么说你？说你不自爱！'\n\n她走过来，声音压低了，反而更让人发冷：\n\n'我生你养你十七年，你就这么回报我的？你对得起我吗？你对得起这个家吗？你有没有想过，你这么不要脸，将来怎么嫁人？谁家要这种女儿？'",
+      "clues": [],
+      "effects": [],
+      "investigations": [],
+      "choices": [
+        {
+          "id": "choice_leave_04",
+          "text": "猛地抬起头——你感觉有什么东西断掉了",
+          "nextNode": "node_02_burn_award",
+          "effects": []
+        },
+        {
+          "id": "choice_stay_04",
+          "text": "闭上眼，继续跪",
+          "nextNode": "node_01_nag_04",
+          "effects": []
+        }
+      ]
+    },
+    "node_01_nag_04": {
+      "id": "node_01_nag_04",
+      "type": "dialogue",
+      "scene": "home_room",
+      "ambientSound": "rain_heavy",
+      "tensionLevel": 2,
+      "speaker": "洪霞",
+      "content": "洪霞指着门，声音已经从嘶吼变成了某种更冷的东西：\n\n'你既然这么嫌这个家，你就给我滚！你滚出去，别回来！我没你这个女儿！'\n\n房间里突然很安静。\n\n你意识到——她说真的。不是在骂你，是在驱逐你。\n\n墙上那些奖状还挂着，那是你用五年换来的东西，她从来没问过你累不累。\n\n你站起来，走向那面墙。",
+      "clues": [],
+      "effects": [],
       "investigations": [],
       "nextNode": "node_02_burn_award"
     },
