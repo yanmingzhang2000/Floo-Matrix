@@ -1,5 +1,5 @@
 {
-  "gameId": "05-piao-bai-zhen-zhen-v2.1",
+  "gameId": "05-piao-bai-zhen-zhen-v2.2",
   "title": "漂白·窗外 · 精简沉浸版",
   "description": "17岁少女甄珍在体力极限与生死抉择下的高空逃生。保留体力值作为唯一核心机制，恐惧/体温/噪音回归纯叙事描写，26个高密度抉择点完整保留。",
   "startNode": "node_01_mother_chide",
@@ -52,6 +52,13 @@
       "title": "邱枫留下的洗漱用品",
       "type": "fact",
       "content": "林晓彤出租屋内，邱枫的毛巾湿着、衣服还在，但床铺放凉，人已失踪多日。",
+      "location": "林晓彤出租屋"
+    },
+    {
+      "id": "clue_qiufeng_missing",
+      "title": "邱枫的失踪",
+      "type": "anomaly",
+      "content": "邱枫被骗去见杀猪盘对象后一去不回，她的牙刷、充电线都还在，但人消失得无影无踪。",
       "location": "林晓彤出租屋"
     },
     {
@@ -141,10 +148,255 @@
         }
       ],
       "investigations": [],
-      "nextNode": "node_03_friend_room"
+      "nextNode": "node_03_qiufeng_meet"
     },
-    "node_03_friend_room": {
-      "id": "node_03_friend_room",
+    "node_03_qiufeng_meet": {
+      "id": "node_03_qiufeng_meet",
+      "type": "dialogue",
+      "scene": "friend_apartment",
+      "ambientSound": "room_silence",
+      "tensionLevel": 1,
+      "speaker": "甄珍",
+      "content": "我投奔了同学林晓彤，借住进她和别人合租的老旧公寓。屋内另一个房间住着一个叫邱枫的姐姐。\n\n她比我大几岁，染着黄头发，说话很直接。我们抢浴室、抢插座，她翻过我的包，我撞过她的门。\n\n有一次我洗澡出来，发现她正翻我的书包找充电器。我骂了她一句'有病'，她回了我一句'你以为我想住这儿？'\n\n还有一次，我正在浴室里洗头，她突然推门进来，说要上厕所。我骂她'不会敲门吗'，她翻了个白眼：'你以为我想看你在里面磨蹭？' 我们在浴室门口对峙了五分钟，最后还是我先让了——不是因为她赢了，是因为我闻到了她身上泡面的味道，突然觉得和她吵架很没意思。\n\n但晚上她递给我一碗泡面的时候，我觉得这个人不坏——只是和我一样，无处可去。\n\n泡面碗边缘有个缺口，她自己用那个缺口对着自己吃，把完好的那边递给了我。",
+      "clues": [
+        "clue_qiufeng_belongings"
+      ],
+      "effects": [],
+      "investigations": [
+        {
+          "id": "investigate_outlet",
+          "label": "观察墙上的插座",
+          "content": "两个充电器缠在一起，线皮都磨破了，像两条争抢同一块领地的蛇。",
+          "clueId": "clue_qiufeng_belongings"
+        },
+        {
+          "id": "investigate_desk",
+          "label": "翻看桌上的杂物",
+          "content": "半包烟、一盒过期的感冒药、三张揉成团的彩票，全是邱枫的。",
+          "clueId": "clue_qiufeng_belongings"
+        },
+        {
+          "id": "investigate_pillow",
+          "label": "掀开邱枫的枕头",
+          "content": "枕套上有一根长发，被扯断的，发根带了一点血丝。",
+          "clueId": "clue_qiufeng_belongings"
+        }
+      ],
+      "nextNode": "node_04_qiufeng_missing"
+    },
+    "node_04_qiufeng_missing": {
+      "id": "node_04_qiufeng_missing",
+      "type": "dialogue",
+      "scene": "friend_apartment",
+      "ambientSound": "room_silence",
+      "tensionLevel": 2,
+      "speaker": "甄珍",
+      "content": "邱枫已经三天没回来了。\n\n她的牙刷还在杯子里，手机充电线还插在墙上，床铺乱糟糟的，像只是出去买个东西就回来的样子。\n\n但我知道不会回来了。\n\n三天前她接了一个电话，是那个'教授'打来的。她特意换了件干净衣服，还化了妆——眼线画歪了又擦掉重画，折腾了十几分钟。\n\n'我看起来怎么样？'她在镜子前转了一圈，有点紧张又有点期待。\n\n'像要去相亲。'我随口说了一句。\n\n她瞪了我一眼，但没反驳。\n\n那是我最后一次见她。\n\n现在她的房间空荡荡的，只有充电线还孤零零地插在墙上，红色的指示灯一亮一灭，像是在等一个永远不会回来的人。\n\n我翻了翻她留下的东西——半包烟、一盒过期的感冒药、三张揉成团的彩票。还有一张纸条，上面写着一个地址和时间，字迹潦草得像是匆匆写下的。\n\n我不知道她去了哪里，也不知道那个'教授'到底是谁。\n\n我只知道，她再也没回来。",
+      "clues": [
+        "clue_qiufeng_missing"
+      ],
+      "effects": [
+        {
+          "type": "setFlag",
+          "key": "stamina",
+          "value": 80
+        }
+      ],
+      "investigations": [
+        {
+          "id": "investigate_bed_missing",
+          "label": "观察邱枫的床铺",
+          "content": "被褥乱糟糟的，枕头上有几根长发，被扯断的，发根带了一点血丝。",
+          "clueId": "clue_qiufeng_missing"
+        },
+        {
+          "id": "investigate_desk_missing",
+          "label": "检查桌上的杂物",
+          "content": "半包烟、一盒过期的感冒药、三张揉成团的彩票，全是邱枫的。",
+          "clueId": "clue_qiufeng_missing"
+        },
+        {
+          "id": "investigate_note",
+          "label": "翻看纸条上的地址",
+          "content": "地址是城郊一个偏僻的地方，时间是三天前的晚上。",
+          "clueId": "clue_qiufeng_missing"
+        }
+      ],
+      "nextNode": "node_05_survive_alone"
+    },
+    "node_05_survive_alone": {
+      "id": "node_05_survive_alone",
+      "type": "dialogue",
+      "scene": "bus_station",
+      "ambientSound": "wind_cold",
+      "tensionLevel": 2,
+      "speaker": "甄珍",
+      "content": "晓彤也走了。我身上一分钱也没有，连饭都吃不起。我不敢回家，只能游荡在寒冷的街头。\n\n饥饿感已经从'饿'变成了'疼'，像有一只手在胃袋里拧。手指发麻，视线偶尔发黑——低血糖的前兆。\n\n在公交站台旁，一张电线杆上的招聘广告吸引了我：'招高薪日结工，包吃包住，当天发钱'。\n\n我站在寒风里，牙齿不受控制地打颤。胃部痉挛着，喉咙发紧。\n\n就在这时，一个女人的声音从身后传来——",
+      "clues": [],
+      "effects": [
+        {
+          "type": "setFlag",
+          "key": "stamina",
+          "value": 65
+        }
+      ],
+      "investigations": [],
+      "nextNode": "node_06_song_refuse"
+    },
+    "node_06_song_refuse": {
+      "id": "node_06_song_refuse",
+      "type": "choice",
+      "scene": "bus_station",
+      "ambientSound": "city_noise",
+      "tensionLevel": 2,
+      "speaker": "宋红玉",
+      "content": "'姑娘，看你冻得这样，没吃饭吧？来，先把这杯热牛奶喝了。阿姨这包吃包住，一天给八十！看你是个学生样，阿姨不骗你，走，跟阿姨上车去厂里看下。'\n\n宋红玉满脸堆笑，手里的纸杯冒着热气。那热气扑在你脸上，你闻到了牛奶的甜香。\n\n你的胃发出一声响亮的痉挛。但另一个声音在脑子里尖叫：'为什么偏偏找你？'\n\n她的眼神在你脸上停留了太久，像是在确认什么。你注意到她的指甲修剪得很整齐，不像在工厂干活的人。",
+      "clues": [],
+      "effects": [],
+      "investigations": [],
+      "choices": [
+        {
+          "id": "choice_refuse_song_1",
+          "text": "'不用了谢谢阿姨'（转身想走）",
+          "nextNode": "node_07_ji_refuse",
+          "effects": []
+        },
+        {
+          "id": "choice_refuse_song_2",
+          "text": "'我再考虑一下'（后退一步）",
+          "nextNode": "node_07_ji_refuse",
+          "effects": []
+        },
+        {
+          "id": "choice_drink_milk",
+          "text": "接过牛奶一饮而尽（胃里终于有了一丝暖意，但警惕降低）",
+          "nextNode": "node_07_ji_refuse",
+          "effects": [
+            {
+              "type": "setFlag",
+              "key": "stamina",
+              "value": 75
+            }
+          ]
+        }
+      ]
+    },
+    "node_07_ji_refuse": {
+      "id": "node_07_ji_refuse",
+      "type": "choice",
+      "scene": "bus_station",
+      "ambientSound": "city_noise",
+      "tensionLevel": 2,
+      "speaker": "甄珍",
+      "content": "宋红玉走后没多久，一个高大的男人出现了。他往电线杆上贴了一张新的招聘广告，回头看了我一眼。\n\n'小姑娘，找工作？一天一百，包吃包住。'他的声音很粗，眼睛却很亮——像在看一件货物。\n\n我摇了摇头，往后退了一步。他的笑容僵了一下，但很快恢复了。\n\n他从口袋里掏出一根烟点上，烟雾在寒风里散得很快。你注意到他的手背上有一道新鲜的抓痕，像是被人狠狠挠过。\n\n'真的不考虑？这么冷的天，在外面会死人的。'",
+      "clues": [],
+      "effects": [],
+      "investigations": [],
+      "choices": [
+        {
+          "id": "choice_refuse_ji_1",
+          "text": "'我不需要'（声音发抖）",
+          "nextNode": "node_08_ji_recruit",
+          "effects": []
+        },
+        {
+          "id": "choice_refuse_ji_2",
+          "text": "'你是谁？'（警惕地问）",
+          "nextNode": "node_08_ji_recruit",
+          "effects": []
+        },
+        {
+          "id": "choice_refuse_ji_3",
+          "text": "转身就走（不回答）",
+          "nextNode": "node_08_ji_recruit",
+          "effects": []
+        }
+      ]
+    },
+    "node_08_ji_recruit": {
+      "id": "node_08_ji_recruit",
+      "type": "choice",
+      "scene": "bus_station",
+      "ambientSound": "engine_hum",
+      "tensionLevel": 3,
+      "speaker": "甄珍",
+      "content": "天黑了。我蜷缩在公交站台的角落里，冷得牙齿打颤。\n\n那个高大的男人又出现了，这次他没有贴广告，而是直接走到我面前。\n\n'上车吧，这么冷的天在外面会死的。'他指了指停在路边的面包车，'先去看看，不满意随时可以走。'\n\n你的手已经冻得没有知觉了。视线边缘开始发白，你知道这是体温过低的前兆。\n\n面包车的侧门开着，里面黑漆漆的。你注意到驾驶座上还坐着另一个人，一个穿着皮夹克的男人，正从后视镜里看你。\n\n你的胃又痉挛了一下。这一次，疼痛让你弯下了腰。",
+      "clues": [
+        "clue_car_childlock"
+      ],
+      "effects": [],
+      "investigations": [
+        {
+          "id": "investigate_car_door",
+          "label": "触碰后门内侧凹槽",
+          "content": "手指探入凹槽，摸到冰冷的铁丝和断裂的塑料残片——这门从里面根本打不开！",
+          "clueId": "clue_car_childlock"
+        },
+        {
+          "id": "investigate_driver",
+          "label": "偷看后视镜里的司机",
+          "content": "吉大顺的右手搭在档把上，指关节粗大，手背上有新鲜的抓痕。",
+          "clueId": "clue_car_childlock"
+        }
+      ],
+      "choices": [
+        {
+          "id": "choice_get_in_car",
+          "text": "'好吧，我去看看'（体力不支，妥协）",
+          "nextNode": "node_09_police_ending",
+          "effects": []
+        },
+        {
+          "id": "choice_call_first",
+          "text": "'我可以打个电话吗？'（试图拖延）",
+          "nextNode": "node_09_police_ending",
+          "effects": []
+        },
+        {
+          "id": "choice_refuse_car",
+          "text": "'我不去了'（拒绝上车）",
+          "nextNode": "node_10_police_call",
+          "effects": []
+        }
+      ]
+    },
+    "node_09_police_ending": {
+      "id": "node_09_police_ending",
+      "type": "ending",
+      "endingVariant": "neutral",
+      "scene": "street_night",
+      "content": "你被送回了家。母亲洪霞开门看了她一眼，冷冷地说：'还知道回来？'\n\n你没有告诉她关于邱枫的事。你没有告诉她你差点被拐走。你只是沉默地走进自己的房间，关上门。\n\n三天后，警方在郊外发现了邱枫的尸体。\n\n肉联厂的人早已消失无踪，像从没存在过。\n\n多年后，甄珍成为了一名警察。但她再也忘不了那个在出租屋里抢浴室的姐姐。\n\n妈妈还是那个妈妈。雨夜还是会来。\n\n你活了下来，但有些东西永远留在了那个冬天。",
+      "effects": [
+        {
+          "type": "setFlag",
+          "key": "police_reported",
+          "value": true
+        },
+        {
+          "type": "setFlag",
+          "key": "qiufeng_dead",
+          "value": true
+        }
+      ]
+    },
+    "node_10_police_call": {
+      "id": "node_10_police_call",
+      "type": "ending",
+      "endingVariant": "bad",
+      "scene": "street_night",
+      "checkpointNodeId": "node_08_ji_recruit",
+      "content": "【 Bad End：拒绝上车 】\n\n你转身想跑，但吉大顺一把抓住了你的肩膀。他的力气大得惊人，像铁钳一样。\n\n'敬酒不吃吃罚酒。'他的声音变得冰冷。\n\n你被拖进了面包车。车门在身后砰地关上，你听见锁死的声音。\n\n黑暗中，你闻到了血腥味。\n\n【失败分析】在极端疲惫和体温过低的状态下，17岁少女的力量不足以对抗成年男性。'拒绝'需要配合'逃跑路线'才有意义，单纯的拒绝只会激怒对方。"
+    },
+    "node_11_police_caught": {
+      "id": "node_11_police_caught",
+      "type": "ending",
+      "endingVariant": "bad",
+      "scene": "inside_van",
+      "checkpointNodeId": "node_08_ji_recruit",
+      "content": "【 Bad End：暴露位置 】\n\n你掏出手机想报警，但信号从两格闪到一格，又闪了一下，彻底变为空白。\n\n吉大顺从后视镜里看到了你的动作，猛地刹车，回头一把夺过你的手机。\n\n'想报警？'他的眼神变得凶狠，'看来得给你点教训。'\n\n他把你按在座位上，用胶带封住了你的嘴。你的眼泪流进耳朵里，但发不出声音。\n\n【失败分析】在信号不稳定的区域报警是高风险行为。110接通需要时间，而犯罪分子就在你身边。更好的策略是先记住地址和路线，等安全后再报警。"
+    },
+    "node_12_friend_room": {
+      "id": "node_12_friend_room",
       "type": "dialogue",
       "scene": "friend_apartment",
       "ambientSound": "room_silence",
@@ -175,10 +427,10 @@
           "clueId": "clue_qiufeng_belongings"
         }
       ],
-      "nextNode": "node_04_cold_hunger"
+      "nextNode": "node_13_cold_hunger"
     },
-    "node_04_cold_hunger": {
-      "id": "node_04_cold_hunger",
+    "node_13_cold_hunger": {
+      "id": "node_13_cold_hunger",
       "type": "dialogue",
       "scene": "bus_station",
       "ambientSound": "wind_cold",
@@ -194,10 +446,10 @@
         }
       ],
       "investigations": [],
-      "nextNode": "node_05_song_trap"
+      "nextNode": "node_14_song_trap"
     },
-    "node_05_song_trap": {
-      "id": "node_05_song_trap",
+    "node_14_song_trap": {
+      "id": "node_14_song_trap",
       "type": "choice",
       "scene": "bus_station",
       "ambientSound": "city_noise",
@@ -208,7 +460,7 @@
         {
           "id": "choice_drink_real",
           "text": "接过牛奶一饮而尽（胃里终于有了一丝暖意，但警惕降低）",
-          "nextNode": "node_06_car_lock",
+          "nextNode": "node_15_car_lock",
           "effects": [
             {
               "type": "setFlag",
@@ -220,7 +472,7 @@
         {
           "id": "choice_drink_fake",
           "text": "假装喝，实际含在嘴里随后吐掉（保持清醒，但手抖得厉害）",
-          "nextNode": "node_06_car_lock",
+          "nextNode": "node_15_car_lock",
           "effects": [
             {
               "type": "setFlag",
@@ -232,13 +484,13 @@
         {
           "id": "choice_refuse",
           "text": "摇头拒绝：'我不去了，谢谢阿姨。'（转身想走）",
-          "nextNode": "node_05_refuse_fail",
+          "nextNode": "node_14_refuse_fail",
           "effects": []
         }
       ]
     },
-    "node_05_refuse_fail": {
-      "id": "node_05_refuse_fail",
+    "node_14_refuse_fail": {
+      "id": "node_14_refuse_fail",
       "type": "dialogue",
       "scene": "bus_station",
       "ambientSound": "city_noise",
@@ -247,10 +499,10 @@
       "content": "'哎别走啊！'宋红玉一把攥住你的手腕，力道大得惊人。她脸上的笑容没变，但指甲已经掐进了你的肉里。\n\n'阿姨都给你热牛奶了，你不给面子？大顺，帮阿姨扶一下这位同学。'\n\n一只像铁钳一样的大手从背后扣住了你的肩膀。你根本挣脱不了。",
       "effects": [],
       "investigations": [],
-      "nextNode": "node_06_car_lock"
+      "nextNode": "node_15_car_lock"
     },
-    "node_06_car_lock": {
-      "id": "node_06_car_lock",
+    "node_15_car_lock": {
+      "id": "node_15_car_lock",
       "type": "choice",
       "scene": "bus_station",
       "ambientSound": "engine_hum",
@@ -279,13 +531,13 @@
         {
           "id": "choice_get_in",
           "text": "硬着头皮上车（心跳如雷，手心全是冷汗）",
-          "nextNode": "node_07_signal_zero",
+          "nextNode": "node_16_signal_zero",
           "effects": []
         }
       ]
     },
-    "node_07_signal_zero": {
-      "id": "node_07_signal_zero",
+    "node_16_signal_zero": {
+      "id": "node_16_signal_zero",
       "type": "dialogue",
       "scene": "inside_van",
       "ambientSound": "engine_hum",
@@ -294,10 +546,10 @@
       "content": "面包车后门'咔嗒'一声关上。那声音不对劲——像是从外面锁死了。\n\n车开出市区，窗外的楼一栋比一栋陌生。我偷偷掏出手机——信号格从两格闪到一格，又闪了一下，彻底变为空白。\n\n邓立钢在副驾驶冷冷抽着烟，一句话没说。烟雾飘到后排，呛得你想咳嗽，但你死死捂住了嘴。喉咙痒得发疼，眼泪憋了出来。",
       "effects": [],
       "investigations": [],
-      "nextNode": "node_08_car_gamble"
+      "nextNode": "node_17_car_gamble"
     },
-    "node_08_car_gamble": {
-      "id": "node_08_car_gamble",
+    "node_17_car_gamble": {
+      "id": "node_17_car_gamble",
       "type": "choice",
       "scene": "inside_van",
       "ambientSound": "engine_hum",
@@ -314,7 +566,7 @@
         {
           "id": "choice_stay_quiet_car",
           "text": "压下恐惧，装作晕车低头观察地形（胃部抽搐着忍下尖叫，咬破口腔内壁）",
-          "nextNode": "node_09_dark_room",
+          "nextNode": "node_18_dark_room",
           "effects": [
             {
               "type": "setFlag",
@@ -330,8 +582,8 @@
         }
       ]
     },
-    "node_09_dark_room": {
-      "id": "node_09_dark_room",
+    "node_18_dark_room": {
+      "id": "node_18_dark_room",
       "type": "dialogue",
       "scene": "meat_factory_room",
       "ambientSound": "room_damp",
@@ -346,10 +598,10 @@
         }
       ],
       "investigations": [],
-      "nextNode": "node_10_qiufeng_whisper"
+      "nextNode": "node_19_qiufeng_whisper"
     },
-    "node_10_qiufeng_whisper": {
-      "id": "node_10_qiufeng_whisper",
+    "node_19_qiufeng_whisper": {
+      "id": "node_19_qiufeng_whisper",
       "type": "dialogue",
       "scene": "meat_factory_room",
       "ambientSound": "room_damp",
@@ -358,10 +610,10 @@
       "content": "（颤抖着扑过来捂住甄珍的嘴，极低声，气息喷在你耳廓上）\n\n'别出声……他们是恶魔！他们前几天抓了我，拿了我的钥匙去出租屋搜东西……你是因为借住我的房间、用了我的物品，才被他们顺藤摸瓜找上的！甄珍，对不起，是我害了你！'\n\n她的手指冰凉，带着血腥味，在你嘴唇上压得很紧。你能感觉到她在发抖——不是因为害怕，是因为疼。",
       "effects": [],
       "investigations": [],
-      "nextNode": "node_11_forced_call"
+      "nextNode": "node_20_forced_call"
     },
-    "node_11_forced_call": {
-      "id": "node_11_forced_call",
+    "node_20_forced_call": {
+      "id": "node_20_forced_call",
       "type": "choice",
       "scene": "meat_factory_room",
       "ambientSound": "room_damp",
@@ -372,7 +624,7 @@
         {
           "id": "choice_call_normal",
           "text": "吓得大哭，完全照搬邓立钢的要求向家里要钱（声音颤抖破碎，说不出完整句子）",
-          "nextNode": "node_12_bathroom_prison",
+          "nextNode": "node_21_bathroom_prison",
           "effects": [
             {
               "type": "setFlag",
@@ -384,7 +636,7 @@
         {
           "id": "choice_call_secret_code",
           "text": "按要求要钱，但故意叫错老家县城名与母亲的昵称（手抖得厉害，声音带着哭腔的'口误'）",
-          "nextNode": "node_12_bathroom_prison",
+          "nextNode": "node_21_bathroom_prison",
           "effects": [
             {
               "type": "setFlag",
@@ -400,8 +652,8 @@
         }
       ]
     },
-    "node_12_bathroom_prison": {
-      "id": "node_12_bathroom_prison",
+    "node_21_bathroom_prison": {
+      "id": "node_21_bathroom_prison",
       "type": "dialogue",
       "scene": "bathroom",
       "ambientSound": "water_dripping",
@@ -414,10 +666,10 @@
       ],
       "effects": [],
       "investigations": [],
-      "nextNode": "node_13_micro_investigate"
+      "nextNode": "node_22_micro_investigate"
     },
-    "node_13_micro_investigate": {
-      "id": "node_13_micro_investigate",
+    "node_22_micro_investigate": {
+      "id": "node_22_micro_investigate",
       "type": "choice",
       "scene": "bathroom",
       "ambientSound": "water_dripping",
@@ -453,7 +705,7 @@
         {
           "id": "choice_investigate_done",
           "text": "调查完毕，开始制定逃生计划（心跳如鼓，但大脑强制运转）",
-          "nextNode": "node_14_water_decision",
+          "nextNode": "node_23_water_decision",
           "effects": [
             {
               "type": "setFlag",
@@ -464,8 +716,8 @@
         }
       ]
     },
-    "node_14_water_decision": {
-      "id": "node_14_water_decision",
+    "node_23_water_decision": {
+      "id": "node_23_water_decision",
       "type": "choice",
       "scene": "bathroom",
       "ambientSound": "water_running_heavy",
@@ -476,7 +728,7 @@
         {
           "id": "choice_qiufeng_block_door",
           "text": "喊邱枫死顶木门，自己迅速推开卫生间小窗（声音嘶哑，手指因麻木而打滑）",
-          "nextNode": "node_15_barrier_sacrifice",
+          "nextNode": "node_24_barrier_sacrifice",
           "effects": [
             {
               "type": "setFlag",
@@ -498,8 +750,8 @@
         }
       ]
     },
-    "node_15_barrier_sacrifice": {
-      "id": "node_15_barrier_sacrifice",
+    "node_24_barrier_sacrifice": {
+      "id": "node_24_barrier_sacrifice",
       "type": "dialogue",
       "scene": "outer_wall",
       "ambientSound": "wind_high",
@@ -519,10 +771,10 @@
         }
       ],
       "investigations": [],
-      "nextNode": "node_16_rusty_window"
+      "nextNode": "node_25_rusty_window"
     },
-    "node_16_rusty_window": {
-      "id": "node_16_rusty_window",
+    "node_25_rusty_window": {
+      "id": "node_25_rusty_window",
       "type": "choice",
       "scene": "outer_wall",
       "ambientSound": "wind_high",
@@ -533,7 +785,7 @@
         {
           "id": "choice_push_slow",
           "text": "慢慢咬牙推开生锈窗框（耗费体力/无声，但每一下都疼得钻心）",
-          "nextNode": "node_17_first_step",
+          "nextNode": "node_26_first_step",
           "effects": [
             {
               "type": "setFlag",
@@ -545,7 +797,7 @@
         {
           "id": "choice_kick_open",
           "text": "一脚踹开（省力/但发出剧烈响动，窗框撞击声在楼道里回荡）",
-          "nextNode": "node_17_first_step",
+          "nextNode": "node_26_first_step",
           "effects": [
             {
               "type": "setFlag",
@@ -556,8 +808,8 @@
         }
       ]
     },
-    "node_17_first_step": {
-      "id": "node_17_first_step",
+    "node_26_first_step": {
+      "id": "node_26_first_step",
       "type": "choice",
       "scene": "outer_wall",
       "ambientSound": "wind_high",
@@ -568,7 +820,7 @@
         {
           "id": "choice_close_eyes",
           "text": "闭上眼死咬牙关，凭触觉和记忆往右挪（降低视觉冲击，但失足风险极高）",
-          "nextNode": "node_18_ac_creak",
+          "nextNode": "node_27_ac_creak",
           "effects": [
             {
               "type": "setFlag",
@@ -580,7 +832,7 @@
         {
           "id": "choice_open_eyes",
           "text": "睁眼寻找脚踩点（必须承受五楼下方的视觉冲击，眩晕感瞬间翻倍）",
-          "nextNode": "node_18_ac_creak",
+          "nextNode": "node_27_ac_creak",
           "effects": [
             {
               "type": "setFlag",
@@ -597,8 +849,8 @@
         }
       ]
     },
-    "node_18_ac_creak": {
-      "id": "node_18_ac_creak",
+    "node_27_ac_creak": {
+      "id": "node_27_ac_creak",
       "type": "choice",
       "scene": "outer_wall",
       "ambientSound": "wind_high",
@@ -609,7 +861,7 @@
         {
           "id": "choice_freeze_on_ac",
           "text": "立刻僵住不动，等声音散去（屏住呼吸，心跳声大得像打鼓）",
-          "nextNode": "node_19_deng_peek",
+          "nextNode": "node_28_deng_peek",
           "effects": [
             {
               "type": "setFlag",
@@ -621,7 +873,7 @@
         {
           "id": "choice_rush_ac",
           "text": "不管了，趁外机还没塌赶紧挪过去（外机剧烈摇晃，螺丝崩飞）",
-          "nextNode": "node_19_deng_peek",
+          "nextNode": "node_28_deng_peek",
           "effects": [
             {
               "type": "setFlag",
@@ -632,8 +884,8 @@
         }
       ]
     },
-    "node_19_deng_peek": {
-      "id": "node_19_deng_peek",
+    "node_28_deng_peek": {
+      "id": "node_28_deng_peek",
       "type": "dialogue",
       "scene": "outer_wall",
       "ambientSound": "wind_high",
@@ -642,10 +894,10 @@
       "content": "卫生间的窗被猛地推开！邓立钢探出大半个身子张望！\n\n他的目光像探照灯一样扫过外墙。你甚至能闻到他嘴里烟臭的味道。他的一只手搭在窗框上，青筋暴起。\n\n'妈的，人呢？！'他的吼声在五楼外墙上撞出回音。",
       "effects": [],
       "investigations": [],
-      "nextNode": "node_20_blindspot"
+      "nextNode": "node_29_blindspot"
     },
-    "node_20_blindspot": {
-      "id": "node_20_blindspot",
+    "node_29_blindspot": {
+      "id": "node_29_blindspot",
       "type": "choice",
       "scene": "outer_wall",
       "ambientSound": "wind_high",
@@ -656,7 +908,7 @@
         {
           "id": "choice_shrink_blindspot",
           "text": "屏住呼吸，死死缩在外机与墙体夹角盲区（肺部灼烧，视线发黑，但邓立钢的视线掠过了你）",
-          "nextNode": "node_21_neighbor_glass",
+          "nextNode": "node_30_neighbor_glass",
           "effects": [
             {
               "type": "setFlag",
@@ -673,8 +925,8 @@
         }
       ]
     },
-    "node_21_neighbor_glass": {
-      "id": "node_21_neighbor_glass",
+    "node_30_neighbor_glass": {
+      "id": "node_30_neighbor_glass",
       "type": "dialogue",
       "scene": "outer_wall",
       "ambientSound": "wind_high",
@@ -689,10 +941,10 @@
         }
       ],
       "investigations": [],
-      "nextNode": "node_22_panic_plea"
+      "nextNode": "node_31_panic_plea"
     },
-    "node_22_panic_plea": {
-      "id": "node_22_panic_plea",
+    "node_31_panic_plea": {
+      "id": "node_31_panic_plea",
       "type": "choice",
       "scene": "outer_wall",
       "ambientSound": "wind_high",
@@ -703,7 +955,7 @@
         {
           "id": "choice_smash_glass",
           "text": "用拳头狠狠砸玻璃喊救命（玻璃碎裂声巨响，但手臂力量不足，第一拳没砸破）",
-          "nextNode": "node_23_safe_room",
+          "nextNode": "node_32_safe_room",
           "effects": [
             {
               "type": "setFlag",
@@ -715,7 +967,7 @@
         {
           "id": "choice_bloody_hand_plea",
           "text": "用满是血迹和泥污的手掌贴住玻璃，眼神哀求（无声，但依赖对方注意到你）",
-          "nextNode": "node_23_safe_room",
+          "nextNode": "node_32_safe_room",
           "effects": [
             {
               "type": "setFlag",
@@ -726,8 +978,8 @@
         }
       ]
     },
-    "node_23_safe_room": {
-      "id": "node_23_safe_room",
+    "node_32_safe_room": {
+      "id": "node_32_safe_room",
       "type": "dialogue",
       "scene": "neighbor_room",
       "ambientSound": "indoor_silence",
@@ -753,10 +1005,10 @@
           "clueId": "clue_forced_phone_call"
         }
       ],
-      "nextNode": "node_24_110_whisper"
+      "nextNode": "node_33_110_whisper"
     },
-    "node_24_110_whisper": {
-      "id": "node_24_110_whisper",
+    "node_33_110_whisper": {
+      "id": "node_33_110_whisper",
       "type": "choice",
       "scene": "neighbor_room",
       "ambientSound": "indoor_silence",
@@ -767,7 +1019,7 @@
         {
           "id": "choice_call_110_quiet",
           "text": "用衣服捂住嘴，极低声用座机拨打110报出'肉联厂宿舍五楼'（每个字都像从牙缝里挤出来）",
-          "nextNode": "node_25_stair_escape",
+          "nextNode": "node_34_stair_escape",
           "effects": [
             {
               "type": "setFlag",
@@ -789,7 +1041,7 @@
         {
           "id": "choice_run_direct",
           "text": "不冒暴露风险，直接开门趁走廊混乱溜下楼（双腿发软，几乎站不稳）",
-          "nextNode": "node_25_stair_escape",
+          "nextNode": "node_34_stair_escape",
           "effects": [
             {
               "type": "setFlag",
@@ -805,8 +1057,8 @@
         }
       ]
     },
-    "node_25_stair_escape": {
-      "id": "node_25_stair_escape",
+    "node_34_stair_escape": {
+      "id": "node_34_stair_escape",
       "type": "dialogue",
       "scene": "corridor",
       "ambientSound": "corridor_noise",
@@ -821,10 +1073,10 @@
         }
       ],
       "investigations": [],
-      "nextNode": "node_26_face_to_face"
+      "nextNode": "node_35_face_to_face"
     },
-    "node_26_face_to_face": {
-      "id": "node_26_face_to_face",
+    "node_35_face_to_face": {
+      "id": "node_35_face_to_face",
       "type": "dialogue",
       "scene": "street_day",
       "ambientSound": "street_busy",
@@ -839,10 +1091,10 @@
         }
       ],
       "investigations": [],
-      "nextNode": "node_27_beast_mode"
+      "nextNode": "node_36_beast_mode"
     },
-    "node_27_beast_mode": {
-      "id": "node_27_beast_mode",
+    "node_36_beast_mode": {
+      "id": "node_36_beast_mode",
       "type": "choice",
       "scene": "street_day",
       "ambientSound": "street_busy",
@@ -853,7 +1105,7 @@
         {
           "id": "choice_bite_smash",
           "text": "爆发野兽般的求生欲，狠咬邓立钢虎口，疯狂撞翻路边水果摊（牙齿咬穿皮肉，血腥味充满口腔）",
-          "nextNode": "node_28_siren_hope",
+          "nextNode": "node_37_siren_hope",
           "effects": [
             {
               "type": "setFlag",
@@ -870,8 +1122,8 @@
         }
       ]
     },
-    "node_28_siren_hope": {
-      "id": "node_28_siren_hope",
+    "node_37_siren_hope": {
+      "id": "node_37_siren_hope",
       "type": "dialogue",
       "scene": "street_day",
       "ambientSound": "siren_loud",
@@ -880,10 +1132,10 @@
       "content": "'啊！！'邓立钢剧痛甩手，水果摊轰然倒地，烂苹果滚了一地，路人纷纷围观喝斥！\n\n就在此时——刺耳破空的警笛声由远及近疾驰而来！\n\n（如果你之前拨打了110并提供了确切地址）警方彭兆林警官带队精准赶到！\n\n邓立钢见状不敢当街作案，恶狠狠骂了一句仓皇逃窜！",
       "effects": [],
       "investigations": [],
-      "nextNode": "node_29_good_ending"
+      "nextNode": "node_38_good_ending"
     },
-    "node_29_good_ending": {
-      "id": "node_29_good_ending",
+    "node_38_good_ending": {
+      "id": "node_38_good_ending",
       "type": "ending",
       "endingVariant": "good",
       "scene": "police_station",
@@ -895,7 +1147,7 @@
       "type": "ending",
       "endingVariant": "bad",
       "scene": "inside_van",
-      "checkpointNodeId": "node_08_car_gamble",
+      "checkpointNodeId": "node_17_car_gamble",
       "content": "【 Bad End：打草惊蛇 】\n\n你的尖叫让吉大顺直接停车。邓立钢拉开车门，一巴掌把你扇到车厢壁上。\n\n'找死。'\n\n你被捆死、塞住嘴，像一件货物一样被扔在后排。你失去了最后的自由与观察地形的机会。\n\n【失败分析】在封闭车厢内与两名成年男性正面对抗，是17岁少女在生理上不可能获胜的博弈。你的'质问'只是恐惧的宣泄，不是策略。"
     },
     "node_bad_02_bathroom_caught": {
@@ -903,7 +1155,7 @@
       "type": "ending",
       "endingVariant": "bad",
       "scene": "bathroom",
-      "checkpointNodeId": "node_14_water_decision",
+      "checkpointNodeId": "node_23_water_decision",
       "content": "【 Bad End：犹豫沦陷 】\n\n门被撞开，积水四溅。宋红玉和邓立钢冲了进来。\n\n邓立钢一把揪住你的头发把你拖出卫生间。你最后看见的是邱枫被吉大顺一棍打倒在地，血从她额头喷出来。\n\n你错失了邱枫用生命为你争取到的唯一逃生窗口。\n\n【失败分析】在绝境中，'不动'是最危险的选项。恐惧会让你瘫痪，但瘫痪等于死亡。"
     },
     "node_bad_03_fall": {
@@ -911,7 +1163,7 @@
       "type": "ending",
       "endingVariant": "bad",
       "scene": "outer_wall",
-      "checkpointNodeId": "node_17_first_step",
+      "checkpointNodeId": "node_26_first_step",
       "content": "【 Bad End：高空眩晕 】\n\n你在五楼高空朝脚下看了一眼。\n\n地面像一张巨大的嘴，向你扑来。强烈的眩晕感导致瞬间脱力——你的手指从窗框上滑落。\n\n风从耳边呼啸而过。\n\n【失败分析】高空逃生时，绝不能往下看。人类的深度感知会在极端恐惧下产生视觉扭曲，导致平衡系统崩溃。这是生理本能，不是意志能完全克服的。"
     },
     "node_bad_04_deng_grab": {
@@ -919,7 +1171,7 @@
       "type": "ending",
       "endingVariant": "bad",
       "scene": "outer_wall",
-      "checkpointNodeId": "node_20_blindspot",
+      "checkpointNodeId": "node_29_blindspot",
       "content": "【 Bad End：暴露位置 】\n\n你的呼救声在五楼外墙上撞出回音。\n\n邓立钢猛地探出窗户，像一只捕食的蜥蜴。他的手抓住你的校服领子，将你硬生生扯回了五楼室内。\n\n你的后脑勺撞在窗框上，眼前一黑。\n\n【失败分析】在捕食者距离你不到两米时，任何声音都是自杀。屏息不是选择，是生存本能。"
     },
     "node_bad_05_alley_drag": {
@@ -927,7 +1179,7 @@
       "type": "ending",
       "endingVariant": "bad",
       "scene": "street_day",
-      "checkpointNodeId": "node_27_beast_mode",
+      "checkpointNodeId": "node_36_beast_mode",
       "content": "【 Bad End：功亏一篑 】\n\n在最后的巷口，你因惊慌失去反抗意志。\n\n邓立钢像拖一只死狗一样把你拖进黑车。车门关上的瞬间，你看见阳光被隔绝在外面。\n\n你的手指在地面上抓出五道血痕，但无济于事。\n\n【失败分析】巷口是最后的战场。17岁的身体虽然弱小，但牙齿和指甲是造物主给所有生灵的最后武器。放弃反抗，等于放弃生命。"
     }
   }
